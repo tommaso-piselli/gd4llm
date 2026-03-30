@@ -4,7 +4,7 @@ This project runs experiments to evaluate Large Language Models (LLMs) on graph 
 
 ## Features
 
-- Visual analysis using graph layouts (FMMM/ORTHO for undirected)
+- Visual analysis using graph layouts
 - Textual analysis using adjacency list representations
 - Multiple prompting strategies (zero-shot and few-shot)
 - Different reasoning approaches (standard, chain-of-thought, and spell-out-adjacency-list)
