@@ -1,0 +1,48 @@
+{
+  "shortest_path": {
+    "description": "Given the graph, find the shortest path between two vertices.",
+    "parameters": {
+      "type": "node_pair",
+      "description": "Selected pair of nodes, provided as two integers representing the start and end nodes"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in graph analysis. The input is an adjacency list representing a graph. Provide direct answers without intermediate steps. Always format your output as: 'Path: [comma-separated nodes], Length: <number>'",
+        "user_message": "Please, find the shortest path between {start_node} and {end_node}. The length of the path is the number of edges traversed by the path. Before submitting your final answer, verify that: 1) The path is valid by confirming each adjacent pair of nodes in your path is connected by an edge in the graph, and 2) The path is minimal by confirming no shorter valid path exists. Format your answer as 'Path: [comma-separated nodes], Length: <number>'"
+      },
+      "cot": {
+        "system_message": "You are an expert in graph analysis. The input is an adjacency list representing a graph. Show your step-by-step reasoning process. Always format your output as: 'Path: [comma-separated nodes], Length: <number>'",
+        "user_message": "Please, find the shortest path between {start_node} and {end_node}. The length of the path is the number of edges traversed by the path. To solve this task, reason step by step by: 1) Identifying all neighboring nodes of the start node, 2) Exploring possible paths systematically using breadth-first search, 3) Identifying when you've reached the end node, and 4) Verifying it's the shortest possible path. Before submitting your final answer, verify that: 1) The path is valid by confirming each adjacent pair of nodes in your path is connected by an edge in the graph, and 2) The path is minimal by confirming no shorter valid path exists. Format your final answer as 'Path: [comma-separated nodes], Length: <number>'"
+      }
+    },
+    "prompts": {
+      "zero_shot": { "standard": {}, "cot": {} },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/undigraph_1.lst",
+              "task_solution": "Selected Nodes: 17,3. Path: [17, 13, 3], Length: 2"
+            },
+            {
+              "graph_data": "./src/examples/undigraph_2.lst",
+              "task_solution": "Selected Nodes: 6,8. Path: [6, 12, 9, 8], Length: 3"
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/undigraph_1.lst",
+              "task_solution": "Selected Nodes: 17, 3. Here the steps of the analysis. Node 17 has the following incident edges: 17,6 - 17,13 - 17,8 - 17,15. Node 6 has the following incident edges: 6,10 - 6,18 - 6,12 - 6,13. Node 13 has the following incident edges: 13,6 - 13,12 - 13,5 - 13,3 - 13,8. Therefore, the solution is Path: [17, 13, 3], Length: 2"
+            },
+            {
+              "graph_data": "./src/examples/undigraph_2.lst",
+              "task_solution": "Selected Nodes: 6, 8. Here the steps of the analysis. Node 6 has the following incident edges: 6,16 - 6,12 - 6,5. Node 16 has the following incident edges: 16,5 - 16,2. Node 12 has the following incident edges: 12,9 - 12,13. Node 5 has the following incident edges: 5,13 - 5,20 - 5,16. Node 2 has the following incident edges: 2,1 - 2,3 - 2,15. Node 9 has the following incident edges: 9,13 - 9,17 - 9,8. Therefore, the solution is Path: [6, 12, 9, 8], Length: 3"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

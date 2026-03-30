@@ -1,0 +1,48 @@
+{
+  "adjacency_list": {
+    "description": "Given the graph, find the adjacency list",
+    "parameters": {
+      "type": "graph",
+      "description": "Complete adjacency list describing all connections in the graph"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in visual analysis of graphs. The input is a visual representation of a graph. Nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Provide direct answers without intermediate steps. Always format your output as: 'Adjacency list: <Vertex-ID>: [comma-separated-neighbors]; ...'",
+        "user_message": "Please, write the complete adjacency list of the displayed graph. For each node, carefully identify and list all of its neighbors in ascending numerical order. Before submitting your final answer, verify that: 1) You have included every node in the graph, even isolated nodes with no connections, 2) Every connection visible in the graph is represented in your list, and 3) Your adjacency list is symmetric (if node A lists node B as a neighbor, then node B must list node A as a neighbor). Format your answer as 'Adjacency list: <Vertex-ID>: [comma-separated-neighbors]; ...'"
+      },
+      "cot": {
+        "system_message": "You are an expert in visual analysis of graphs. The input is a visual representation of a graph. Nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Show your step-by-step reasoning process. Always format your output as: 'Adjacency list: <Vertex-ID>: [comma-separated-neighbors]; ...'",
+        "user_message": "Please, write the complete adjacency list of the displayed graph. To solve this task, reason step by step by: 1) Identifying and enumerating all nodes in the graph, 2) For each node, systematically examining all connections to other nodes, 3) Organizing the connections for each node in ascending numerical order, and 4) Verifying the consistency of your adjacency list. Before submitting your final answer, verify that: 1) You have included every node in the graph, even isolated nodes with no connections, 2) Every connection visible in the graph is represented in your list, and 3) Your adjacency list is symmetric (if node A lists node B as a neighbor, then node B must list node A as a neighbor). Format your final answer as 'Adjacency list: <Vertex-ID>: [comma-separated-neighbors]; ...'"
+      }
+    },
+    "prompts": {
+      "zero_shot": { "standard": {}, "cot": {} },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "image_data": "./src/examples/undigraph_1.png",
+              "task_solution": "Adjacency list: 1: 2,3,8; 2: 1,16; 3: 1,5,7,13; 4: 5,7; 5: 3,4,9,13,20; 6: 10,12,13,17,18; 7: 3,4,20; 8: 1,11,13,15,17; 9: 5,12,16,18,19; 10: 6,18; 11: 8; 12: 6,9,13,18; 13: 3,5,6,8,12,17; 14: 16,19; 15: 8,17; 16: 2,9,14,20; 17: 6,8,13,15; 18: 6,9,10,12,19; 19: 9,14,18; 20: 5,7,16 "
+            },
+            {
+              "image_data": "./src/examples/undigraph_2.png",
+              "task_solution": "Adjacency list: 1: 2,3,8,20; 2: 1,3,15,16; 3: 1,2,8,15,17; 4: 11,14,19,20; 5: 6,13,16,20; 6: 5,12,16; 7: 10; 8: 1,3,9,10,19; 9: 8,12,13,17; 10: 7,8; 11: 4,19,20; 12: 6,9,13; 13: 5,9,12,18,20; 14: 4,19; 15: 2,3; 16: 2,5,6; 17: 3,9; 18: 13,19,20; 19: 4,11,14,18; 20: 1,4,5,11,13,18"
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "image_data": "./src/examples/undigraph_1.png",
+              "task_solution": "I'll methodically analyze this graph to create a complete adjacency list. First, I'll identify all nodes in the graph, then for each node, I'll determine its direct connections by examining the visible lines. For example, node 1 connects to nodes 2, 3, 8. After checking all connections and ensuring consistency (if node A connects to node B, then node B must connect to node A), the complete adjacency list is: Adjacency list: 1: 2,3,8; 2: 1,16; 3: 1,5,7,13; 4: 5,7; 5: 3,4,9,13,20; 6: 10,12,13,17,18; 7: 3,4,20; 8: 1,11,13,15,17; 9: 5,12,16,18,19; 10: 6,18; 11: 8; 12: 6,9,13,18; 13: 3,5,6,8,12,17; 14: 16,19; 15: 8,17; 16: 2,9,14,20; 17: 6,8,13,15; 18: 6,9,10,12,19; 19: 9,14,18; 20: 5,7,16"
+            },
+            {
+              "image_data": "./src/examples/undigraph_2.png",
+              "task_solution": "I'll methodically analyze this graph to create a complete adjacency list. First, I'll identify all nodes in the graph, then for each node, I'll determine its direct connections by examining the visible lines. For example, node 1 connects to nodes 2, 3, 8, and 20. After examining each node and verifying that the connections are reciprocal (if A connects to B, then B connects to A), the complete adjacency list is: Adjacency list: 1: 2,3,8,20; 2: 1,3,15,16; 3: 1,2,8,15,17; 4: 11,14,19,20; 5: 6,13,16,20; 6: 5,12,16; 7: 10; 8: 1,3,9,10,19; 9: 8,12,13,17; 10: 7,8; 11: 4,19,20; 12: 6,9,13; 13: 5,9,12,18,20; 14: 4,19; 15: 2,3; 16: 2,5,6; 17: 3,9; 18: 13,19,20; 19: 4,11,14,18; 20: 1,4,5,11,13,18"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

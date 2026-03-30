@@ -1,0 +1,48 @@
+{
+  "max_clique": {
+    "description": "Given the graph, find the maximal clique.",
+    "parameters": {
+      "type": "graph",
+      "description": "Find the largest complete subgraph where all nodes are connected to each other"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in graph analysis. The input is an adjacency list representing a graph. Provide direct answers without intermediate steps. Always format your output as: 'Clique: [comma-separated nodes], Size: <number>'",
+        "user_message": "Please, find the clique of maximum size in the graph, that is the largest subset of nodes that are pairwise adjacent (every node in the subset is connected to every other node in the subset). The size of the clique is the number of nodes in the subset. Before submitting your final answer, verify that: 1) Every pair of nodes in your clique is connected by an edge in the graph, and 2) No larger subset of nodes forms a complete subgraph. Format your answer as 'Clique: [comma-separated nodes], Size: <number>'"
+      },
+      "cot": {
+        "system_message": "You are an expert in graph analysis. The input is an adjacency list representing a graph. Show your step-by-step reasoning process. Always format your output as: 'Clique: [comma-separated nodes], Size: <number>'",
+        "user_message": "Please, find the clique of maximum size in the graph, that is the largest subset of nodes that are pairwise adjacent (every node in the subset is connected to every other node in the subset). The size of the clique is the number of nodes in the subset. To solve this task, reason step by step by: 1) Identifying nodes with high degree (many connections) as potential clique members, 2) For promising nodes, checking if their neighbors form potential cliques, 3) Systematically verifying that all pairs of nodes in potential cliques are connected, and 4) Ensuring no larger clique exists. Before submitting your final answer, verify that: 1) Every pair of nodes in your clique is connected by an edge in the graph according to the adjacency list, and 2) No larger subset of nodes forms a complete subgraph. Format your final answer as 'Clique: [comma-separated nodes], Size: <number>'"
+      }
+    },
+    "prompts": {
+      "zero_shot": { "standard": {}, "cot": {} },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/clique-1.lst",
+              "task_solution": "Clique: [1,2,3,4], Size: 4"
+            },
+            {
+              "graph_data": "./src/examples/clique-2.lst",
+              "task_solution": "Clique: [5,6,8,9,10], Size: 5"
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/clique-1.lst",
+              "task_solution": "I'll analyze the adjacency list to find the maximum clique. First, I'll identify nodes with higher degrees as potential clique members. From the adjacency list, I see that nodes 1, 2, 3, 4, and 7 have relatively high degrees. Examining nodes 1, 2, 3, and 4, I can verify that each is connected to the other three (each appears in the others' adjacency lists). Specifically: 1 is connected to 2, 3, and 4; 2 is connected to 1, 3, and 4; 3 is connected to 1, 2, and 4; 4 is connected to 1, 2, and 3. I've verified all 6 possible pairs are connected. I've checked that no 5-node clique exists by attempting to add node 5 or 7 (the other high-degree nodes), but neither connects to all four existing clique nodes. Therefore, the maximum clique is Clique: [1,2,3,4], Size: 4."
+            },
+            {
+              "graph_data": "./src/examples/clique-2.lst",
+              "task_solution": "I'll analyze the adjacency list to find the maximum clique. First, I need to identify nodes with high connectivity. Nodes 5 and 6 have relatively high degrees, so I'll explore their neighborhood. From the adjacency list, I see that node 5 is connected to nodes 2, 4, 6, 8, 9, and 10. Node 6 is connected to nodes 4, 5, 7, 8, 9, and 10. The common neighbors of nodes 5 and 6 are 4, 8, 9, and 10. Checking the connections among 5, 6, 8, 9, and 10: I verify that 5 is connected to 6, 8, 9, and 10; 6 is connected to 5, 8, 9, and 10; 8 is connected to 5, 6, 9, and 10; 9 is connected to 5, 6, 8, and 10; 10 is connected to 5, 6, 8, and 9. I've verified all 10 possible pairs are connected. I've checked that no 6-node clique exists by attempting to add other nodes, but none connect to all five existing clique nodes. Therefore, the maximum clique is Clique: [5,6,8,9,10], Size: 5."
+            }
+          ]
+        }
+      }
+    }
+  }
+}

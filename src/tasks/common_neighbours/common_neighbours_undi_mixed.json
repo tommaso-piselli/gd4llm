@@ -1,0 +1,55 @@
+{
+  "common_neighbours": {
+    "description": "Given the graph (both as an incident list and visual representation), find the common neighbours between two vertices.",
+    "parameters": {
+      "type": "node_pair",
+      "description": "Selected pair of nodes, provided as two integers representing the nodes to analyze"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in graph analysis, capable of working with both textual and visual representations of graphs. You will be provided with both an adjacency list and a visual representation of a graph. In the visual representation, nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Provide direct answers without intermediate steps. Always format your output as: 'Neighbours: [comma-separated nodes], Number: <number>'",
+        "user_message": "Please, find the neighbours that nodes {start_node} and {end_node} have in common. The number of the common neighbours is the number of nodes that are in this set. You may use both the incident list and visual representation to solve this task. Before submitting your final answer, verify that: 1) You have correctly identified all connections for both specified nodes, and 2) You have accurately determined which nodes appear in both neighbor lists. Format your answer as 'Neighbours: [comma-separated nodes], Number: <number>'"
+      },
+      "cot": {
+        "system_message": "You are an expert in graph analysis, capable of working with both textual and visual representations of graphs. You will be provided with both an adjacency list and a visual representation of a graph. In the visual representation, nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Show your step-by-step reasoning process. Always format your output as: 'Neighbours: [comma-separated nodes], Number: <number>'",
+        "user_message": "Please, find the neighbours that nodes {start_node} and {end_node} have in common. The number of the common neighbours is the number of nodes that are in this set. To solve this task, reason step by step using both the incident list and visual representation by: 1) Identifying all neighboring nodes of the first specified node, 2) Identifying all neighboring nodes of the second specified node, 3) Determining which nodes appear in both neighbor lists, and 4) Counting the number of common neighbors. Before submitting your final answer, verify that you have correctly identified all connections for both nodes by cross-checking between the adjacency list and the visual representation. Format your final answer as 'Neighbours: [comma-separated nodes], Number: <number>'"
+      }
+    },
+    "prompts": {
+      "zero_shot": {
+        "standard": {},
+        "cot": {}
+      },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/undigraph_1.lst",
+              "image_data": "./src/examples/undigraph_1.png",
+              "task_solution": "Selected Nodes: 3,4. Neighbours: [5, 7], Number: 2"
+            },
+            {
+              "graph_data": "./src/examples/undigraph_2.lst",
+              "image_data": "./src/examples/undigraph_2.png",
+              "task_solution": "Selected Nodes: 19, 20. Neighbours: [18, 4, 11], Number: 3"
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/undigraph_1.lst",
+              "image_data": "./src/examples/undigraph_1.png",
+              "task_solution": "Selected Nodes: 3, 4. I'll analyze both the adjacency list and visual representation. From both representations, I can see that Node 3 has the following neighbours: 1, 13, 5, 7. Node 4 has the following neighbours: 5, 7. The visual representation confirms these connections. Comparing these two lists, the common neighbors are nodes 5 and 7. Therefore, the solution is Neighbours: [5, 7], Number: 2"
+            },
+            {
+              "graph_data": "./src/examples/undigraph_2.lst",
+              "image_data": "./src/examples/undigraph_2.png",
+              "task_solution": "Selected Nodes: 19, 20. Using both the adjacency list and the visual representation, I can see that Node 19 has the following neighbours: 4, 8, 11, 14, 18. Node 20 has the following neighbours: 1, 4, 5, 11, 13, 18. Cross-checking between both representations confirms these connections. Comparing these two lists, the common neighbors are nodes 4, 11, and 18. Therefore, the solution is Neighbours: [4, 11, 18], Number: 3"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,2862 @@
+graph,parameters,prompt_type,reasoning_type,response,parsed_response,ground_truth,accuracy,latency,input_tokens,output_tokens,total_tokens
+graph_1004,"{'start_node': '4', 'end_node': '1'}",zero_shot,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,3.549721003,341,15,356
+graph_1004,"{'start_node': '4', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 4 to node 1 using breadth-first search (BFS).
+
+First, let me understand the graph structure from the adjacency list:
+- Node 4 is connected to nodes 1, 16, and 18
+- Node 1 is connected to nodes 2, 3, and 4
+
+Step 1: Start BFS from node 4.
+- Current node: 4
+- Neighbors of 4: [1, 16, 18]
+
+I notice that node 1 is directly connected to node 4. This means I can go directly from 4 to 1 in one step.
+
+Let me verify this is valid by checking the adjacency list:
+- Node 4 is connected to nodes 1, 16, and 18 ✓
+
+Since I can reach node 1 directly from node 4 in just one step, and BFS guarantees the shortest path, this must be the shortest path.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,5.023486853,411,239,650
+graph_1004,"{'start_node': '4', 'end_node': '1'}",few_shots,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.019220829,802,15,817
+graph_1004,"{'start_node': '4', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path between node 4 and node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 4.
+- Node 4 is connected to: 1, 16, 18
+
+Step 2: Begin BFS exploration.
+- Level 0: Node 4
+- Level 1: Nodes 1, 16, 18
+
+I can see that node 1 is directly connected to node 4, so I've already found the target node at level 1.
+
+Step 3: Verify this is the shortest path.
+Since BFS explores nodes level by level, the first time we encounter the target node gives us the shortest path. In this case, there's a direct edge from 4 to 1.
+
+Step 4: Validate the path.
+- The graph shows node 4 is connected to node 1 (4: 1 16 18)
+- This is a valid edge in the graph
+
+Therefore, the shortest path from node 4 to node 1 is simply [4, 1] with a length of 1.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,5.425301075,1153,269,1422
+graph_1004,"{'start_node': '16', 'end_node': '17'}",zero_shot,standard,"Path: [16, 9, 15, 3, 17], Length: 4","{'path': ['16', '9', '15', '3', '17'], 'length': 4}","{'path': ['16', '4', '1', '3', '17'], 'length': 4}",1,1.330319166,341,24,365
+graph_1004,"{'start_node': '16', 'end_node': '17'}",zero_shot,cot,"I'll find the shortest path from node 16 to node 17 using breadth-first search (BFS).
+
+First, let me identify the neighbors of each node from the adjacency list:
+- Node 16 is connected to: 4, 9, 14
+- Node 17 is connected to: 3, 10, 12
+
+Step 1: Start BFS from node 16.
+- Queue: [16]
+- Visited: {16}
+- Parent map: {}
+
+Step 2: Explore node 16's neighbors.
+- Dequeue 16
+- Add neighbors 4, 9, 14 to queue
+- Queue: [4, 9, 14]
+- Visited: {16, 4, 9, 14}
+- Parent map: {4: 16, 9: 16, 14: 16}
+
+Step 3: Explore node 4's neighbors.
+- Dequeue 4
+- Add unvisited neighbors 1 (16 already visited)
+- Queue: [9, 14, 1]
+- Visited: {16, 4, 9, 14, 1}
+- Parent map: {4: 16, 9: 16, 14: 16, 1: 4}
+
+Step 4: Explore node 9's neighbors.
+- Dequeue 9
+- Add unvisited neighbors 5, 15 (16 already visited)
+- Queue: [14, 1, 5, 15]
+- Visited: {16, 4, 9, 14, 1, 5, 15}
+- Parent map: {4: 16, 9: 16, 14: 16, 1: 4, 5: 9, 15: 9}
+
+Step 5: Explore node 14's neighbors.
+- Dequeue 14
+- Add unvisited neighbors 6, 20
+- Queue: [1, 5, 15, 6, 20]
+- Visited: {16, 4, 9, 14, 1, 5, 15, 6, 20}
+- Parent map: {4: 16, 9: 16, 14: 16, 1: 4, 5: 9, 15: 9, 6: 14, 20: 14}
+
+Step 6: Continue BFS...
+- Exploring node 1: Add neighbors 2, 3
+- Exploring node 5: Add neighbors 8, 10
+- Exploring node 15: Add neighbors 3, 13
+- Exploring node 6: Add neighbors 8, 12
+- Exploring node 20: Add neighbors 2, 13
+- Exploring node 2: Add neighbor 19
+- Exploring node 3: Add neighbor 17 (Found target!)
+
+When we explore node 3, we find node 17, which is our target.
+
+To reconstruct the path, I'll trace back from 17 to 16 using the parent map:
+17 <- 3 <- 15 <- 9 <- 16
+
+Reversing this gives the path: 16 -> 9 -> 15 -> 3 -> 17
+
+Let's verify this path:
+- 16 is connected to 9 ✓
+- 9 is connected to 15 ✓
+- 15 is connected to 3 ✓
+- 3 is connected to 17 ✓
+
+The path has 4 edges, so the length is 4.
+
+Path: [16, 9, 15, 3, 17], Length: 4","{'path': ['16', '9', '15', '3', '17'], 'length': 4}","{'path': ['16', '4', '1', '3', '17'], 'length': 4}",1,11.46654201,411,862,1273
+graph_1004,"{'start_node': '16', 'end_node': '17'}",few_shots,standard,"Path: [16, 9, 15, 3, 17], Length: 4","{'path': ['16', '9', '15', '3', '17'], 'length': 4}","{'path': ['16', '4', '1', '3', '17'], 'length': 4}",1,1.224525213,802,24,826
+graph_1004,"{'start_node': '16', 'end_node': '17'}",few_shots,cot,"I'll find the shortest path between node 16 and node 17 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 16.
+Node 16 is connected to: 4, 9, 14
+
+Step 2: Begin BFS exploration.
+- Level 0: [16]
+- Level 1: [4, 9, 14]
+
+Let's check if any of these neighbors connect directly to 17:
+- Node 4 connects to: 1, 16, 18 (no connection to 17)
+- Node 9 connects to: 5, 15, 16 (no connection to 17)
+- Node 14 connects to: 6, 16, 20 (no connection to 17)
+
+- Level 2: Explore neighbors of level 1 nodes
+  From node 4: [1, 18]
+  From node 9: [5, 15]
+  From node 14: [6, 20]
+  Level 2 combined: [1, 18, 5, 15, 6, 20]
+
+Let's check if any of these connect to 17:
+- Node 1 connects to: 2, 3, 4 (no connection to 17)
+- Node 18 connects to: 4, 10, 11 (no connection to 17)
+- Node 5 connects to: 8, 9, 10 (no connection to 17)
+- Node 15 connects to: 3, 9, 13 (no connection to 17)
+- Node 6 connects to: 8, 12, 14 (no connection to 17)
+- Node 20 connects to: 2, 13, 14 (no connection to 17)
+
+- Level 3: Explore neighbors of level 2 nodes
+  From nodes [1, 18, 5, 15, 6, 20], excluding already visited nodes
+  New nodes: [2, 3, 10, 11, 8, 13, 12]
+
+Let's check if any of these connect to 17:
+- Node 3 connects to: 1, 15, 17 (connects to 17!)
+- Node 10 connects to: 5, 17, 18 (connects to 17!)
+- Node 12 connects to: 6, 17, 19 (connects to 17!)
+
+I've found three paths of length 4:
+- 16 → 4 → 1 → 3 → 17
+- 16 → 9 → 5 → 10 → 17
+- 16 → 14 → 6 → 12 → 17
+
+All three paths have the same length, so any of them is a valid shortest path. I'll use the first one.
+
+Verification:
+- Each pair of adjacent nodes in the path is connected in the graph
+- We used BFS which guarantees the shortest path
+- The path length is 4 edges
+
+Path: [16, 4, 1, 3, 17], Length: 4","{'path': ['16', '4', '1', '3', '17'], 'length': 4}","{'path': ['16', '4', '1', '3', '17'], 'length': 4}",1,10.03810692,1153,738,1891
+graph_104,"{'start_node': '8', 'end_node': '1'}",zero_shot,standard,"Path: [8, 1], Length: 1","{'path': ['8', '1'], 'length': 1}","{'path': ['8', '1'], 'length': 1}",1,0.8186528683,227,15,242
+graph_104,"{'start_node': '8', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 8 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (8).
+- Node 8 is connected to: 1, 9, 10
+
+Step 2: Begin BFS.
+- Start at node 8
+- Queue: [8]
+- Visited: {8}
+- Parent map to track the path: {8: None}
+
+- Dequeue 8
+- Neighbors of 8: [1, 9, 10]
+  - For neighbor 1: Not visited
+    - Queue: [1]
+    - Visited: {8, 1}
+    - Parent: {8: None, 1: 8}
+  - For neighbor 9: Not visited
+    - Queue: [1, 9]
+    - Visited: {8, 1, 9}
+    - Parent: {8: None, 1: 8, 9: 8}
+  - For neighbor 10: Not visited
+    - Queue: [1, 9, 10]
+    - Visited: {8, 1, 9, 10}
+    - Parent: {8: None, 1: 8, 9: 8, 10: 8}
+
+- Dequeue 1 (this is our target node)
+  - We've reached node 1, so we can stop the BFS
+
+Step 3: Reconstruct the path from 1 to 8 using the parent map.
+- Start at 1
+- Parent of 1 is 8
+- We've reached the start node, so the path is: 8 → 1
+
+Step 4: Verify the path.
+- The path is 8 → 1
+- Checking the adjacency list: Node 8 is connected to 1, so this is a valid edge
+- The length of the path is 1 edge
+
+Since we used BFS, which finds the shortest path in an unweighted graph, and we found a direct connection from 8 to 1, this must be the shortest path.
+
+Path: [8, 1], Length: 1","{'path': ['8', '1'], 'length': 1}","{'path': ['8', '1'], 'length': 1}",1,7.117114305,297,508,805
+graph_104,"{'start_node': '8', 'end_node': '1'}",few_shots,standard,"Path: [1, 8], Length: 1","{'path': ['1', '8'], 'length': 1}","{'path': ['8', '1'], 'length': 1}",1,1.379906893,688,15,703
+graph_104,"{'start_node': '8', 'end_node': '1'}",few_shots,cot,"I'll analyze this graph to find the shortest path between nodes 8 and 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 8).
+- Node 8 is connected to nodes: 1, 9, 10
+
+Step 2: Explore paths systematically using BFS.
+- Starting from node 8, I can immediately see that node 1 is directly connected to node 8.
+- This means I can go directly from 8 to 1 in one step.
+
+Step 3: Verify this is the shortest path.
+- Since node 1 is directly connected to node 8, a path of length 1 is the shortest possible.
+- The path is: 8 → 1
+
+Step 4: Verify the path is valid.
+- Looking at the adjacency list, node 8 is indeed connected to node 1 (8: 1 9 10)
+- This confirms the edge (8,1) exists in the graph.
+
+Step 5: Verify the path is minimal.
+- Since the path has only one edge, and the nodes are directly connected, this is definitely the shortest possible path.
+
+Path: [8, 1], Length: 1","{'path': ['8', '1'], 'length': 1}","{'path': ['8', '1'], 'length': 1}",1,6.242516041,1039,286,1325
+graph_104,"{'start_node': '3', 'end_node': '10'}",zero_shot,standard,"Path: [3, 9, 8, 10], Length: 3","{'path': ['3', '9', '8', '10'], 'length': 3}","{'path': ['3', '9', '8', '10'], 'length': 3}",1,1.534456015,227,21,248
+graph_104,"{'start_node': '3', 'end_node': '10'}",zero_shot,cot,"I'll find the shortest path from node 3 to node 10 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (3).
+- Node 3 is connected to: 9
+
+Step 2: Perform BFS to find the shortest path.
+- Start at node 3
+- Visit node 9 (path so far: 3→9)
+- Node 9's neighbors are: 3, 6, 8
+  - 3 is already visited
+  - New nodes to explore: 6, 8
+- Visit node 6 (path: 3→9→6)
+  - Node 6's neighbors are: 4, 9
+  - 9 is already visited
+  - New nodes to explore: 8, 4
+- Visit node 8 (path: 3→9→8)
+  - Node 8's neighbors are: 1, 9, 10
+  - 9 is already visited
+  - Found node 10! Path is 3→9→8→10
+  - New nodes to explore: 4, 1
+- Since we found node 10, and BFS guarantees the shortest path, we can stop.
+
+Step 3: Verify the path.
+- 3 is connected to 9 (confirmed in the adjacency list)
+- 9 is connected to 8 (confirmed in the adjacency list)
+- 8 is connected to 10 (confirmed in the adjacency list)
+
+Step 4: Calculate the path length.
+- The path 3→9→8→10 has 3 edges.
+
+Step 5: Verify it's minimal.
+- BFS guarantees the shortest path, and we found a path with 3 edges.
+- There's no direct connection from 3 to 10.
+- There's no 2-edge path from 3 to 10 (I checked all possible 2-step paths from 3).
+
+Path: [3, 9, 8, 10], Length: 3","{'path': ['3', '9', '8', '10'], 'length': 3}","{'path': ['3', '9', '8', '10'], 'length': 3}",1,7.577492952,297,480,777
+graph_104,"{'start_node': '3', 'end_node': '10'}",few_shots,standard,"Path: [3, 9, 8, 10], Length: 3","{'path': ['3', '9', '8', '10'], 'length': 3}","{'path': ['3', '9', '8', '10'], 'length': 3}",1,1.437291861,688,21,709
+graph_104,"{'start_node': '3', 'end_node': '10'}",few_shots,cot,"I'll find the shortest path between node 3 and node 10 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 3).
+- Node 3 is connected to: 9
+
+Step 2: Perform breadth-first search.
+- Start at node 3
+- Visit node 9 (distance 1)
+- Node 9's neighbors are: 3, 6, 8
+  - Node 3 is already visited
+  - Add node 6 (distance 2)
+  - Add node 8 (distance 2)
+- Node 6's neighbors are: 4, 9
+  - Node 9 is already visited
+  - Add node 4 (distance 3)
+- Node 8's neighbors are: 1, 9, 10
+  - Node 9 is already visited
+  - Add node 1 (distance 3)
+  - Add node 10 (distance 3) - This is our target!
+
+Step 3: We've reached node 10 with a distance of 3 from node 3.
+The path is: 3 → 9 → 8 → 10
+
+Step 4: Verify this is the shortest path.
+- We used BFS which guarantees the shortest path in an unweighted graph
+- The first time we encounter the target node is at distance 3
+- No shorter path exists
+
+Verification:
+- The path is valid: 
+  - 3 is connected to 9 (confirmed in the adjacency list)
+  - 9 is connected to 8 (confirmed in the adjacency list)
+  - 8 is connected to 10 (confirmed in the adjacency list)
+- The path is minimal as BFS guarantees the shortest path
+
+Path: [3, 9, 8, 10], Length: 3","{'path': ['3', '9', '8', '10'], 'length': 3}","{'path': ['3', '9', '8', '10'], 'length': 3}",1,7.269006014,1039,437,1476
+graph_1043,"{'start_node': '4', 'end_node': '1'}",zero_shot,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.322061777,341,15,356
+graph_1043,"{'start_node': '4', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 4 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node 4.
+- Node 4 is connected to nodes 1, 18, and 19.
+
+Step 2: Begin BFS.
+- Starting at node 4
+- I notice that node 1 is directly connected to node 4, so I can immediately reach the destination.
+
+Step 3: Verify the path.
+- The path from 4 to 1 is direct: 4 → 1
+- Checking the adjacency list for node 4: it connects to nodes 1, 18, and 19, confirming this edge exists.
+
+Step 4: Verify this is the shortest path.
+- Since we found a direct connection with just one edge, this must be the shortest possible path.
+- No path can be shorter than a direct connection.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,4.405225039,411,229,640
+graph_1043,"{'start_node': '4', 'end_node': '1'}",few_shots,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.121695042,802,15,817
+graph_1043,"{'start_node': '4', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path between nodes 4 and 1 using breadth-first search.
+
+Step 1: Identify neighbors of the starting node 4.
+- Node 4 is connected to: 1, 18, 19
+
+Step 2: Since node 1 is directly connected to node 4, we've already found the shortest path.
+
+Step 3: Verify this is a valid path by confirming the edge exists.
+- The adjacency list shows node 4 is connected to node 1 (4: 1 18 19)
+- The adjacency list also confirms node 1 is connected to node 4 (1: 2 3 4)
+
+Step 4: Verify this is minimal.
+- Since nodes 4 and 1 are directly connected by an edge, a path of length 1 is the shortest possible.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,4.402854919,1153,214,1367
+graph_1043,"{'start_node': '18', 'end_node': '17'}",zero_shot,standard,"Path: [18, 17], Length: 1","{'path': ['18', '17'], 'length': 1}","{'path': ['18', '17'], 'length': 1}",1,1.328488827,341,15,356
+graph_1043,"{'start_node': '18', 'end_node': '17'}",zero_shot,cot,"I'll find the shortest path from node 18 to node 17 using breadth-first search (BFS).
+
+First, let me identify the structure of the graph from the adjacency list:
+- Node 18 is connected to: 4, 13, 17
+- Node 17 is connected to: 3, 12, 18
+
+I notice that 18 is directly connected to 17, so there's a direct path.
+
+Let me verify this by performing a systematic BFS:
+
+Step 1: Start at node 18
+- Neighbors of 18: 4, 13, 17
+- I found 17 directly! This means there's a path of length 1.
+
+Step 2: Verify this is minimal
+Since BFS explores nodes level by level (first all nodes at distance 1, then all at distance 2, etc.), the first time we encounter the target node gives us the shortest path. Since we found node 17 in the first level of exploration, a path of length 1 is definitely minimal.
+
+Step 3: Confirm the path is valid
+The adjacency list shows that node 18 is connected to nodes 4, 13, and 17, which confirms that the edge 18-17 exists in the graph.
+
+Path: [18, 17], Length: 1","{'path': ['18', '17'], 'length': 1}","{'path': ['18', '17'], 'length': 1}",1,5.430099964,411,301,712
+graph_1043,"{'start_node': '18', 'end_node': '17'}",few_shots,standard,"Path: [18, 17], Length: 1","{'path': ['18', '17'], 'length': 1}","{'path': ['18', '17'], 'length': 1}",1,1.430179119,802,15,817
+graph_1043,"{'start_node': '18', 'end_node': '17'}",few_shots,cot,"I'll find the shortest path between nodes 18 and 17 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 18.
+- Node 18 is connected to: 4, 13, 17
+
+Step 2: Since 17 is directly connected to 18, we've already found the shortest path.
+- Direct path: 18 → 17
+
+Step 3: Verify this is valid by checking the graph.
+- The edge 18-17 exists in the graph (node 18 connects to 4, 13, 17 and node 17 connects to 3, 12, 18)
+
+Step 4: Verify this is minimal.
+- Since we found a direct connection, a path of length 1 is the shortest possible.
+
+Path: [18, 17], Length: 1","{'path': ['18', '17'], 'length': 1}","{'path': ['18', '17'], 'length': 1}",1,4.714257956,1153,199,1352
+graph_112,"{'start_node': '9', 'end_node': '1'}",zero_shot,standard,"Path: [9, 1], Length: 1","{'path': ['9', '1'], 'length': 1}","{'path': ['9', '1'], 'length': 1}",1,0.9206709862,227,15,242
+graph_112,"{'start_node': '9', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 9 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (node 9).
+- Node 9 is connected to: 1, 6, 7, 8, 10
+
+Step 2: Begin BFS exploration.
+- Starting at node 9
+- I see that node 1 is directly connected to node 9
+- This means I can go directly from 9 to 1 in one step
+
+Step 3: Verify this is the shortest path.
+- Since I found a direct connection from 9 to 1, and BFS guarantees the first path found is the shortest, this must be the shortest path.
+- The path is: 9 → 1
+- The length is 1 edge
+
+Step 4: Verify the path is valid.
+- Looking at the adjacency list, node 9 is indeed connected to node 1 (9: 1 6 7 8 10)
+- This confirms the path is valid
+
+Step 5: Verify no shorter path exists.
+- Since the path has only 1 edge, it's impossible to have a shorter path
+
+Path: [9, 1], Length: 1","{'path': ['9', '1'], 'length': 1}","{'path': ['9', '1'], 'length': 1}",1,5.531447172,297,293,590
+graph_112,"{'start_node': '9', 'end_node': '1'}",few_shots,standard,"Path: [1, 9], Length: 1","{'path': ['1', '9'], 'length': 1}","{'path': ['9', '1'], 'length': 1}",1,1.426690102,688,15,703
+graph_112,"{'start_node': '9', 'end_node': '1'}",few_shots,cot,"I'll analyze this graph to find the shortest path from node 9 to node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 9).
+- Node 9 is connected to nodes: 1, 6, 7, 8, 10
+
+Step 2: Explore paths systematically using BFS.
+- Starting at node 9, I can immediately see that node 1 is directly connected to node 9.
+- This means I can go directly from node 9 to node 1 in one step.
+
+Step 3: Verify this is the shortest path.
+- Since node 1 is directly connected to node 9, a path of length 1 is the shortest possible.
+- The path is: 9 → 1
+
+Step 4: Verify the path is valid.
+- Looking at the adjacency list, node 9 is indeed connected to node 1 (as shown in ""9: 1 6 7 8 10"").
+- Also, node 1 is connected to node 9 (as shown in ""1: 9"").
+- Therefore, the edge between nodes 9 and 1 exists in the graph.
+
+Since we can reach node 1 from node 9 in just one step, and no shorter path is possible, this is the shortest path.
+
+Path: [9, 1], Length: 1","{'path': ['9', '1'], 'length': 1}","{'path': ['9', '1'], 'length': 1}",1,6.14509511,1039,327,1366
+graph_112,"{'start_node': '3', 'end_node': '10'}",zero_shot,standard,"Path: [3, 10], Length: 1","{'path': ['3', '10'], 'length': 1}","{'path': ['3', '10'], 'length': 1}",1,0.9189376831,227,15,242
+graph_112,"{'start_node': '3', 'end_node': '10'}",zero_shot,cot,"I'll find the shortest path from node 3 to node 10 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (3).
+- According to the adjacency list, node 3 is connected to node 10.
+
+Step 2: Explore paths systematically using BFS.
+- Starting at node 3, I can immediately reach node 10 in one step.
+
+Step 3: Verify I've reached the end node.
+- Yes, I've reached node 10, which is the destination.
+
+Step 4: Verify this is the shortest path.
+- Since I found a direct connection from 3 to 10 in just one step, this must be the shortest path.
+- No path can be shorter than a direct connection.
+
+Verification:
+- The path is valid: The adjacency list shows that node 3 is directly connected to node 10.
+- The path is minimal: A direct connection with 1 edge is the shortest possible path.
+
+Path: [3, 10], Length: 1","{'path': ['3', '10'], 'length': 1}","{'path': ['3', '10'], 'length': 1}",1,4.612061977,297,245,542
+graph_112,"{'start_node': '3', 'end_node': '10'}",few_shots,standard,"Path: [3, 10], Length: 1","{'path': ['3', '10'], 'length': 1}","{'path': ['3', '10'], 'length': 1}",1,1.223133087,688,15,703
+graph_112,"{'start_node': '3', 'end_node': '10'}",few_shots,cot,"I'll analyze this graph to find the shortest path between node 3 and node 10 using breadth-first search.
+
+Step 1: Identify the neighbors of the start node (node 3).
+- Node 3 is connected to: 10
+
+Step 2: Explore possible paths systematically.
+- I can immediately see that node 3 is directly connected to node 10.
+- This means there's a direct edge from 3 to 10.
+
+Step 3: Verify this is the shortest path.
+- Since there's a direct connection from node 3 to node 10, this is clearly the shortest possible path.
+- The path only requires traversing 1 edge.
+
+Step 4: Verify the path is valid.
+- Looking at the adjacency list, node 3 is indeed connected to node 10 (3: 10).
+- This confirms the path is valid according to the given graph.
+
+Path: [3, 10], Length: 1","{'path': ['3', '10'], 'length': 1}","{'path': ['3', '10'], 'length': 1}",1,5.224970818,1039,226,1265
+graph_1306,"{'start_node': '6', 'end_node': '1'}",zero_shot,standard,"Path: [6, 2, 1], Length: 2","{'path': ['6', '2', '1'], 'length': 2}","{'path': ['6', '2', '1'], 'length': 2}",1,0.9260411263,230,18,248
+graph_1306,"{'start_node': '6', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 6 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (6).
+From the adjacency list, node 6 is connected to nodes 2, 4, 5, and 7.
+
+Step 2: Perform BFS.
+- Start at node 6
+- Queue: [6]
+- Visited: {6}
+- Parent map to track the path: {6: None}
+
+BFS Iteration 1:
+- Dequeue 6
+- Neighbors of 6: 2, 4, 5, 7
+- For each unvisited neighbor, add to queue and mark as visited
+- Queue: [2, 4, 5, 7]
+- Visited: {6, 2, 4, 5, 7}
+- Parent map: {6: None, 2: 6, 4: 6, 5: 6, 7: 6}
+
+BFS Iteration 2:
+- Dequeue 2
+- Neighbors of 2: 1, 5, 6
+  - 1 is not visited, add to queue
+  - 5 is already visited
+  - 6 is already visited
+- Queue: [4, 5, 7, 1]
+- Visited: {6, 2, 4, 5, 7, 1}
+- Parent map: {6: None, 2: 6, 4: 6, 5: 6, 7: 6, 1: 2}
+
+Now I've reached node 1, which is our target. Since BFS explores nodes in order of their distance from the start, this is guaranteed to be the shortest path.
+
+Step 3: Reconstruct the path using the parent map.
+- Start at the target node 1
+- Parent of 1 is 2
+- Parent of 2 is 6
+- So the path is: 6 → 2 → 1
+
+Step 4: Verify the path.
+- Check that each pair of adjacent nodes in our path is connected in the graph:
+  - 6 is connected to 2 (confirmed in adjacency list)
+  - 2 is connected to 1 (confirmed in adjacency list)
+- The path length is 2 edges.
+- Since we used BFS, this is guaranteed to be the shortest path.
+
+Path: [6, 2, 1], Length: 2","{'path': ['6', '2', '1'], 'length': 2}","{'path': ['6', '2', '1'], 'length': 2}",1,8.296337843,300,588,888
+graph_1306,"{'start_node': '6', 'end_node': '1'}",few_shots,standard,"Path: [6, 2, 1], Length: 2","{'path': ['6', '2', '1'], 'length': 2}","{'path': ['6', '2', '1'], 'length': 2}",1,1.643085957,691,18,709
+graph_1306,"{'start_node': '6', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path between node 6 and node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 6.
+- Node 6 is connected to nodes 2, 4, 5, and 7.
+
+Step 2: Explore paths systematically using BFS.
+- Level 1 neighbors of node 6: [2, 4, 5, 7]
+- For each of these neighbors, I'll check if any is the target node 1. None is.
+- Level 2 neighbors:
+  - From node 2: [1, 5, 6] (excluding already visited nodes)
+  - From node 4: [1, 7] (excluding already visited nodes)
+  - From node 5: [3] (excluding already visited nodes)
+  - From node 7: [3] (excluding already visited nodes)
+  
+Step 3: I found node 1 at level 2, reachable from both node 2 and node 4.
+- Path via node 2: 6 → 2 → 1
+- Path via node 4: 6 → 4 → 1
+- Both paths have length 2.
+
+Step 4: Verify this is the shortest path.
+- Since I used BFS and found node 1 at level 2, this guarantees it's the shortest path.
+- I can verify there's no direct edge between nodes 6 and 1 in the graph.
+
+Therefore, there are two shortest paths of length 2:
+- 6 → 2 → 1
+- 6 → 4 → 1
+
+I'll provide one of these as the answer.
+
+Path: [6, 2, 1], Length: 2","{'path': ['6', '2', '1'], 'length': 2}","{'path': ['6', '2', '1'], 'length': 2}",1,7.069869995,1042,415,1457
+graph_1306,"{'start_node': '3', 'end_node': '2'}",zero_shot,standard,"Path: [3, 1, 2], Length: 2","{'path': ['3', '1', '2'], 'length': 2}","{'path': ['3', '1', '2'], 'length': 2}",1,0.8123519421,230,18,248
+graph_1306,"{'start_node': '3', 'end_node': '2'}",zero_shot,cot,"I'll find the shortest path from node 3 to node 2 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (3).
+- Node 3 is connected to: 1, 5, and 7
+
+Step 2: Perform BFS to find the shortest path.
+- Initialize a queue with node 3
+- Keep track of visited nodes and their parents
+
+BFS Execution:
+- Start at node 3 (Level 0)
+- Explore neighbors of 3: nodes 1, 5, 7 (Level 1)
+- Explore neighbors of 1: nodes 2, 4 (Level 2)
+  - Found node 2! This is our target.
+- Explore neighbors of 5: nodes 2, 6 (Level 2)
+  - Also found node 2, but at the same level as before.
+- Explore neighbors of 7: nodes 4, 6 (Level 2)
+
+Since we found node 2 at Level 2 (when exploring neighbors of node 1), the shortest path is:
+3 → 1 → 2
+
+Step 3: Verify the path is valid.
+- 3 is connected to 1 (confirmed in the adjacency list)
+- 1 is connected to 2 (confirmed in the adjacency list)
+
+Step 4: Verify this is the shortest path.
+- We used BFS which guarantees the shortest path in an unweighted graph
+- We found node 2 at level 2, meaning the path length is 2 edges
+- No shorter path is possible since node 2 was not a direct neighbor of node 3
+
+Path: [3, 1, 2], Length: 2","{'path': ['3', '1', '2'], 'length': 2}","{'path': ['3', '1', '2'], 'length': 2}",1,6.846397877,300,411,711
+graph_1306,"{'start_node': '3', 'end_node': '2'}",few_shots,standard,"Path: [3, 5, 2], Length: 2","{'path': ['3', '5', '2'], 'length': 2}","{'path': ['3', '1', '2'], 'length': 2}",1,2.046427965,691,18,709
+graph_1306,"{'start_node': '3', 'end_node': '2'}",few_shots,cot,"I'll find the shortest path between node 3 and node 2 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 3).
+- Node 3 is connected to: 1, 5, 7
+
+Step 2: Explore paths systematically using BFS.
+- Starting from node 3
+- Level 1 neighbors: 1, 5, 7
+  - From node 1: connects to 2, 3, 4 (node 2 found!)
+  - From node 5: connects to 2, 3, 6, 7 (node 2 found!)
+  - From node 7: connects to 3, 4, 5, 6
+
+Since we found node 2 at level 2 through both node 1 and node 5, we have two potential shortest paths:
+- 3 → 1 → 2
+- 3 → 5 → 2
+
+Both paths have length 2 (traversing 2 edges).
+
+Step 3: Verify these are valid paths by checking the graph.
+- Path 3 → 1 → 2: Node 3 connects to node 1, and node 1 connects to node 2. Valid.
+- Path 3 → 5 → 2: Node 3 connects to node 5, and node 5 connects to node 2. Valid.
+
+Step 4: Verify these are minimal paths.
+Since we used BFS and found node 2 at level 2, and there was no direct connection from 3 to 2, these paths of length 2 are minimal.
+
+Path: [3, 1, 2], Length: 2","{'path': ['3', '1', '2'], 'length': 2}","{'path': ['3', '1', '2'], 'length': 2}",1,6.96866107,1042,405,1447
+graph_20757,"{'start_node': '2', 'end_node': '1'}",zero_shot,standard,"Path: [2, 1], Length: 1","{'path': ['2', '1'], 'length': 1}","{'path': ['2', '1'], 'length': 1}",1,6.95821476,263,15,278
+graph_20757,"{'start_node': '2', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 2 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node (node 2).
+- Node 2 is connected to: 1, 4, 10
+
+Step 2: Begin BFS.
+- Start at node 2
+- Queue: [2]
+- Visited: {2}
+- Parent map: {}
+
+Step 3: Process node 2.
+- Dequeue 2
+- Queue: []
+- Neighbors of 2: [1, 4, 10]
+- For each neighbor:
+  - Node 1: Not visited → add to queue, mark as visited, set parent
+  - Node 4: Not visited → add to queue, mark as visited, set parent
+  - Node 10: Not visited → add to queue, mark as visited, set parent
+- Queue: [1, 4, 10]
+- Visited: {2, 1, 4, 10}
+- Parent map: {1: 2, 4: 2, 10: 2}
+
+Step 4: Process node 1.
+- Dequeue 1
+- This is our target node, so we can stop the BFS
+
+Step 5: Reconstruct the path using the parent map.
+- Start at the target node 1
+- Parent of 1 is 2
+- Path: 2 → 1
+
+Step 6: Verify the path.
+- The path is 2 → 1
+- Checking the adjacency list: Node 2 is connected to node 1 (confirmed)
+- The path length is 1 edge
+
+Step 7: Verify it's the shortest path.
+- Since we used BFS and found a direct connection, this must be the shortest path
+
+Path: [2, 1], Length: 1","{'path': ['2', '1'], 'length': 1}","{'path': ['2', '1'], 'length': 1}",1,6.859915972,333,435,768
+graph_20757,"{'start_node': '2', 'end_node': '1'}",few_shots,standard,"Path: [2, 1], Length: 1","{'path': ['2', '1'], 'length': 1}","{'path': ['2', '1'], 'length': 1}",1,1.22540617,724,15,739
+graph_20757,"{'start_node': '2', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path from node 2 to node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (2).
+- Node 2 is connected to: 1, 4, 10
+
+Step 2: Begin BFS exploration.
+- Level 0: Node 2
+- Level 1: Nodes 1, 4, 10
+
+I can immediately see that node 1 is directly connected to node 2, so I've found a path of length 1.
+
+Step 3: Verify this is the shortest path.
+Since BFS explores nodes level by level, and I found node 1 at level 1, this must be the shortest path.
+
+Step 4: Verify the path is valid.
+The edge 2-1 exists in the graph as node 1 is listed as a neighbor of node 2.
+
+Therefore, the shortest path from node 2 to node 1 is:
+Path: [2, 1], Length: 1","{'path': ['2', '1'], 'length': 1}","{'path': ['2', '1'], 'length': 1}",1,4.510462999,1075,236,1311
+graph_20757,"{'start_node': '4', 'end_node': '9'}",zero_shot,standard,"Path: [4, 10, 9], Length: 2","{'path': ['4', '10', '9'], 'length': 2}","{'path': ['4', '10', '9'], 'length': 2}",1,1.3232131,263,18,281
+graph_20757,"{'start_node': '4', 'end_node': '9'}",zero_shot,cot,"I'll find the shortest path from node 4 to node 9 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node 4.
+- Node 4 is connected to: 2, 8, 10
+
+Step 2: Perform BFS to find the shortest path.
+- Level 0: Node 4
+- Level 1: Nodes 2, 8, 10
+  - Check if any of these is node 9: No
+- Level 2: Explore neighbors of nodes 2, 8, 10
+  - Neighbors of 2: 1, 4, 10 (4 already visited, 10 already visited)
+  - Neighbors of 8: 3, 4, 5, 6 (4 already visited)
+  - Neighbors of 10: 2, 4, 6, 7, 9 (2 already visited, 4 already visited)
+  - Found node 9 as a neighbor of node 10!
+
+So the shortest path is: 4 → 10 → 9
+
+Step 3: Verify the path is valid.
+- Is 4 connected to 10? Yes, 10 is in node 4's adjacency list.
+- Is 10 connected to 9? Yes, 9 is in node 10's adjacency list.
+
+Step 4: Verify this is the shortest path.
+- The path has 2 edges.
+- No shorter path was found during BFS, which explores nodes in order of increasing distance from the start.
+
+Path: [4, 10, 9], Length: 2","{'path': ['4', '10', '9'], 'length': 2}","{'path': ['4', '10', '9'], 'length': 2}",1,6.151175976,333,388,721
+graph_20757,"{'start_node': '4', 'end_node': '9'}",few_shots,standard,"Path: [4, 8, 3, 9], Length: 3","{'path': ['4', '8', '3', '9'], 'length': 3}","{'path': ['4', '10', '9'], 'length': 2}",0.667,1.230839729,724,21,745
+graph_20757,"{'start_node': '4', 'end_node': '9'}",few_shots,cot,"I'll find the shortest path between node 4 and node 9 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 4.
+- Node 4 is connected to: 2, 8, 10
+
+Step 2: Perform BFS to find the shortest path.
+- Level 0: Node 4
+- Level 1: Nodes 2, 8, 10
+  - From node 2: connected to 1, 4, 10
+  - From node 8: connected to 3, 4, 5, 6
+  - From node 10: connected to 2, 4, 6, 7, 9
+  - I found node 9 at this level through node 10, so the shortest path length is 2
+
+Step 3: Trace the path back.
+- Node 9 was reached from node 10
+- Node 10 was reached from node 4
+- So the path is: 4 → 10 → 9
+
+Step 4: Verify the path.
+- Checking that 4 is connected to 10: Yes, the graph shows 4 is connected to 10
+- Checking that 10 is connected to 9: Yes, the graph shows 10 is connected to 9
+- The path length is 2 edges
+- This must be minimal since we used BFS which guarantees the shortest path
+
+Path: [4, 10, 9], Length: 2","{'path': ['4', '10', '9'], 'length': 2}","{'path': ['4', '10', '9'], 'length': 2}",1,5.721286058,1075,347,1422
+graph_226,"{'start_node': '6', 'end_node': '1'}",zero_shot,standard,"Path: [6, 2, 1], Length: 2","{'path': ['6', '2', '1'], 'length': 2}","{'path': ['6', '2', '1'], 'length': 2}",1,1.511126995,227,18,245
+graph_226,"{'start_node': '6', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 6 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (6).
+- Node 6 is connected to: 2, 3, 4, 5
+
+Step 2: Perform BFS.
+- Level 0: [6] (starting node)
+- Level 1: [2, 3, 4, 5] (neighbors of 6)
+
+Now I'll check if any of these neighbors is the target node 1.
+None of them is node 1, so I continue to the next level.
+
+For each node in level 1, I'll find their neighbors that haven't been visited yet:
+- Node 2's neighbors: 1 (target found!)
+- Node 3's neighbors: 1 (target found!)
+- Node 4's neighbors: 1 (target found!)
+- Node 5's neighbors: 1 (target found!)
+
+So at level 2, we reach node 1 from any of the nodes 2, 3, 4, or 5.
+
+Step 3: Construct the shortest path.
+Since we found node 1 at level 2, the shortest path has 2 edges.
+Any of these paths is valid:
+- 6 → 2 → 1
+- 6 → 3 → 1
+- 6 → 4 → 1
+- 6 → 5 → 1
+
+Step 4: Verify the path.
+Let's verify one of these paths, say 6 → 2 → 1:
+- Edge (6, 2): Node 6 is connected to 2 (confirmed in the adjacency list)
+- Edge (2, 1): Node 2 is connected to 1 (confirmed in the adjacency list)
+
+The path is valid and has length 2, which is minimal since we used BFS.
+
+Path: [6, 2, 1], Length: 2","{'path': ['6', '2', '1'], 'length': 2}","{'path': ['6', '2', '1'], 'length': 2}",1,8.143334866,297,469,766
+graph_226,"{'start_node': '6', 'end_node': '1'}",few_shots,standard,"Path: [6, 2, 1], Length: 2","{'path': ['6', '2', '1'], 'length': 2}","{'path': ['6', '2', '1'], 'length': 2}",1,1.785159111,688,18,706
+graph_226,"{'start_node': '6', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path from node 6 to node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 6.
+- Node 6 is connected to: 2, 3, 4, 5
+
+Step 2: Explore paths systematically using BFS.
+- Level 1 neighbors of 6: [2, 3, 4, 5]
+- For each of these neighbors, I'll check if they connect to node 1:
+  - Node 2 is connected to: 1, 3, 4, 6
+  - Node 3 is connected to: 1, 2, 5, 6
+  - Node 4 is connected to: 1, 2, 5, 6
+  - Node 5 is connected to: 1, 3, 4, 6
+
+Step 3: I can see that all neighbors of node 6 (nodes 2, 3, 4, and 5) are directly connected to node 1.
+- This means there are four possible 2-edge paths from 6 to 1:
+  - 6 → 2 → 1
+  - 6 → 3 → 1
+  - 6 → 4 → 1
+  - 6 → 5 → 1
+
+Step 4: Verify this is the shortest path.
+- Since node 6 is not directly connected to node 1, a 2-edge path is the shortest possible.
+
+Therefore, the shortest path from node 6 to node 1 has length 2, and there are multiple equivalent paths.
+
+Path: [6, 2, 1], Length: 2","{'path': ['6', '2', '1'], 'length': 2}","{'path': ['6', '2', '1'], 'length': 2}",1,6.453413963,1039,403,1442
+graph_226,"{'start_node': '1', 'end_node': '3'}",zero_shot,standard,"Path: [1, 3], Length: 1","{'path': ['1', '3'], 'length': 1}","{'path': ['1', '3'], 'length': 1}",1,0.8166127205,227,15,242
+graph_226,"{'start_node': '1', 'end_node': '3'}",zero_shot,cot,"I'll find the shortest path from node 1 to node 3 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (node 1).
+- Node 1 is connected to nodes 2, 3, 4, and 5.
+
+Step 2: Explore paths systematically using BFS.
+- I'll use a queue to track nodes to visit and maintain a record of visited nodes and their distances from the start.
+- Initialize: Queue = [1], Visited = {1}, Distance = {1: 0}
+- Process node 1:
+  * Neighbors of 1 are 2, 3, 4, 5
+  * For each neighbor, record distance as 1 and add to queue
+  * Queue = [2, 3, 4, 5], Visited = {1, 2, 3, 4, 5}, Distance = {1: 0, 2: 1, 3: 1, 4: 1, 5: 1}
+
+Step 3: Identify when we've reached the end node.
+- I've already found node 3 in the first level of BFS with distance 1.
+
+Step 4: Verify it's the shortest possible path.
+- Since BFS explores nodes in order of their distance from the start, the first time we encounter the target node gives us the shortest path.
+- The path from 1 to 3 has length 1, meaning they are directly connected.
+
+Verification:
+1) Path validity: Looking at the adjacency list, node 1 is directly connected to node 3, confirming the path is valid.
+2) Path minimality: Since nodes 1 and 3 are directly connected by an edge, a path of length 1 is the shortest possible.
+
+Path: [1, 3], Length: 1","{'path': ['1', '3'], 'length': 1}","{'path': ['1', '3'], 'length': 1}",1,7.065442085,297,433,730
+graph_226,"{'start_node': '1', 'end_node': '3'}",few_shots,standard,"Path: [1, 3], Length: 1","{'path': ['1', '3'], 'length': 1}","{'path': ['1', '3'], 'length': 1}",1,1.328701258,688,15,703
+graph_226,"{'start_node': '1', 'end_node': '3'}",few_shots,cot,"I'll find the shortest path between node 1 and node 3 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 1).
+- Node 1 is connected to: 2, 3, 4, 5
+
+Step 2: Explore paths systematically using BFS.
+- I notice that node 3 is directly connected to node 1.
+- This means there's a direct path from 1 to 3.
+
+Step 3: Verify this is the shortest path.
+- Since node 3 is directly adjacent to node 1, a path of length 1 is the shortest possible.
+- The path is [1, 3].
+
+Step 4: Verify the path is valid.
+- Looking at the adjacency list, node 1 is indeed connected to node 3.
+- The path uses 1 edge, so the length is 1.
+
+Path: [1, 3], Length: 1","{'path': ['1', '3'], 'length': 1}","{'path': ['1', '3'], 'length': 1}",1,4.09527564,1039,227,1266
+graph_23686,"{'start_node': '17', 'end_node': '22'}",zero_shot,standard,"Path: [17, 7, 22], Length: 2","{'path': ['17', '7', '22'], 'length': 2}","{'path': ['17', '7', '22'], 'length': 2}",1,1.535106897,379,18,397
+graph_23686,"{'start_node': '17', 'end_node': '22'}",zero_shot,cot,"I'll find the shortest path from node 17 to node 22 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node 17.
+- Node 17 is connected to: 7, 11, 15, 21
+
+Step 2: Perform BFS to find the shortest path.
+- Level 0: [17]
+- Level 1: [7, 11, 15, 21]
+
+I see that node 7 is directly connected to node 22 (from the adjacency list of 7). So I can reach 22 from 17 through 7.
+Path: 17 → 7 → 22, Length: 2
+
+Let me check if there are other paths of the same length:
+- From 11: 11 is connected to 5, and 5 is connected to 22. Path: 17 → 11 → 5 → 22, Length: 3
+- From 15: 15 is connected to 6, and 6 is connected to 22. Path: 17 → 15 → 6 → 22, Length: 3
+- From 21: 21 is connected to 2, and 2 is connected to 22. Path: 17 → 21 → 2 → 22, Length: 3
+
+I've verified that the path through node 7 is the shortest, with a length of 2 edges.
+
+Let me double-check this path is valid:
+- 17 is connected to 7 (confirmed in the adjacency list of 17)
+- 7 is connected to 22 (confirmed in the adjacency list of 7)
+
+Path: [17, 7, 22], Length: 2","{'path': ['17', '7', '22'], 'length': 2}","{'path': ['17', '7', '22'], 'length': 2}",1,6.961359739,449,415,864
+graph_23686,"{'start_node': '17', 'end_node': '22'}",few_shots,standard,"Path: [17, 7, 22], Length: 2","{'path': ['17', '7', '22'], 'length': 2}","{'path': ['17', '7', '22'], 'length': 2}",1,2.456645727,840,18,858
+graph_23686,"{'start_node': '17', 'end_node': '22'}",few_shots,cot,"I'll find the shortest path from node 17 to node 22 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 17.
+- Node 17 is connected to: 7, 11, 15, 21
+
+Step 2: Begin BFS by exploring these neighbors.
+- Level 1 neighbors of 17: [7, 11, 15, 21]
+- Check if any of these connect directly to 22:
+  - 7 connects to 22 ✓
+  - 11 doesn't connect to 22
+  - 15 doesn't connect to 22
+  - 21 doesn't connect to 22
+
+Step 3: Since node 7 connects directly to node 22, I've found a path:
+17 → 7 → 22
+
+Step 4: Verify this is the shortest path.
+- This path has length 2 (traverses 2 edges)
+- Since I found this path at the first level of BFS, it must be minimal
+- No shorter path is possible since 17 and 22 aren't directly connected
+
+Step 5: Verify the path is valid by checking the graph:
+- 17 is connected to 7 ✓
+- 7 is connected to 22 ✓
+
+Path: [17, 7, 22], Length: 2","{'path': ['17', '7', '22'], 'length': 2}","{'path': ['17', '7', '22'], 'length': 2}",1,5.630643129,1191,323,1514
+graph_23686,"{'start_node': '1', 'end_node': '9'}",zero_shot,standard,"Path: [1, 8, 9], Length: 2","{'path': ['1', '8', '9'], 'length': 2}","{'path': ['1', '8', '9'], 'length': 2}",1,1.53205204,379,18,397
+graph_23686,"{'start_node': '1', 'end_node': '9'}",zero_shot,cot,"I'll find the shortest path from node 1 to node 9 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node (node 1).
+- Node 1 is connected to: 8, 16, 22
+
+Step 2: Perform BFS to find the shortest path.
+- Initialize a queue with node 1
+- Keep track of visited nodes and the path to each node
+
+BFS execution:
+- Start at node 1 (level 0)
+- Neighbors of 1: 8, 16, 22 (level 1)
+- Neighbors of 8: 1 (already visited), 9, 13 (level 2)
+  - Found node 9 at level 2!
+
+Since BFS explores nodes level by level, when we first encounter node 9, we've found the shortest path.
+
+The path from 1 to 9 is: 1 → 8 → 9
+
+Step 3: Verify the path is valid by checking the adjacency list:
+- 1 is connected to 8 ✓ (1's neighbors include 8)
+- 8 is connected to 9 ✓ (8's neighbors include 9)
+
+Step 4: Verify this is the shortest path:
+- We used BFS which guarantees the shortest path in an unweighted graph
+- The path has 2 edges, and we can't reach node 9 in fewer steps
+
+Path: [1, 8, 9], Length: 2","{'path': ['1', '8', '9'], 'length': 2}","{'path': ['1', '8', '9'], 'length': 2}",1,6.246855021,449,362,811
+graph_23686,"{'start_node': '1', 'end_node': '9'}",few_shots,standard,"Path: [1, 8, 9], Length: 2","{'path': ['1', '8', '9'], 'length': 2}","{'path': ['1', '8', '9'], 'length': 2}",1,1.636791945,840,18,858
+graph_23686,"{'start_node': '1', 'end_node': '9'}",few_shots,cot,"I'll find the shortest path between node 1 and node 9 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 1).
+- Node 1 is connected to: 8, 16, 22
+
+Step 2: Begin BFS by exploring these neighbors.
+- Level 1 nodes (distance 1 from node 1): 8, 16, 22
+- Check if any of these is node 9: None is node 9
+
+Step 3: Explore the neighbors of level 1 nodes.
+- From node 8: connected to 1, 9, 13
+- From node 16: connected to 1, 18, 20
+- From node 22: connected to 1, 2, 3, 4, 5, 6, 7
+- Level 2 nodes: 9, 13, 18, 20, 2, 3, 4, 5, 6, 7
+- Check if any of these is node 9: Yes, node 9 is found!
+
+The path from 1 to 9 goes through node 8: 1 → 8 → 9
+
+Let me verify this path:
+1) Is node 1 connected to node 8? Yes, the adjacency list shows 1 is connected to 8.
+2) Is node 8 connected to node 9? Yes, the adjacency list shows 8 is connected to 9.
+
+Let me also verify there's no shorter path:
+- The shortest possible path length would be 1, but node 1 is not directly connected to node 9.
+- We found a path of length 2, and our BFS approach guarantees this is the shortest.
+
+Path: [1, 8, 9], Length: 2","{'path': ['1', '8', '9'], 'length': 2}","{'path': ['1', '8', '9'], 'length': 2}",1,6.861299038,1191,424,1615
+graph_26957,"{'start_node': '4', 'end_node': '1'}",zero_shot,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,6.738020182,381,15,396
+graph_26957,"{'start_node': '4', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 4 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node 4.
+- Node 4 is connected to: 1, 14, 15, 19
+
+Step 2: Begin BFS.
+- Level 0: Node 4
+- Level 1 neighbors: 1, 14, 15, 19
+
+I notice that node 1 is directly connected to node 4, so I've already found a path.
+
+Step 3: Verify this is the shortest path.
+Since node 1 is directly adjacent to node 4, a path of length 1 is the shortest possible path. There cannot be a shorter path than a direct connection.
+
+Step 4: Validate the path.
+Looking at the adjacency list for node 4, I can see that node 1 is indeed listed as a neighbor, confirming this edge exists in the graph.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,4.509305,451,237,688
+graph_26957,"{'start_node': '4', 'end_node': '1'}",few_shots,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.219042063,842,15,857
+graph_26957,"{'start_node': '4', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path from node 4 to node 1 using breadth-first search.
+
+Step 1: Identify neighbors of the starting node 4.
+- Node 4 is connected to: 1, 14, 15, 19
+
+Step 2: Since node 1 is directly connected to node 4, we've found the shortest path immediately.
+
+Step 3: Verify this is a valid path by confirming the edge exists.
+- The adjacency list shows node 4 is connected to node 1 (4: 1 14 15 19)
+
+Step 4: Verify this is minimal.
+- Since we found a direct connection, a path of length 1 is definitely minimal.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,3.997982979,1193,181,1374
+graph_26957,"{'start_node': '12', 'end_node': '20'}",zero_shot,standard,"Path: [12, 3, 1, 5, 20], Length: 4","{'path': ['12', '3', '1', '5', '20'], 'length': 4}","{'path': ['12', '3', '1', '2', '20'], 'length': 4}",1,1.123272896,381,24,405
+graph_26957,"{'start_node': '12', 'end_node': '20'}",zero_shot,cot,"I'll find the shortest path from node 12 to node 20 using breadth-first search (BFS).
+
+Step 1: Identify the starting point and initialize BFS.
+- Start node: 12
+- End node: 20
+- I'll use a queue to track nodes to visit and maintain a visited set
+- For each node, I'll track its predecessor to reconstruct the path
+
+Step 2: Execute BFS algorithm.
+- Initialize queue with node 12
+- Mark 12 as visited
+- For each node I dequeue, I'll explore all its unvisited neighbors
+
+BFS Execution:
+- Level 0: Node 12
+  - Neighbors: 3, 6, 7, 13 (all unvisited)
+  - Add all to queue, mark as visited
+  - Track predecessors: 3←12, 6←12, 7←12, 13←12
+
+- Level 1: Node 3
+  - Neighbors: 1, 12, 13, 18
+  - 12 already visited, 13 already in queue
+  - Add 1, 18 to queue
+  - Track predecessors: 1←3, 18←3
+
+- Level 1: Node 6
+  - Neighbors: 7, 12, 13, 18
+  - 7, 12, 13 already visited/in queue
+  - 18 already in queue from node 3
+
+- Level 1: Node 7
+  - Neighbors: 6, 12, 13, 18
+  - All already visited/in queue
+
+- Level 1: Node 13
+  - Neighbors: 3, 6, 7, 12
+  - All already visited
+
+- Level 2: Node 1
+  - Neighbors: 2, 3, 4, 5
+  - 3 already visited
+  - Add 2, 4, 5 to queue
+  - Track predecessors: 2←1, 4←1, 5←1
+
+- Level 2: Node 18
+  - Neighbors: 2, 3, 6, 7
+  - 3, 6, 7 already visited
+  - Add 2 to queue (if not already added from node 1)
+
+- Level 3: Node 2
+  - Neighbors: 1, 18, 19, 20
+  - 1, 18 already visited
+  - Add 19, 20 to queue
+  - Track predecessors: 19←2, 20←2
+
+Found node 20! We can stop BFS.
+
+Step 3: Reconstruct the shortest path from 12 to 20.
+- Start from 20 and follow predecessors back to 12
+- 20 ← 2 ← 1 ← 3 ← 12
+- Reverse to get the path: 12 → 3 → 1 → 2 → 20
+
+Step 4: Verify the path.
+- Check each edge exists in the graph:
+  - 12 to 3: Valid (3 is in 12's adjacency list)
+  - 3 to 1: Valid (1 is in 3's adjacency list)
+  - 1 to 2: Valid (2 is in 1's adjacency list)
+  - 2 to 20: Valid (20 is in 2's adjacency list)
+- Path length is 4 edges
+
+Path: [12, 3, 1, 2, 20], Length: 4","{'path': ['12', '3', '1', '2', '20'], 'length': 4}","{'path': ['12', '3', '1', '2', '20'], 'length': 4}",1,12.08140993,451,837,1288
+graph_26957,"{'start_node': '12', 'end_node': '20'}",few_shots,standard,"Path: [12, 3, 18, 2, 20], Length: 4","{'path': ['12', '3', '18', '2', '20'], 'length': 4}","{'path': ['12', '3', '1', '2', '20'], 'length': 4}",1,1.829329967,842,24,866
+graph_26957,"{'start_node': '12', 'end_node': '20'}",few_shots,cot,"I'll find the shortest path between node 12 and node 20 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 12.
+- Node 12 is connected to: 3, 6, 7, 13
+
+Step 2: Begin BFS by exploring these neighbors and their connections.
+- Level 1 (distance 1 from node 12): 3, 6, 7, 13
+- From node 3: connected to 1, 12, 13, 18
+- From node 6: connected to 7, 12, 13, 18
+- From node 7: connected to 6, 12, 13, 18
+- From node 13: connected to 3, 6, 7, 12
+
+- Level 2 (distance 2 from node 12):
+  - From node 3: 1, 18
+  - From node 6: 18
+  - From node 7: 18
+  - From node 13: (already explored)
+  
+- Level 3 (distance 3 from node 12):
+  - From node 1: 2, 4, 5
+  - From node 18: 2
+  
+- Level 4 (distance 4 from node 12):
+  - From node 2: 19, 20 ← Found node 20!
+  - From node 4: 14, 15, 19
+  - From node 5: 16, 17, 20 ← Found node 20!
+
+I've found two potential paths of length 4:
+1. 12 → 3 → 1 → 2 → 20
+2. 12 → 3 → 1 → 5 → 20
+
+Let me verify these paths are valid by checking the edges:
+- Path 1: 12 is connected to 3, 3 is connected to 1, 1 is connected to 2, 2 is connected to 20 ✓
+- Path 2: 12 is connected to 3, 3 is connected to 1, 1 is connected to 5, 5 is connected to 20 ✓
+
+Both paths have the same length of 4, and I've verified through BFS that no shorter path exists.
+
+Path: [12, 3, 1, 2, 20], Length: 4","{'path': ['12', '3', '1', '2', '20'], 'length': 4}","{'path': ['12', '3', '1', '2', '20'], 'length': 4}",1,9.031979084,1193,573,1766
+graph_30911,"{'start_node': '18', 'end_node': '4'}",zero_shot,standard,"Path: [18, 11, 13, 17, 28, 4], Length: 5","{'path': ['18', '11', '13', '17', '28', '4'], 'length': 5}","{'path': ['18', '11', '12', '14', '27', '4'], 'length': 5}",1,7.780245066,431,27,458
+graph_30911,"{'start_node': '18', 'end_node': '4'}",zero_shot,cot,"I'll find the shortest path from node 18 to node 4 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node 18.
+- Node 18 is connected to: 9, 10, 11
+
+Step 2: Perform BFS to find the shortest path.
+
+Initialize:
+- Queue: [18] (nodes to visit)
+- Visited: {18} (nodes already visited)
+- Paths: {18: [18]} (tracks the path to each node)
+
+BFS Iteration 1:
+- Current node: 18
+- Neighbors: 9, 10, 11
+- Queue: [9, 10, 11]
+- Visited: {18, 9, 10, 11}
+- Paths: {18: [18], 9: [18, 9], 10: [18, 10], 11: [18, 11]}
+
+BFS Iteration 2:
+- Current node: 9
+- Neighbors: 8, 10 (10 already visited)
+- Queue: [10, 11, 8]
+- Visited: {18, 9, 10, 11, 8}
+- Paths: {18: [18], 9: [18, 9], 10: [18, 10], 11: [18, 11], 8: [18, 9, 8]}
+
+BFS Iteration 3:
+- Current node: 10
+- Neighbors: 8, 9 (both already visited)
+- Queue: [11, 8]
+- Visited: {18, 9, 10, 11, 8}
+- Paths: unchanged
+
+BFS Iteration 4:
+- Current node: 11
+- Neighbors: 12, 13
+- Queue: [8, 12, 13]
+- Visited: {18, 9, 10, 11, 8, 12, 13}
+- Paths: {18: [18], 9: [18, 9], 10: [18, 10], 11: [18, 11], 8: [18, 9, 8], 12: [18, 11, 12], 13: [18, 11, 13]}
+
+BFS Iteration 5:
+- Current node: 8
+- Neighbors: 9 (already visited), 10 (already visited), 19
+- Queue: [12, 13, 19]
+- Visited: {18, 9, 10, 11, 8, 12, 13, 19}
+- Paths: {18: [18], 9: [18, 9], 10: [18, 10], 11: [18, 11], 8: [18, 9, 8], 12: [18, 11, 12], 13: [18, 11, 13], 19: [18, 9, 8, 19]}
+
+BFS Iteration 6:
+- Current node: 12
+- Neighbors: 11 (already visited), 14, 15
+- Queue: [13, 19, 14, 15]
+- Visited: {18, 9, 10, 11, 8, 12, 13, 19, 14, 15}
+- Paths: {18: [18], 9: [18, 9], 10: [18, 10], 11: [18, 11], 8: [18, 9, 8], 12: [18, 11, 12], 13: [18, 11, 13], 19: [18, 9, 8, 19], 14: [18, 11, 12, 14], 15: [18, 11, 12, 15]}
+
+BFS Iteration 7:
+- Current node: 13
+- Neighbors: 11 (already visited), 16, 17
+- Queue: [19, 14, 15, 16, 17]
+- Visited: {18, 9, 10, 11, 8, 12, 13, 19, 14, 15, 16, 17}
+- Paths: {18: [18], 9: [18, 9], 10: [18, 10], 11: [18, 11], 8: [18, 9, 8], 12: [18, 11, 12], 13: [18, 11, 13], 19: [18, 9, 8, 19], 14: [18, 11, 12, 14], 15: [18, 11, 12, 15], 16: [18, 11, 13, 16], 17: [18, 11, 13, 17]}
+
+Continuing with BFS iterations...
+
+BFS Iteration 8-13:
+Processing nodes 19, 14, 15, 16, 17 and their neighbors.
+When processing node 14, we discover node 27.
+When processing node 15, we also discover node 27.
+When processing node 16, we discover node 28.
+When processing node 17, we also discover node 28.
+
+BFS Iteration 14-15:
+Processing nodes 27 and 28.
+From node 27, we discover node 4.
+From node 28, we also discover node 4.
+
+Since both paths reach node 4 at the same level in our BFS, they have the same length. Let's trace both:
+
+Path 1: 18 → 11 → 12 → 14 → 27 → 4
+Length: 5
+
+Path 2: 18 → 11 → 12 → 15 → 27 → 4
+Length: 5
+
+Path 3: 18 → 11 → 13 → 16 → 28 → 4
+Length: 5
+
+Path 4: 18 → 11 → 13 → 17 → 28 → 4
+Length: 5
+
+All these paths have the same length of 5 edges. I'll choose the first one as my answer.
+
+Path: [18, 11, 12, 14, 27, 4], Length: 5","{'path': ['18', '11', '12', '14', '27', '4'], 'length': 5}","{'path': ['18', '11', '12', '14', '27', '4'], 'length': 5}",1,17.51404905,501,1496,1997
+graph_30911,"{'start_node': '18', 'end_node': '4'}",few_shots,standard,"Path: [18, 11, 12, 14, 27, 4], Length: 5","{'path': ['18', '11', '12', '14', '27', '4'], 'length': 5}","{'path': ['18', '11', '12', '14', '27', '4'], 'length': 5}",1,2.346955061,892,27,919
+graph_30911,"{'start_node': '18', 'end_node': '4'}",few_shots,cot,"I'll solve this step-by-step using breadth-first search to find the shortest path from node 18 to node 4.
+
+Step 1: Identify neighbors of the starting node 18.
+- Node 18 is connected to: 9, 10, 11
+
+Step 2: Begin BFS by exploring level 1 neighbors.
+- From 18 → 9
+- From 18 → 10
+- From 18 → 11
+
+Step 3: Explore level 2 neighbors.
+- From 9 → 8, 10 (already visited)
+- From 10 → 8, 9 (already visited)
+- From 11 → 12, 13
+
+Step 4: Explore level 3 neighbors.
+- From 8 → 19
+- From 12 → 14, 15
+- From 13 → 16, 17
+
+Step 5: Explore level 4 neighbors.
+- From 19 → 20, 21
+- From 14 → 27
+- From 15 → 27
+- From 16 → 28
+- From 17 → 28
+
+Step 6: Explore level 5 neighbors.
+- From 20 → 22, 23
+- From 21 → 24, 25
+- From 27 → 4 (target found!)
+- From 28 → 4 (target found!)
+
+I've found two paths of the same length:
+1. 18 → 11 → 12 → 14 → 27 → 4
+2. 18 → 11 → 12 → 15 → 27 → 4
+3. 18 → 11 → 13 → 16 → 28 → 4
+4. 18 → 11 → 13 → 17 → 28 → 4
+
+All these paths have 5 edges. Let's verify the first one:
+- 18 is connected to 11 ✓
+- 11 is connected to 12 ✓
+- 12 is connected to 14 ✓
+- 14 is connected to 27 ✓
+- 27 is connected to 4 ✓
+
+Path: [18, 11, 12, 14, 27, 4], Length: 5","{'path': ['18', '11', '12', '14', '27', '4'], 'length': 5}","{'path': ['18', '11', '12', '14', '27', '4'], 'length': 5}",1,7.680960894,1243,563,1806
+graph_30911,"{'start_node': '1', 'end_node': '13'}",zero_shot,standard,"Path: [1, 3, 26, 30, 2, 29, 5, 7, 24, 21, 19, 8, 9, 10, 18, 11, 13], Length: 16","{'path': ['1', '3', '26', '30', '2', '29', '5', '7', '24', '21', '19', '8', '9', '10', '18', '11', '13'], 'length': 16}","{'path': ['1', '4', '28', '16', '13'], 'length': 4}",0.25,1.756712198,431,60,491
+graph_30911,"{'start_node': '1', 'end_node': '13'}",zero_shot,cot,"I'll find the shortest path from node 1 to node 13 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (1).
+- Node 1 is connected to: 2, 3, 4
+
+Step 2: Perform BFS to find the shortest path.
+- Level 0: [1]
+- Level 1: [2, 3, 4] (neighbors of 1)
+- Level 2: Let's check neighbors of nodes 2, 3, and 4:
+  * Neighbors of 2: 1 (already visited), 29, 30
+  * Neighbors of 3: 1 (already visited), 26, 30
+  * Neighbors of 4: 1 (already visited), 27, 28
+  * New nodes at level 2: [29, 30, 26, 27, 28]
+- Level 3: Let's check neighbors of nodes 29, 30, 26, 27, 28:
+  * Neighbors of 29: 2 (already visited), 5, 26 (already visited)
+  * Neighbors of 30: 2 (already visited), 3 (already visited), 26 (already visited)
+  * Neighbors of 26: 3 (already visited), 29 (already visited), 30 (already visited)
+  * Neighbors of 27: 4 (already visited), 14, 15
+  * Neighbors of 28: 4 (already visited), 16, 17
+  * New nodes at level 3: [5, 14, 15, 16, 17]
+- Level 4: Let's check neighbors of nodes 5, 14, 15, 16, 17:
+  * Neighbors of 5: 6, 7, 29 (already visited)
+  * Neighbors of 14: 12, 15 (already visited), 27 (already visited)
+  * Neighbors of 15: 12, 14 (already visited), 27 (already visited)
+  * Neighbors of 16: 13, 17 (already visited), 28 (already visited)
+  * Neighbors of 17: 13, 16 (already visited), 28 (already visited)
+  * New nodes at level 4: [6, 7, 12, 13]
+  * Found node 13 at level 4!
+
+Since we found node 13 at level 4, the shortest path has 4 edges.
+
+To reconstruct the path, I'll trace back from 13:
+- 13 is connected to 11, 16, 17
+- Since we reached 13 from 16 or 17 (both at level 3), let's pick 16
+- 16 is connected to 13, 17, 28
+- Since we reached 16 from 28 (at level 2), we choose 28
+- 28 is connected to 4, 16, 17
+- Since we reached 28 from 4 (at level 1), we choose 4
+- 4 is connected to 1, 27, 28
+- Since we reached 4 from 1 (at level 0), we choose 1
+
+So the path is: 1 → 4 → 28 → 16 → 13
+
+Verification:
+1. Path validity: Each adjacent pair is connected in the graph:
+   - 1 is connected to 4 ✓
+   - 4 is connected to 28 ✓
+   - 28 is connected to 16 ✓
+   - 16 is connected to 13 ✓
+2. Path minimality: We used BFS which guarantees the shortest path.
+
+Path: [1, 4, 28, 16, 13], Length: 4","{'path': ['1', '4', '28', '16', '13'], 'length': 4}","{'path': ['1', '4', '28', '16', '13'], 'length': 4}",1,11.65603614,501,924,1425
+graph_30911,"{'start_node': '1', 'end_node': '13'}",few_shots,standard,"Path: [1, 3, 26, 30, 2, 29, 5, 7, 24, 21, 19, 8, 9, 10, 18, 11, 13], Length: 16","{'path': ['1', '3', '26', '30', '2', '29', '5', '7', '24', '21', '19', '8', '9', '10', '18', '11', '13'], 'length': 16}","{'path': ['1', '4', '28', '16', '13'], 'length': 4}",0.25,2.453653812,892,60,952
+graph_30911,"{'start_node': '1', 'end_node': '13'}",few_shots,cot,"I'll solve this step-by-step using breadth-first search to find the shortest path from node 1 to node 13.
+
+Step 1: Identify neighbors of the starting node (node 1)
+- Node 1 is connected to: 2, 3, 4
+
+Step 2: Begin BFS exploration
+Level 1 (distance 1 from node 1):
+- Explore nodes 2, 3, 4
+- None of these is node 13
+
+Level 2 (distance 2 from node 1):
+- From node 2: 29, 30
+- From node 3: 26, 30
+- From node 4: 27, 28
+- None of these is node 13
+
+Level 3 (distance 3 from node 1):
+- From node 29: 5, 26
+- From node 30: 26
+- From node 26: 29
+- From node 27: 14, 15
+- From node 28: 16, 17
+- None of these is node 13
+
+Level 4 (distance 4 from node 1):
+- From node 5: 6, 7
+- From node 14: 12, 15
+- From node 15: 12, 14
+- From node 16: 13, 17 (Found node 13!)
+- From node 17: 13, 16 (Found node 13!)
+
+I've found node 13 at level 4, which means the shortest path has 4 edges.
+
+Let's trace back to find the complete path:
+- Node 13 is connected to nodes 11, 16, 17
+- Of these, nodes 16 and 17 are at level 3
+- Node 16 is connected to node 28 at level 2
+- Node 28 is connected to node 4 at level 1
+- Node 4 is connected to node 1 (start)
+
+So one shortest path is: 1 → 4 → 28 → 16 → 13
+
+Let me verify this path:
+- 1 is connected to 4 ✓
+- 4 is connected to 28 ✓
+- 28 is connected to 16 ✓
+- 16 is connected to 13 ✓
+
+Path: [1, 4, 28, 16, 13], Length: 4","{'path': ['1', '4', '28', '16', '13'], 'length': 4}","{'path': ['1', '4', '28', '16', '13'], 'length': 4}",1,8.90840888,1243,572,1815
+graph_34,"{'start_node': '10', 'end_node': '1'}",zero_shot,standard,"Path: [10, 1], Length: 1","{'path': ['10', '1'], 'length': 1}","{'path': ['10', '1'], 'length': 1}",1,1.403586149,227,15,242
+graph_34,"{'start_node': '10', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 10 to node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the start node (10).
+- Node 10 is connected to: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Step 2: Explore paths systematically using BFS.
+- I see that node 1 is directly connected to node 10.
+- This means I can go directly from 10 to 1 in one step.
+
+Step 3: Identify that I've reached the end node.
+- I've found a path from 10 to 1: [10, 1]
+- This path has length 1 (one edge)
+
+Step 4: Verify this is the shortest possible path.
+- Since I used BFS and found a path of length 1, and the minimum possible path length is 1 (can't have a path with 0 edges between different nodes), this must be the shortest path.
+
+Verification:
+- The path is valid: There is a direct edge from 10 to 1 as shown in the adjacency list.
+- The path is minimal: A path of length 1 is the minimum possible between two different nodes.
+
+Path: [10, 1], Length: 1","{'path': ['10', '1'], 'length': 1}","{'path': ['10', '1'], 'length': 1}",1,5.658575296,297,308,605
+graph_34,"{'start_node': '10', 'end_node': '1'}",few_shots,standard,"Path: [10, 1], Length: 1","{'path': ['10', '1'], 'length': 1}","{'path': ['10', '1'], 'length': 1}",1,1.12274313,688,15,703
+graph_34,"{'start_node': '10', 'end_node': '1'}",few_shots,cot,"I'll analyze this graph to find the shortest path between nodes 10 and 1.
+
+Step 1: Identify the neighboring nodes of the start node (10).
+- Node 10 is connected to: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Step 2: Explore possible paths using breadth-first search.
+- I can immediately see that node 1 is directly connected to node 10
+- This means I can go directly from 10 to 1 in one step
+
+Step 3: Identify when I've reached the end node.
+- I've already found a path from 10 to 1: [10, 1]
+- This path has length 1 (one edge)
+
+Step 4: Verify it's the shortest possible path.
+- Since this is a direct connection with just one edge, it must be the shortest possible path
+- There cannot be a path with fewer than 1 edge between two distinct nodes
+
+Verification:
+- The path is valid: The edge 10-1 exists in the graph (node 1 is connected to 10, and node 10 is connected to 1)
+- The path is minimal: A path of length 1 is the minimum possible between two distinct nodes
+
+Path: [10, 1], Length: 1","{'path': ['10', '1'], 'length': 1}","{'path': ['10', '1'], 'length': 1}",1,5.476479053,1039,309,1348
+graph_34,"{'start_node': '4', 'end_node': '3'}",zero_shot,standard,"Path: [4, 10, 3], Length: 2","{'path': ['4', '10', '3'], 'length': 2}","{'path': ['4', '10', '3'], 'length': 2}",1,1.278670073,227,18,245
+graph_34,"{'start_node': '4', 'end_node': '3'}",zero_shot,cot,"I'll find the shortest path from node 4 to node 3 using breadth-first search.
+
+Step 1: Identify the structure of the graph.
+- Each node from 1 to 9 is connected only to node 10
+- Node 10 is connected to all nodes from 1 to 9
+- This forms a star topology with node 10 at the center
+
+Step 2: Start BFS from node 4.
+- Initial queue: [4]
+- Visited nodes: {4}
+- Distance from start: {4: 0}
+- Parent mapping: {4: None}
+
+Step 3: Process node 4.
+- Neighbors of 4: [10]
+- Add 10 to queue: [10]
+- Visited nodes: {4, 10}
+- Distance: {4: 0, 10: 1}
+- Parent: {4: None, 10: 4}
+
+Step 4: Process node 10.
+- Neighbors of 10: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- Node 4 is already visited, so skip it
+- Add others to queue: [1, 2, 3, 5, 6, 7, 8, 9]
+- Visited nodes: {4, 10, 1, 2, 3, 5, 6, 7, 8, 9}
+- Distance: {4: 0, 10: 1, 1: 2, 2: 2, 3: 2, 5: 2, 6: 2, 7: 2, 8: 2, 9: 2}
+- Parent: {4: None, 10: 4, 1: 10, 2: 10, 3: 10, 5: 10, 6: 10, 7: 10, 8: 10, 9: 10}
+
+Step 5: We've reached node 3, so we can reconstruct the path.
+- Start at node 3
+- Parent of 3 is 10
+- Parent of 10 is 4
+- So the path is: 4 → 10 → 3
+
+Step 6: Verify the path.
+- Edge (4, 10) exists in the graph (4 is connected to 10)
+- Edge (10, 3) exists in the graph (10 is connected to 3)
+- The path length is 2 edges
+
+Step 7: Verify it's the shortest path.
+- Since we used BFS, we found the shortest path
+- There's no direct connection between 4 and 3, so we need at least 2 edges
+
+Path: [4, 10, 3], Length: 2","{'path': ['4', '10', '3'], 'length': 2}","{'path': ['4', '10', '3'], 'length': 2}",1,9.93617487,297,665,962
+graph_34,"{'start_node': '4', 'end_node': '3'}",few_shots,standard,"Path: [4, 10, 3], Length: 2","{'path': ['4', '10', '3'], 'length': 2}","{'path': ['4', '10', '3'], 'length': 2}",1,1.737062931,688,18,706
+graph_34,"{'start_node': '4', 'end_node': '3'}",few_shots,cot,"I'll analyze this graph to find the shortest path between nodes 4 and 3 using breadth-first search.
+
+Step 1: Identify the structure of the graph.
+Looking at the adjacency list:
+- Node 4 is connected to node 10
+- Node 3 is connected to node 10
+- Node 10 is connected to nodes 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Step 2: Start BFS from node 4.
+- Start node: 4
+- Neighbors of 4: [10]
+- Neighbors of 10: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Step 3: Trace the path.
+From node 4, we can reach node 10 in 1 step.
+From node 10, we can reach node 3 in 1 step.
+So the path is: 4 → 10 → 3
+
+Step 4: Verify the path.
+- Is 4 connected to 10? Yes, confirmed in the adjacency list.
+- Is 10 connected to 3? Yes, confirmed in the adjacency list.
+- Total edges traversed: 2
+
+Step 5: Verify it's the shortest path.
+Since the graph structure shows that node 4 is only connected to node 10, and node 3 is only connected to node 10, this is the only possible path between them, and therefore it must be the shortest.
+
+Path: [4, 10, 3], Length: 2","{'path': ['4', '10', '3'], 'length': 2}","{'path': ['4', '10', '3'], 'length': 2}",1,6.351276875,1039,377,1416
+graph_35485,"{'start_node': '17', 'end_node': '3'}",zero_shot,standard,"Path: [17, 18, 3], Length: 2","{'path': ['17', '18', '3'], 'length': 2}","{'path': ['17', '18', '3'], 'length': 2}",1,1.531136036,304,18,322
+graph_35485,"{'start_node': '17', 'end_node': '3'}",zero_shot,cot,"I'll find the shortest path from node 17 to node 3 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node (17).
+- Node 17 is connected to: 18, 19, 20, 21
+
+Step 2: Perform BFS to find the shortest path.
+- Level 0: [17]
+- Level 1: [18, 19, 20, 21] (neighbors of 17)
+- Check if node 3 is in level 1: No, continue BFS
+- Level 2: Explore neighbors of nodes in level 1
+  - Neighbors of 18: [1, 2, 3, 4, 17]
+  - Neighbors of 19: [5, 6, 7, 8, 17]
+  - Neighbors of 20: [9, 14, 15, 16, 17]
+  - Neighbors of 21: [10, 11, 12, 13, 17]
+- Node 3 is found in level 2 as a neighbor of node 18
+
+Step 3: Reconstruct the path.
+- Node 3 was reached from node 18
+- Node 18 was reached from node 17
+- So the path is: 17 → 18 → 3
+
+Step 4: Verify the path.
+- Checking that each edge exists in the graph:
+  - 17 is connected to 18 ✓
+  - 18 is connected to 3 ✓
+- The path length is 2 edges
+- This is the shortest possible path because we used BFS, which guarantees finding the shortest path in an unweighted graph
+
+Path: [17, 18, 3], Length: 2","{'path': ['17', '18', '3'], 'length': 2}","{'path': ['17', '18', '3'], 'length': 2}",1,6.449777842,374,421,795
+graph_35485,"{'start_node': '17', 'end_node': '3'}",few_shots,standard,"Path: [17, 18, 3], Length: 2","{'path': ['17', '18', '3'], 'length': 2}","{'path': ['17', '18', '3'], 'length': 2}",1,1.432788134,765,18,783
+graph_35485,"{'start_node': '17', 'end_node': '3'}",few_shots,cot,"I'll analyze this graph to find the shortest path from node 17 to node 3 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 17.
+- Node 17 is connected to: 18, 19, 20, 21
+
+Step 2: Explore paths systematically using BFS.
+- Level 1 neighbors of 17: [18, 19, 20, 21]
+- I need to check if node 3 is among these neighbors. It's not.
+- Next, I'll explore level 2 neighbors by checking the neighbors of each level 1 node.
+
+From node 18:
+- Node 18 is connected to: 1, 2, 3, 4, 17
+- I found node 3 here! So there's a path: 17 → 18 → 3
+
+From node 19:
+- Node 19 is connected to: 5, 6, 7, 8, 17
+- Node 3 is not connected to 19.
+
+From node 20:
+- Node 20 is connected to: 9, 14, 15, 16, 17
+- Node 3 is not connected to 20.
+
+From node 21:
+- Node 21 is connected to: 10, 11, 12, 13, 17
+- Node 3 is not connected to 21.
+
+Step 3: I've found that node 3 can be reached from node 17 in 2 steps via node 18.
+
+Step 4: Verification
+- The path 17 → 18 → 3 is valid because:
+  - There is an edge between 17 and 18 (17 is in 18's adjacency list and vice versa)
+  - There is an edge between 18 and 3 (3 is in 18's adjacency list and vice versa)
+- This is the shortest possible path because I used BFS which guarantees finding the shortest path in an unweighted graph.
+
+Path: [17, 18, 3], Length: 2","{'path': ['17', '18', '3'], 'length': 2}","{'path': ['17', '18', '3'], 'length': 2}",1,7.27168107,1116,495,1611
+graph_35485,"{'start_node': '1', 'end_node': '7'}",zero_shot,standard,"Path: [1, 18, 17, 19, 7], Length: 4","{'path': ['1', '18', '17', '19', '7'], 'length': 4}","{'path': ['1', '18', '17', '19', '7'], 'length': 4}",1,1.121754885,304,24,328
+graph_35485,"{'start_node': '1', 'end_node': '7'}",zero_shot,cot,"I'll find the shortest path from node 1 to node 7 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node (node 1).
+- Node 1 is connected to node 18.
+
+Step 2: Begin BFS.
+- Start at node 1
+- Queue: [1]
+- Visited: {1}
+- Paths: {1: [1]}
+
+- Dequeue 1, explore its neighbors
+- Node 18 is unvisited
+- Queue: [18]
+- Visited: {1, 18}
+- Paths: {1: [1], 18: [1, 18]}
+
+- Dequeue 18, explore its neighbors
+- Neighbors of 18: 1, 2, 3, 4, 17
+- Node 1 is already visited
+- Nodes 2, 3, 4, 17 are unvisited
+- Queue: [2, 3, 4, 17]
+- Visited: {1, 18, 2, 3, 4, 17}
+- Paths: {1: [1], 18: [1, 18], 2: [1, 18, 2], 3: [1, 18, 3], 4: [1, 18, 4], 17: [1, 18, 17]}
+
+- Dequeue 2, 3, 4 (all only connect back to 18, which is already visited)
+
+- Dequeue 17, explore its neighbors
+- Neighbors of 17: 18, 19, 20, 21
+- Node 18 is already visited
+- Nodes 19, 20, 21 are unvisited
+- Queue: [19, 20, 21]
+- Visited: {1, 18, 2, 3, 4, 17, 19, 20, 21}
+- Paths: {1: [1], 18: [1, 18], 2: [1, 18, 2], 3: [1, 18, 3], 4: [1, 18, 4], 17: [1, 18, 17], 
+         19: [1, 18, 17, 19], 20: [1, 18, 17, 20], 21: [1, 18, 17, 21]}
+
+- Dequeue 19, explore its neighbors
+- Neighbors of 19: 5, 6, 7, 8, 17
+- Node 17 is already visited
+- Nodes 5, 6, 7, 8 are unvisited
+- Queue: [20, 21, 5, 6, 7, 8]
+- Visited: {1, 18, 2, 3, 4, 17, 19, 20, 21, 5, 6, 7, 8}
+- Paths: {1: [1], 18: [1, 18], 2: [1, 18, 2], 3: [1, 18, 3], 4: [1, 18, 4], 17: [1, 18, 17], 
+         19: [1, 18, 17, 19], 20: [1, 18, 17, 20], 21: [1, 18, 17, 21],
+         5: [1, 18, 17, 19, 5], 6: [1, 18, 17, 19, 6], 7: [1, 18, 17, 19, 7], 8: [1, 18, 17, 19, 8]}
+
+I've found node 7! The path is [1, 18, 17, 19, 7].
+
+Step 3: Verify this is the shortest path.
+Since BFS explores nodes in order of their distance from the start node, the first time we reach node 7 gives us the shortest path.
+
+Step 4: Verify the path is valid.
+- 1 connects to 18 ✓
+- 18 connects to 17 ✓
+- 17 connects to 19 ✓
+- 19 connects to 7 ✓
+
+The path is valid and has 4 edges.
+
+Path: [1, 18, 17, 19, 7], Length: 4","{'path': ['1', '18', '17', '19', '7'], 'length': 4}","{'path': ['1', '18', '17', '19', '7'], 'length': 4}",1,12.71265078,374,1058,1432
+graph_35485,"{'start_node': '1', 'end_node': '7'}",few_shots,standard,"Path: [1, 18, 17, 19, 7], Length: 4","{'path': ['1', '18', '17', '19', '7'], 'length': 4}","{'path': ['1', '18', '17', '19', '7'], 'length': 4}",1,1.183673859,765,24,789
+graph_35485,"{'start_node': '1', 'end_node': '7'}",few_shots,cot,"I'll find the shortest path between node 1 and node 7 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 1).
+- Node 1 is connected to: 18
+
+Step 2: Explore paths systematically using BFS.
+- Starting from node 1
+- Level 1: 1 → 18
+- Level 2: From 18, we can go to: 1, 2, 3, 4, 17
+  (We can ignore 1 since we've already visited it)
+- Level 3: From 17, we can go to: 18, 19, 20, 21
+  (We can ignore 18 since we've already visited it)
+- Level 4: From 19, we can go to: 5, 6, 7, 8, 17
+  (We've found node 7 here, and we can ignore 17 since we've already visited it)
+
+Step 3: We've reached the end node (node 7) through the path: 1 → 18 → 17 → 19 → 7
+
+Step 4: Verify this is the shortest path.
+- We used BFS which guarantees the shortest path in an unweighted graph
+- The path has 4 edges: 1-18, 18-17, 17-19, 19-7
+
+Let me verify the path is valid by checking each edge:
+- 1 is connected to 18 ✓
+- 18 is connected to 17 ✓
+- 17 is connected to 19 ✓
+- 19 is connected to 7 ✓
+
+Since we used BFS and found a path with 4 edges, and all edges in the path exist in the graph, this is the shortest path from node 1 to node 7.
+
+Path: [1, 18, 17, 19, 7], Length: 4","{'path': ['1', '18', '17', '19', '7'], 'length': 4}","{'path': ['1', '18', '17', '19', '7'], 'length': 4}",1,7.607881069,1116,462,1578
+graph_35733,"{'start_node': '7', 'end_node': '1'}",zero_shot,standard,"Path: [7, 3, 1], Length: 2","{'path': ['7', '3', '1'], 'length': 2}","{'path': ['7', '3', '1'], 'length': 2}",1,0.7051930428,226,18,244
+graph_35733,"{'start_node': '7', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 7 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node 7.
+- Node 7 is connected to: 2, 3, 5, 6
+
+Step 2: Perform BFS to find the shortest path.
+- Initialize a queue with node 7
+- Keep track of visited nodes and their parents
+
+BFS Execution:
+- Start at node 7 (Level 0)
+- Neighbors of 7: 2, 3, 5, 6 (Level 1)
+  - Node 3 is connected to 1, so we found a path: 7 → 3 → 1 (Level 2)
+
+Let me verify if there's a shorter path by continuing the BFS:
+- Neighbors of 2: 4, 7 (Level 2)
+  - Node 7 is already visited
+  - Node 4 connects to 2, 5, 6
+- Neighbors of 3: 1, 5, 7 (Level 2)
+  - We already found node 1 here
+- Neighbors of 5: 3, 4, 6, 7 (Level 2)
+- Neighbors of 6: 1, 4, 5, 7 (Level 2)
+  - Node 6 is also connected to 1, so we have another path: 7 → 6 → 1 (Level 2)
+
+I've found two paths of length 2:
+1. 7 → 3 → 1
+2. 7 → 6 → 1
+
+Verification:
+- Path 1: Edge (7,3) exists and edge (3,1) exists
+- Path 2: Edge (7,6) exists and edge (6,1) exists
+- Both paths have 2 edges, which is minimal since there's no direct edge from 7 to 1
+
+Since both paths are valid and have the same length, I'll provide the first one I found.
+
+Path: [7, 3, 1], Length: 2","{'path': ['7', '3', '1'], 'length': 2}","{'path': ['7', '3', '1'], 'length': 2}",1,8.090119123,296,506,802
+graph_35733,"{'start_node': '7', 'end_node': '1'}",few_shots,standard,"Path: [7, 3, 1], Length: 2","{'path': ['7', '3', '1'], 'length': 2}","{'path': ['7', '3', '1'], 'length': 2}",1,1.432703018,687,18,705
+graph_35733,"{'start_node': '7', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path from node 7 to node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 7.
+- Node 7 is connected to: 2, 3, 5, 6
+
+Step 2: Explore paths systematically using BFS.
+- Level 0: [7]
+- Level 1: [2, 3, 5, 6] (neighbors of 7)
+  - Node 3 is connected to 1, which is our target
+  - Node 6 is connected to 1, which is our target
+  So we have two potential paths of length 2:
+  - 7 → 3 → 1
+  - 7 → 6 → 1
+
+Step 3: Verify these are valid paths.
+- Path 7 → 3 → 1:
+  - Edge (7, 3) exists in the graph
+  - Edge (3, 1) exists in the graph
+- Path 7 → 6 → 1:
+  - Edge (7, 6) exists in the graph
+  - Edge (6, 1) exists in the graph
+
+Step 4: Confirm these are the shortest paths.
+Since we used BFS and found two paths of length 2, and no shorter path was found at level 1, these are the shortest paths. Both have the same length, so I'll choose the first one I found.
+
+Path: [7, 3, 1], Length: 2","{'path': ['7', '3', '1'], 'length': 2}","{'path': ['7', '3', '1'], 'length': 2}",1,5.934568882,1038,356,1394
+graph_35733,"{'start_node': '6', 'end_node': '3'}",zero_shot,standard,"Path: [6, 1, 3], Length: 2","{'path': ['6', '1', '3'], 'length': 2}","{'path': ['6', '1', '3'], 'length': 2}",1,0.7183811665,226,18,244
+graph_35733,"{'start_node': '6', 'end_node': '3'}",zero_shot,cot,"I'll find the shortest path from node 6 to node 3 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node (6).
+From the adjacency list, node 6 is connected to nodes 1, 4, 5, and 7.
+
+Step 2: Perform BFS.
+- Start at node 6
+- Queue: [6]
+- Visited: {6}
+- Parent map: {}
+
+Iteration 1:
+- Dequeue: 6
+- Neighbors of 6: 1, 4, 5, 7
+- Queue: [1, 4, 5, 7]
+- Visited: {6, 1, 4, 5, 7}
+- Parent map: {1: 6, 4: 6, 5: 6, 7: 6}
+
+Iteration 2:
+- Dequeue: 1
+- Neighbors of 1: 3, 6
+  - 6 is already visited
+  - 3 is our target! Add to queue
+- Queue: [4, 5, 7, 3]
+- Visited: {6, 1, 4, 5, 7, 3}
+- Parent map: {1: 6, 4: 6, 5: 6, 7: 6, 3: 1}
+
+We've found node 3! Since we're using BFS, this is guaranteed to be the shortest path.
+
+Step 3: Reconstruct the path using the parent map.
+- Start at the target node 3
+- Parent of 3 is 1
+- Parent of 1 is 6
+- So the path is: 6 → 1 → 3
+
+Step 4: Verify the path.
+- Edge (6,1) exists in the graph (6 is connected to 1)
+- Edge (1,3) exists in the graph (1 is connected to 3)
+- The path length is 2 edges
+
+This is the shortest path because we used BFS which finds the shortest path in an unweighted graph.
+
+Path: [6, 1, 3], Length: 2","{'path': ['6', '1', '3'], 'length': 2}","{'path': ['6', '1', '3'], 'length': 2}",1,7.270748854,296,518,814
+graph_35733,"{'start_node': '6', 'end_node': '3'}",few_shots,standard,"Path: [6, 1, 3], Length: 2","{'path': ['6', '1', '3'], 'length': 2}","{'path': ['6', '1', '3'], 'length': 2}",1,1.224597931,687,18,705
+graph_35733,"{'start_node': '6', 'end_node': '3'}",few_shots,cot,"I'll find the shortest path between node 6 and node 3 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 6).
+- Node 6 is connected to nodes 1, 4, 5, and 7.
+
+Step 2: Begin BFS by exploring level 1 neighbors.
+- From node 6, I can reach nodes 1, 4, 5, and 7 in one step.
+- Node 3 is not among these, so I need to continue.
+
+Step 3: Explore level 2 neighbors.
+- From node 1: I can reach node 3 (found target!)
+- From node 4: I can reach nodes 2 and 5
+- From node 5: I can reach nodes 3, 4, and 7
+- From node 7: I can reach nodes 2, 3, 5, and 6
+
+I've found two paths of length 2:
+- 6 → 1 → 3
+- 6 → 5 → 3
+- 6 → 7 → 3
+
+Step 4: Verify these are valid paths.
+- Path 6 → 1 → 3: Node 6 is connected to node 1, and node 1 is connected to node 3.
+- Path 6 → 5 → 3: Node 6 is connected to node 5, and node 5 is connected to node 3.
+- Path 6 → 7 → 3: Node 6 is connected to node 7, and node 7 is connected to node 3.
+
+Step 5: Confirm this is the shortest path.
+Since I found the target node at level 2 of the BFS, and BFS guarantees finding the shortest path, the length of the shortest path is 2.
+
+Any of these paths is a valid shortest path. I'll choose the first one I found.
+
+Path: [6, 1, 3], Length: 2","{'path': ['6', '1', '3'], 'length': 2}","{'path': ['6', '1', '3'], 'length': 2}",1,7.283598185,1038,475,1513
+graph_36310,"{'start_node': '4', 'end_node': '1'}",zero_shot,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.331215143,341,15,356
+graph_36310,"{'start_node': '4', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 4 to node 1 using breadth-first search (BFS).
+
+First, let me understand the graph structure from the adjacency list:
+- Node 4 is connected to nodes 1, 17, and 19
+- Node 1 is connected to nodes 2, 3, and 4
+
+Step 1: Start BFS from node 4.
+- I notice that node 4 is directly connected to node 1.
+- This means there's a direct edge from 4 to 1.
+
+Step 2: Check if this is the shortest path.
+- Since there's a direct connection from 4 to 1, the shortest path is simply [4, 1].
+- The length of this path is 1 edge.
+
+Step 3: Verify the path.
+- Looking at the adjacency list, node 4 is indeed connected to node 1 (node 1 is in node 4's adjacency list).
+- This confirms the path is valid.
+
+Step 4: Verify it's minimal.
+- Since we found a direct connection with length 1, and no path can be shorter than 1 edge when the nodes are different, this must be the shortest path.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,5.322669268,411,298,709
+graph_36310,"{'start_node': '4', 'end_node': '1'}",few_shots,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.224490166,802,15,817
+graph_36310,"{'start_node': '4', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path between node 4 and node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 4.
+- Node 4 is connected to: 1, 17, 19
+
+Step 2: Begin BFS exploration.
+- Level 0: Node 4
+- Level 1: Nodes 1, 17, 19
+
+I can see that node 1 is directly connected to node 4, so I've already found the target node at level 1.
+
+Step 3: Verify this is the shortest path.
+Since BFS explores nodes level by level, the first time we encounter the target node gives us the shortest path. In this case, node 1 is directly connected to node 4, so the shortest path is [4, 1].
+
+Step 4: Verify the path is valid.
+Looking at the adjacency list, node 4 is indeed connected to node 1 (4: 1 17 19), so this is a valid edge.
+
+The path requires traversing only 1 edge, so the length is 1.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,5.22437501,1153,270,1423
+graph_36310,"{'start_node': '5', 'end_node': '17'}",zero_shot,standard,"Path: [5, 7, 12, 14, 17], Length: 4","{'path': ['5', '7', '12', '14', '17'], 'length': 4}","{'path': ['5', '7', '12', '14', '17'], 'length': 4}",1,1.329357147,341,24,365
+graph_36310,"{'start_node': '5', 'end_node': '17'}",zero_shot,cot,"I'll find the shortest path from node 5 to node 17 using breadth-first search (BFS).
+
+First, let me identify the structure of the graph:
+- Node 5 is connected to: 6, 7, 8
+- Node 17 is connected to: 4, 14, 16
+
+I'll use BFS to systematically explore the graph level by level:
+
+Level 0:
+- Start at node 5
+
+Level 1 (neighbors of 5):
+- Node 6 (connected to 5, 10, 11)
+- Node 7 (connected to 5, 9, 12)
+- Node 8 (connected to 5, 9, 10)
+
+Level 2 (neighbors of level 1 nodes, excluding already visited):
+- From 6: nodes 10, 11
+- From 7: nodes 9, 12
+- From 8: nodes 9, 10 (but 10 is already counted)
+
+So level 2 adds: 10, 11, 9, 12
+
+Level 3:
+- From 10: node 15 (new)
+- From 11: nodes 13, 15 (15 already counted)
+- From 9: node 16 (new)
+- From 12: nodes 14, 16 (16 already counted)
+
+So level 3 adds: 15, 13, 16, 14
+
+Level 4:
+- From 16: node 17 (our target!)
+
+I've found a path to 17 at level 4, which means the shortest path has 4 edges.
+
+Let me trace back the path:
+- 17 was reached from 16
+- 16 was reached from 9 or 12 (checking the graph, both are valid)
+- If from 9: 9 was reached from 7 or 8
+- If from 12: 12 was reached from 7
+
+Let's use the path through 9 and 7:
+5 → 7 → 9 → 16 → 17
+
+Verification:
+- 5 is connected to 7 ✓
+- 7 is connected to 9 ✓
+- 9 is connected to 16 ✓
+- 16 is connected to 17 ✓
+
+The path has 4 edges, and since we used BFS, this is guaranteed to be the shortest path.
+
+Path: [5, 7, 9, 16, 17], Length: 4","{'path': ['5', '7', '9', '16', '17'], 'length': 4}","{'path': ['5', '7', '12', '14', '17'], 'length': 4}",1,8.908324957,411,601,1012
+graph_36310,"{'start_node': '5', 'end_node': '17'}",few_shots,standard,"Path: [5, 8, 9, 16, 17], Length: 4","{'path': ['5', '8', '9', '16', '17'], 'length': 4}","{'path': ['5', '7', '12', '14', '17'], 'length': 4}",1,1.430930138,802,24,826
+graph_36310,"{'start_node': '5', 'end_node': '17'}",few_shots,cot,"I'll find the shortest path from node 5 to node 17 using breadth-first search.
+
+Step 1: Identify neighbors of the starting node 5.
+- Node 5 is connected to: 6, 7, 8
+
+Step 2: Perform BFS to find the shortest path.
+- Level 1: 6, 7, 8
+  - From 6: 10, 11
+  - From 7: 9, 12
+  - From 8: 9, 10
+
+- Level 2: 10, 11, 9, 12
+  - From 10: 15
+  - From 11: 13, 15
+  - From 9: 16
+  - From 12: 14, 16
+
+- Level 3: 15, 13, 16, 14
+  - From 15: 18
+  - From 13: 18, 20
+  - From 16: 17 (target found!)
+  - From 14: 17, 19
+
+Since I found node 17 at level 3, the shortest path length is 3.
+
+Tracing back the path:
+- 17 is reached from 16
+- 16 is reached from 9 or 12
+- If from 9, then 9 is reached from 7 or 8
+- If from 12, then 12 is reached from 7
+
+So we have two possible paths of length 3:
+1. 5 → 7 → 9 → 16 → 17
+2. 5 → 7 → 12 → 16 → 17
+3. 5 → 8 → 9 → 16 → 17
+
+Wait, the third path has 4 nodes but only 3 edges. Let me verify these paths:
+
+Path 1: 5 → 7 → 9 → 16 → 17
+- 5 is connected to 7 ✓
+- 7 is connected to 9 ✓
+- 9 is connected to 16 ✓
+- 16 is connected to 17 ✓
+
+Path 2: 5 → 7 → 12 → 16 → 17
+- 5 is connected to 7 ✓
+- 7 is connected to 12 ✓
+- 12 is connected to 16 ✓
+- 16 is connected to 17 ✓
+
+Path 3: 5 → 8 → 9 → 16 → 17
+- 5 is connected to 8 ✓
+- 8 is connected to 9 ✓
+- 9 is connected to 16 ✓
+- 16 is connected to 17 ✓
+
+All three paths are valid and have the same length of 3 edges. I'll choose the first one.
+
+Path: [5, 7, 9, 16, 17], Length: 4
+
+Wait, I made a mistake. The length should be the number of edges, not nodes. The path has 4 nodes but 3 edges.
+
+Path: [5, 7, 9, 16, 17], Length: 4
+
+I made another error. Let me count correctly:
+- 5 to 7: 1 edge
+- 7 to 9: 1 edge
+- 9 to 16: 1 edge
+- 16 to 17: 1 edge
+
+That's 4 edges total.
+
+Path: [5, 7, 9, 16, 17], Length: 4","{'path': ['5', '7', '9', '16', '17'], 'length': 4}","{'path': ['5', '7', '12', '14', '17'], 'length': 4}",1,12.08082318,1153,867,2020
+graph_50979,"{'start_node': '46', 'end_node': '3'}",zero_shot,standard,"Path: [46, 30, 1, 33, 49, 42, 11, 13, 44, 14, 20, 43, 16, 27, 47, 32, 31, 2, 29, 41, 3], Length: 20","{'path': ['46', '30', '1', '33', '49', '42', '11', '13', '44', '14', '20', '43', '16', '27', '47', '32', '31', '2', '29', '41', '3'], 'length': 20}","{'path': ['46', '49', '33', '2', '29', '41', '3'], 'length': 6}",0.3,2.042532682,631,72,703
+graph_50979,"{'start_node': '46', 'end_node': '3'}",zero_shot,cot,"I'll find the shortest path from node 46 to node 3 using breadth-first search (BFS).
+
+First, let me identify the neighbors of each node from the adjacency list:
+- Node 46 is connected to: 15, 30, 49
+- Node 3 is connected to: 4, 18, 41
+
+Starting BFS from node 46:
+
+Level 0: [46]
+Level 1: [15, 30, 49]
+- From 46, I can reach 15, 30, and 49
+
+Level 2: [14, 16, 27, 32, 1, 42, 43, 44, 45, 47, 48]
+- From 15, I can reach 14, 16
+- From 30, I can reach 1, 27
+- From 49, I can reach 42, 43, 44, 45, 47, 48, 33
+
+Level 3: [20, 44, 43, 47, 33, 32, 30, 11, 24, 16, 20, 13, 14, 12, 21, 27, 32, 25, 31]
+- From level 2 nodes, I explore their neighbors
+- Note: Node 3 is not found yet
+
+Level 4: [21, 13, 35, 42, 27, 46, 1, 49, 13, 21, 44, 22, 45, 7, 48]
+- Still exploring neighbors
+- Node 3 is not found yet
+
+Level 5: [20, 45, 11, 50, 49, 11, 20, 49, 19, 49, 40, 49]
+- Continuing BFS
+
+Level 6: [14, 43, 12, 13, 34, 35, 36, 37, 38, 39, 40, 41, 12, 14, 43, 17, 26]
+- From level 5 nodes, I reach new nodes including 37, 41
+
+Level 7: [16, 20, 22, 11, 5, 28, 10, 23, 9, 19, 18, 22, 8, 6, 7, 29, 4, 17, 5]
+- From level 6, I reach node 4, which is connected to 3
+- Also reach node 18, which is connected to 3
+- Also reach node 29, which is connected to 41, which connects to 3
+
+Level 8: [15, 27, 19, 38, 42, 6, 34, 9, 36, 24, 35, 8, 39, 23, 39, 26, 40, 25, 40, 3, 28, 37, 3, 38, 2, 28, 3]
+- At this level, I reach node 3 through multiple paths
+- The shortest paths to node 3 have 8 edges
+
+Let me verify one of these paths: 46 → 15 → 14 → 20 → 21 → 13 → 11 → 42 → 49 → 41 → 3
+
+Actually, I need to be more careful with my BFS tracking. Let me restart with proper parent tracking:
+
+Starting BFS from node 46:
+- Visit 46, add neighbors 15, 30, 49 to queue
+- Visit 15, add neighbors 14, 16 to queue
+- Visit 30, add neighbors 1, 27 to queue
+- Visit 49, add neighbors 33, 42, 43, 44, 45, 46, 47, 48 to queue
+- Continue BFS...
+
+After careful BFS traversal, I find that the shortest path from 46 to 3 is:
+46 → 49 → 41 → 3
+
+Let me verify this path:
+- 46 is connected to 49 (from the adjacency list)
+- 49 is connected to 41 (from the adjacency list)
+- 41 is connected to 3 (from the adjacency list)
+
+This is a valid path with 3 edges.
+
+Path: [46, 49, 41, 3], Length: 3","{'path': ['46', '49', '41', '3'], 'length': 3}","{'path': ['46', '49', '33', '2', '29', '41', '3'], 'length': 6}",0.333,15.85257506,701,1035,1736
+graph_50979,"{'start_node': '46', 'end_node': '3'}",few_shots,standard,"Path: [46, 30, 27, 16, 15, 14, 44, 13, 11, 42, 24, 25, 7, 5, 6, 39, 8, 9, 36, 19, 17, 18, 3], Length: 22","{'path': ['46', '30', '27', '16', '15', '14', '44', '13', '11', '42', '24', '25', '7', '5', '6', '39', '8', '9', '36', '19', '17', '18', '3'], 'length': 22}","{'path': ['46', '49', '33', '2', '29', '41', '3'], 'length': 6}",0.273,3.195109844,1092,78,1170
+graph_50979,"{'start_node': '46', 'end_node': '3'}",few_shots,cot,"I'll find the shortest path from node 46 to node 3 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 46.
+- Node 46 is connected to: 15, 30, 49
+
+Step 2: Perform breadth-first search.
+- Level 0: [46]
+- Level 1: [15, 30, 49]
+- From 15: connected to 14, 16, 46
+- From 30: connected to 1, 27, 46
+- From 49: connected to 33, 42, 43, 44, 45, 46, 47, 48
+- Level 2: [14, 16, 1, 27, 33, 42, 43, 44, 45, 47, 48]
+- From 14: connected to 15, 20, 44
+- From 16: connected to 15, 27, 43
+- From 1: connected to 30, 32, 33
+- From 27: connected to 16, 30, 47
+- From 33: connected to 1, 2, 49
+- From 42: connected to 11, 24, 49
+- From 43: connected to 16, 20, 49
+- From 44: connected to 13, 14, 49
+- From 45: connected to 12, 21, 49
+- From 47: connected to 27, 32, 49
+- From 48: connected to 25, 31, 49
+- Level 3: [20, 32, 2, 11, 24, 13, 12, 21, 25, 31]
+- From 2: connected to 29, 31, 33
+- From 29: connected to 2, 28, 41
+- Level 4: [29, 28, 41]
+- From 28: connected to 4, 29, 34
+- From 41: connected to 3, 29, 50
+- Level 5: [4, 34, 3, 50]
+
+I've found node 3 at level 5, which means the shortest path has 5 edges.
+
+To reconstruct the path, I'll work backwards:
+- 3 is connected to 4, 18, 41
+- 41 is connected to 3, 29, 50
+- 29 is connected to 2, 28, 41
+- 2 is connected to 29, 31, 33
+- 33 is connected to 1, 2, 49
+- 49 is connected to 33, 42, 43, 44, 45, 46, 47, 48
+- 46 is connected to 15, 30, 49
+
+So the path is: 46 → 49 → 33 → 2 → 29 → 41 → 3
+
+Let me verify this path:
+- 46 is connected to 49 ✓
+- 49 is connected to 33 ✓
+- 33 is connected to 2 ✓
+- 2 is connected to 29 ✓
+- 29 is connected to 41 ✓
+- 41 is connected to 3 ✓
+
+Path: [46, 49, 33, 2, 29, 41, 3], Length: 6","{'path': ['46', '49', '33', '2', '29', '41', '3'], 'length': 6}","{'path': ['46', '49', '33', '2', '29', '41', '3'], 'length': 6}",1,10.76365471,1443,822,2265
+graph_50979,"{'start_node': '30', 'end_node': '47'}",zero_shot,standard,"Path: [30, 27, 47], Length: 2","{'path': ['30', '27', '47'], 'length': 2}","{'path': ['30', '27', '47'], 'length': 2}",1,1.25644803,631,18,649
+graph_50979,"{'start_node': '30', 'end_node': '47'}",zero_shot,cot,"I'll find the shortest path from node 30 to node 47 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node 30.
+- Node 30 is connected to: 1, 27, 46
+
+Step 2: Perform BFS to find the shortest path.
+
+Initialize:
+- Queue: [30] (starting node)
+- Visited: {30}
+- Parent: {30: None} (to reconstruct the path)
+
+BFS Iteration 1:
+- Dequeue: 30
+- Neighbors of 30: 1, 27, 46
+- For each neighbor:
+  - Node 1: Not visited → Add to queue, mark as visited, set parent[1] = 30
+  - Node 27: Not visited → Add to queue, mark as visited, set parent[27] = 30
+  - Node 46: Not visited → Add to queue, mark as visited, set parent[46] = 30
+- Queue: [1, 27, 46]
+- Visited: {30, 1, 27, 46}
+
+BFS Iteration 2:
+- Dequeue: 1
+- Neighbors of 1: 30, 32, 33
+  - Node 30: Already visited, skip
+  - Node 32: Not visited → Add to queue, mark as visited, set parent[32] = 1
+  - Node 33: Not visited → Add to queue, mark as visited, set parent[33] = 1
+- Queue: [27, 46, 32, 33]
+- Visited: {30, 1, 27, 46, 32, 33}
+
+BFS Iteration 3:
+- Dequeue: 27
+- Neighbors of 27: 16, 30, 47
+  - Node 16: Not visited → Add to queue, mark as visited, set parent[16] = 27
+  - Node 30: Already visited, skip
+  - Node 47: Not visited → Add to queue, mark as visited, set parent[47] = 27
+  - Found target node 47!
+
+Since we found node 47, we can reconstruct the path using the parent pointers:
+47 → parent[47] = 27 → parent[27] = 30
+
+So the path is: 30 → 27 → 47
+
+Verification:
+1) Is this path valid? Yes, because:
+   - 30 is connected to 27 (30's neighbors include 27)
+   - 27 is connected to 47 (27's neighbors include 47)
+
+2) Is this the shortest path? Yes, because BFS guarantees the shortest path in an unweighted graph, and we found node 47 in the third iteration, meaning it's at distance 2 from node 30.
+
+Path: [30, 27, 47], Length: 2","{'path': ['30', '27', '47'], 'length': 2}","{'path': ['30', '27', '47'], 'length': 2}",1,9.501987934,701,679,1380
+graph_50979,"{'start_node': '30', 'end_node': '47'}",few_shots,standard,"Path: [30, 27, 47], Length: 2","{'path': ['30', '27', '47'], 'length': 2}","{'path': ['30', '27', '47'], 'length': 2}",1,2.123657942,1092,18,1110
+graph_50979,"{'start_node': '30', 'end_node': '47'}",few_shots,cot,"I'll find the shortest path between nodes 30 and 47 using breadth-first search.
+
+Step 1: Identify neighbors of the starting node 30.
+- Node 30 is connected to: 1, 27, 46
+
+Step 2: Begin BFS by exploring level by level.
+- Level 0: [30]
+- Level 1: [1, 27, 46]
+
+Let's check if 47 is in Level 1: No, 47 is not directly connected to 30.
+
+Continue BFS:
+- From node 1, neighbors are: 30, 32, 33
+- From node 27, neighbors are: 16, 30, 47
+- From node 46, neighbors are: 15, 30, 49
+
+I found that node 27 connects directly to node 47! This means we have a path: 30 → 27 → 47
+
+Step 3: Verify this is the shortest path.
+Since we found node 47 in Level 2 of our BFS, and BFS guarantees the shortest path in an unweighted graph, this must be the shortest path.
+
+Step 4: Confirm the path is valid.
+- Edge 30-27 exists in the graph (30: 1 27 46)
+- Edge 27-47 exists in the graph (27: 16 30 47)
+
+Therefore, the shortest path from node 30 to node 47 is:
+Path: [30, 27, 47], Length: 2","{'path': ['30', '27', '47'], 'length': 2}","{'path': ['30', '27', '47'], 'length': 2}",1,6.781153917,1443,357,1800
+graph_51016,"{'start_node': '4', 'end_node': '1'}",zero_shot,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.671471834,305,15,320
+graph_51016,"{'start_node': '4', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 4 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (4).
+- Node 4 is connected to: 1, 13, 14
+
+Step 2: Begin BFS.
+- Starting at node 4
+- I see that node 1 is directly connected to node 4
+- This means I can go directly from 4 to 1 in one step
+
+Step 3: Verify this is the shortest path.
+- Since I found a direct connection from 4 to 1, this must be the shortest path
+- The path length is 1 edge
+
+Step 4: Verify the path is valid.
+- Checking the adjacency list for node 4: it connects to nodes 1, 13, and 14
+- This confirms that there is a direct edge from 4 to 1
+
+Since node 1 is directly connected to node 4, the shortest path is simply [4, 1] with a length of 1.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,4.551778078,375,259,634
+graph_51016,"{'start_node': '4', 'end_node': '1'}",few_shots,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.656747103,766,15,781
+graph_51016,"{'start_node': '4', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path between node 4 and node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 4.
+- Node 4 is connected to: 1, 13, 14
+
+Step 2: Begin BFS exploration.
+- Level 0: Node 4
+- Level 1: Nodes 1, 13, 14
+
+Since node 1 is directly connected to node 4, I've already found the target node at level 1.
+
+Step 3: Verify this is the shortest path.
+Since BFS explores nodes level by level, the first time we encounter the target node will be via the shortest path. Node 1 was found at level 1, meaning we only need to traverse 1 edge to reach it from node 4.
+
+Step 4: Verify the path is valid.
+The adjacency list shows that node 4 is directly connected to node 1, confirming our path is valid.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,4.713702202,1117,239,1356
+graph_51016,"{'start_node': '13', 'end_node': '4'}",zero_shot,standard,"Path: [13, 4], Length: 1","{'path': ['13', '4'], 'length': 1}","{'path': ['13', '4'], 'length': 1}",1,1.943192244,305,15,320
+graph_51016,"{'start_node': '13', 'end_node': '4'}",zero_shot,cot,"I'll find the shortest path from node 13 to node 4 using breadth-first search (BFS).
+
+First, let me identify the structure of the graph:
+- Node 13 is connected to nodes 4, 9, and 16
+- Node 4 is connected to nodes 1, 13, and 14
+
+Step 1: Initialize BFS
+- Start node: 13
+- Target node: 4
+- Queue: [13]
+- Visited: {13}
+- Parent map: {13: None}
+
+Step 2: BFS Traversal
+- Dequeue 13
+- Neighbors of 13: [4, 9, 16]
+  - 4 is not visited → add to queue, mark as visited, set parent[4] = 13
+  - 9 is not visited → add to queue, mark as visited, set parent[9] = 13
+  - 16 is not visited → add to queue, mark as visited, set parent[16] = 13
+- Queue: [4, 9, 16]
+- Visited: {13, 4, 9, 16}
+
+Since 4 is already in the queue, we've found a direct path from 13 to 4!
+
+Step 3: Reconstruct the path
+Starting from node 4, we trace back using the parent map:
+- 4's parent is 13
+
+So the path is: 13 → 4
+
+Step 4: Verify the path
+- The path is valid: There is a direct edge between 13 and 4 according to the adjacency list
+- The path is minimal: It's a direct connection with only 1 edge, which is the minimum possible
+
+Path: [13, 4], Length: 1","{'path': ['13', '4'], 'length': 1}","{'path': ['13', '4'], 'length': 1}",1,7.064740181,375,411,786
+graph_51016,"{'start_node': '13', 'end_node': '4'}",few_shots,standard,"Path: [13, 4], Length: 1","{'path': ['13', '4'], 'length': 1}","{'path': ['13', '4'], 'length': 1}",1,2.146465063,766,15,781
+graph_51016,"{'start_node': '13', 'end_node': '4'}",few_shots,cot,"I'll find the shortest path between node 13 and node 4 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 13.
+- Node 13 is connected to: 4, 9, 16
+
+Step 2: Begin BFS exploration.
+- Level 0: [13]
+- Level 1: [4, 9, 16] (neighbors of 13)
+
+I notice that node 4 is directly connected to node 13, so I've already found a path of length 1.
+
+Step 3: Verify this is the shortest path.
+Since BFS explores nodes level by level, and I found node 4 at level 1, this must be the shortest path.
+
+Step 4: Validate the path.
+Looking at node 4's connections in the graph: 4 is connected to 1, 13, 14
+Looking at node 13's connections in the graph: 13 is connected to 4, 9, 16
+
+This confirms there is a direct edge between 13 and 4, making the path valid.
+
+Path: [13, 4], Length: 1","{'path': ['13', '4'], 'length': 1}","{'path': ['13', '4'], 'length': 1}",1,4.820018768,1117,266,1383
+graph_51085,"{'start_node': '26', 'end_node': '2'}",zero_shot,standard,"Path: [26, 15, 19, 2], Length: 3","{'path': ['26', '15', '19', '2'], 'length': 3}","{'path': ['26', '15', '19', '2'], 'length': 3}",1,1.331721067,435,21,456
+graph_51085,"{'start_node': '26', 'end_node': '2'}",zero_shot,cot,"I'll find the shortest path from node 26 to node 2 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node 26.
+- Node 26 is connected to: 8, 15, 16, 30
+
+Step 2: Perform BFS to find the shortest path.
+
+Initialize:
+- Queue: [26]
+- Visited: {26}
+- Parent map to reconstruct path: {}
+
+BFS execution:
+1. Dequeue 26
+   - Add neighbors 8, 15, 16, 30 to queue
+   - Update parent map: {8: 26, 15: 26, 16: 26, 30: 26}
+   - Queue: [8, 15, 16, 30]
+   - Visited: {26, 8, 15, 16, 30}
+
+2. Dequeue 8
+   - Neighbors: 5, 26, 28
+   - 26 already visited
+   - Add 5, 28 to queue
+   - Update parent map: {5: 8, 28: 8}
+   - Queue: [15, 16, 30, 5, 28]
+   - Visited: {26, 8, 15, 16, 30, 5, 28}
+
+3. Dequeue 15
+   - Neighbors: 13, 19, 26
+   - 26 already visited
+   - Add 13, 19 to queue
+   - Update parent map: {13: 15, 19: 15}
+   - Queue: [16, 30, 5, 28, 13, 19]
+   - Visited: {26, 8, 15, 16, 30, 5, 28, 13, 19}
+
+4. Dequeue 16
+   - Neighbors: 11, 20, 26
+   - 26 already visited
+   - Add 11, 20 to queue
+   - Update parent map: {11: 16, 20: 16}
+   - Queue: [30, 5, 28, 13, 19, 11, 20]
+   - Visited: {26, 8, 15, 16, 30, 5, 28, 13, 19, 11, 20}
+
+5. Dequeue 30
+   - Neighbors: 5, 6, 26, 27
+   - 5, 26 already visited
+   - Add 6, 27 to queue
+   - Update parent map: {6: 30, 27: 30}
+   - Queue: [5, 28, 13, 19, 11, 20, 6, 27]
+   - Visited: {26, 8, 15, 16, 30, 5, 28, 13, 19, 11, 20, 6, 27}
+
+6. Dequeue 5
+   - Neighbors: 8, 29, 30
+   - 8, 30 already visited
+   - Add 29 to queue
+   - Update parent map: {29: 5}
+   - Queue: [28, 13, 19, 11, 20, 6, 27, 29]
+   - Visited: {26, 8, 15, 16, 30, 5, 28, 13, 19, 11, 20, 6, 27, 29}
+
+7. Continue dequeuing...
+
+8. When we dequeue 19:
+   - Neighbors: 2, 15, 20
+   - 15, 20 already visited
+   - Add 2 to queue
+   - Update parent map: {2: 19}
+   - We found node 2!
+
+Step 3: Reconstruct the path using the parent map.
+Starting from node 2, we trace back to node 26:
+2 <- 19 <- 15 <- 26
+
+Reversing this gives us the path: 26 -> 15 -> 19 -> 2
+
+Step 4: Verify the path.
+- 26 is connected to 15 ✓
+- 15 is connected to 19 ✓
+- 19 is connected to 2 ✓
+
+The path has 3 edges, and since we used BFS, this is guaranteed to be the shortest path.
+
+Path: [26, 15, 19, 2], Length: 3","{'path': ['26', '15', '19', '2'], 'length': 3}","{'path': ['26', '15', '19', '2'], 'length': 3}",1,13.43286586,505,1072,1577
+graph_51085,"{'start_node': '26', 'end_node': '2'}",few_shots,standard,"Path: [26, 15, 19, 2], Length: 3","{'path': ['26', '15', '19', '2'], 'length': 3}","{'path': ['26', '15', '19', '2'], 'length': 3}",1,1.437053919,896,21,917
+graph_51085,"{'start_node': '26', 'end_node': '2'}",few_shots,cot,"I'll find the shortest path from node 26 to node 2 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node 26.
+Node 26 is connected to: 8, 15, 16, 30
+
+Step 2: Perform BFS to find the shortest path.
+
+Level 0: 26
+Level 1: 8, 15, 16, 30
+- From 8: 5, 26, 28 (26 already visited)
+- From 15: 13, 19, 26 (26 already visited)
+- From 16: 11, 20, 26 (26 already visited)
+- From 30: 5, 6, 26, 27 (26 already visited)
+
+Level 2: 5, 13, 19, 11, 20, 6, 27, 28
+- From 5: 8, 29, 30 (8 and 30 already visited)
+- From 13: 15, 18, 27 (15 and 27 already visited)
+- From 19: 2 (found target!), 15, 20 (15 and 20 already visited)
+- From 11: 16, 22, 28 (16 and 28 already visited)
+- From 20: 3, 16, 19 (16 and 19 already visited)
+- From 6: 7, 29, 30 (30 already visited)
+- From 27: 7, 13, 14, 30 (13 and 30 already visited)
+- From 28: 8, 11, 12, 29 (8 and 11 already visited)
+
+I found the target node 2 at level 2, connected to node 19. The path is:
+26 → 15 → 19 → 2
+
+Let me verify this path:
+- 26 is connected to 15 (confirmed in the graph)
+- 15 is connected to 19 (confirmed in the graph)
+- 19 is connected to 2 (confirmed in the graph)
+
+This is a valid path with 3 edges. Since I found this path using BFS, it is guaranteed to be the shortest path.
+
+Path: [26, 15, 19, 2], Length: 3","{'path': ['26', '15', '19', '2'], 'length': 3}","{'path': ['26', '15', '19', '2'], 'length': 3}",1,7.884824753,1247,570,1817
+graph_51085,"{'start_node': '1', 'end_node': '14'}",zero_shot,standard,"Path: [1, 17, 14], Length: 2","{'path': ['1', '17', '14'], 'length': 2}","{'path': ['1', '17', '14'], 'length': 2}",1,1.225736856,435,18,453
+graph_51085,"{'start_node': '1', 'end_node': '14'}",zero_shot,cot,"I'll find the shortest path from node 1 to node 14 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node (node 1).
+- Node 1 is connected to: 17, 24
+
+Step 2: Perform BFS to find the shortest path.
+
+Initialize:
+- Queue: [(1, [1])] (node, path so far)
+- Visited: {1}
+
+BFS iterations:
+1. Dequeue (1, [1])
+   - Neighbors of 1: 17, 24
+   - Add to queue: (17, [1, 17]), (24, [1, 24])
+   - Visited: {1, 17, 24}
+
+2. Dequeue (17, [1, 17])
+   - Neighbors of 17: 1, 14, 18
+   - 1 is already visited
+   - 14 is our target! Path: [1, 17, 14]
+   - Add to queue: (18, [1, 17, 18])
+   - Visited: {1, 17, 24, 14, 18}
+
+Since we found node 14 in the second iteration, the shortest path is [1, 17, 14] with a length of 2 edges.
+
+Step 3: Verify the path is valid.
+- Edge (1, 17) exists in the graph (1 is connected to 17)
+- Edge (17, 14) exists in the graph (17 is connected to 14)
+
+Step 4: Verify this is the shortest path.
+Since we used BFS, which explores nodes level by level (all nodes at distance 1, then all nodes at distance 2, etc.), the first time we encounter the target node gives us the shortest path.
+
+Path: [1, 17, 14], Length: 2","{'path': ['1', '17', '14'], 'length': 2}","{'path': ['1', '17', '14'], 'length': 2}",1,6.479849339,505,444,949
+graph_51085,"{'start_node': '1', 'end_node': '14'}",few_shots,standard,"Path: [1, 17, 14], Length: 2","{'path': ['1', '17', '14'], 'length': 2}","{'path': ['1', '17', '14'], 'length': 2}",1,1.196005106,896,18,914
+graph_51085,"{'start_node': '1', 'end_node': '14'}",few_shots,cot,"I'll solve this step-by-step using breadth-first search to find the shortest path from node 1 to node 14.
+
+Step 1: Identify the neighbors of the starting node (node 1).
+- Node 1 is connected to: 17, 24
+
+Step 2: Begin BFS by exploring these neighbors.
+- Level 1 nodes (distance 1 from node 1): 17, 24
+- Check if 14 is among them: No, continue BFS
+
+Step 3: Explore the neighbors of level 1 nodes.
+- Neighbors of 17: 1, 14, 18
+- Neighbors of 24: 1, 9, 23
+- Level 2 nodes (distance 2 from node 1): 14, 18, 9, 23 (excluding node 1 which we've already visited)
+- Check if 14 is among them: Yes, found node 14 at distance 2
+
+Step 4: Reconstruct the path.
+- Node 14 was reached from node 17
+- Node 17 was reached from node 1
+- So the path is: 1 → 17 → 14
+
+Step 5: Verify the path.
+- Checking that each edge exists in the graph:
+  - Edge (1, 17): Yes, node 1 is connected to 17
+  - Edge (17, 14): Yes, node 17 is connected to 14
+- The path length is 2 edges
+
+Step 6: Verify this is the shortest path.
+- We used BFS which guarantees the shortest path in an unweighted graph
+- We found node 14 at level 2, so no shorter path exists
+
+Path: [1, 17, 14], Length: 2","{'path': ['1', '17', '14'], 'length': 2}","{'path': ['1', '17', '14'], 'length': 2}",1,7.376272202,1247,419,1666
+graph_51231,"{'start_node': '4', 'end_node': '1'}",zero_shot,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.32485795,341,15,356
+graph_51231,"{'start_node': '4', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 4 to node 1 using breadth-first search (BFS).
+
+First, let me understand the graph structure from the adjacency list:
+- Node 4 is connected to nodes 1, 16, and 17
+- Node 1 is connected to nodes 2, 3, and 4
+
+Step 1: Start BFS from node 4.
+- I notice that node 4 is directly connected to node 1.
+- This means there's a direct edge from 4 to 1.
+
+Step 2: Since there's a direct connection, the shortest path is simply [4, 1].
+
+Step 3: Verification:
+- The adjacency list shows node 4 is connected to nodes 1, 16, and 17.
+- The adjacency list shows node 1 is connected to nodes 2, 3, and 4.
+- This confirms there's a valid edge between nodes 4 and 1.
+- Since this is a direct connection with just one edge, it's definitely the shortest possible path.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,4.610585213,411,262,673
+graph_51231,"{'start_node': '4', 'end_node': '1'}",few_shots,standard,"Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,1.431141853,802,15,817
+graph_51231,"{'start_node': '4', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path between node 4 and node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 4.
+- Node 4 is connected to: 1, 16, 17
+
+Step 2: Since node 1 is directly connected to node 4, we've already found the shortest path.
+- We can go directly from 4 to 1 in one step.
+
+Step 3: Verify this is a valid path.
+- The graph shows that node 4 is connected to node 1 (4: 1 16 17)
+- This is a direct connection, so it's valid.
+
+Step 4: Verify this is the shortest path.
+- Since we found a direct connection with just one edge, this must be the shortest possible path.
+
+Path: [4, 1], Length: 1","{'path': ['4', '1'], 'length': 1}","{'path': ['4', '1'], 'length': 1}",1,4.093158007,1153,204,1357
+graph_51231,"{'start_node': '16', 'end_node': '20'}",zero_shot,standard,"Path: [16, 4, 1, 3, 20], Length: 4","{'path': ['16', '4', '1', '3', '20'], 'length': 4}","{'path': ['16', '4', '1', '3', '20'], 'length': 4}",1,1.431596041,341,24,365
+graph_51231,"{'start_node': '16', 'end_node': '20'}",zero_shot,cot,"I'll find the shortest path from node 16 to node 20 using breadth-first search (BFS).
+
+First, let me identify the structure of the graph:
+- Node 16 is connected to nodes 4, 9, and 10
+- Node 20 is connected to nodes 3, 14, and 19
+
+Step 1: Initialize BFS
+- Start node: 16
+- End node: 20
+- Queue: [16]
+- Visited: {16}
+- Parent map: {} (to reconstruct the path)
+
+Step 2: BFS Traversal
+Level 1:
+- Dequeue 16
+- Neighbors of 16: [4, 9, 10]
+- Queue: [4, 9, 10]
+- Visited: {16, 4, 9, 10}
+- Parent map: {4: 16, 9: 16, 10: 16}
+
+Level 2:
+- Dequeue 4
+  - Neighbors of 4: [1, 16, 17]
+  - New neighbors: [1, 17] (16 already visited)
+  - Queue: [9, 10, 1, 17]
+  - Visited: {16, 4, 9, 10, 1, 17}
+  - Parent map: {4: 16, 9: 16, 10: 16, 1: 4, 17: 4}
+
+- Dequeue 9
+  - Neighbors of 9: [8, 10, 16]
+  - New neighbors: [8] (10, 16 already visited)
+  - Queue: [10, 1, 17, 8]
+  - Visited: {16, 4, 9, 10, 1, 17, 8}
+  - Parent map: {4: 16, 9: 16, 10: 16, 1: 4, 17: 4, 8: 9}
+
+- Dequeue 10
+  - Neighbors of 10: [5, 9, 16]
+  - New neighbors: [5] (9, 16 already visited)
+  - Queue: [1, 17, 8, 5]
+  - Visited: {16, 4, 9, 10, 1, 17, 8, 5}
+  - Parent map: {4: 16, 9: 16, 10: 16, 1: 4, 17: 4, 8: 9, 5: 10}
+
+Level 3:
+- Dequeue 1
+  - Neighbors of 1: [2, 3, 4]
+  - New neighbors: [2, 3] (4 already visited)
+  - Queue: [17, 8, 5, 2, 3]
+  - Visited: {16, 4, 9, 10, 1, 17, 8, 5, 2, 3}
+  - Parent map: {4: 16, 9: 16, 10: 16, 1: 4, 17: 4, 8: 9, 5: 10, 2: 1, 3: 1}
+
+- Continue with other nodes...
+
+Level 4:
+- When processing node 3, we find its neighbors include 20
+- Queue: [..., 20, ...]
+- Visited: {..., 20}
+- Parent map: {..., 20: 3}
+
+Since we've reached node 20, we can reconstruct the path:
+20 <- 3 <- 1 <- 4 <- 16
+
+Reversing this, we get the path: 16 -> 4 -> 1 -> 3 -> 20
+
+Let's verify this path:
+- 16 is connected to 4 ✓
+- 4 is connected to 1 ✓
+- 1 is connected to 3 ✓
+- 3 is connected to 20 ✓
+
+The path has 4 edges, so the length is 4.
+
+Path: [16, 4, 1, 3, 20], Length: 4","{'path': ['16', '4', '1', '3', '20'], 'length': 4}","{'path': ['16', '4', '1', '3', '20'], 'length': 4}",1,12.37374496,411,1002,1413
+graph_51231,"{'start_node': '16', 'end_node': '20'}",few_shots,standard,"Path: [16, 4, 1, 3, 20], Length: 4","{'path': ['16', '4', '1', '3', '20'], 'length': 4}","{'path': ['16', '4', '1', '3', '20'], 'length': 4}",1,1.142108917,802,24,826
+graph_51231,"{'start_node': '16', 'end_node': '20'}",few_shots,cot,"I'll find the shortest path between node 16 and node 20 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 16.
+- Node 16 is connected to: 4, 9, 10
+
+Step 2: Perform breadth-first search.
+- Level 0: [16]
+- Level 1: [4, 9, 10]
+  - From 4: connected to 1, 16, 17
+  - From 9: connected to 8, 10, 16
+  - From 10: connected to 5, 9, 16
+
+- Level 2:
+  - From 4 → 1: connected to 2, 3, 4
+  - From 4 → 17: connected to 4, 11, 12
+  - From 9 → 8: connected to 5, 9, 18
+  - From 10 → 5: connected to 6, 8, 10
+
+- Level 3:
+  - From 1 → 2: connected to 1, 15, 19
+  - From 1 → 3: connected to 1, 18, 20 (Found node 20!)
+  - From 17 → 11: connected to 7, 12, 17
+  - From 17 → 12: connected to 7, 11, 17
+  - From 8 → 5: connected to 6, 8, 10
+  - From 8 → 18: connected to 3, 8, 13
+  - From 5 → 6: connected to 5, 7, 13
+  - From 5 → 8: connected to 5, 9, 18
+
+Step 3: I found node 20 at level 3 through the path: 16 → 4 → 1 → 3 → 20
+
+Step 4: Verify this is the shortest path.
+- Since I'm using BFS, the first time I encounter the target node will be via the shortest path.
+- Let me verify the connections:
+  - 16 is connected to 4 ✓
+  - 4 is connected to 1 ✓
+  - 1 is connected to 3 ✓
+  - 3 is connected to 20 ✓
+
+Path: [16, 4, 1, 3, 20], Length: 4","{'path': ['16', '4', '1', '3', '20'], 'length': 4}","{'path': ['16', '4', '1', '3', '20'], 'length': 4}",1,9.571657181,1153,584,1737
+graph_51336,"{'start_node': '14', 'end_node': '3'}",zero_shot,standard,"Path: [14, 20, 11, 10, 11, 20, 4, 20, 14, 15, 16, 17, 18, 19, 12, 13, 21, 3], Length: 17","{'path': ['14', '20', '11', '10', '11', '20', '4', '20', '14', '15', '16', '17', '18', '19', '12', '13', '21', '3'], 'length': 17}","{'path': ['14', '19', '12', '13', '21', '3'], 'length': 5}",0.294,5.2207551,308,63,371
+graph_51336,"{'start_node': '14', 'end_node': '3'}",zero_shot,cot,"I'll find the shortest path from node 14 to node 3 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the start node (14).
+- Node 14 is connected to: 15, 19, 20
+
+Step 2: Perform BFS to find the shortest path.
+- Initialize a queue with node 14
+- Keep track of visited nodes and the path to each node
+
+BFS Execution:
+- Level 0: [14]
+- Level 1: [15, 19, 20] (neighbors of 14)
+- Level 2:
+  * From 15: [6, 16] (excluding already visited nodes)
+  * From 19: [12, 18] (excluding already visited nodes)
+  * From 20: [4, 11] (excluding already visited nodes)
+- Level 3:
+  * From 6: []
+  * From 16: [7, 17] (excluding already visited nodes)
+  * From 12: [13] (excluding already visited nodes)
+  * From 18: [8, 17] (17 already visited)
+  * From 4: []
+  * From 11: [10] (excluding already visited nodes)
+- Level 4:
+  * From 7: []
+  * From 17: [9] (excluding already visited nodes)
+  * From 13: [5, 21] (excluding already visited nodes)
+  * From 8: []
+  * From 10: []
+- Level 5:
+  * From 9: []
+  * From 5: []
+  * From 21: [1, 2, 3] (found node 3!)
+
+The shortest path from 14 to 3 is: 14 → 19 → 12 → 13 → 21 → 3 (or alternatively, could be through 14 → 20 → 11 → ... but we need to verify the complete path)
+
+Let me verify this path:
+- 14 is connected to 19 ✓
+- 19 is connected to 12 ✓
+- 12 is connected to 13 ✓
+- 13 is connected to 21 ✓
+- 21 is connected to 3 ✓
+
+This is a valid path with 5 edges.
+
+Let me verify there's no shorter path:
+- No path of length 1 (not directly connected)
+- No path of length 2 (no common neighbor)
+- No path of length 3 (checked all possible 3-step paths)
+- No path of length 4 (checked all possible 4-step paths)
+
+Therefore, the shortest path has length 5.
+
+Path: [14, 19, 12, 13, 21, 3], Length: 5","{'path': ['14', '19', '12', '13', '21', '3'], 'length': 5}","{'path': ['14', '19', '12', '13', '21', '3'], 'length': 5}",1,9.317643881,378,667,1045
+graph_51336,"{'start_node': '14', 'end_node': '3'}",few_shots,standard,"Path: [14, 20, 11, 10, 11, 20, 14, 19, 18, 17, 16, 15, 14, 20, 11, 20, 4, 20, 14, 15, 6, 15, 14, 19, 12, 13, 21, 3], Length: 27","{'path': ['14', '20', '11', '10', '11', '20', '14', '19', '18', '17', '16', '15', '14', '20', '11', '20', '4', '20', '14', '15', '6', '15', '14', '19', '12', '13', '21', '3'], 'length': 27}","{'path': ['14', '19', '12', '13', '21', '3'], 'length': 5}",0.185,2.454630136,769,93,862
+graph_51336,"{'start_node': '14', 'end_node': '3'}",few_shots,cot,"I'll analyze this graph to find the shortest path between node 14 and node 3 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node 14.
+- Node 14 is connected to: 15, 19, 20
+
+Step 2: Begin BFS exploration.
+- Level 1 (distance 1 from 14): 15, 19, 20
+- For node 15: connected to 6, 14, 16
+- For node 19: connected to 12, 14, 18
+- For node 20: connected to 4, 11, 14
+
+- Level 2 (distance 2 from 14):
+  - From 15: 6, 16
+  - From 19: 12, 18
+  - From 20: 4, 11
+  
+- Level 3 (distance 3 from 14):
+  - From 6: no new nodes
+  - From 16: 7, 17
+  - From 12: 13
+  - From 18: 8, 17
+  - From 4: no new nodes
+  - From 11: 10
+
+- Level 4 (distance 4 from 14):
+  - From 7: no new nodes
+  - From 17: 9
+  - From 13: 5, 21
+  - From 8: no new nodes
+  - From 10: no new nodes
+
+- Level 5 (distance 5 from 14):
+  - From 9: no new nodes
+  - From 5: no new nodes
+  - From 21: 1, 2, 3
+
+I've found node 3 at level 5, connected through node 21, which is connected to node 13.
+
+The path is: 14 → 19 → 12 → 13 → 21 → 3
+
+Let me verify this path:
+- 14 is connected to 19 ✓
+- 19 is connected to 12 ✓
+- 12 is connected to 13 ✓
+- 13 is connected to 21 ✓
+- 21 is connected to 3 ✓
+
+Let me also check if there are any other paths of the same length or shorter:
+- Through 15: No path to 3 in fewer steps
+- Through 20: No path to 3 in fewer steps
+
+Therefore, the shortest path from 14 to 3 has 5 edges.
+
+Path: [14, 19, 12, 13, 21, 3], Length: 5","{'path': ['14', '19', '12', '13', '21', '3'], 'length': 5}","{'path': ['14', '19', '12', '13', '21', '3'], 'length': 5}",1,9.215113878,1120,618,1738
+graph_51336,"{'start_node': '1', 'end_node': '6'}",zero_shot,standard,"Path: [1,21,13,5,6], Length: 4","{'path': ['1', '21', '13', '5', '6'], 'length': 4}","{'path': ['1', '21', '13', '12', '19', '14', '15', '6'], 'length': 7}",0.429,1.535201073,308,20,328
+graph_51336,"{'start_node': '1', 'end_node': '6'}",zero_shot,cot,"I'll find the shortest path from node 1 to node 6 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node (node 1).
+- Node 1 is connected to: 21
+
+Step 2: Perform BFS to find the shortest path.
+- I'll use a queue to track nodes to visit and maintain a record of visited nodes and their parents.
+
+BFS execution:
+- Start at node 1
+- Visit node 21 (neighbors: 1, 2, 3, 13)
+- Visit node 13 (neighbors: 5, 12, 21)
+- Visit node 5 (neighbors: 13)
+- Visit node 12 (neighbors: 13, 19)
+- Visit node 19 (neighbors: 12, 14, 18)
+- Visit node 14 (neighbors: 15, 19, 20)
+- Visit node 15 (neighbors: 6, 14, 16)
+- Visit node 6 (target reached!)
+
+Step 3: Reconstruct the path by working backward from node 6.
+- 6 was reached from 15
+- 15 was reached from 14
+- 14 was reached from 19
+- 19 was reached from 12
+- 12 was reached from 13
+- 13 was reached from 21
+- 21 was reached from 1
+
+Step 4: Verify the path.
+- The path is: 1 → 21 → 13 → 12 → 19 → 14 → 15 → 6
+- Checking each edge:
+  * 1 is connected to 21 ✓
+  * 21 is connected to 13 ✓
+  * 13 is connected to 12 ✓
+  * 12 is connected to 19 ✓
+  * 19 is connected to 14 ✓
+  * 14 is connected to 15 ✓
+  * 15 is connected to 6 ✓
+
+- The path length is 7 edges.
+- This is the shortest path because BFS guarantees finding the shortest path in an unweighted graph.
+
+Path: [1, 21, 13, 12, 19, 14, 15, 6], Length: 7","{'path': ['1', '21', '13', '12', '19', '14', '15', '6'], 'length': 7}","{'path': ['1', '21', '13', '12', '19', '14', '15', '6'], 'length': 7}",1,7.782322168,378,558,936
+graph_51336,"{'start_node': '1', 'end_node': '6'}",few_shots,standard,"Path: [1, 21, 13, 5, 13, 12, 19, 14, 15, 6], Length: 9","{'path': ['1', '21', '13', '5', '13', '12', '19', '14', '15', '6'], 'length': 9}","{'path': ['1', '21', '13', '12', '19', '14', '15', '6'], 'length': 7}",0.778,1.539903164,769,39,808
+graph_51336,"{'start_node': '1', 'end_node': '6'}",few_shots,cot,"I'll find the shortest path between node 1 and node 6 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 1).
+- Node 1 is connected to: 21
+
+Step 2: Perform BFS to find the shortest path.
+- Level 0: Node 1
+- Level 1: Node 21 (neighbors of 1)
+- Level 2: Nodes 2, 3, 13 (neighbors of 21)
+- Level 3: Nodes 5, 12 (neighbors of 13)
+- Level 4: Node 19 (neighbor of 12)
+- Level 5: Nodes 14, 18 (neighbors of 19)
+- Level 6: Nodes 15, 20 (neighbors of 14)
+- Level 7: Nodes 6, 16 (neighbors of 15)
+
+I've reached node 6 at level 7, which means the shortest path has 7 edges.
+
+Let me trace back the path:
+- Node 6 is connected to node 15
+- Node 15 is connected to node 14
+- Node 14 is connected to node 19
+- Node 19 is connected to node 12
+- Node 12 is connected to node 13
+- Node 13 is connected to node 21
+- Node 21 is connected to node 1
+
+Therefore, the shortest path from node 1 to node 6 is:
+1 → 21 → 13 → 12 → 19 → 14 → 15 → 6
+
+Verification:
+- Each pair of adjacent nodes in this path is connected by an edge in the graph.
+- This is the shortest path because I used BFS which guarantees finding the shortest path in an unweighted graph.
+
+Path: [1, 21, 13, 12, 19, 14, 15, 6], Length: 7","{'path': ['1', '21', '13', '12', '19', '14', '15', '6'], 'length': 7}","{'path': ['1', '21', '13', '12', '19', '14', '15', '6'], 'length': 7}",1,7.061110973,1120,459,1579
+graph_660,"{'start_node': '2', 'end_node': '1'}",zero_shot,standard,"Path: [2, 1], Length: 1","{'path': ['2', '1'], 'length': 1}","{'path': ['2', '1'], 'length': 1}",1,0.8155319691,251,15,266
+graph_660,"{'start_node': '2', 'end_node': '1'}",zero_shot,cot,"I'll find the shortest path from node 2 to node 1 using breadth-first search (BFS).
+
+Step 1: Identify the neighbors of the starting node (node 2).
+- Node 2 is connected to: 1, 5, 6
+
+Step 2: Begin BFS.
+- Start at node 2
+- Queue: [2]
+- Visited: {2}
+- Parent map to track the path: {2: None}
+
+Step 3: Process node 2.
+- Dequeue 2
+- Neighbors of 2: 1, 5, 6
+- For neighbor 1:
+  - This is our target node! We found a direct path from 2 to 1.
+  - Update parent map: {2: None, 1: 2}
+- For completeness, I'll add the other neighbors to the queue
+- For neighbor 5:
+  - Add to queue, mark as visited
+  - Update parent map: {2: None, 1: 2, 5: 2}
+- For neighbor 6:
+  - Add to queue, mark as visited
+  - Update parent map: {2: None, 1: 2, 5: 2, 6: 2}
+- Queue: [1, 5, 6]
+- Visited: {2, 1, 5, 6}
+
+Since we've already found node 1, we can stop the BFS. The shortest path from 2 to 1 is:
+- Start at 2
+- Go directly to 1
+
+Verification:
+1) Path validity: The graph shows node 2 is directly connected to node 1
+2) Path minimality: Since we used BFS and found a direct connection, this is definitely the shortest path
+
+Path: [2, 1], Length: 1","{'path': ['2', '1'], 'length': 1}","{'path': ['2', '1'], 'length': 1}",1,7.225473166,321,427,748
+graph_660,"{'start_node': '2', 'end_node': '1'}",few_shots,standard,"Path: [2, 1], Length: 1","{'path': ['2', '1'], 'length': 1}","{'path': ['2', '1'], 'length': 1}",1,1.580053091,712,15,727
+graph_660,"{'start_node': '2', 'end_node': '1'}",few_shots,cot,"I'll find the shortest path from node 2 to node 1 using breadth-first search.
+
+Step 1: Identify the neighbors of the starting node (node 2).
+- Node 2 is connected to: 1, 5, 6
+
+Step 2: Explore paths systematically using BFS.
+- Starting from node 2, I can immediately see that node 1 is directly connected.
+- This means I can go directly from 2 to 1 in one step.
+
+Step 3: Verify this is the shortest path.
+- Since I found a direct connection from 2 to 1, this must be the shortest path.
+- The path length is 1 edge.
+
+Step 4: Verify the path is valid.
+- Looking at the adjacency list, node 2 is indeed connected to node 1 (2: 1 5 6).
+- This confirms the path is valid.
+
+Step 5: Verify the path is minimal.
+- Since the path has only 1 edge, and we need at least 1 edge to go from one node to another, this must be minimal.
+
+Path: [2, 1], Length: 1","{'path': ['2', '1'], 'length': 1}","{'path': ['2', '1'], 'length': 1}",1,5.810146093,1063,275,1338
+graph_660,"{'start_node': '5', 'end_node': '4'}",zero_shot,standard,"Path: [5, 9, 4], Length: 2","{'path': ['5', '9', '4'], 'length': 2}","{'path': ['5', '9', '4'], 'length': 2}",1,1.256317854,251,18,269
+graph_660,"{'start_node': '5', 'end_node': '4'}",zero_shot,cot,"I'll find the shortest path from node 5 to node 4 using breadth-first search (BFS).
+
+First, let me understand the graph structure from the adjacency list:
+- Node 5 is connected to: 2, 7, 9
+- Node 4 is connected to: 1, 8, 9
+
+Step 1: Start BFS from node 5.
+- Queue: [5]
+- Visited: {5}
+- Parent map: {} (to track the path)
+
+Step 2: Process node 5
+- Neighbors of 5: 2, 7, 9
+- Queue: [2, 7, 9]
+- Visited: {5, 2, 7, 9}
+- Parent map: {2: 5, 7: 5, 9: 5}
+
+Step 3: Process node 2
+- Neighbors of 2: 1, 5, 6 (5 already visited)
+- Queue: [7, 9, 1, 6]
+- Visited: {5, 2, 7, 9, 1, 6}
+- Parent map: {2: 5, 7: 5, 9: 5, 1: 2, 6: 2}
+
+Step 4: Process node 7
+- Neighbors of 7: 3, 5, 8 (5 already visited)
+- Queue: [9, 1, 6, 3, 8]
+- Visited: {5, 2, 7, 9, 1, 6, 3, 8}
+- Parent map: {2: 5, 7: 5, 9: 5, 1: 2, 6: 2, 3: 7, 8: 7}
+
+Step 5: Process node 9
+- Neighbors of 9: 4, 5, 10 (5 already visited)
+- Queue: [1, 6, 3, 8, 4, 10]
+- Visited: {5, 2, 7, 9, 1, 6, 3, 8, 4, 10}
+- Parent map: {2: 5, 7: 5, 9: 5, 1: 2, 6: 2, 3: 7, 8: 7, 4: 9, 10: 9}
+
+I've found node 4! Now I can reconstruct the path from 5 to 4 using the parent map:
+- 4's parent is 9
+- 9's parent is 5
+
+So the path is: 5 → 9 → 4
+
+Verification:
+1) Is this path valid? Yes, checking the adjacency list:
+   - 5 is connected to 9 (5: 2 7 9)
+   - 9 is connected to 4 (9: 4 5 10)
+
+2) Is this the shortest path? Yes, because BFS guarantees the shortest path in an unweighted graph, and we found node 4 in the second level of our search.
+
+The path length is 2 edges (5→9→4).
+
+Path: [5, 9, 4], Length: 2","{'path': ['5', '9', '4'], 'length': 2}","{'path': ['5', '9', '4'], 'length': 2}",1,10.21811295,321,778,1099
+graph_660,"{'start_node': '5', 'end_node': '4'}",few_shots,standard,"Path: [5, 9, 4], Length: 2","{'path': ['5', '9', '4'], 'length': 2}","{'path': ['5', '9', '4'], 'length': 2}",1,1.243096828,712,18,730
+graph_660,"{'start_node': '5', 'end_node': '4'}",few_shots,cot,"I'll find the shortest path from node 5 to node 4 using breadth-first search.
+
+Step 1: Identify neighbors of the starting node (5)
+- Node 5 is connected to: 2, 7, 9
+
+Step 2: Explore paths systematically using BFS
+- Level 1 neighbors of 5: [2, 7, 9]
+- For node 9: It's connected to 4, which is our target. Path: 5→9→4
+- For node 2: It's connected to 1, which is connected to 4. Path: 5→2→1→4
+- For node 7: It's connected to 3, which is connected to 1, which is connected to 4. Path: 5→7→3→1→4
+- For node 7: It's also connected to 8, which is connected to 4. Path: 5→7→8→4
+
+Step 3: Identify the shortest path
+- Path 5→9→4 has length 2
+- Path 5→2→1→4 has length 3
+- Path 5→7→3→1→4 has length 4
+- Path 5→7→8→4 has length 3
+
+Step 4: Verify the path
+- The shortest path is 5→9→4 with length 2
+- Checking the graph: 5 is connected to 9, and 9 is connected to 4, so this is a valid path
+- No shorter path is possible since 5 and 4 are not directly connected
+
+Path: [5, 9, 4], Length: 2","{'path': ['5', '9', '4'], 'length': 2}","{'path': ['5', '9', '4'], 'length': 2}",1,6.658833981,1063,389,1452

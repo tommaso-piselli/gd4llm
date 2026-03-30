@@ -1,0 +1,55 @@
+{
+  "min_vertex_cover": {
+    "description": "Given the graph (both as an incident list and visual representation), find the minimum vertex cover.",
+    "parameters": {
+      "type": "graph",
+      "description": "Find the smallest set of nodes that covers all edges in the graph"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in graph analysis, capable of working with both textual and visual representations of graphs. You will be provided with both an adjacency list and a visual representation of a graph. In the visual representation, nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Provide direct answers without intermediate steps. Always format your output as: 'Cover: [comma-separated nodes], Size: <number>'",
+        "user_message": "Please, find the vertex cover of minimum size in the graph, that is the smallest subset of nodes such that every edge of the graph has at least one endpoint in this subset. The size of the vertex cover is the number of nodes in the subset. You may use both the incident list and visual representation to solve this task. Before submitting your final answer, verify that: 1) Every edge in the graph has at least one of its endpoints in your vertex cover, and 2) No smaller subset of nodes covers all edges. Format your answer as 'Cover: [comma-separated nodes], Size: <number>'"
+      },
+      "cot": {
+        "system_message": "You are an expert in graph analysis, capable of working with both textual and visual representations of graphs. You will be provided with both an adjacency list and a visual representation of a graph. In the visual representation, nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Show your step-by-step reasoning process. Always format your output as: 'Cover: [comma-separated nodes], Size: <number>'",
+        "user_message": "Please, find the vertex cover of minimum size in the graph, that is the smallest subset of nodes such that every edge of the graph has at least one endpoint in this subset. The size of the vertex cover is the number of nodes in the subset. To solve this task, reason step by step using both the incident list and visual representation by: 1) Identifying nodes with high degree (many connections) as potential cover members, 2) Using the visual representation to identify critical nodes that cover multiple edges, 3) Cross-verifying with the adjacency list that all edges are covered, and 4) Ensuring no smaller cover exists. Before submitting your final answer, verify that: 1) Every edge in the graph has at least one of its endpoints in your vertex cover, and 2) No smaller subset of nodes covers all edges. Format your final answer as 'Cover: [comma-separated nodes], Size: <number>'"
+      }
+    },
+    "prompts": {
+      "zero_shot": {
+        "standard": {},
+        "cot": {}
+      },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/vc_2.lst",
+              "image_data": "./src/examples/vc_2.png",
+              "task_solution": "Cover: [4,2], Size: 2"
+            },
+            {
+              "graph_data": "./src/examples/vc_3.lst",
+              "image_data": "./src/examples/vc_3.png",
+              "task_solution": "Cover: [1,2,4], Size: 3"
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/vc_2.lst",
+              "image_data": "./src/examples/vc_2.png",
+              "task_solution": "Using both the adjacency list and visual representation, I'll find the minimum vertex cover. From the adjacency list, I can see that node 4 has the highest degree with connections to nodes 1, 2, 3, 5, and 10. Node 2 has the second highest degree with connections to nodes 1, 3, 4, and 5. The visual representation confirms these are central nodes with many connections. If I include nodes 4 and 2 in the vertex cover, I can visually verify that every edge in the graph has at least one of these nodes as an endpoint. The adjacency list confirms this: all edges (1-2, 1-4, 1-10, 2-3, 2-4, 2-5, 3-4, 4-5, 4-10, 5-10) have either node 2 or node 4 (or both) as an endpoint. I've verified that removing either node would leave some edges uncovered, and no single node covers all edges. Therefore, the minimum vertex cover is Cover: [4,2], Size: 2."
+            },
+            {
+              "graph_data": "./src/examples/vc_3.lst",
+              "image_data": "./src/examples/vc_3.png",
+              "task_solution": "I'll analyze both the adjacency list and the visual representation to find the minimum vertex cover. From the adjacency list and visual graph, I can identify that nodes 1, 2, and 4 each have degree 4, which are the highest in the graph. Node 1 connects to nodes 2, 5, 7, and 10. Node 2 connects to nodes 1, 3, 4, and 7. Node 4 connects to nodes 2, 3, 5, and 10. The visual representation helps me confirm these connections and see the overall structure. Together, these three nodes (1, 2, and 4) cover all edges in the graph. By cross-checking with the adjacency list, I can verify that all edges (1-2, 1-5, 1-7, 1-10, 2-3, 2-4, 2-7, 3-4, 4-5, 4-10, 5-7) have at least one endpoint in the set {1, 2, 4}. I've tried removing one node from this set, but that leaves some edges uncovered. For example, removing node 1 would leave the edge 5-7 uncovered, which is clearly visible in the graph. Therefore, the minimum vertex cover is Cover: [1,2,4], Size: 3."
+            }
+          ]
+        }
+      }
+    }
+  }
+}

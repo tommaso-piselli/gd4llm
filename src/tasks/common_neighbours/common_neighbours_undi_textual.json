@@ -1,0 +1,48 @@
+{
+  "common_neighbours": {
+    "description": "Given the graph, find the common neighbours between two vertices.",
+    "parameters": {
+      "type": "node_pair",
+      "description": "Selected pair of nodes, provided as two integers representing the nodes to analyze"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in graph analysis. The input is an adjacency list representing a graph. Provide direct answers without intermediate steps. Always format your output as: 'Neighbours: [comma-separated nodes], Number: <number>'",
+        "user_message": "Please, find the neighbours that nodes {start_node} and {end_node} have in common. The number of the common neighbours is the number of nodes that are in this set. Before submitting your final answer, verify that: 1) You have correctly identified all connections for both specified nodes from the adjacency list, and 2) You have accurately determined which nodes appear in both neighbor lists. Format your answer as 'Neighbours: [comma-separated nodes], Number: <number>'"
+      },
+      "cot": {
+        "system_message": "You are an expert in graph analysis. The input is an adjacency list representing a graph. Show your step-by-step reasoning process. Always format your output as: 'Neighbours: [comma-separated nodes], Number: <number>'",
+        "user_message": "Please, find the neighbours that nodes {start_node} and {end_node} have in common. The number of the common neighbours is the number of nodes that are in this set. To solve this task, reason step by step by: 1) Identifying all neighboring nodes of the first specified node from the adjacency list, 2) Identifying all neighboring nodes of the second specified node from the adjacency list, 3) Determining which nodes appear in both neighbor lists, and 4) Counting the number of common neighbors. Before submitting your final answer, verify that you have correctly identified all connections for both nodes. Format your final answer as 'Neighbours: [comma-separated nodes], Number: <number>'"
+      }
+    },
+    "prompts": {
+      "zero_shot": { "standard": {}, "cot": {} },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/undigraph_1.lst",
+              "task_solution": "Selected Nodes: 3,4. Neighbours: [5, 7], Number: 2"
+            },
+            {
+              "graph_data": "./src/examples/undigraph_2.lst",
+              "task_solution": "Selected Nodes: 19, 20. Neighbours: [18, 4, 11], Number: 3"
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/undigraph_1.lst",
+              "task_solution": "Selected Nodes: 3, 4. I'll analyze the adjacency list to find all connections. From the adjacency list, I can see that Node 3 has the following neighbours: 1, 5, 7, 13. Node 4 has the following neighbours: 5, 7. Comparing these two lists, the common neighbors are nodes 5 and 7. Therefore, the solution is Neighbours: [5, 7], Number: 2"
+            },
+            {
+              "graph_data": "./src/examples/undigraph_2.lst",
+              "task_solution": "Selected Nodes: 19, 20. I'll extract all connections from the adjacency list. Node 19 has the following neighbours: 4, 8, 11, 14, 18. Node 20 has the following neighbours: 1, 4, 5, 11, 13, 18. Comparing these two lists, the common neighbors are nodes 4, 11, and 18. Therefore, the solution is Neighbours: [4, 11, 18], Number: 3"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,527 @@
+graph,parameters,prompt_type,reasoning_type,response,parsed_response,ground_truth,accuracy,latency,input_tokens,output_tokens,total_tokens
+ba_n100_m2,"{'start_node': '2', 'end_node': '37'}",zero_shot,standard,"Neighbours: [1, 5], Number: 2","{'neighbours': ['1', '5'], 'number': 2}","{'neighbours': ['5', '1'], 'number': 2}",1.0,2.0419209003448486,1243,16,1259
+ba_n100_m2,"{'start_node': '2', 'end_node': '37'}",zero_shot,cot,"I'll analyze the graph to find the common neighbors of nodes 2 and 37.
+
+Step 1: Identify all neighboring nodes of node 2.
+From the adjacency list, node 2 is connected to:
+1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100
+
+Step 2: Identify all neighboring nodes of node 37.
+From the adjacency list, node 37 is connected to:
+1, 5
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Common neighbors: 1, 5
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors: 1 and 5.
+
+Verification:
+- Node 2's neighbors include 1 and 5 ✓
+- Node 37's neighbors are 1 and 5 ✓
+- Common neighbors are 1 and 5 ✓
+- Count is 2 ✓
+
+Neighbours: [1, 5], Number: 2","{'neighbours': ['1', '5'], 'number': 2}","{'neighbours': ['5', '1'], 'number': 2}",1.0,4.60746431350708,1294,277,1571
+ba_n100_m2,"{'start_node': '2', 'end_node': '37'}",few_shots,standard,"Neighbours: [1, 5], Number: 2","{'neighbours': ['1', '5'], 'number': 2}","{'neighbours': ['5', '1'], 'number': 2}",1.0,6.212836265563965,1701,16,1717
+ba_n100_m2,"{'start_node': '2', 'end_node': '37'}",few_shots,cot,"I'll analyze the adjacency list to find the common neighbors of nodes 2 and 37.
+
+Step 1: Identify all neighboring nodes of node 2.
+From the adjacency list, node 2 is connected to:
+1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100
+
+Step 2: Identify all neighboring nodes of node 37.
+From the adjacency list, node 37 is connected to:
+1, 5
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, the common neighbors are:
+1, 5
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors.
+
+Verification:
+- Node 2's neighbors: 1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100
+- Node 37's neighbors: 1, 5
+- Common neighbors: 1, 5
+
+Neighbours: [1, 5], Number: 2","{'neighbours': ['1', '5'], 'number': 2}","{'neighbours': ['5', '1'], 'number': 2}",1.0,4.565772771835327,1922,309,2231
+ba_n100_m2,"{'start_node': '1', 'end_node': '47'}",zero_shot,standard,"Neighbours: [16, 18], Number: 2","{'neighbours': ['16', '18'], 'number': 2}","{'neighbours': ['18'], 'number': 1}",0.5,0.7850360870361328,1243,16,1259
+ba_n100_m2,"{'start_node': '1', 'end_node': '47'}",zero_shot,cot,"I'll analyze the graph to find the common neighbors of nodes 1 and 47.
+
+Step 1: Identify all neighboring nodes of node 1.
+From the adjacency list, node 1 is connected to:
+2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99
+
+Step 2: Identify all neighboring nodes of node 47.
+From the adjacency list, node 47 is connected to:
+16, 18
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Looking at the neighbors of node 1 and node 47, I need to find which nodes are common to both lists.
+
+The only node that appears in both lists is 18.
+
+Step 4: Count the number of common neighbors.
+There is 1 common neighbor: node 18.
+
+Verification:
+- Node 1's neighbors include node 18 ✓
+- Node 47's neighbors include node 18 ✓
+
+Neighbours: [18], Number: 1","{'neighbours': ['18'], 'number': 1}","{'neighbours': ['18'], 'number': 1}",1.0,5.169575929641724,1294,319,1613
+ba_n100_m2,"{'start_node': '1', 'end_node': '47'}",few_shots,standard,"Neighbours: [16, 18], Number: 2","{'neighbours': ['16', '18'], 'number': 2}","{'neighbours': ['18'], 'number': 1}",0.5,0.9742598533630371,1701,16,1717
+ba_n100_m2,"{'start_node': '1', 'end_node': '47'}",few_shots,cot,"I'll analyze the adjacency list to find the common neighbors of nodes 1 and 47.
+
+Step 1: Identify all neighboring nodes of node 1.
+From the adjacency list, node 1 is connected to:
+2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99
+
+Step 2: Identify all neighboring nodes of node 47.
+From the adjacency list, node 47 is connected to:
+16, 18
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, the only common neighbor is node 18.
+
+Step 4: Count the number of common neighbors.
+There is 1 common neighbor: node 18.
+
+Verification: 
+- Node 1 is indeed connected to node 18 (listed in node 1's adjacency list)
+- Node 47 is indeed connected to node 18 (listed in node 47's adjacency list)
+
+Neighbours: [18], Number: 1","{'neighbours': ['18'], 'number': 1}","{'neighbours': ['18'], 'number': 1}",1.0,4.855862140655518,1922,318,2240
+ba_n100_m3,"{'start_node': '5', 'end_node': '95'}",zero_shot,standard,"Neighbours: [1, 68], Number: 2","{'neighbours': ['1', '68'], 'number': 2}","{'neighbours': ['68', '1'], 'number': 2}",1.0,1.120272159576416,1623,16,1639
+ba_n100_m3,"{'start_node': '5', 'end_node': '95'}",zero_shot,cot,"I'll find the common neighbors of nodes 5 and 95 by following the steps outlined.
+
+Step 1: Identify all neighboring nodes of node 5 from the adjacency list.
+Node 5 is connected to: 1, 3, 4, 6, 10, 11, 12, 13, 17, 21, 22, 26, 30, 31, 35, 38, 39, 53, 56, 57, 59, 63, 68, 70, 73, 75, 79, 85, 86, 94
+
+Step 2: Identify all neighboring nodes of node 95 from the adjacency list.
+Node 95 is connected to: 1, 2, 68
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, the common neighbors are: 1, 68
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors: 1 and 68.
+
+Verification:
+- Node 5 is indeed connected to nodes 1 and 68 as shown in the adjacency list.
+- Node 95 is indeed connected to nodes 1 and 68 as shown in the adjacency list.
+
+Neighbours: [1, 68], Number: 2","{'neighbours': ['1', '68'], 'number': 2}","{'neighbours': ['68', '1'], 'number': 2}",1.0,5.229910135269165,1674,311,1985
+ba_n100_m3,"{'start_node': '5', 'end_node': '95'}",few_shots,standard,"Neighbours: [1, 68], Number: 2","{'neighbours': ['1', '68'], 'number': 2}","{'neighbours': ['68', '1'], 'number': 2}",1.0,1.1133739948272705,2081,16,2097
+ba_n100_m3,"{'start_node': '5', 'end_node': '95'}",few_shots,cot,"I'll analyze the graph to find the common neighbors of nodes 5 and 95.
+
+Step 1: Identify all neighboring nodes of node 5 from the adjacency list.
+Node 5 is connected to: 1, 3, 4, 6, 10, 11, 12, 13, 17, 21, 22, 26, 30, 31, 35, 38, 39, 53, 56, 57, 59, 63, 68, 70, 73, 75, 79, 85, 86, 94
+
+Step 2: Identify all neighboring nodes of node 95 from the adjacency list.
+Node 95 is connected to: 1, 2, 68
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, the common neighbors are: 1, 68
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors: 1 and 68.
+
+Verification: 
+- Node 5 is indeed connected to nodes 1 and 68 as shown in the adjacency list.
+- Node 95 is indeed connected to nodes 1 and 68 as shown in the adjacency list.
+
+Neighbours: [1, 68], Number: 2","{'neighbours': ['1', '68'], 'number': 2}","{'neighbours': ['68', '1'], 'number': 2}",1.0,4.918388843536377,2302,310,2612
+ba_n100_m3,"{'start_node': '2', 'end_node': '44'}",zero_shot,standard,"Neighbours: [1, 95], Number: 2","{'neighbours': ['1', '95'], 'number': 2}","{'neighbours': ['1'], 'number': 1}",0.5,1.2308049201965332,1623,16,1639
+ba_n100_m3,"{'start_node': '2', 'end_node': '44'}",zero_shot,cot,"I'll find the common neighbors of nodes 2 and 44 by following the step-by-step process.
+
+Step 1: Identify all neighboring nodes of node 2.
+From the adjacency list, node 2 is connected to: 1, 6, 9, 13, 32, 33, 44, 48, 52, 70, 71, 95
+
+Step 2: Identify all neighboring nodes of node 44.
+From the adjacency list, node 44 is connected to: 1, 2, 7, 60
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists:
+- Node 1 appears in both lists
+- Node 2 is a neighbor of 44, but we're looking for common neighbors, not the nodes themselves
+- No other nodes appear in both lists
+
+Step 4: Count the number of common neighbors.
+There is only 1 common neighbor: node 1.
+
+Verification:
+- Node 2's neighbors: 1, 6, 9, 13, 32, 33, 44, 48, 52, 70, 71, 95
+- Node 44's neighbors: 1, 2, 7, 60
+- Common neighbors: 1
+
+Neighbours: [1], Number: 1","{'neighbours': ['1'], 'number': 1}","{'neighbours': ['1'], 'number': 1}",1.0,5.071897983551025,1674,310,1984
+ba_n100_m3,"{'start_node': '2', 'end_node': '44'}",few_shots,standard,"Neighbours: [1, 95], Number: 2","{'neighbours': ['1', '95'], 'number': 2}","{'neighbours': ['1'], 'number': 1}",0.5,0.8599402904510498,2081,16,2097
+ba_n100_m3,"{'start_node': '2', 'end_node': '44'}",few_shots,cot,"I'll analyze the graph to find the common neighbors of nodes 2 and 44.
+
+Step 1: Identify all neighboring nodes of node 2.
+From the adjacency list, node 2 is connected to: 1, 6, 9, 13, 32, 33, 44, 48, 52, 70, 71, 95
+
+Step 2: Identify all neighboring nodes of node 44.
+From the adjacency list, node 44 is connected to: 1, 2, 7, 60
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists:
+- Node 2's neighbors: 1, 6, 9, 13, 32, 33, 44, 48, 52, 70, 71, 95
+- Node 44's neighbors: 1, 2, 7, 60
+
+The only common neighbor is node 1.
+
+Step 4: Count the number of common neighbors.
+There is 1 common neighbor: node 1.
+
+Neighbours: [1], Number: 1","{'neighbours': ['1'], 'number': 1}","{'neighbours': ['1'], 'number': 1}",1.0,3.8975839614868164,2302,258,2560
+ba_n150_m2,"{'start_node': '100', 'end_node': '16'}",zero_shot,standard,"Neighbours: [2, 5], Number: 2","{'neighbours': ['2', '5'], 'number': 2}","{'neighbours': ['2', '5'], 'number': 2}",1.0,1.1373260021209717,1793,16,1809
+ba_n150_m2,"{'start_node': '100', 'end_node': '16'}",zero_shot,cot,"I'll solve this step-by-step to find the common neighbors of nodes 100 and 16.
+
+Step 1: Identify all neighboring nodes of node 100.
+From the adjacency list:
+100: 2 5
+
+So the neighbors of node 100 are: 2 and 5.
+
+Step 2: Identify all neighboring nodes of node 16.
+From the adjacency list:
+16: 2 5 47 48 74 119 128 132 143
+
+So the neighbors of node 16 are: 2, 5, 47, 48, 74, 119, 128, 132, and 143.
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Neighbors of 100: 2, 5
+Neighbors of 16: 2, 5, 47, 48, 74, 119, 128, 132, 143
+
+The common neighbors are: 2 and 5.
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors.
+
+Verification: 
+- Node 100 is connected to nodes 2 and 5.
+- Node 16 is connected to nodes 2, 5, 47, 48, 74, 119, 128, 132, and 143.
+- The common neighbors are nodes 2 and 5.
+
+Neighbours: [2, 5], Number: 2","{'neighbours': ['2', '5'], 'number': 2}","{'neighbours': ['2', '5'], 'number': 2}",1.0,4.800220012664795,1844,337,2181
+ba_n150_m2,"{'start_node': '100', 'end_node': '16'}",few_shots,standard,"Neighbours: [2, 5], Number: 2","{'neighbours': ['2', '5'], 'number': 2}","{'neighbours': ['2', '5'], 'number': 2}",1.0,1.1236340999603271,2251,16,2267
+ba_n150_m2,"{'start_node': '100', 'end_node': '16'}",few_shots,cot,"I'll analyze the graph to find the common neighbors of nodes 100 and 16.
+
+Step 1: Identify all neighboring nodes of node 100 from the adjacency list.
+From the adjacency list, node 100 is connected to: 2, 5
+
+Step 2: Identify all neighboring nodes of node 16 from the adjacency list.
+From the adjacency list, node 16 is connected to: 2, 5, 47, 48, 74, 119, 128, 132, 143
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists:
+- Node 100 neighbors: 2, 5
+- Node 16 neighbors: 2, 5, 47, 48, 74, 119, 128, 132, 143
+
+The common neighbors are: 2, 5
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors.
+
+Neighbours: [2, 5], Number: 2","{'neighbours': ['2', '5'], 'number': 2}","{'neighbours': ['2', '5'], 'number': 2}",1.0,3.889625072479248,2472,240,2712
+ba_n150_m2,"{'start_node': '14', 'end_node': '5'}",zero_shot,standard,"Neighbours: [1, 5, 41], Number: 3","{'neighbours': ['1', '5', '41'], 'number': 3}","{'neighbours': ['41'], 'number': 1}",0.333,0.9663300514221191,1793,19,1812
+ba_n150_m2,"{'start_node': '14', 'end_node': '5'}",zero_shot,cot,"I'll find the common neighbors of nodes 14 and 5 by following the steps outlined.
+
+Step 1: Identify all neighboring nodes of node 14.
+From the adjacency list, node 14 is connected to: 1, 5, 27, 41, 117, 129
+
+Step 2: Identify all neighboring nodes of node 5.
+From the adjacency list, node 5 is connected to: 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100, 103, 115, 118
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Looking at both lists, the common neighbors are:
+- Node 1 (appears in 14's neighbors and 5's neighbors)
+- Node 41 (appears in 14's neighbors and 5's neighbors)
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors: nodes 1 and 41.
+
+Verifying my answer:
+- Node 14 is connected to: 1, 5, 27, 41, 117, 129
+- Node 5 is connected to: 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100, 103, 115, 118
+- Common neighbors: 1, 41
+
+Neighbours: [1, 41], Number: 2","{'neighbours': ['1', '41'], 'number': 2}","{'neighbours': ['41'], 'number': 1}",0.5,6.3037168979644775,1844,428,2272
+ba_n150_m2,"{'start_node': '14', 'end_node': '5'}",few_shots,standard,"Neighbours: [41], Number: 1","{'neighbours': ['41'], 'number': 1}","{'neighbours': ['41'], 'number': 1}",1.0,2.149397850036621,2251,13,2264
+ba_n150_m2,"{'start_node': '14', 'end_node': '5'}",few_shots,cot,"I'll analyze the graph to find the common neighbors of nodes 14 and 5.
+
+Step 1: Identify all neighboring nodes of node 14 from the adjacency list.
+Node 14 is connected to: 1, 5, 27, 41, 117, 129
+
+Step 2: Identify all neighboring nodes of node 5 from the adjacency list.
+Node 5 is connected to: 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100, 103, 115, 118
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, the common neighbors are: 1, 41
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors.
+
+Verifying my answer:
+- Node 14 is connected to nodes 1, 5, 27, 41, 117, 129
+- Node 5 is connected to many nodes including 1 and 41
+- The common neighbors are nodes 1 and 41
+
+Neighbours: [1, 41], Number: 2","{'neighbours': ['1', '41'], 'number': 2}","{'neighbours': ['41'], 'number': 1}",0.5,5.118827819824219,2472,314,2786
+ba_n150_m3,"{'start_node': '41', 'end_node': '8'}",zero_shot,standard,"Neighbours: [7, 11], Number: 2","{'neighbours': ['7', '11'], 'number': 2}","{'neighbours': ['11', '7'], 'number': 2}",1.0,1.020787000656128,2373,16,2389
+ba_n150_m3,"{'start_node': '41', 'end_node': '8'}",zero_shot,cot,"I'll find the common neighbors of nodes 41 and 8 by following the step-by-step process.
+
+Step 1: Identify all neighboring nodes of node 41 from the adjacency list.
+From the graph, node 41 is connected to: 7, 11, 35
+
+Step 2: Identify all neighboring nodes of node 8 from the adjacency list.
+From the graph, node 8 is connected to: 1, 6, 7, 10, 11, 15, 16, 20, 21, 22, 26, 31, 34, 42, 45, 50, 57, 59, 65, 75, 83, 87, 88, 111, 112, 124, 127, 133
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, the common neighbors are: 7, 11
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors: 7 and 11.
+
+Verifying my answer:
+- Node 41 is connected to 7, 11, and 35
+- Node 8 is connected to multiple nodes including 7 and 11
+- The common neighbors are 7 and 11
+- The count is 2
+
+Neighbours: [7, 11], Number: 2","{'neighbours': ['7', '11'], 'number': 2}","{'neighbours': ['11', '7'], 'number': 2}",1.0,5.222942113876343,2424,323,2747
+ba_n150_m3,"{'start_node': '41', 'end_node': '8'}",few_shots,standard,"Neighbours: [7, 11], Number: 2","{'neighbours': ['7', '11'], 'number': 2}","{'neighbours': ['11', '7'], 'number': 2}",1.0,0.921605110168457,2831,16,2847
+ba_n150_m3,"{'start_node': '41', 'end_node': '8'}",few_shots,cot,"I'll analyze the adjacency list to find the common neighbors of nodes 41 and 8.
+
+Step 1: Identify all neighboring nodes of node 41 from the adjacency list.
+Node 41 has the following neighbors: 7, 11, 35
+
+Step 2: Identify all neighboring nodes of node 8 from the adjacency list.
+Node 8 has the following neighbors: 1, 6, 7, 10, 11, 15, 16, 20, 21, 22, 26, 31, 34, 42, 45, 50, 57, 59, 65, 75, 83, 87, 88, 111, 112, 124, 127, 133
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, the common neighbors are: 7, 11
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors.
+
+Verifying my answer:
+- Node 41 connects to: 7, 11, 35
+- Node 8 connects to: 1, 6, 7, 10, 11, 15, 16, 20, 21, 22, 26, 31, 34, 42, 45, 50, 57, 59, 65, 75, 83, 87, 88, 111, 112, 124, 127, 133
+- Common neighbors: 7, 11
+
+Neighbours: [7, 11], Number: 2","{'neighbours': ['7', '11'], 'number': 2}","{'neighbours': ['11', '7'], 'number': 2}",1.0,5.277500152587891,3052,370,3422
+ba_n150_m3,"{'start_node': '11', 'end_node': '40'}",zero_shot,standard,"Neighbours: [7, 25], Number: 2","{'neighbours': ['7', '25'], 'number': 2}","{'neighbours': ['25'], 'number': 1}",0.5,1.1717381477355957,2373,16,2389
+ba_n150_m3,"{'start_node': '11', 'end_node': '40'}",zero_shot,cot,"I'll find the common neighbors of nodes 11 and 40 by following the step-by-step process.
+
+Step 1: Identify all neighboring nodes of node 11.
+From the adjacency list, node 11 is connected to:
+1, 5, 8, 18, 20, 24, 25, 41, 49, 54, 61, 64, 67, 96, 99, 110, 113, 115, 130
+
+Step 2: Identify all neighboring nodes of node 40.
+From the adjacency list, node 40 is connected to:
+7, 9, 25, 42, 80
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, I need to find nodes that appear in both.
+The only common node is: 25
+
+Step 4: Count the number of common neighbors.
+There is 1 common neighbor between nodes 11 and 40.
+
+Verification:
+- Node 11's neighbors: 1, 5, 8, 18, 20, 24, 25, 41, 49, 54, 61, 64, 67, 96, 99, 110, 113, 115, 130
+- Node 40's neighbors: 7, 9, 25, 42, 80
+- Common neighbor: 25
+
+Neighbours: [25], Number: 1","{'neighbours': ['25'], 'number': 1}","{'neighbours': ['25'], 'number': 1}",1.0,5.431963920593262,2424,336,2760
+ba_n150_m3,"{'start_node': '11', 'end_node': '40'}",few_shots,standard,"Neighbours: [25], Number: 1","{'neighbours': ['25'], 'number': 1}","{'neighbours': ['25'], 'number': 1}",1.0,1.1176331043243408,2831,13,2844
+ba_n150_m3,"{'start_node': '11', 'end_node': '40'}",few_shots,cot,"I'll analyze the graph to find the common neighbors of nodes 11 and 40.
+
+Step 1: Identify all neighboring nodes of node 11 from the adjacency list.
+Node 11 is connected to: 1, 5, 8, 18, 20, 24, 25, 41, 49, 54, 61, 64, 67, 96, 99, 110, 113, 115, 130
+
+Step 2: Identify all neighboring nodes of node 40 from the adjacency list.
+Node 40 is connected to: 7, 9, 25, 42, 80
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, I can see that only node 25 appears in both lists.
+
+Step 4: Count the number of common neighbors.
+There is 1 common neighbor: node 25.
+
+Verifying my findings:
+- Node 11 is indeed connected to node 25 in the adjacency list
+- Node 40 is indeed connected to node 25 in the adjacency list
+
+Neighbours: [25], Number: 1","{'neighbours': ['25'], 'number': 1}","{'neighbours': ['25'], 'number': 1}",1.0,4.599403142929077,3052,269,3321
+ba_n200_m2,"{'start_node': '7', 'end_node': '70'}",zero_shot,standard,"Neighbours: [2, 5, 51, 61, 102, 111, 134, 144, 155, 183, 192], Number: 11","{'neighbours': ['2', '5', '51', '61', '102', '111', '134', '144', '155', '183', '192'], 'number': 11}","{'neighbours': ['102', '5'], 'number': 2}",0.182,1.6393301486968994,2343,43,2386
+ba_n200_m2,"{'start_node': '7', 'end_node': '70'}",zero_shot,cot,"I'll find the common neighbors of nodes 7 and 70 by following the step-by-step process.
+
+Step 1: Identify all neighboring nodes of node 7 from the adjacency list.
+Node 7's neighbors: 2, 5, 10, 30, 32, 38, 51, 56, 61, 83, 102, 106, 111, 116, 134, 144, 149, 155, 162, 183, 192
+
+Step 2: Identify all neighboring nodes of node 70 from the adjacency list.
+Node 70's neighbors: 5, 46, 78, 90, 101, 102, 143, 163, 171, 182, 188
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, I find that nodes 5 and 102 appear in both lists.
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors: 5 and 102.
+
+Verification:
+- Node 7 is connected to nodes 5 and 102 (confirmed from the adjacency list)
+- Node 70 is connected to nodes 5 and 102 (confirmed from the adjacency list)
+
+Neighbours: [5, 102], Number: 2","{'neighbours': ['5', '102'], 'number': 2}","{'neighbours': ['102', '5'], 'number': 2}",1.0,5.219515800476074,2394,312,2706
+ba_n200_m2,"{'start_node': '7', 'end_node': '70'}",few_shots,standard,"Neighbours: [102, 182], Number: 2","{'neighbours': ['102', '182'], 'number': 2}","{'neighbours': ['102', '5'], 'number': 2}",0.333,1.0997929573059082,2801,16,2817
+ba_n200_m2,"{'start_node': '7', 'end_node': '70'}",few_shots,cot,"I'll analyze the adjacency list to find the common neighbors of nodes 7 and 70.
+
+Step 1: Identify all neighboring nodes of node 7.
+From the adjacency list, node 7 is connected to:
+2, 5, 10, 30, 32, 38, 51, 56, 61, 83, 102, 106, 111, 116, 134, 144, 149, 155, 162, 183, 192
+
+Step 2: Identify all neighboring nodes of node 70.
+From the adjacency list, node 70 is connected to:
+5, 46, 78, 90, 101, 102, 143, 163, 171, 182, 188
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, the common neighbors are:
+5, 102
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors.
+
+Verifying my answer:
+- Node 7 is indeed connected to nodes 5 and 102
+- Node 70 is indeed connected to nodes 5 and 102
+
+Neighbours: [5, 102], Number: 2","{'neighbours': ['5', '102'], 'number': 2}","{'neighbours': ['102', '5'], 'number': 2}",1.0,4.73504900932312,3022,286,3308
+ba_n200_m2,"{'start_node': '12', 'end_node': '40'}",zero_shot,standard,"Neighbours: [6], Number: 1","{'neighbours': ['6'], 'number': 1}","{'neighbours': ['6'], 'number': 1}",1.0,1.3567321300506592,2343,13,2356
+ba_n200_m2,"{'start_node': '12', 'end_node': '40'}",zero_shot,cot,"I'll find the common neighbors of nodes 12 and 40 by following the step-by-step process.
+
+Step 1: Identify all neighboring nodes of node 12.
+From the adjacency list, node 12 is connected to: 1, 6, 62
+
+Step 2: Identify all neighboring nodes of node 40.
+From the adjacency list, node 40 is connected to: 6, 32, 71
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the neighbors of node 12 (1, 6, 62) and node 40 (6, 32, 71), I can see that node 6 appears in both lists.
+
+Step 4: Count the number of common neighbors.
+There is only 1 common neighbor: node 6.
+
+Verification:
+- Node 12 is connected to nodes 1, 6, 62 ✓
+- Node 40 is connected to nodes 6, 32, 71 ✓
+- Common neighbor is node 6 ✓
+- Count of common neighbors is 1 ✓
+
+Neighbours: [6], Number: 1","{'neighbours': ['6'], 'number': 1}","{'neighbours': ['6'], 'number': 1}",1.0,4.828548192977905,2394,275,2669
+ba_n200_m2,"{'start_node': '12', 'end_node': '40'}",few_shots,standard,"Neighbours: [6], Number: 1","{'neighbours': ['6'], 'number': 1}","{'neighbours': ['6'], 'number': 1}",1.0,1.0815107822418213,2801,13,2814
+ba_n200_m2,"{'start_node': '12', 'end_node': '40'}",few_shots,cot,"I'll analyze the adjacency list to find the common neighbors of nodes 12 and 40.
+
+Step 1: Identify all neighboring nodes of node 12.
+From the adjacency list, node 12 is connected to: 1, 6, 62
+
+Step 2: Identify all neighboring nodes of node 40.
+From the adjacency list, node 40 is connected to: 6, 32, 71
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists:
+- Node 12 neighbors: 1, 6, 62
+- Node 40 neighbors: 6, 32, 71
+
+The only common neighbor is node 6.
+
+Step 4: Count the number of common neighbors.
+There is 1 common neighbor.
+
+Neighbours: [6], Number: 1","{'neighbours': ['6'], 'number': 1}","{'neighbours': ['6'], 'number': 1}",1.0,3.4034602642059326,3022,196,3218
+ba_n200_m3,"{'start_node': '129', 'end_node': '13'}",zero_shot,standard,"Neighbours: [5, 52, 175], Number: 3","{'neighbours': ['5', '52', '175'], 'number': 3}","{'neighbours': ['52', '5'], 'number': 2}",0.667,1.4329698085784912,3123,19,3142
+ba_n200_m3,"{'start_node': '129', 'end_node': '13'}",zero_shot,cot,"I'll find the common neighbors of nodes 129 and 13 by following the steps outlined.
+
+Step 1: Identify all neighboring nodes of node 129 from the adjacency list.
+Node 129's neighbors: 5, 13, 52, 147, 174
+
+Step 2: Identify all neighboring nodes of node 13 from the adjacency list.
+Node 13's neighbors: 2, 5, 7, 16, 23, 30, 47, 48, 51, 52, 56, 69, 98, 99, 100, 102, 129, 137, 144, 149, 151, 155, 175
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Common neighbors: 5, 52
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors.
+
+Verification:
+- Node 129 is connected to nodes 5, 13, 52, 147, 174
+- Node 13 is connected to nodes 2, 5, 7, 16, 23, 30, 47, 48, 51, 52, 56, 69, 98, 99, 100, 102, 129, 137, 144, 149, 151, 155, 175
+- The common neighbors are 5 and 52
+
+Neighbours: [5, 52], Number: 2","{'neighbours': ['5', '52'], 'number': 2}","{'neighbours': ['52', '5'], 'number': 2}",1.0,5.322427034378052,3174,339,3513
+ba_n200_m3,"{'start_node': '129', 'end_node': '13'}",few_shots,standard,"Neighbours: [5, 52, 175], Number: 3","{'neighbours': ['5', '52', '175'], 'number': 3}","{'neighbours': ['52', '5'], 'number': 2}",0.667,1.0240130424499512,3581,19,3600
+ba_n200_m3,"{'start_node': '129', 'end_node': '13'}",few_shots,cot,"I'll analyze the adjacency list to find the common neighbors of nodes 129 and 13.
+
+Step 1: Identify all neighboring nodes of node 129 from the adjacency list.
+Node 129 is connected to: 5, 13, 52, 147, 174
+
+Step 2: Identify all neighboring nodes of node 13 from the adjacency list.
+Node 13 is connected to: 2, 5, 7, 16, 23, 30, 47, 48, 51, 52, 56, 69, 98, 99, 100, 102, 129, 137, 144, 149, 151, 155, 175
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists, the common neighbors are: 5, 52
+
+Step 4: Count the number of common neighbors.
+There are 2 common neighbors.
+
+Neighbours: [5, 52], Number: 2","{'neighbours': ['5', '52'], 'number': 2}","{'neighbours': ['52', '5'], 'number': 2}",1.0,4.399460077285767,3802,233,4035
+ba_n200_m3,"{'start_node': '104', 'end_node': '138'}",zero_shot,standard,"Neighbours: [1], Number: 1","{'neighbours': ['1'], 'number': 1}","{'neighbours': ['1'], 'number': 1}",1.0,1.536813735961914,3123,13,3136
+ba_n200_m3,"{'start_node': '104', 'end_node': '138'}",zero_shot,cot,"I'll find the common neighbors of nodes 104 and 138 by following the step-by-step process.
+
+Step 1: Identify all neighboring nodes of node 104 from the adjacency list.
+From the graph, node 104 is connected to: 1, 15, 72, 179
+
+Step 2: Identify all neighboring nodes of node 138 from the adjacency list.
+From the graph, node 138 is connected to: 1, 24, 25
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists:
+- Node 104 neighbors: 1, 15, 72, 179
+- Node 138 neighbors: 1, 24, 25
+
+The only common neighbor is node 1.
+
+Step 4: Count the number of common neighbors.
+There is 1 common neighbor.
+
+Verification:
+- Node 104 is indeed connected to nodes 1, 15, 72, and 179 according to the adjacency list.
+- Node 138 is indeed connected to nodes 1, 24, and 25 according to the adjacency list.
+- The only node that appears in both lists is node 1.
+
+Neighbours: [1], Number: 1","{'neighbours': ['1'], 'number': 1}","{'neighbours': ['1'], 'number': 1}",1.0,4.70976185798645,3174,292,3466
+ba_n200_m3,"{'start_node': '104', 'end_node': '138'}",few_shots,standard,"Neighbours: [1], Number: 1","{'neighbours': ['1'], 'number': 1}","{'neighbours': ['1'], 'number': 1}",1.0,1.000157356262207,3581,13,3594
+ba_n200_m3,"{'start_node': '104', 'end_node': '138'}",few_shots,cot,"I'll analyze the adjacency list to find the common neighbors of nodes 104 and 138.
+
+Step 1: Identify all neighboring nodes of node 104.
+From the adjacency list, node 104 is connected to: 1, 15, 72, 179
+
+Step 2: Identify all neighboring nodes of node 138.
+From the adjacency list, node 138 is connected to: 1, 24, 25
+
+Step 3: Determine which nodes appear in both neighbor lists.
+Comparing the two lists:
+- Node 104 neighbors: 1, 15, 72, 179
+- Node 138 neighbors: 1, 24, 25
+
+The only common neighbor is node 1.
+
+Step 4: Count the number of common neighbors.
+There is 1 common neighbor.
+
+Neighbours: [1], Number: 1","{'neighbours': ['1'], 'number': 1}","{'neighbours': ['1'], 'number': 1}",1.0,3.303936004638672,3802,202,4004

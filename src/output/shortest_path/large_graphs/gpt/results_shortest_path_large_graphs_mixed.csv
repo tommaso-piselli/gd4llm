@@ -1,0 +1,1358 @@
+graph,layout,parameters,prompt_type,reasoning_type,response,parsed_response,ground_truth,accuracy,latency,input_tokens,output_tokens,total_tokens
+ba_n100_m2,FMMM,"{'start_node': '85', 'end_node': '21'}",zero_shot,standard,"Path: 85, 27, 9, 21, Length: 3","{'path': ['85', '27', '9', '21'], 'length': 3}","{'path': ['85', '27', '9', '21'], 'length': 3}",1.0,4.104022026,2088,18,2106
+ba_n100_m2,FMMM,"{'start_node': '85', 'end_node': '21'}",zero_shot,cot,"To find the shortest path between nodes 85 and 21, we will use a breadth-first search (BFS) approach.
+
+### Step-by-Step Process:
+
+1. **Start at Node 85:**
+   - Neighbors: 13, 27
+
+2. **Explore Neighbors of Node 85:**
+   - From 13: Neighbors are 5, 6, 38, 85
+   - From 27: Neighbors are 9, 14, 30, 65, 66, 85, 92
+
+3. **Explore Neighbors of Nodes 13 and 27:**
+   - From 5 (neighbor of 13): Neighbors are 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100
+   - From 9 (neighbor of 27): Neighbors are 2, 4, 11, 15, 21, 27
+
+4. **Identify Path to Node 21:**
+   - From 9, we can directly reach 21.
+
+5. **Verify the Path:**
+   - Path: 85 → 27 → 9 → 21
+   - Each step is connected by an edge.
+
+6. **Check for Shorter Paths:**
+   - No shorter path exists as this is the direct connection found using BFS.
+
+### Final Answer:
+Path: 85, 27, 9, 21, Length: 3","{'path': ['85', '27', '9', '21'], 'length': 3}","{'path': ['85', '27', '9', '21'], 'length': 3}",1.0,12.28169918,2143,358,2501
+ba_n100_m2,FMMM,"{'start_node': '85', 'end_node': '21'}",few_shots,standard,"Path: [85, 27, 9, 21], Length: 3","{'path': ['85', '27', '9', '21'], 'length': 3}","{'path': ['85', '27', '9', '21'], 'length': 3}",1.0,7.061237097,4081,18,4099
+ba_n100_m2,FMMM,"{'start_node': '85', 'end_node': '21'}",few_shots,cot,"To find the shortest path between nodes 85 and 21, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (85):**
+   - From the adjacency list, node 85 is connected to nodes 13 and 27.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 85.
+   - Visit its neighbors: 13 and 27.
+   - From 13, visit its neighbors: 5, 6, 38.
+   - From 27, visit its neighbors: 9, 14, 30, 65, 66, 85, 92.
+
+3. **Continue BFS Until Reaching Node 21:**
+   - From 5, visit its neighbors: 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100.
+   - From 9, visit its neighbors: 2, 4, 11, 15, 21, 27.
+   - Node 21 is reached from node 9.
+
+4. **Verify the Path:**
+   - The path from 85 to 21 is: 85 → 27 → 9 → 21.
+   - Check each connection:
+     - 85 to 27
+     - 27 to 9
+     - 9 to 21
+
+5. **Confirm the Path is Shortest:**
+   - The path length is 3 edges.
+   - No shorter path exists as BFS explores the shortest paths first.
+
+**Final Answer:**
+Path: [85, 27, 9, 21], Length: 3","{'path': ['85', '27', '9', '21'], 'length': 3}","{'path': ['85', '27', '9', '21'], 'length': 3}",1.0,14.0246098,4463,403,4866
+ba_n100_m2,FMMM,"{'start_node': '4', 'end_node': '49'}",zero_shot,standard,"Path: 4, 2, 17, 49, Length: 3","{'path': ['4', '2', '17', '49'], 'length': 3}","{'path': ['4', '2', '44', '49'], 'length': 3}",0.333,5.017496109,2088,18,2106
+ba_n100_m2,FMMM,"{'start_node': '4', 'end_node': '49'}",zero_shot,cot,"To find the shortest path between nodes 4 and 49, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (4):**
+   - Neighbors of 4: [1, 2, 9]
+
+2. **Explore Paths Using BFS:**
+   - Start from node 4.
+   - Level 1: From 4, explore neighbors [1, 2, 9].
+   - Level 2: From 1, explore [2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99].
+   - From 2, explore [1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100].
+   - From 9, explore [2, 4, 11, 15, 21, 27].
+   - Level 3: From 44, explore [2, 17, 49, 81].
+
+3. **Identify When End Node (49) is Reached:**
+   - Node 49 is reached from node 44.
+
+4. **Verify the Path:**
+   - Path: 4 → 2 → 44 → 49
+   - Check connections: 4 to 2, 2 to 44, 44 to 49.
+
+5. **Confirm Minimal Path:**
+   - No shorter path exists as BFS explores the shortest paths first.
+
+Final Answer:
+- Path: 4, 2, 44, 49, Length: 3","{'path': ['4', '2', '44', '49'], 'length': 3}","{'path': ['4', '2', '44', '49'], 'length': 3}",1.0,15.97425103,2143,453,2596
+ba_n100_m2,FMMM,"{'start_node': '4', 'end_node': '49'}",few_shots,standard,"Path: [4, 2, 17, 34, 49], Length: 4","{'path': ['4', '2', '17', '34', '49'], 'length': 4}","{'path': ['4', '2', '44', '49'], 'length': 3}",0.562,4.601465702,4081,21,4102
+ba_n100_m2,FMMM,"{'start_node': '4', 'end_node': '49'}",few_shots,cot,"To find the shortest path between nodes 4 and 49, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (4):**
+   - From the adjacency list, node 4 is connected to: 1, 2, 9.
+
+2. **Explore Possible Paths Using BFS:**
+   - Start from node 4.
+   - Level 1: Visit neighbors of 4: [1, 2, 9].
+   - Level 2: From 1, visit [2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99].
+   - From 2, visit [4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100].
+   - From 9, visit [2, 4, 11, 15, 21, 27].
+   - Level 3: From 44, visit [2, 17, 49, 81].
+
+3. **Identify When You've Reached the End Node (49):**
+   - Node 49 is reached from node 44.
+
+4. **Verify the Path:**
+   - The path from 4 to 49 is: 4 → 2 → 44 → 49.
+   - Check connections: 4 to 2, 2 to 44, 44 to 49 are all valid connections.
+
+5. **Confirm the Path is Minimal:**
+   - No shorter path exists as BFS explores the shortest path first.
+
+**Final Answer:**
+Path: [4, 2, 44, 49], Length: 3","{'path': ['4', '2', '44', '49'], 'length': 3}","{'path': ['4', '2', '44', '49'], 'length': 3}",1.0,21.49692202,4463,472,4935
+ba_n100_m2,ORTHO,"{'start_node': '85', 'end_node': '21'}",zero_shot,standard,"Path: 85, 27, 9, 21, Length: 3","{'path': ['85', '27', '9', '21'], 'length': 3}","{'path': ['85', '27', '9', '21'], 'length': 3}",1.0,2.614416122,2088,18,2106
+ba_n100_m2,ORTHO,"{'start_node': '85', 'end_node': '21'}",zero_shot,cot,"To find the shortest path between nodes 85 and 21, we will use a breadth-first search (BFS) approach.
+
+### Step-by-Step Process:
+
+1. **Start at Node 85:**
+   - Neighbors: 13, 27
+
+2. **Explore Neighbors of Node 85:**
+   - From 13: Neighbors are 5, 6, 38, 85
+   - From 27: Neighbors are 9, 14, 30, 65, 66, 85
+
+3. **Explore Neighbors of Node 13 and 27:**
+   - From 5 (neighbor of 13): Neighbors are 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100
+   - From 9 (neighbor of 27): Neighbors are 2, 4, 11, 15, 21, 27
+
+4. **Identify Path to Node 21:**
+   - From 9, we can directly reach 21.
+
+5. **Verify the Path:**
+   - Path: 85 → 27 → 9 → 21
+   - Each step is connected by an edge.
+
+6. **Check for Shorter Path:**
+   - No shorter path exists as this is the direct path found using BFS.
+
+### Conclusion:
+
+The shortest path from node 85 to node 21 is:
+
+**Path: 85, 27, 9, 21, Length: 3**","{'path': ['85', '27', '9', '21'], 'length': 3}","{'path': ['85', '27', '9', '21'], 'length': 3}",1.0,13.97391891,2143,369,2512
+ba_n100_m2,ORTHO,"{'start_node': '85', 'end_node': '21'}",few_shots,standard,"Path: [85, 27, 9, 21], Length: 3","{'path': ['85', '27', '9', '21'], 'length': 3}","{'path': ['85', '27', '9', '21'], 'length': 3}",1.0,3.165496111,4081,18,4099
+ba_n100_m2,ORTHO,"{'start_node': '85', 'end_node': '21'}",few_shots,cot,"To find the shortest path between nodes 85 and 21, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (85):**
+   - From the adjacency list, node 85 is connected to nodes 13 and 27.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 85.
+   - Visit neighbors: 13, 27.
+   - From 13, visit: 5, 6, 38.
+   - From 27, visit: 9, 14, 30, 65, 66, 92.
+   - From 9, visit: 2, 4, 11, 15, 21, 27.
+
+3. **Identify When End Node (21) is Reached:**
+   - Node 21 is reached from node 9.
+
+4. **Verify Path:**
+   - The path is 85 → 27 → 9 → 21.
+   - Check connections: 85-27, 27-9, 9-21 are all valid connections.
+
+5. **Confirm Shortest Path:**
+   - No shorter path exists as BFS explores the shortest paths first.
+
+Final answer:
+
+**Path: [85, 27, 9, 21], Length: 3**","{'path': ['85', '27', '9', '21'], 'length': 3}","{'path': ['85', '27', '9', '21'], 'length': 3}",1.0,14.53830004,4463,284,4747
+ba_n100_m2,ORTHO,"{'start_node': '4', 'end_node': '49'}",zero_shot,standard,"Path: 4, 1, 46, 64, 49, Length: 4","{'path': ['4', '1', '46', '64', '49'], 'length': 4}","{'path': ['4', '2', '44', '49'], 'length': 3}",0.562,2.730277777,2088,21,2109
+ba_n100_m2,ORTHO,"{'start_node': '4', 'end_node': '49'}",zero_shot,cot,"To find the shortest path between nodes 4 and 49, we will use a breadth-first search (BFS) approach.
+
+### Step-by-Step Process:
+
+1. **Start at Node 4:**
+   - Neighbors of 4: [1, 2, 9]
+
+2. **Explore Neighbors of Node 4:**
+   - From 4 to 1: Neighbors of 1 are [2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99]
+   - From 4 to 2: Neighbors of 2 are [1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100]
+   - From 4 to 9: Neighbors of 9 are [2, 4, 11, 15, 21, 27]
+
+3. **Explore Neighbors of Node 1:**
+   - From 1 to 34: Neighbors of 34 are [6, 17, 49, 60, 98]
+
+4. **Reach Node 49:**
+   - From 34 to 49: Node 49 is reached.
+
+### Path Verification:
+
+- Path: 4 → 1 → 34 → 49
+- Each step is connected by an edge in the graph.
+
+### Conclusion:
+
+The shortest path from node 4 to node 49 is through nodes 1 and 34.
+
+**Final Answer:**
+Path: 4, 1, 34, 49, Length: 3","{'path': ['4', '1', '34', '49'], 'length': 3}","{'path': ['4', '2', '44', '49'], 'length': 3}",0.667,16.01390696,2143,445,2588
+ba_n100_m2,ORTHO,"{'start_node': '4', 'end_node': '49'}",few_shots,standard,"Path: [4, 9, 2, 17, 34, 49], Length: 5","{'path': ['4', '9', '2', '17', '34', '49'], 'length': 5}","{'path': ['4', '2', '44', '49'], 'length': 3}",0.48,3.471365213,4081,24,4105
+ba_n100_m2,ORTHO,"{'start_node': '4', 'end_node': '49'}",few_shots,cot,"To find the shortest path between nodes 4 and 49, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (4):**
+   - From the adjacency list, node 4 is connected to nodes: 1, 2, and 9.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 4 and explore its neighbors.
+   - Queue: [(4, [4])]
+   - Dequeue (4, [4]), explore neighbors: 1, 2, 9.
+   - Enqueue: (1, [4, 1]), (2, [4, 2]), (9, [4, 9]).
+
+3. **Continue BFS:**
+   - Dequeue (1, [4, 1]), explore neighbors: 2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99.
+   - Enqueue: (3, [4, 1, 3]), (6, [4, 1, 6]), (14, [4, 1, 14]), (18, [4, 1, 18]), (39, [4, 1, 39]), (46, [4, 1, 46]), (48, [4, 1, 48]), (69, [4, 1, 69]), (78, [4, 1, 78]), (87, [4, 1, 87]), (92, [4, 1, 92]), (99, [4, 1, 99]).
+
+4. **Continue BFS:**
+   - Dequeue (2, [4, 2]), explore neighbors: 1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100.
+   - Enqueue: (5, [4, 2, 5]), (7, [4, 2, 7]), (16, [4, 2, 16]), (18, [4, 2, 18]), (44, [4, 2, 44]), (46, [4, 2, 46]), (50, [4, 2, 50]), (98, [4, 2, 98]), (100, [4, 2, 100]).
+
+5. **Continue BFS:**
+   - Dequeue (9, [4, 9]), explore neighbors: 2, 4, 11, 15, 21, 27.
+   - Enqueue: (11, [4, 9, 11]), (15, [4, 9, 15]), (21, [4, 9, 21]), (27, [4, 9, 27]).
+
+6. **Continue BFS:**
+   - Dequeue (44, [4, 2, 44]), explore neighbors: 2, 17, 49, 81.
+   - Enqueue: (17, [4, 2, 44, 17]), (49, [4, 2, 44, 49]).
+
+7. **Reach End Node (49):**
+   - Dequeue (49, [4, 2, 44, 49]). We've reached the target node 49.
+
+8. **Verify Path:**
+   - Path: [4, 2, 44, 49]
+   - Length: 3
+
+The shortest path from node 4 to node 49 is through nodes 2 and 44. 
+
+**Final Answer:**
+Path: [4, 2, 44, 49], Length: 3","{'path': ['4', '2', '44', '49'], 'length': 3}","{'path': ['4', '2', '44', '49'], 'length': 3}",1.0,30.51390696,4463,915,5378
+ba_n100_m3,FMMM,"{'start_node': '78', 'end_node': '44'}",zero_shot,standard,"Path: 78, 7, 44, Length: 2","{'path': ['78', '7', '44'], 'length': 2}","{'path': ['78', '7', '44'], 'length': 2}",1.0,4.595800161,2468,15,2483
+ba_n100_m3,FMMM,"{'start_node': '78', 'end_node': '44'}",zero_shot,cot,"To find the shortest path between nodes 78 and 44, we will use a breadth-first search (BFS) approach.
+
+1. **Start at Node 78**:
+   - Neighbors: 7, 70, 72
+
+2. **Explore Neighbors of 78**:
+   - From 78 to 7: Neighbors are 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100
+   - From 78 to 70: Neighbors are 2, 5, 22, 78, 96
+   - From 78 to 72: Neighbors are 6, 9, 23, 78
+
+3. **Identify Path to 44**:
+   - From 78 to 7, then directly to 44.
+
+4. **Verify Path**:
+   - Path: 78 → 7 → 44
+   - Check connections: 78 is connected to 7, and 7 is connected to 44.
+
+5. **Confirm Shortest Path**:
+   - The path 78 → 7 → 44 is valid and minimal, as it consists of 2 edges.
+
+Final Answer:
+- **Path**: 78, 7, 44
+- **Length**: 2","{'path': ['78', '7', '44'], 'length': 2}","{'path': ['78', '7', '44'], 'length': 2}",1.0,13.82081819,2523,327,2850
+ba_n100_m3,FMMM,"{'start_node': '78', 'end_node': '44'}",few_shots,standard,"Path: [78, 70, 2, 44], Length: 3","{'path': ['78', '70', '2', '44'], 'length': 3}","{'path': ['78', '7', '44'], 'length': 2}",0.667,5.410665035,4461,18,4479
+ba_n100_m3,FMMM,"{'start_node': '78', 'end_node': '44'}",few_shots,cot,"To find the shortest path between nodes 78 and 44, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (78):**
+   - Neighbors of 78: 7, 70, 72
+
+2. **Explore Paths Using BFS:**
+   - Start from node 78.
+   - Level 1: From 78, visit 7, 70, 72.
+   - Level 2: From 7, visit 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100.
+   - From 70, visit 2, 5, 22, 78, 96.
+   - From 72, visit 6, 9, 23, 78.
+
+3. **Identify When End Node (44) is Reached:**
+   - Node 44 is reached from node 7 in Level 2.
+
+4. **Verify the Path:**
+   - Path: 78 → 7 → 44
+   - Check connections: 78 is connected to 7, and 7 is connected to 44.
+
+5. **Confirm Minimal Path:**
+   - No shorter path exists as 44 is reached in Level 2, which is the shortest possible level from 78.
+
+Final Answer:
+- **Path:** [78, 7, 44], **Length:** 2","{'path': ['78', '7', '44'], 'length': 2}","{'path': ['78', '7', '44'], 'length': 2}",1.0,14.84749508,4843,359,5202
+ba_n100_m3,FMMM,"{'start_node': '4', 'end_node': '91'}",zero_shot,standard,"Path: 4, 79, 91, Length: 2","{'path': ['4', '79', '91'], 'length': 2}","{'path': ['4', '20', '91'], 'length': 2}",1.0,3.480046034,2468,15,2483
+ba_n100_m3,FMMM,"{'start_node': '4', 'end_node': '91'}",zero_shot,cot,"To find the shortest path between nodes 4 and 91, we will use a breadth-first search (BFS) approach.
+
+1. **Start at Node 4**:
+   - Neighbors: 1, 5, 14, 15, 19, 20, 28, 30, 35, 37, 45, 47, 51, 66, 76, 79, 82, 87, 97
+
+2. **Explore Neighbors of Node 4**:
+   - From node 4, we can reach nodes 1, 5, 14, 15, 19, 20, 28, 30, 35, 37, 45, 47, 51, 66, 76, 79, 82, 87, 97.
+
+3. **Continue BFS**:
+   - From node 79 (a neighbor of 4), we can reach node 91.
+
+4. **Path Found**:
+   - Path: 4 -> 79 -> 91
+
+5. **Verify Path**:
+   - Check adjacency: 4 is connected to 79, and 79 is connected to 91.
+
+6. **Confirm Shortest Path**:
+   - No shorter path exists as this path is found directly through BFS.
+
+Final Answer:
+- Path: 4, 79, 91, Length: 2","{'path': ['4', '79', '91'], 'length': 2}","{'path': ['4', '20', '91'], 'length': 2}",1.0,12.19220614,2523,297,2820
+ba_n100_m3,FMMM,"{'start_node': '4', 'end_node': '91'}",few_shots,standard,"Path: [4, 79, 91], Length: 2","{'path': ['4', '79', '91'], 'length': 2}","{'path': ['4', '20', '91'], 'length': 2}",1.0,4.18527317,4461,15,4476
+ba_n100_m3,FMMM,"{'start_node': '4', 'end_node': '91'}",few_shots,cot,"To find the shortest path between nodes 4 and 91, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Node 4:**
+   - From the adjacency list, node 4 is connected to: 1, 5, 14, 15, 19, 20, 28, 30, 35, 37, 45, 47, 51, 66, 76, 79, 82, 87, 97.
+
+2. **Perform BFS:**
+   - Start from node 4 and explore its neighbors.
+   - Check each neighbor to see if it's node 91. If not, add it to the queue for further exploration.
+   - Continue this process, exploring each node's neighbors, until node 91 is reached.
+
+3. **Path Exploration:**
+   - Start at node 4.
+   - Explore neighbors: 1, 5, 14, 15, 19, 20, 28, 30, 35, 37, 45, 47, 51, 66, 76, 79, 82, 87, 97.
+   - Node 20 is a neighbor of node 4 and is connected to node 91.
+
+4. **Verify Path:**
+   - Path: 4 → 20 → 91
+   - Check adjacency list: 4 is connected to 20, and 20 is connected to 91.
+
+5. **Confirm Shortest Path:**
+   - The path 4 → 20 → 91 is valid and minimal, as it consists of only two edges.
+
+**Final Answer:**
+
+Path: [4, 20, 91], Length: 2","{'path': ['4', '20', '91'], 'length': 2}","{'path': ['4', '20', '91'], 'length': 2}",1.0,15.66706729,4843,373,5216
+ba_n100_m3,ORTHO,"{'start_node': '78', 'end_node': '44'}",zero_shot,standard,"Path: 78, 7, 44, Length: 2","{'path': ['78', '7', '44'], 'length': 2}","{'path': ['78', '7', '44'], 'length': 2}",1.0,2.449921846,2468,15,2483
+ba_n100_m3,ORTHO,"{'start_node': '78', 'end_node': '44'}",zero_shot,cot,"To find the shortest path between nodes 78 and 44, we will use a breadth-first search (BFS) approach.
+
+1. **Start at Node 78**:
+   - Neighbors: 7, 70, 72
+
+2. **Explore Neighbors of Node 78**:
+   - From 78 to 7: Neighbors of 7 are 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100
+   - From 78 to 70: Neighbors of 70 are 2, 5, 22, 78, 96
+   - From 78 to 72: Neighbors of 72 are 6, 9, 23, 78
+
+3. **Check for Target Node 44**:
+   - Node 44 is a direct neighbor of node 7.
+
+4. **Path Found**:
+   - The shortest path from 78 to 44 is: 78 → 7 → 44
+
+5. **Verify Path**:
+   - Check adjacency: 78 is connected to 7, and 7 is connected to 44.
+
+6. **Conclusion**:
+   - The path is valid and minimal.
+
+**Final Answer**:
+Path: 78, 7, 44, Length: 2","{'path': ['78', '7', '44'], 'length': 2}","{'path': ['78', '7', '44'], 'length': 2}",1.0,10.4429512,2523,330,2853
+ba_n100_m3,ORTHO,"{'start_node': '78', 'end_node': '44'}",few_shots,standard,"Path: [78, 70, 2, 44], Length: 3","{'path': ['78', '70', '2', '44'], 'length': 3}","{'path': ['78', '7', '44'], 'length': 2}",0.667,4.027978897,4461,18,4479
+ba_n100_m3,ORTHO,"{'start_node': '78', 'end_node': '44'}",few_shots,cot,"To find the shortest path between nodes 78 and 44, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (78):**
+   - Neighbors of 78: 7, 70, 72
+
+2. **Explore Paths Using BFS:**
+   - Start from 78, explore its neighbors: 7, 70, 72
+   - From 7, explore: 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100
+   - From 70, explore: 2, 5, 22, 78, 96
+   - From 72, explore: 6, 9, 23, 78
+
+3. **Identify When End Node (44) is Reached:**
+   - Node 44 is a direct neighbor of node 7.
+
+4. **Verify the Path:**
+   - Path: 78 → 7 → 44
+   - Check connections: 78 to 7, 7 to 44 are valid connections.
+
+5. **Confirm Minimal Path:**
+   - No shorter path exists as 44 is directly connected to 7, which is a neighbor of 78.
+
+Final Answer:
+- **Path:** [78, 7, 44], **Length:** 2","{'path': ['78', '7', '44'], 'length': 2}","{'path': ['78', '7', '44'], 'length': 2}",1.0,13.37314582,4843,344,5187
+ba_n100_m3,ORTHO,"{'start_node': '4', 'end_node': '91'}",zero_shot,standard,"Path: 4, 79, 91, Length: 2","{'path': ['4', '79', '91'], 'length': 2}","{'path': ['4', '20', '91'], 'length': 2}",1.0,2.043190002,2468,15,2483
+ba_n100_m3,ORTHO,"{'start_node': '4', 'end_node': '91'}",zero_shot,cot,"To find the shortest path between nodes 4 and 91, we will use a breadth-first search (BFS) approach.
+
+### Step-by-Step Process:
+
+1. **Start at Node 4:**
+   - Neighbors: 1, 5, 14, 15, 19, 20, 28, 30, 35, 37, 45, 47, 51, 66, 76, 79, 82, 87, 97
+
+2. **Explore Neighbors of Node 4:**
+   - From node 4, we can move to nodes 1, 5, 14, 15, 19, 20, 28, 30, 35, 37, 45, 47, 51, 66, 76, 79, 82, 87, 97.
+
+3. **Continue BFS:**
+   - From node 20 (a neighbor of 4), we can move to nodes 8, 11, 34, 53, 77, 91.
+   - Node 91 is reached from node 20.
+
+4. **Path Found:**
+   - The path is 4 → 20 → 91.
+
+5. **Verify Path:**
+   - Check connections: 4 to 20, and 20 to 91 are valid connections.
+
+6. **Confirm Shortest Path:**
+   - No shorter path exists as this is found using BFS, which guarantees the shortest path in an unweighted graph.
+
+### Final Answer:
+Path: 4, 20, 91, Length: 2","{'path': ['4', '20', '91'], 'length': 2}","{'path': ['4', '20', '91'], 'length': 2}",1.0,13.5189209,2523,341,2864
+ba_n100_m3,ORTHO,"{'start_node': '4', 'end_node': '91'}",few_shots,standard,"Path: [4, 79, 91], Length: 2","{'path': ['4', '79', '91'], 'length': 2}","{'path': ['4', '20', '91'], 'length': 2}",1.0,3.27896595,4461,15,4476
+ba_n100_m3,ORTHO,"{'start_node': '4', 'end_node': '91'}",few_shots,cot,"To find the shortest path between nodes 4 and 91, we can use a breadth-first search (BFS) approach. Here's the step-by-step process:
+
+1. **Identify Neighbors of Node 4:**
+   - From the adjacency list, node 4 is connected to: 1, 5, 14, 15, 19, 20, 28, 30, 35, 37, 45, 47, 51, 66, 76, 79, 82, 87, 97.
+
+2. **Perform BFS:**
+   - Start from node 4 and explore its neighbors.
+   - Check each neighbor to see if it's node 91. If not, add it to the queue for further exploration.
+   - Continue this process, exploring each node's neighbors, until node 91 is reached.
+
+3. **Path Exploration:**
+   - Start with node 4.
+   - Explore neighbors: 1, 5, 14, 15, 19, 20, 28, 30, 35, 37, 45, 47, 51, 66, 76, 79, 82, 87, 97.
+   - Node 20 is a neighbor of node 4 and is directly connected to node 91.
+
+4. **Verify Path:**
+   - Path: 4 → 20 → 91
+   - Check adjacency list: 4 is connected to 20, and 20 is connected to 91.
+
+5. **Confirm Shortest Path:**
+   - The path 4 → 20 → 91 is valid and minimal, as it consists of only two edges.
+
+Final Answer:
+- **Path: [4, 20, 91], Length: 2**","{'path': ['4', '20', '91'], 'length': 2}","{'path': ['4', '20', '91'], 'length': 2}",1.0,14.20325089,4843,375,5218
+ba_n150_m2,FMMM,"{'start_node': '62', 'end_node': '10'}",zero_shot,standard,"Path: 62, 1, 10, Length: 2","{'path': ['62', '1', '10'], 'length': 2}","{'path': ['62', '1', '10'], 'length': 2}",1.0,3.885254145,2638,15,2653
+ba_n150_m2,FMMM,"{'start_node': '62', 'end_node': '10'}",zero_shot,cot,"To find the shortest path between nodes 62 and 10, we will use a breadth-first search (BFS) approach.
+
+1. **Start at node 62**:
+   - Neighbors: 1, 12, 67, 121, 133
+
+2. **Explore neighbors of 62**:
+   - From 62 to 1
+   - From 62 to 12
+   - From 62 to 67
+   - From 62 to 121
+   - From 62 to 133
+
+3. **Explore neighbors of 1** (since 1 is a direct neighbor of 62 and has many connections):
+   - Neighbors: 2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141
+
+4. **Identify the target node 10**:
+   - Node 10 is a direct neighbor of node 1.
+
+5. **Path found**:
+   - Path: 62 → 1 → 10
+
+6. **Verify the path**:
+   - 62 is connected to 1.
+   - 1 is connected to 10.
+
+7. **Confirm the path is minimal**:
+   - The path length is 2, which is minimal as it directly connects through node 1.
+
+**Final Answer**:
+Path: 62, 1, 10, Length: 2","{'path': ['62', '1', '10'], 'length': 2}","{'path': ['62', '1', '10'], 'length': 2}",1.0,17.30249882,2693,400,3093
+ba_n150_m2,FMMM,"{'start_node': '62', 'end_node': '10'}",few_shots,standard,"Path: [62, 1, 10], Length: 2","{'path': ['62', '1', '10'], 'length': 2}","{'path': ['62', '1', '10'], 'length': 2}",1.0,5.216166973,4631,15,4646
+ba_n150_m2,FMMM,"{'start_node': '62', 'end_node': '10'}",few_shots,cot,"To find the shortest path between nodes 62 and 10, we can use a breadth-first search (BFS) approach. Let's go through the steps:
+
+1. **Identify Neighbors of the Start Node (62):**
+   - From the adjacency list, node 62 is connected to: 1, 12, 67, 121, 133.
+
+2. **Explore Possible Paths Using BFS:**
+   - Start from node 62.
+   - Level 1: Visit neighbors of 62: [1, 12, 67, 121, 133].
+   - Level 2: From these nodes, explore their neighbors:
+     - Node 1 connects to: 2, 3, 4, 6, 8, 10, 11, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141.
+     - Node 12 connects to: 1, 6, 62.
+     - Node 67 connects to: 51, 62, 74, 75.
+     - Node 121 connects to: 62, 113.
+     - Node 133 connects to: 62, 66.
+
+3. **Identify When You've Reached the End Node (10):**
+   - From node 1, we can directly reach node 10.
+
+4. **Verify the Path:**
+   - Path: 62 → 1 → 10.
+   - Check connections: 62 is connected to 1, and 1 is connected to 10.
+
+5. **Confirm the Path is Minimal:**
+   - The path length is 2, and no shorter path exists since 62 and 10 are not directly connected.
+
+**Final Answer:**
+Path: [62, 1, 10], Length: 2","{'path': ['62', '1', '10'], 'length': 2}","{'path': ['62', '1', '10'], 'length': 2}",1.0,19.15813303,5013,464,5477
+ba_n150_m2,FMMM,"{'start_node': '13', 'end_node': '134'}",zero_shot,standard,"Path: 13, 5, 2, 134, Length: 3","{'path': ['13', '5', '2', '134'], 'length': 3}","{'path': ['13', '5', '2', '134'], 'length': 3}",1.0,4.131172895,2638,18,2656
+ba_n150_m2,FMMM,"{'start_node': '13', 'end_node': '134'}",zero_shot,cot,"To find the shortest path between nodes 13 and 134, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Start at Node 13**:
+   - Neighbors: 5, 6, 38, 85
+
+2. **Explore Neighbors of Node 13**:
+   - From 5: 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100, 103, 115, 118
+   - From 6: 1, 5, 12, 13, 23, 25, 31, 34, 35, 40, 43, 63, 68, 136
+   - From 38: 7, 13, 42, 54, 82, 109, 131
+   - From 85: 13, 27, 124
+
+3. **Continue BFS from New Nodes**:
+   - From 5, 6, 38, 85, explore their neighbors, but avoid revisiting nodes.
+
+4. **Find Path to Node 134**:
+   - From 5, reach node 2.
+   - From 2, reach node 134.
+
+5. **Verify Path**:
+   - Path: 13 → 5 → 2 → 134
+   - Check connections: 13 to 5, 5 to 2, 2 to 134.
+
+6. **Confirm Shortest Path**:
+   - No shorter path exists as BFS explores all shortest paths first.
+
+**Final Answer**:
+Path: 13, 5, 2, 134, Length: 3","{'path': ['13', '5', '2', '134'], 'length': 3}","{'path': ['13', '5', '2', '134'], 'length': 3}",1.0,15.92291903,2693,412,3105
+ba_n150_m2,FMMM,"{'start_node': '13', 'end_node': '134'}",few_shots,standard,"Path: [13, 5, 2, 134], Length: 3","{'path': ['13', '5', '2', '134'], 'length': 3}","{'path': ['13', '5', '2', '134'], 'length': 3}",1.0,3.782329082,4631,18,4649
+ba_n150_m2,FMMM,"{'start_node': '13', 'end_node': '134'}",few_shots,cot,"To find the shortest path between nodes 13 and 134, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (13):**
+   - From the adjacency list, node 13 is connected to: 5, 6, 38, 85.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 13.
+   - Visit its neighbors: 5, 6, 38, 85.
+   - Check if any of these are node 134. They are not, so continue.
+   - Explore neighbors of 5: 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100, 103, 115, 118.
+   - Explore neighbors of 6: 1, 5, 12, 13, 23, 25, 31, 34, 35, 40, 43, 63, 68, 136.
+   - Explore neighbors of 38: 7, 13, 42, 54, 82, 109, 131.
+   - Explore neighbors of 85: 13, 27, 124.
+
+3. **Continue BFS:**
+   - From node 5, explore node 7 (since 134 is a neighbor of 7).
+   - From node 7, explore node 134.
+
+4. **Verify Path:**
+   - Path found: 13 → 5 → 7 → 134.
+   - Check adjacency: 13-5, 5-7, 7-134 are all valid connections.
+
+5. **Confirm Shortest Path:**
+   - No shorter path exists as BFS explores the shortest path first.
+
+**Final Answer:**
+
+Path: [13, 5, 7, 134], Length: 3","{'path': ['13', '5', '7', '134'], 'length': 3}","{'path': ['13', '5', '2', '134'], 'length': 3}",1.0,20.42490101,5013,449,5462
+ba_n150_m2,ORTHO,"{'start_node': '62', 'end_node': '10'}",zero_shot,standard,"Path: 62, 1, 10, Length: 2","{'path': ['62', '1', '10'], 'length': 2}","{'path': ['62', '1', '10'], 'length': 2}",1.0,2.71029377,2638,15,2653
+ba_n150_m2,ORTHO,"{'start_node': '62', 'end_node': '10'}",zero_shot,cot,"To find the shortest path between nodes 62 and 10, we will use a breadth-first search (BFS) approach.
+
+### Step-by-Step Process:
+
+1. **Start at Node 62:**
+   - Neighbors: 1, 12, 67, 121, 133
+
+2. **Explore Neighbors of Node 62:**
+   - From 62, move to 1 (since 1 is a direct neighbor of 10).
+   - Path so far: 62 → 1
+
+3. **Explore Neighbors of Node 1:**
+   - Neighbors: 2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141
+   - Node 10 is a direct neighbor of 1.
+
+4. **Reach Node 10:**
+   - Path: 62 → 1 → 10
+
+5. **Verify the Path:**
+   - Check adjacency: 62 is connected to 1, and 1 is connected to 10.
+   - The path is valid and minimal.
+
+### Conclusion:
+
+The shortest path from node 62 to node 10 is through node 1.
+
+**Final Answer:**
+Path: 62, 1, 10, Length: 2","{'path': ['62', '1', '10'], 'length': 2}","{'path': ['62', '1', '10'], 'length': 2}",1.0,19.35458899,2693,374,3067
+ba_n150_m2,ORTHO,"{'start_node': '62', 'end_node': '10'}",few_shots,standard,"Path: [62, 1, 10], Length: 2","{'path': ['62', '1', '10'], 'length': 2}","{'path': ['62', '1', '10'], 'length': 2}",1.0,9.716925144,4631,15,4646
+ba_n150_m2,ORTHO,"{'start_node': '62', 'end_node': '10'}",few_shots,cot,"To find the shortest path between nodes 62 and 10, we can use a breadth-first search (BFS) approach. Let's go through the steps:
+
+1. **Identify Neighbors of the Start Node (62):**
+   - From the adjacency list, node 62 is connected to: 1, 12, 67, 121, 133.
+
+2. **Explore Possible Paths Using BFS:**
+   - Start from node 62.
+   - Level 1: Visit neighbors of 62: [1, 12, 67, 121, 133].
+   - Level 2: From node 1, visit its neighbors: [2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141].
+   - Node 10 is reached at this level.
+
+3. **Identify When You've Reached the End Node:**
+   - Node 10 is reached from node 1, which is a neighbor of node 62.
+
+4. **Verify the Path:**
+   - Path: [62, 1, 10]
+   - Check connections: 62 is connected to 1, and 1 is connected to 10.
+
+5. **Confirm Minimal Path:**
+   - The path [62, 1, 10] is the shortest, as node 10 is reached in the second level of BFS.
+
+Therefore, the shortest path from node 62 to node 10 is:
+
+**Path: [62, 1, 10], Length: 2**","{'path': ['62', '1', '10'], 'length': 2}","{'path': ['62', '1', '10'], 'length': 2}",1.0,20.88150716,5013,428,5441
+ba_n150_m2,ORTHO,"{'start_node': '13', 'end_node': '134'}",zero_shot,standard,"Path: 13, 5, 2, 134, Length: 3","{'path': ['13', '5', '2', '134'], 'length': 3}","{'path': ['13', '5', '2', '134'], 'length': 3}",1.0,2.657114267,2638,18,2656
+ba_n150_m2,ORTHO,"{'start_node': '13', 'end_node': '134'}",zero_shot,cot,"To find the shortest path between nodes 13 and 134, we will use a breadth-first search (BFS) approach.
+
+1. **Start at Node 13**:
+   - Neighbors: 5, 6, 38, 85
+
+2. **Explore Neighbors of Node 13**:
+   - From 5: 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100, 103, 115, 118
+   - From 6: 1, 5, 12, 13, 23, 25, 31, 34, 35, 40, 43, 63, 68, 136
+   - From 38: 7, 13, 42, 54, 82, 109, 131
+   - From 85: 13, 27, 124
+
+3. **Continue BFS**:
+   - From 5, explore 2: 1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100, 107, 113, 126, 134, 138, 141, 142, 144
+   - Node 134 is a direct neighbor of 2.
+
+4. **Path Found**:
+   - Path: 13 → 5 → 2 → 134
+
+5. **Verify Path**:
+   - Check connections:
+     - 13 to 5
+     - 5 to 2
+     - 2 to 134
+
+6. **Conclusion**:
+   - The path is valid and minimal.
+
+**Final Answer**:
+Path: 13, 5, 2, 134, Length: 3","{'path': ['13', '5', '2', '134'], 'length': 3}","{'path': ['13', '5', '2', '134'], 'length': 3}",1.0,22.73157096,2693,456,3149
+ba_n150_m2,ORTHO,"{'start_node': '13', 'end_node': '134'}",few_shots,standard,"Path: [13, 38, 7, 134], Length: 3","{'path': ['13', '38', '7', '134'], 'length': 3}","{'path': ['13', '5', '2', '134'], 'length': 3}",1.0,3.174911976,4631,18,4649
+ba_n150_m2,ORTHO,"{'start_node': '13', 'end_node': '134'}",few_shots,cot,"To find the shortest path between nodes 13 and 134, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (13):**
+   - From the adjacency list, node 13 is connected to: 5, 6, 38, 85.
+
+2. **Explore Possible Paths Using BFS:**
+   - Start from node 13.
+   - First level neighbors: 5, 6, 38, 85.
+   - Check if any of these are node 134. They are not.
+   - Explore the neighbors of these nodes:
+     - Node 5: 2, 3, 6, 7, 13, 14, 16, 17, 19, 20, 24, 31, 37, 41, 54, 63, 65, 70, 75, 81, 84, 87, 88, 94, 100, 103, 115, 118.
+     - Node 6: 1, 5, 12, 13, 23, 25, 31, 34, 35, 40, 43, 63, 68, 136.
+     - Node 38: 7, 13, 42, 54, 82, 109, 131.
+     - Node 85: 13, 27, 124.
+
+3. **Continue BFS:**
+   - From the neighbors of node 5, node 2 is connected to node 134.
+   - Path found: 13 -> 5 -> 2 -> 134.
+
+4. **Verify Path:**
+   - Check each connection:
+     - 13 to 5
+     - 5 to 2
+     - 2 to 134
+   - All connections are valid according to the adjacency list.
+
+5. **Confirm Shortest Path:**
+   - No shorter path exists as BFS explores the shortest paths first.
+
+**Final Answer:**
+Path: [13, 5, 2, 134], Length: 3","{'path': ['13', '5', '2', '134'], 'length': 3}","{'path': ['13', '5', '2', '134'], 'length': 3}",1.0,16.27252889,5013,452,5465
+ba_n150_m3,FMMM,"{'start_node': '13', 'end_node': '7'}",zero_shot,standard,"Path: 13, 7, Length: 1","{'path': ['13', '7'], 'length': 1}","{'path': ['13', '7'], 'length': 1}",1.0,4.087479115,3218,12,3230
+ba_n150_m3,FMMM,"{'start_node': '13', 'end_node': '7'}",zero_shot,cot,"To find the shortest path between nodes 13 and 7, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (13):**
+   - Neighbors of 13: 2, 5, 7, 16, 23, 30, 47, 48, 51, 52, 56, 69, 98, 99, 100, 102, 129, 137, 144, 149
+
+2. **Explore Paths Using BFS:**
+   - Start from node 13.
+   - Check if any neighbor is the target node (7). Node 7 is a direct neighbor of 13.
+
+3. **Path Found:**
+   - The path from 13 to 7 is direct: 13 → 7.
+
+4. **Verify Path:**
+   - Check adjacency list: 13 is directly connected to 7.
+   - Confirm no shorter path exists since this is a direct connection.
+
+5. **Conclusion:**
+   - The shortest path from 13 to 7 is direct.
+
+**Final Answer:**
+Path: 13, 7, Length: 1","{'path': ['13', '7'], 'length': 1}","{'path': ['13', '7'], 'length': 1}",1.0,10.44470191,3273,254,3527
+ba_n150_m3,FMMM,"{'start_node': '13', 'end_node': '7'}",few_shots,standard,"Path: [13, 7], Length: 1","{'path': ['13', '7'], 'length': 1}","{'path': ['13', '7'], 'length': 1}",1.0,4.81033802,5211,12,5223
+ba_n150_m3,FMMM,"{'start_node': '13', 'end_node': '7'}",few_shots,cot,"To find the shortest path between nodes 13 and 7, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Node 13:**
+   - From the adjacency list, node 13 is connected to: 2, 5, 7, 16, 23, 30, 47, 48, 51, 52, 56, 69, 98, 99, 100, 102, 129, 137, 144, 149.
+
+2. **Check Direct Connection:**
+   - Node 13 is directly connected to node 7.
+
+3. **Verify Path:**
+   - The path from node 13 to node 7 is direct, so it is valid and minimal.
+
+4. **Conclusion:**
+   - The shortest path from node 13 to node 7 is direct.
+
+**Final Answer:**
+
+Path: [13, 7], Length: 1","{'path': ['13', '7'], 'length': 1}","{'path': ['13', '7'], 'length': 1}",1.0,10.64682007,5593,208,5801
+ba_n150_m3,FMMM,"{'start_node': '112', 'end_node': '53'}",zero_shot,standard,"Path: 112, 5, 20, 53, Length: 3","{'path': ['112', '5', '20', '53'], 'length': 3}","{'path': ['112', '5', '53'], 'length': 2}",0.444,3.681216002,3218,18,3236
+ba_n150_m3,FMMM,"{'start_node': '112', 'end_node': '53'}",zero_shot,cot,"To find the shortest path between nodes 112 and 53, we will use a breadth-first search (BFS) approach.
+
+1. **Start at node 112**:
+   - Neighbors: 5, 8, 57, 131
+
+2. **Explore neighbors of 112**:
+   - From 5: 1, 3, 4, 6, 10, 11, 12, 13, 17, 21, 22, 26, 30, 31, 35, 38, 39, 53, 56, 57, 59, 63, 68, 70, 73, 75, 79, 85, 86, 94, 112, 114, 123, 126, 129, 131, 134, 136
+   - From 8: 1, 6, 7, 10, 11, 15, 16, 20, 21, 22, 26, 31, 34, 42, 45, 50, 57, 59, 65, 75, 83, 87, 88, 111, 112, 124, 127, 133
+   - From 57: 5, 6, 8, 71, 100, 108, 109, 112, 113
+   - From 131: 5, 48, 112, 143
+
+3. **Identify node 53 in the neighbors of node 5**:
+   - Path found: 112 → 5 → 53
+
+4. **Verify the path**:
+   - Check connections: 112 to 5, 5 to 53 are valid connections.
+
+5. **Confirm the path is minimal**:
+   - No shorter path exists as BFS explores all shortest paths first.
+
+**Final Answer**:
+Path: 112, 5, 53, Length: 2","{'path': ['112', '5', '53'], 'length': 2}","{'path': ['112', '5', '53'], 'length': 2}",1.0,14.32976103,3273,426,3699
+ba_n150_m3,FMMM,"{'start_node': '112', 'end_node': '53'}",few_shots,standard,"Path: [112, 5, 53], Length: 2","{'path': ['112', '5', '53'], 'length': 2}","{'path': ['112', '5', '53'], 'length': 2}",1.0,6.455389977,5211,15,5226
+ba_n150_m3,FMMM,"{'start_node': '112', 'end_node': '53'}",few_shots,cot,"To find the shortest path between nodes 112 and 53, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (112):**
+   - Neighbors of 112: 5, 8, 57, 131
+
+2. **Explore Paths Using BFS:**
+   - Start from node 112.
+   - Level 1: Visit neighbors of 112: 5, 8, 57, 131
+   - Level 2: From node 5, visit its neighbors: 1, 3, 4, 6, 10, 11, 12, 13, 17, 21, 22, 26, 30, 31, 35, 38, 39, 53, 56, 57, 59, 63, 68, 70, 73, 75, 79, 85, 86, 94, 112, 114, 123, 126, 129, 131, 134, 136
+   - Node 53 is reached from node 5.
+
+3. **Verify Path:**
+   - Path: 112 → 5 → 53
+   - Check connections: 112 is connected to 5, and 5 is connected to 53.
+
+4. **Confirm Shortest Path:**
+   - The path 112 → 5 → 53 is the shortest as it is found in the second level of BFS.
+
+Therefore, the shortest path is:
+
+**Path: [112, 5, 53], Length: 2**","{'path': ['112', '5', '53'], 'length': 2}","{'path': ['112', '5', '53'], 'length': 2}",1.0,15.36347699,5593,349,5942
+ba_n150_m3,ORTHO,"{'start_node': '13', 'end_node': '7'}",zero_shot,standard,"Path: 13, 7, Length: 1","{'path': ['13', '7'], 'length': 1}","{'path': ['13', '7'], 'length': 1}",1.0,2.955354929,3218,12,3230
+ba_n150_m3,ORTHO,"{'start_node': '13', 'end_node': '7'}",zero_shot,cot,"To find the shortest path between nodes 13 and 7, we will use a breadth-first search (BFS) approach.
+
+1. **Identify Neighbors of Start Node (13):**
+   - Neighbors of 13: 2, 5, 7, 16, 23, 30, 47, 48, 51, 52, 56, 69, 98, 99, 100, 102, 129, 137, 144, 149
+
+2. **Explore Paths Using BFS:**
+   - Start from node 13.
+   - Check if any neighbor is the target node (7). Node 7 is a direct neighbor of 13.
+
+3. **Path Found:**
+   - The path from 13 to 7 is direct.
+
+4. **Verify Path:**
+   - Check adjacency list: 13 is directly connected to 7.
+
+5. **Confirm Shortest Path:**
+   - Since 7 is a direct neighbor of 13, this is the shortest path.
+
+**Final Answer:**
+
+Path: 13, 7, Length: 1","{'path': ['13', '7'], 'length': 1}","{'path': ['13', '7'], 'length': 1}",1.0,7.877752066,3273,235,3508
+ba_n150_m3,ORTHO,"{'start_node': '13', 'end_node': '7'}",few_shots,standard,"Path: [13, 7], Length: 1","{'path': ['13', '7'], 'length': 1}","{'path': ['13', '7'], 'length': 1}",1.0,3.687014103,5211,12,5223
+ba_n150_m3,ORTHO,"{'start_node': '13', 'end_node': '7'}",few_shots,cot,"To find the shortest path between nodes 13 and 7, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Node 13:**
+   - From the adjacency list, node 13 is connected to: 2, 5, 7, 16, 23, 30, 47, 48, 51, 52, 56, 69, 98, 99, 100, 102, 129, 137, 144, 149.
+
+2. **Check Direct Connection:**
+   - Node 13 is directly connected to node 7.
+
+3. **Verify Path:**
+   - Since node 13 is directly connected to node 7, the path is valid and minimal.
+
+Therefore, the shortest path from node 13 to node 7 is:
+
+**Path: [13, 7], Length: 1**","{'path': ['13', '7'], 'length': 1}","{'path': ['13', '7'], 'length': 1}",1.0,7.063182831,5593,197,5790
+ba_n150_m3,ORTHO,"{'start_node': '112', 'end_node': '53'}",zero_shot,standard,"Path: 112, 5, 53, Length: 2","{'path': ['112', '5', '53'], 'length': 2}","{'path': ['112', '5', '53'], 'length': 2}",1.0,2.559214115,3218,15,3233
+ba_n150_m3,ORTHO,"{'start_node': '112', 'end_node': '53'}",zero_shot,cot,"To find the shortest path between nodes 112 and 53, we will use a breadth-first search (BFS) approach.
+
+1. **Start at Node 112**:
+   - Neighbors: 5, 8, 57, 131
+
+2. **Explore Neighbors of Node 112**:
+   - From 5: Neighbors are 1, 3, 4, 6, 10, 11, 12, 13, 17, 21, 22, 26, 30, 31, 35, 38, 39, 53, 56, 57, 59, 63, 68, 70, 73, 75, 79, 85, 86, 94, 112, 114, 123, 126, 129, 131, 134, 136
+   - From 8: Neighbors are 1, 6, 7, 10, 11, 15, 16, 20, 21, 22, 26, 31, 34, 42, 45, 50, 57, 59, 65, 75, 83, 87, 88, 111, 112, 124, 127, 133
+   - From 57: Neighbors are 5, 6, 8, 71, 100, 108, 109, 112, 113
+   - From 131: Neighbors are 5, 48, 112, 143
+
+3. **Identify Path to Node 53**:
+   - From 5, we can directly reach node 53.
+
+4. **Verify Path**:
+   - Path: 112 -> 5 -> 53
+   - Check connections: 112 to 5, and 5 to 53 are valid connections.
+
+5. **Conclusion**:
+   - The shortest path from 112 to 53 is through node 5.
+
+**Final Answer**:
+Path: 112, 5, 53, Length: 2","{'path': ['112', '5', '53'], 'length': 2}","{'path': ['112', '5', '53'], 'length': 2}",1.0,14.43767214,3273,447,3720
+ba_n150_m3,ORTHO,"{'start_node': '112', 'end_node': '53'}",few_shots,standard,"Path: [112, 5, 53], Length: 2","{'path': ['112', '5', '53'], 'length': 2}","{'path': ['112', '5', '53'], 'length': 2}",1.0,3.374022961,5211,15,5226
+ba_n150_m3,ORTHO,"{'start_node': '112', 'end_node': '53'}",few_shots,cot,"To find the shortest path between nodes 112 and 53, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (112):**
+   - From the adjacency list, node 112 is connected to nodes: 5, 8, 57, 131.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 112.
+   - First level neighbors: 5, 8, 57, 131.
+   - Check if any of these are the target node (53). They are not.
+   - Explore the neighbors of these nodes.
+
+3. **Explore Neighbors of Node 5:**
+   - Neighbors: 1, 3, 4, 6, 10, 11, 12, 13, 17, 21, 22, 26, 30, 31, 35, 38, 39, 53, 56, 57, 59, 63, 68, 70, 73, 75, 79, 85, 86, 94, 112, 114, 123, 126, 129, 131, 134, 136.
+   - Node 53 is a direct neighbor of node 5.
+
+4. **Verify Path:**
+   - Path: 112 → 5 → 53
+   - Check adjacency: 112 is connected to 5, and 5 is connected to 53.
+
+5. **Confirm Shortest Path:**
+   - Since node 53 is a direct neighbor of node 5, and node 5 is a direct neighbor of node 112, this is the shortest path.
+
+**Final Answer:**
+Path: [112, 5, 53], Length: 2","{'path': ['112', '5', '53'], 'length': 2}","{'path': ['112', '5', '53'], 'length': 2}",1.0,14.84437132,5593,385,5978
+ba_n200_m2,FMMM,"{'start_node': '93', 'end_node': '62'}",zero_shot,standard,"Path: 93, 28, 2, 62, Length: 3","{'path': ['93', '28', '2', '62'], 'length': 3}","{'path': ['93', '104', '1', '62'], 'length': 3}",0.667,6.025499821,3188,18,3206
+ba_n200_m2,FMMM,"{'start_node': '93', 'end_node': '62'}",zero_shot,cot,"To find the shortest path between nodes 93 and 62, we can use a breadth-first search (BFS) approach. Let's go through the steps:
+
+1. **Identify Neighbors of the Start Node (93):**
+   - Neighbors of 93: 28, 80, 104, 164
+
+2. **Explore Paths Using BFS:**
+   - Start from 93, explore its neighbors.
+   - From 93, we can go to 28, 80, 104, or 164.
+
+3. **Continue BFS:**
+   - From 28, neighbors are: 2, 25, 45, 57, 91, 93, 107, 120, 165, 169
+   - From 80, neighbors are: 3, 65, 91, 93
+   - From 104, neighbors are: 1, 93
+   - From 164, neighbors are: 36, 93
+
+4. **Continue Exploring:**
+   - From 28, go to 2 (since 2 is a central node with many connections).
+   - Neighbors of 2: 1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100, 107, 113, 126, 134, 138, 141, 142, 144, 157, 176, 178, 190, 196, 197, 200
+
+5. **Find Path to 62:**
+   - From 2, go to 1 (since 1 is connected to 62).
+   - Neighbors of 1: 2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141
+   - From 1, go to 62.
+
+6. **Verify Path:**
+   - Path: 93 → 28 → 2 → 1 → 62
+   - Length: 4
+
+7. **Check for Shorter Path:**
+   - No shorter path exists as each step is necessary to reach 62.
+
+**Final Answer:**
+Path: 93, 28, 2, 1, 62, Length: 4","{'path': ['93', '28', '2', '1', '62'], 'length': 4}","{'path': ['93', '104', '1', '62'], 'length': 3}",0.75,21.71915698,3243,617,3860
+ba_n200_m2,FMMM,"{'start_node': '93', 'end_node': '62'}",few_shots,standard,"Path: [93, 28, 2, 62], Length: 3","{'path': ['93', '28', '2', '62'], 'length': 3}","{'path': ['93', '104', '1', '62'], 'length': 3}",0.667,4.489780903,5181,18,5199
+ba_n200_m2,FMMM,"{'start_node': '93', 'end_node': '62'}",few_shots,cot,"To find the shortest path between nodes 93 and 62, we can use a breadth-first search (BFS) approach. Here's the step-by-step process:
+
+1. **Identify Neighbors of Start Node (93):**
+   - From the adjacency list, node 93 is connected to nodes 28, 80, 104, and 164.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 93 and explore its neighbors.
+   - Queue: [(93, [93])]
+   - Dequeue 93, explore neighbors: 28, 80, 104, 164.
+   - Queue: [(28, [93, 28]), (80, [93, 80]), (104, [93, 104]), (164, [93, 164])]
+
+3. **Continue BFS:**
+   - Dequeue 28, explore neighbors: 2, 25, 45, 57, 91, 93, 107, 120, 165, 169.
+   - Queue: [(80, [93, 80]), (104, [93, 104]), (164, [93, 164]), (2, [93, 28, 2]), (25, [93, 28, 25]), (45, [93, 28, 45]), (57, [93, 28, 57]), (91, [93, 28, 91]), (107, [93, 28, 107]), (120, [93, 28, 120]), (165, [93, 28, 165]), (169, [93, 28, 169])]
+
+4. **Continue Exploring:**
+   - Dequeue 2, explore neighbors: 1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100, 107, 113, 126, 134, 138, 141, 142, 144, 157, 176, 178, 190, 196, 197, 200.
+   - Queue: [(80, [93, 80]), (104, [93, 104]), (164, [93, 164]), (25, [93, 28, 25]), (45, [93, 28, 45]), (57, [93, 28, 57]), (91, [93, 28, 91]), (107, [93, 28, 107]), (120, [93, 28, 120]), (165, [93, 28, 165]), (169, [93, 28, 169]), (1, [93, 28, 2, 1]), (4, [93, 28, 2, 4]), (5, [93, 28, 2, 5]), (7, [93, 28, 2, 7]), (8, [93, 28, 2, 8]), (9, [93, 28, 2, 9]), (16, [93, 28, 2, 16]), (18, [93, 28, 2, 18]), (22, [93, 28, 2, 22]), (29, [93, 28, 2, 29]), (44, [93, 28, 2, 44]), (46, [93, 28, 2, 46]), (50, [93, 28, 2, 50]), (66, [93, 28, 2, 66]), (68, [93, 28, 2, 68]), (76, [93, 28, 2, 76]), (79, [93, 28, 2, 79]), (98, [93, 28, 2, 98]), (100, [93, 28, 2, 100]), (107, [93, 28, 2, 107]), (113, [93, 28, 2, 113]), (126, [93, 28, 2, 126]), (134, [93, 28, 2, 134]), (138, [93, 28, 2, 138]), (141, [93, 28, 2, 141]), (142, [93, 28, 2, 142]), (144, [93, 28, 2, 144]), (157, [93, 28, 2, 157]), (176, [93, 28, 2, 176]), (178, [93, 28, 2, 178]), (190, [93, 28, 2, 190]), (196, [93, 28, 2, 196]), (197, [93, 28, 2, 197]), (200, [93, 28, 2, 200])]
+
+5. **Continue Until Reaching Node 62:**
+   - Dequeue 1, explore neighbors: 2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141.
+   - Node 62 is a neighbor of node 1.
+
+6. **Path Found:**
+   - Path: [93, 28, 2, 1, 62]
+   - Length: 4
+
+Therefore, the shortest path from node 93 to node 62 is:
+
+**Path: [93, 28, 2, 1, 62], Length: 4**","{'path': ['93', '28', '2', '1', '62'], 'length': 4}","{'path': ['93', '104', '1', '62'], 'length': 3}",0.75,66.34725308,5563,1355,6918
+ba_n200_m2,FMMM,"{'start_node': '10', 'end_node': '101'}",zero_shot,standard,"Path: 10, 70, 101, Length: 2","{'path': ['10', '70', '101'], 'length': 2}","{'path': ['10', '1', '46', '70', '101'], 'length': 4}",0.25,4.50481391,3188,15,3203
+ba_n200_m2,FMMM,"{'start_node': '10', 'end_node': '101'}",zero_shot,cot,"To find the shortest path between nodes 10 and 101, we will use a breadth-first search (BFS) approach.
+
+1. **Identify Neighbors of Start Node (10):**
+   - Neighbors of 10: 1, 7, 105, 125, 150
+
+2. **Explore Paths Using BFS:**
+   - Start from node 10.
+   - Level 1: 1, 7, 105, 125, 150
+   - Check if 101 is in this level. It is not.
+
+3. **Expand to Next Level:**
+   - From node 1: 2, 3, 4, 6, 8, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141
+   - From node 7: 2, 5, 10, 30, 32, 38, 51, 56, 61, 83, 102, 106, 111, 116, 134, 144, 149, 155, 162, 183, 192
+   - From node 105: 10, 83, 140
+   - From node 125: 10, 54
+   - From node 150: 10, 15
+
+4. **Check for Target Node (101):**
+   - From node 1, we find node 70.
+   - From node 70, we find node 101.
+
+5. **Verify Path:**
+   - Path: 10 → 1 → 70 → 101
+   - Check connections:
+     - 10 to 1
+     - 1 to 70
+     - 70 to 101
+
+6. **Confirm Shortest Path:**
+   - The path is valid and minimal.
+
+**Final Answer:**
+Path: 10, 1, 70, 101, Length: 3","{'path': ['10', '1', '70', '101'], 'length': 3}","{'path': ['10', '1', '46', '70', '101'], 'length': 4}",0.5,17.30475211,3243,505,3748
+ba_n200_m2,FMMM,"{'start_node': '10', 'end_node': '101'}",few_shots,standard,"Path: [10, 7, 102, 70, 101], Length: 4","{'path': ['10', '7', '102', '70', '101'], 'length': 4}","{'path': ['10', '1', '46', '70', '101'], 'length': 4}",1.0,4.603101015,5181,21,5202
+ba_n200_m2,FMMM,"{'start_node': '10', 'end_node': '101'}",few_shots,cot,"To find the shortest path between nodes 10 and 101, we can use a breadth-first search (BFS) approach. Let's go through the steps:
+
+1. **Identify Neighbors of Start Node (10):**
+   - From the adjacency list, node 10 is connected to: 1, 7, 105, 125, 150.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 10.
+   - Level 1: Visit neighbors of 10: [1, 7, 105, 125, 150].
+   - Level 2: From these nodes, explore their neighbors:
+     - Node 1 connects to: 2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141.
+     - Node 7 connects to: 2, 5, 10, 30, 32, 38, 51, 56, 61, 83, 102, 106, 111, 116, 134, 144, 149, 155, 162, 183, 192.
+     - Node 105 connects to: 10, 83, 140.
+     - Node 125 connects to: 10, 54.
+     - Node 150 connects to: 10, 15.
+
+3. **Continue BFS Until Reaching Node 101:**
+   - Level 3: From the new set of nodes, continue exploring:
+     - Node 1 connects to node 70.
+     - Node 70 connects to node 101.
+
+4. **Verify Path:**
+   - The path found is: 10 → 1 → 70 → 101.
+   - Check adjacency: 
+     - 10 is connected to 1.
+     - 1 is connected to 70.
+     - 70 is connected to 101.
+
+5. **Confirm Shortest Path:**
+   - The path length is 3, and no shorter path exists based on the BFS exploration.
+
+**Final Answer:**
+Path: [10, 1, 70, 101], Length: 3","{'path': ['10', '1', '70', '101'], 'length': 3}","{'path': ['10', '1', '46', '70', '101'], 'length': 4}",0.5,19.86220193,5563,556,6119
+ba_n200_m2,ORTHO,"{'start_node': '93', 'end_node': '62'}",zero_shot,standard,"Path: 93, 28, 2, 62, Length: 3","{'path': ['93', '28', '2', '62'], 'length': 3}","{'path': ['93', '104', '1', '62'], 'length': 3}",0.667,2.555854082,3188,18,3206
+ba_n200_m2,ORTHO,"{'start_node': '93', 'end_node': '62'}",zero_shot,cot,"To find the shortest path between nodes 93 and 62, we will use a breadth-first search (BFS) approach.
+
+1. **Identify Neighbors of Start Node (93):**
+   - Neighbors of 93: 28, 80, 104, 164
+
+2. **Explore Paths Using BFS:**
+   - Start from 93.
+   - Level 1: 28, 80, 104, 164
+   - Level 2 (from 28): 2, 25, 45, 57, 91, 93, 107, 120, 165, 169
+   - Level 2 (from 80): 3, 65, 91, 93
+   - Level 2 (from 104): 1, 93
+   - Level 2 (from 164): 36, 93
+
+3. **Continue BFS:**
+   - From 2 (neighbor of 28): 1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100, 107, 113, 126, 134, 138, 141, 142, 144, 157, 176, 178, 190, 196, 197, 200
+   - From 25 (neighbor of 28): 6, 20, 28, 36, 73, 135
+   - From 45 (neighbor of 28): 1, 28, 137
+   - From 57 (neighbor of 28): 28, 32, 139, 170
+   - From 91 (neighbor of 28): 28, 80
+   - From 107 (neighbor of 28): 2, 28
+   - From 120 (neighbor of 28): 28, 55
+   - From 165 (neighbor of 28): 28, 79
+   - From 169 (neighbor of 28): 21, 28
+
+4. **Identify Path to 62:**
+   - From 2, we can reach 62 directly.
+
+5. **Verify Path:**
+   - Path: 93 -> 28 -> 2 -> 62
+   - Length: 3
+
+6. **Check for Shorter Path:**
+   - No shorter path exists as BFS ensures the shortest path is found first.
+
+**Final Answer:**
+Path: 93, 28, 2, 62, Length: 3","{'path': ['93', '28', '2', '62'], 'length': 3}","{'path': ['93', '104', '1', '62'], 'length': 3}",0.667,19.71982312,3243,569,3812
+ba_n200_m2,ORTHO,"{'start_node': '93', 'end_node': '62'}",few_shots,standard,"Path: [93, 28, 2, 62], Length: 3","{'path': ['93', '28', '2', '62'], 'length': 3}","{'path': ['93', '104', '1', '62'], 'length': 3}",0.667,4.231408834,5181,18,5199
+ba_n200_m2,ORTHO,"{'start_node': '93', 'end_node': '62'}",few_shots,cot,"To find the shortest path between nodes 93 and 62, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (93):**
+   - From the adjacency list, node 93 is connected to nodes 28, 80, 104, and 164.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 93 and explore its neighbors.
+   - Queue: [(93, [93])]
+   - Dequeue 93, explore neighbors: 28, 80, 104, 164.
+   - Enqueue: (28, [93, 28]), (80, [93, 80]), (104, [93, 104]), (164, [93, 164]).
+
+3. **Continue BFS:**
+   - Dequeue 28, explore neighbors: 2, 25, 45, 57, 91, 93, 107, 120, 165, 169.
+   - Enqueue: (2, [93, 28, 2]), (25, [93, 28, 25]), (45, [93, 28, 45]), (57, [93, 28, 57]), (91, [93, 28, 91]), (107, [93, 28, 107]), (120, [93, 28, 120]), (165, [93, 28, 165]), (169, [93, 28, 169]).
+   - Dequeue 80, explore neighbors: 3, 65, 91, 93.
+   - Enqueue: (3, [93, 80, 3]), (65, [93, 80, 65]), (91, [93, 80, 91]).
+   - Dequeue 104, explore neighbors: 1, 93.
+   - Enqueue: (1, [93, 104, 1]).
+   - Dequeue 164, explore neighbors: 36, 93.
+   - Enqueue: (36, [93, 164, 36]).
+
+4. **Continue Until Reaching Node 62:**
+   - Dequeue 2, explore neighbors: 1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100, 107, 113, 126, 134, 138, 141, 142, 144, 157, 176, 178, 190, 196, 197, 200.
+   - Enqueue: (1, [93, 28, 2, 1]), (4, [93, 28, 2, 4]), (5, [93, 28, 2, 5]), (7, [93, 28, 2, 7]), (8, [93, 28, 2, 8]), (9, [93, 28, 2, 9]), (16, [93, 28, 2, 16]), (18, [93, 28, 2, 18]), (22, [93, 28, 2, 22]), (29, [93, 28, 2, 29]), (44, [93, 28, 2, 44]), (46, [93, 28, 2, 46]), (50, [93, 28, 2, 50]), (66, [93, 28, 2, 66]), (68, [93, 28, 2, 68]), (76, [93, 28, 2, 76]), (79, [93, 28, 2, 79]), (98, [93, 28, 2, 98]), (100, [93, 28, 2, 100]), (107, [93, 28, 2, 107]), (113, [93, 28, 2, 113]), (126, [93, 28, 2, 126]), (134, [93, 28, 2, 134]), (138, [93, 28, 2, 138]), (141, [93, 28, 2, 141]), (142, [93, 28, 2, 142]), (144, [93, 28, 2, 144]), (157, [93, 28, 2, 157]), (176, [93, 28, 2, 176]), (178, [93, 28, 2, 178]), (190, [93, 28, 2, 190]), (196, [93, 28, 2, 196]), (197, [93, 28, 2, 197]), (200, [93, 28, 2, 200]).
+   - Dequeue 25, explore neighbors: 6, 20, 28, 36, 73, 135.
+   - Enqueue: (6, [93, 28, 25, 6]), (20, [93, 28, 25, 20]), (36, [93, 28, 25, 36]), (73, [93, 28, 25, 73]), (135, [93, 28, 25, 135]).
+   - Dequeue 45, explore neighbors: 1, 28, 137.
+   - Enqueue: (137, [93, 28, 45, 137]).
+   - Dequeue 57, explore neighbors: 28, 32, 139, 170.
+   - Enqueue: (32, [93, 28, 57, 32]), (139, [93, 28, 57, 139]), (170, [93, 28, 57, 170]).
+   - Dequeue 91, explore neighbors: 28, 80.
+   - Dequeue 107, explore neighbors: 2, 28.
+   - Dequeue 120, explore neighbors: 28, 55.
+   - Dequeue 165, explore neighbors: 28, 79.
+   - Dequeue 169, explore neighbors: 21, 28.
+   - Dequeue 3, explore neighbors: 1, 5, 17, 42, 58, 80, 103, 167, 176, 193, 199.
+   - Dequeue 65, explore neighbors: 5, 27, 80, 173.
+   - Dequeue 1, explore neighbors: 2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141.
+   - **Found 62**: Path: [93, 104, 1, 62].
+
+5. **Verify Path:**
+   - Check each step in the path to ensure all nodes are connected: 93 to 104, 104 to 1, 1 to 62.
+   - The path is valid and minimal.
+
+**Final Answer:**
+Path: [93, 104, 1, 62], Length: 3","{'path': ['93', '104', '1', '62'], 'length': 3}","{'path': ['93', '104', '1', '62'], 'length': 3}",1.0,63.69260693,5563,1703,7266
+ba_n200_m2,ORTHO,"{'start_node': '10', 'end_node': '101'}",zero_shot,standard,"Path: 10, 1, 70, 101, Length: 3","{'path': ['10', '1', '70', '101'], 'length': 3}","{'path': ['10', '1', '46', '70', '101'], 'length': 4}",0.5,2.86043191,3188,18,3206
+ba_n200_m2,ORTHO,"{'start_node': '10', 'end_node': '101'}",zero_shot,cot,"To find the shortest path between nodes 10 and 101, we will use a breadth-first search (BFS) approach.
+
+1. **Identify Neighbors of Start Node (10):**
+   - From the adjacency list, node 10 is connected to: 1, 7, 105, 125, 150.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 10.
+   - Level 1: Neighbors of 10 are 1, 7, 105, 125, 150.
+   - Level 2: Explore neighbors of 1, 7, 105, 125, 150.
+     - Neighbors of 1: 2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 18, 19, 20, 21, 23, 24, 26, 29, 33, 37, 39, 45, 46, 48, 51, 58, 61, 62, 69, 72, 78, 79, 87, 89, 92, 99, 104, 108, 111, 117, 119, 123, 131, 140, 141.
+     - Neighbors of 7: 2, 5, 10, 30, 32, 38, 51, 56, 61, 83, 102, 106, 111, 116, 134, 144, 149, 155, 162, 183, 192.
+     - Neighbors of 105: 10, 83, 140.
+     - Neighbors of 125: 10, 54.
+     - Neighbors of 150: 10, 15.
+
+3. **Continue BFS:**
+   - Level 3: Explore neighbors of 2, 5, 30, 32, 38, 51, 56, 61, 83, 102, 106, 111, 116, 134, 144, 149, 155, 162, 183, 192, 140.
+     - Neighbors of 2: 1, 4, 5, 7, 8, 9, 16, 18, 22, 28, 29, 44, 46, 50, 66, 68, 76, 79, 98, 100, 107, 113, 126, 134, 138, 141, 142, 144, 157, 176, 178, 190, 196, 197, 200.
+     - Neighbors of 51: 1, 7, 67, 73, 89, 146.
+     - Neighbors of 73: 25, 51, 101, 192.
+
+4. **Identify End Node (101):**
+   - Node 101 is a neighbor of 73.
+
+5. **Verify Path:**
+   - Path found: 10 → 7 → 51 → 73 → 101.
+   - Each step is verified by adjacency list connections.
+
+6. **Confirm Shortest Path:**
+   - The path length is 4 edges, and no shorter path exists.
+
+**Final Answer:**
+Path: 10, 7, 51, 73, 101, Length: 4","{'path': ['10', '7', '51', '73', '101'], 'length': 4}","{'path': ['10', '1', '46', '70', '101'], 'length': 4}",1.0,31.23356318,3243,744,3987
+ba_n200_m2,ORTHO,"{'start_node': '10', 'end_node': '101'}",few_shots,standard,"Path: [10, 7, 70, 101], Length: 3","{'path': ['10', '7', '70', '101'], 'length': 3}","{'path': ['10', '1', '46', '70', '101'], 'length': 4}",0.5,4.507328033,5181,18,5199
+ba_n200_m2,ORTHO,"{'start_node': '10', 'end_node': '101'}",few_shots,cot,"To find the shortest path between nodes 10 and 101, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (10):**
+   - From the adjacency list, node 10 is connected to: 1, 7, 105, 125, 150.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 10 and explore its neighbors.
+   - From node 10, we can go to nodes 1, 7, 105, 125, and 150.
+   - Check each of these nodes to see if they lead to node 101.
+
+3. **Continue Exploring:**
+   - From node 1, we can go to node 70 (since 1 is connected to 70).
+   - From node 70, we can go to node 101 (since 70 is connected to 101).
+
+4. **Verify Path:**
+   - The path 10 → 1 → 70 → 101 is valid as each step is connected by an edge.
+   - Check if this is the shortest path by ensuring no shorter path exists.
+
+5. **Confirm Shortest Path:**
+   - The path 10 → 1 → 70 → 101 is the shortest path with a length of 3 edges.
+
+Therefore, the shortest path is:
+
+**Path: [10, 1, 70, 101], Length: 3**","{'path': ['10', '1', '70', '101'], 'length': 3}","{'path': ['10', '1', '46', '70', '101'], 'length': 4}",0.5,16.68195105,5563,308,5871
+ba_n200_m3,FMMM,"{'start_node': '90', 'end_node': '166'}",zero_shot,standard,"Path: 90, 46, 166, Length: 2","{'path': ['90', '46', '166'], 'length': 2}","{'path': ['90', '46', '166'], 'length': 2}",1.0,4.405766249,3968,15,3983
+ba_n200_m3,FMMM,"{'start_node': '90', 'end_node': '166'}",zero_shot,cot,"To find the shortest path between nodes 90 and 166, we can use a breadth-first search (BFS) approach. Let's go through the steps:
+
+1. **Identify Neighbors of the Start Node (90):**
+   - Neighbors of 90: 16, 46, 82, 103, 160
+
+2. **Explore Paths Using BFS:**
+   - Start from 90, explore its neighbors.
+   - From 90, we can go to 16, 46, 82, 103, 160.
+
+3. **Continue BFS:**
+   - From 16, we can go to: 6, 8, 13, 90, 114, 115, 135, 178, 184
+   - From 46, we can go to: 7, 23, 26, 51, 90, 127, 128, 141, 166, 177, 178, 190
+   - From 82, we can go to: 4, 43, 77, 90, 154
+   - From 103, we can go to: 17, 35, 90, 107, 167
+   - From 160, we can go to: 4, 6, 90
+
+4. **Identify When Reaching the End Node (166):**
+   - From 46, we can directly reach 166.
+
+5. **Verify the Path:**
+   - Path: 90 -> 46 -> 166
+   - This path is valid and minimal as it directly connects 90 to 166 in two steps.
+
+**Final Answer:**
+Path: 90, 46, 166, Length: 2","{'path': ['90', '46', '166'], 'length': 2}","{'path': ['90', '46', '166'], 'length': 2}",1.0,12.98984694,4023,367,4390
+ba_n200_m3,FMMM,"{'start_node': '90', 'end_node': '166'}",few_shots,standard,"Path: [90, 46, 166], Length: 2","{'path': ['90', '46', '166'], 'length': 2}","{'path': ['90', '46', '166'], 'length': 2}",1.0,5.628016949,5961,15,5976
+ba_n200_m3,FMMM,"{'start_node': '90', 'end_node': '166'}",few_shots,cot,"To find the shortest path between nodes 90 and 166, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (90):**
+   - From the adjacency list, node 90 is connected to: 16, 46, 82, 103, 160.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 90 and explore its neighbors.
+   - Queue: [(90, [90])]
+   - Dequeue: (90, [90])
+     - Enqueue neighbors: (16, [90, 16]), (46, [90, 46]), (82, [90, 82]), (103, [90, 103]), (160, [90, 160])
+
+3. **Continue BFS:**
+   - Dequeue: (16, [90, 16])
+     - Neighbors: 6, 8, 13, 90, 114, 115, 135, 178, 184
+     - Enqueue: (6, [90, 16, 6]), (8, [90, 16, 8]), (13, [90, 16, 13]), (114, [90, 16, 114]), (115, [90, 16, 115]), (135, [90, 16, 135]), (178, [90, 16, 178]), (184, [90, 16, 184])
+   - Dequeue: (46, [90, 46])
+     - Neighbors: 7, 23, 26, 51, 90, 127, 128, 141, 166, 177, 178, 190
+     - Enqueue: (7, [90, 46, 7]), (23, [90, 46, 23]), (26, [90, 46, 26]), (51, [90, 46, 51]), (127, [90, 46, 127]), (128, [90, 46, 128]), (141, [90, 46, 141]), (166, [90, 46, 166])
+
+4. **Identify End Node (166):**
+   - Dequeue: (166, [90, 46, 166])
+   - Reached node 166.
+
+5. **Verify Path:**
+   - Path: [90, 46, 166]
+   - Check adjacency: 90-46, 46-166 are valid connections.
+
+6. **Confirm Shortest Path:**
+   - BFS ensures the shortest path is found first.
+
+Final Answer:
+- **Path: [90, 46, 166], Length: 2**","{'path': ['90', '46', '166'], 'length': 2}","{'path': ['90', '46', '166'], 'length': 2}",1.0,24.29773903,6343,592,6935
+ba_n200_m3,FMMM,"{'start_node': '7', 'end_node': '197'}",zero_shot,standard,"Path: 7, 47, 197, Length: 2","{'path': ['7', '47', '197'], 'length': 2}","{'path': ['7', '135', '159', '197'], 'length': 3}",0.333,4.571074009,3968,15,3983
+ba_n200_m3,FMMM,"{'start_node': '7', 'end_node': '197'}",zero_shot,cot,"To find the shortest path between nodes 7 and 197, we will use a breadth-first search (BFS) approach.
+
+### Step-by-Step BFS:
+
+1. **Start at Node 7:**
+   - Neighbors: 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100, 108, 115, 119, 120, 135, 140, 144, 170, 179, 189, 192, 193, 200
+
+2. **Explore Neighbors of Node 7:**
+   - Add all neighbors to the queue with a path length of 1.
+
+3. **Visit Node 1 (from Node 7):**
+   - Neighbors: 2, 3, 4, 5, 6, 7, 8, 11, 14, 19, 22, 26, 42, 44, 50, 54, 55, 63, 68, 69, 75, 95, 96, 104, 121, 138, 156, 166, 171, 181, 188
+   - Add unvisited neighbors to the queue with a path length of 2.
+
+4. **Visit Node 46 (from Node 7):**
+   - Neighbors: 7, 23, 26, 51, 90, 127, 128, 141, 166, 177, 178, 190
+   - Add unvisited neighbors to the queue with a path length of 2.
+
+5. **Visit Node 47 (from Node 7):**
+   - Neighbors: 4, 7, 13, 73, 93, 143, 153, 178
+   - Add unvisited neighbors to the queue with a path length of 2.
+
+6. **Visit Node 193 (from Node 7):**
+   - Neighbors: 5, 7, 11
+   - Add unvisited neighbors to the queue with a path length of 2.
+
+7. **Visit Node 197 (from Node 49):**
+   - Neighbors: 49, 159, 162
+   - **Reached Node 197.**
+
+### Path Verification:
+
+- Path: 7 → 47 → 197
+- Length: 2
+
+### Conclusion:
+
+The shortest path from node 7 to node 197 is through nodes 47 and 197, with a total path length of 2.
+
+**Final Answer:**
+Path: 7, 47, 197, Length: 2","{'path': ['7', '47', '197'], 'length': 2}","{'path': ['7', '135', '159', '197'], 'length': 3}",0.333,22.35007691,4023,609,4632
+ba_n200_m3,FMMM,"{'start_node': '7', 'end_node': '197'}",few_shots,standard,"Path: [7, 193, 197], Length: 2","{'path': ['7', '193', '197'], 'length': 2}","{'path': ['7', '135', '159', '197'], 'length': 3}",0.333,6.419827938,5961,15,5976
+ba_n200_m3,FMMM,"{'start_node': '7', 'end_node': '197'}",few_shots,cot,"To find the shortest path between nodes 7 and 197, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Node 7:**
+   - From the adjacency list, node 7 is connected to: 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100, 108, 115, 119, 120, 135, 140, 144, 170, 179, 189, 192, 193, 200.
+
+2. **Perform BFS:**
+   - Start from node 7 and explore its neighbors.
+   - Continue exploring each node's neighbors level by level until reaching node 197.
+
+3. **Path Exploration:**
+   - Start at node 7.
+   - Explore neighbors: 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100, 108, 115, 119, 120, 135, 140, 144, 170, 179, 189, 192, 193, 200.
+   - Node 193 is a direct neighbor of node 7.
+   - From node 193, explore its neighbors: 5, 7, 11.
+   - Node 197 is a neighbor of node 193.
+
+4. **Verify Path:**
+   - Path: 7 → 193 → 197
+   - Check adjacency: 7 is connected to 193, and 193 is connected to 197.
+
+5. **Confirm Shortest Path:**
+   - The path 7 → 193 → 197 is valid and minimal, as it consists of only two edges.
+
+**Final Answer:**
+
+Path: [7, 193, 197], Length: 2","{'path': ['7', '193', '197'], 'length': 2}","{'path': ['7', '135', '159', '197'], 'length': 3}",0.333,22.07538605,6343,492,6835
+ba_n200_m3,ORTHO,"{'start_node': '90', 'end_node': '166'}",zero_shot,standard,"Path: 90, 46, 166, Length: 2","{'path': ['90', '46', '166'], 'length': 2}","{'path': ['90', '46', '166'], 'length': 2}",1.0,2.587357759,3968,15,3983
+ba_n200_m3,ORTHO,"{'start_node': '90', 'end_node': '166'}",zero_shot,cot,"To find the shortest path between nodes 90 and 166, we will use a breadth-first search (BFS) approach.
+
+### Step-by-Step Process:
+
+1. **Identify Neighbors of Start Node (90):**
+   - Neighbors of 90: 16, 46, 82, 103, 160
+
+2. **Explore Paths Using BFS:**
+   - Start from node 90.
+   - Level 1: 16, 46, 82, 103, 160
+   - Check if any of these are 166. They are not.
+
+3. **Expand to Next Level:**
+   - From 16: 6, 8, 13, 90, 114, 115, 135, 178, 184
+   - From 46: 7, 23, 26, 51, 90, 127, 128, 141, 166, 177, 178, 190
+   - From 82: 4, 43, 77, 90, 154
+   - From 103: 17, 35, 90, 107, 167
+   - From 160: 4, 6, 90
+
+4. **Identify Target Node (166):**
+   - Node 166 is a direct neighbor of 46.
+
+5. **Verify Path:**
+   - Path: 90 → 46 → 166
+   - Each pair of nodes in the path is connected by an edge.
+
+6. **Confirm Shortest Path:**
+   - The path length is 2, which is minimal given the direct connection from 46 to 166.
+
+### Final Answer:
+Path: 90, 46, 166, Length: 2","{'path': ['90', '46', '166'], 'length': 2}","{'path': ['90', '46', '166'], 'length': 2}",1.0,14.53963399,4023,371,4394
+ba_n200_m3,ORTHO,"{'start_node': '90', 'end_node': '166'}",few_shots,standard,"Path: [90, 46, 166], Length: 2","{'path': ['90', '46', '166'], 'length': 2}","{'path': ['90', '46', '166'], 'length': 2}",1.0,3.37358284,5961,15,5976
+ba_n200_m3,ORTHO,"{'start_node': '90', 'end_node': '166'}",few_shots,cot,"To find the shortest path between nodes 90 and 166, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Start Node (90):**
+   - Neighbors of 90: 16, 46, 82, 103, 160
+
+2. **Explore Paths Using BFS:**
+   - Start from node 90 and explore its neighbors.
+   - From 90, we can go to 46 (since 166 is a neighbor of 46).
+
+3. **Identify When Reached End Node (166):**
+   - From 90, go to 46.
+   - From 46, go to 166.
+
+4. **Verify Path:**
+   - Check connections: 90 to 46, 46 to 166.
+   - Both connections are valid according to the adjacency list.
+
+5. **Confirm Minimal Path:**
+   - The path 90 → 46 → 166 is the shortest, as it consists of only 2 edges.
+
+Therefore, the shortest path is:
+
+**Path: [90, 46, 166], Length: 2**","{'path': ['90', '46', '166'], 'length': 2}","{'path': ['90', '46', '166'], 'length': 2}",1.0,12.18319583,6343,241,6584
+ba_n200_m3,ORTHO,"{'start_node': '7', 'end_node': '197'}",zero_shot,standard,"Path: 7, 47, 153, 163, 162, 197, Length: 5","{'path': ['7', '47', '153', '163', '162', '197'], 'length': 5}","{'path': ['7', '135', '159', '197'], 'length': 3}",0.48,2.962649107,3968,24,3992
+ba_n200_m3,ORTHO,"{'start_node': '7', 'end_node': '197'}",zero_shot,cot,"To find the shortest path between nodes 7 and 197, we will use a breadth-first search (BFS) approach.
+
+### Step-by-Step BFS:
+
+1. **Start at Node 7:**
+   - Neighbors: 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100, 108, 115, 119, 120, 135, 140, 144, 170, 179, 189, 192, 193, 200
+
+2. **Explore Neighbors of Node 7:**
+   - Add neighbors to the queue: 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100, 108, 115, 119, 120, 135, 140, 144, 170, 179, 189, 192, 193, 200
+
+3. **Continue BFS:**
+   - From Node 7, explore each neighbor and add their neighbors to the queue if not already visited.
+   - Continue this process, exploring nodes level by level.
+
+4. **Reach Node 197:**
+   - Node 197 is a neighbor of Node 49.
+   - Path found: 7 → 47 → 93 → 86 → 49 → 197
+
+5. **Verify Path:**
+   - Check each connection:
+     - 7 to 47
+     - 47 to 93
+     - 93 to 86
+     - 86 to 49
+     - 49 to 197
+
+6. **Confirm Shortest Path:**
+   - The path is valid and minimal.
+
+### Final Answer:
+Path: 7, 47, 93, 86, 49, 197, Length: 5","{'path': ['7', '47', '93', '86', '49', '197'], 'length': 5}","{'path': ['7', '135', '159', '197'], 'length': 3}",0.48,19.14791203,4023,486,4509
+ba_n200_m3,ORTHO,"{'start_node': '7', 'end_node': '197'}",few_shots,standard,"Path: [7, 193, 197], Length: 2","{'path': ['7', '193', '197'], 'length': 2}","{'path': ['7', '135', '159', '197'], 'length': 3}",0.333,3.48220396,5961,15,5976
+ba_n200_m3,ORTHO,"{'start_node': '7', 'end_node': '197'}",few_shots,cot,"To find the shortest path between nodes 7 and 197, we can use a breadth-first search (BFS) approach. Here's the step-by-step reasoning:
+
+1. **Identify Neighbors of Node 7:**
+   - From the adjacency list, node 7 is connected to: 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100, 108, 115, 119, 120, 135, 140, 144, 170, 179, 189, 192, 193, 200.
+
+2. **Explore Paths Using BFS:**
+   - Start from node 7 and explore its neighbors.
+   - Continue exploring each neighbor's neighbors until node 197 is reached.
+
+3. **Path Exploration:**
+   - Start at node 7.
+   - Explore neighbors: 1, 3, 6, 8, 9, 12, 13, 14, 25, 27, 29, 40, 41, 44, 46, 47, 52, 58, 65, 67, 77, 78, 84, 92, 94, 100, 108, 115, 119, 120, 135, 140, 144, 170, 179, 189, 192, 193, 200.
+   - Node 193 is a neighbor of node 7.
+   - From node 193, explore its neighbors: 5, 7, 11.
+   - Node 5 is a neighbor of node 193.
+   - From node 5, explore its neighbors: 1, 3, 4, 6, 10, 11, 12, 13, 17, 21, 22, 26, 30, 31, 35, 38, 39, 53, 56, 57, 59, 63, 68, 70, 73, 75, 79, 85, 86, 94, 112, 114, 123, 126, 129, 131, 134, 136, 193, 195, 198.
+   - Node 197 is a neighbor of node 5.
+
+4. **Verify Path:**
+   - The path from 7 to 197 is: 7 → 193 → 5 → 197.
+   - Check each connection: 7 to 193, 193 to 5, and 5 to 197 are all valid connections.
+
+5. **Confirm Shortest Path:**
+   - The path length is 3 edges.
+   - No shorter path exists as each step is necessary to reach node 197.
+
+**Final Answer:**
+Path: [7, 193, 5, 197], Length: 3","{'path': ['7', '193', '5', '197'], 'length': 3}","{'path': ['7', '135', '159', '197'], 'length': 3}",0.667,26.71806312,6343,661,7004

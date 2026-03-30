@@ -1,0 +1,48 @@
+{
+  "min_vertex_cover": {
+    "description": "Given the graph, find the minimum vertex cover.",
+    "parameters": {
+      "type": "graph",
+      "description": "Find the smallest set of nodes that covers all edges in the graph"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in graph analysis. The input is an adjacency list representing a graph. Provide direct answers without intermediate steps. Always format your output as: 'Cover: [comma-separated nodes], Size: <number>'",
+        "user_message": "Please, find the vertex cover of minimum size in the graph, that is the smallest subset of nodes such that every edge of the graph has at least one endpoint in this subset. The size of the vertex cover is the number of nodes in the subset. Before submitting your final answer, verify that: 1) Every edge in the graph has at least one of its endpoints in your vertex cover, and 2) No smaller subset of nodes covers all edges. Format your answer as 'Cover: [comma-separated nodes], Size: <number>'"
+      },
+      "cot": {
+        "system_message": "You are an expert in graph analysis. The input is an adjacency list representing a graph. Show your step-by-step reasoning process. Always format your output as: 'Cover: [comma-separated nodes], Size: <number>'",
+        "user_message": "Please, find the vertex cover of minimum size in the graph, that is the smallest subset of nodes such that every edge of the graph has at least one endpoint in this subset. The size of the vertex cover is the number of nodes in the subset. To solve this task, reason step by step by: 1) Identifying nodes with high degree (many connections) as potential cover members, 2) Considering edges that are not yet covered and adding nodes that cover multiple uncovered edges, 3) Systematically checking if all edges are covered by your selected nodes, and 4) Verifying that removing any node would leave some edge uncovered. Before submitting your final answer, verify that: 1) Every edge in the graph has at least one of its endpoints in your vertex cover, and 2) No smaller subset of nodes covers all edges. Format your final answer as 'Cover: [comma-separated nodes], Size: <number>'"
+      }
+    },
+    "prompts": {
+      "zero_shot": { "standard": {}, "cot": {} },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/vc_2.lst",
+              "task_solution": "Cover: [4,2], Size: 2"
+            },
+            {
+              "graph_data": "./src/examples/vc_3.lst",
+              "task_solution": "Cover: [1,2,4], Size: 3"
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/vc_2.lst",
+              "task_solution": "I'll analyze the adjacency list to find the minimum vertex cover. First, I'll identify the nodes with the highest degree as they're likely to cover more edges. From the adjacency list, I can see that node 4 has the highest degree (5 connections to nodes 1, 2, 3, 5, and 10). Node 2 has the second highest degree (4 connections to nodes 1, 3, 4, and 5). If I select nodes 4 and 2, I need to check if all edges are covered. By examining the adjacency list, I can verify that all edges have at least one endpoint in this set. The edges are: 1-2, 1-4, 1-10, 2-3, 2-4, 2-5, 3-4, 4-5, 4-10, and 5-10. Each of these edges has either node 2 or node 4 (or both) as an endpoint. I've verified that removing either node would leave some edges uncovered. Therefore, the minimum vertex cover is Cover: [4,2], Size: 2."
+            },
+            {
+              "graph_data": "./src/examples/vc_3.lst",
+              "task_solution": "I'll analyze the adjacency list to find the minimum vertex cover. From the adjacency list, I can see that nodes 1, 2, and 4 each have degree 4, which are the highest in the graph. Node 1 connects to nodes 2, 5, 7, and 10. Node 2 connects to nodes 1, 3, 4, and 7. Node 4 connects to nodes 2, 3, 5, and 10. Together, these three nodes cover all edges in the graph. Let me verify this: Edges 1-2, 1-5, 1-7, 1-10, 2-3, 2-4, 2-7, 3-4, 4-5, 4-10, and 5-7 are all the edges in the graph. Each of these edges has at least one endpoint in the set {1, 2, 4}. I've tried removing one node from this set, but that leaves some edges uncovered. For example, removing node 1 would leave the edge 5-7 uncovered. Therefore, the minimum vertex cover is Cover: [1,2,4], Size: 3."
+            }
+          ]
+        }
+      }
+    }
+  }
+}

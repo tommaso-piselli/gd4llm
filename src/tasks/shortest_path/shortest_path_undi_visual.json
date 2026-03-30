@@ -1,0 +1,64 @@
+{
+  "shortest_path": {
+    "description": "Given the graph, find the shortest path between two vertices.",
+    "parameters": {
+      "type": "node_pair",
+      "description": "Selected pair of nodes, provided as two integers representing the start and end nodes (e.g., '3,17' means find path from node 3 to node 17)"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in visual analysis of graphs. The input is a visual representation of a graph. Nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Provide direct answers without intermediate steps. Always format your output as: 'Path: [comma-separated nodes], Length: <number>'",
+        "user_message": "Please, find the shortest path between {start_node} and {end_node}. The length of the path is the number of edges traversed by the path. Before submitting your final answer, verify that: 1) The path is valid by confirming each adjacent pair of nodes in your path is connected by an edge in the graph, and 2) The path is minimal by confirming no shorter valid path exists. Format your answer as 'Path: [comma-separated nodes], Length: <number>'"
+      },
+      "cot": {
+        "system_message": "You are an expert in visual analysis of graphs. The input is a visual representation of a graph. Nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Show your step-by-step reasoning process. Always format your output as: 'Path: [comma-separated nodes], Length: <number>'",
+        "user_message": "Please, find the shortest path between {start_node} and {end_node}. The length of the path is the number of edges traversed by the path. To solve this task, reason step by step by: 1) Identifying all neighboring nodes of the start node, 2) Exploring possible paths systematically using breadth-first search, 3) Identifying when you've reached the end node, and 4) Verifying it's the shortest possible path. Before submitting your final answer, verify that: 1) The path is valid by confirming each adjacent pair of nodes in your path is connected by an edge in the graph, and 2) The path is minimal by confirming no shorter valid path exists. Format your answer as 'Path: [comma-separated nodes], Length: <number>'"
+      },
+      "soal": {
+        "system_message": "You are an expert in visual analysis of graphs. The input is a visual representation of a graph. Nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Begin by constructing the adjacency list before solving the path problem. Always format your output as: 'Path: [comma-separated nodes], Length: <number>'",
+        "user_message": "Please, find the shortest path between {start_node} and {end_node}. The length of the path is the number of edges traversed by the path. To solve this task, first compute the adjacency list of the graph by listing all nodes and their direct connections (e.g., 'Node 1: 2,3,4' means node 1 is connected to nodes 2, 3, and 4). Then use this adjacency list together with the given visual representation to identify the shortest path using breadth-first search. Before submitting your final answer, verify that: 1) The path is valid by confirming each adjacent pair of nodes in your path is connected by an edge in the graph, and 2) The path is minimal by confirming no shorter valid path exists. Format your final answer as 'Path: [comma-separated nodes], Length: <number>'"
+      }
+    },
+    "prompts": {
+      "zero_shot": { "standard": {}, "cot": {}, "soal": {} },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "image_data": "./src/examples/undigraph_1.png",
+              "task_solution": "Selected Nodes: 17,3. Path: [17, 13, 3], Length: 2"
+            },
+            {
+              "image_data": "./src/examples/undigraph_2.png",
+              "task_solution": "Selected Nodes: 6,8. Path: [6, 12, 9, 8], Length: 3"
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "image_data": "./src/examples/undigraph_1.png",
+              "task_solution": "Selected Nodes: 17, 3. Here the steps of the analysis. Node 17 has the following incident edges: 17,6 - 17,13 - 17,8 - 17,15. Node 6 has the following incident edges: 6,10 - 6,18 - 6,12 - 6,13. Node 13 has the following incident edges: 13,6 - 13,12 - 13,5 - 13,3 - 13,8. Therefore, the solution is Path: [17, 13, 3], Length: 2"
+            },
+            {
+              "image_data": "./src/examples/undigraph_2.png",
+              "task_solution": "Selected Nodes: 6, 8. Here the steps of the analysis. Node 6 has the following incident edges: 6,16 - 6,12 - 6,5. Node 16 has the following incident edges: 16,5 - 16,2. Node 12 has the following incident edges: 12,9 - 12,13. Node 5 has the following incident edges: 5,13 - 5,20 - 5,16. Node 2 has the following incident edges: 2,1 - 2,3 - 2,15. Node 9 has the following incident edges: 9,13 - 9,17 - 9,8. Therefore, the solution is Path: [6, 12, 9, 8], Length: 3"
+            }
+          ]
+        },
+        "soal": {
+          "examples": [
+            {
+              "image_data": "./src/examples/undigraph_1.png",
+              "task_solution": "Selected Nodes: 17, 3. The adjacency list of this graph is: 1: 2,3,8; 2: 1,16; 3: 1,5,7,13; 4: 5,7; 5: 3,4,9,13,20; 6: 10,12,13,17,18; 7: 3,4,20; 8: 1,11,13,15,17; 9: 5,12,16,18,19; 10: 6,18; 11: 8; 12: 6,9,13,18; 13: 3,5,6,8,12,17; 14: 16,19; 15: 8,17; 16: 2,9,14,20; 17: 6,8,13,15; 18: 6,9,10,12,19; 19: 9,14,18; 20: 5,7,16. Using both the adjacency list and the image, we can see that Node 17 has the following incident edges: 17,6 - 17,13 - 17,8 - 17,15. Node 6 has the following incident edges: 6,10 - 6,18 - 6,12 - 6,13. Node 13 has the following incident edges: 13,6 - 13,12 - 13,5 - 13,3 - 13,8. Therefore, the solution is Path: [17, 13, 3], Length: 2"
+            },
+            {
+              "image_data": "./src/examples/undigraph_2.png",
+              "task_solution": "Selected nodes: 6, 8. The adjacency list of this graph is: 1: 2,3,8,20; 2: 1,3,15,16; 3: 1,2,8,15,17; 4: 11,14,19,20; 5: 6,13,16,20; 6: 5,12,16; 7: 10; 8: 1,3,9,10,19; 9: 8,12,13,17; 10: 7,8; 11: 4,19,20; 12: 6,9,13; 13: 5,9,12,18,20; 14: 4,19; 15: 2,3; 16: 2,5,6; 17: 3,9; 18: 13,19,20; 19: 4,11,14,18; 20: 1,4,5,11,13,18. Using both the adjacency list and image, we can see that Node 6 has the following incident edges: 6,16 - 6,12 - 6,5. Node 16 has the following incident edges: 16,5 - 16,2. Node 12 has the following incident edges: 12,9 - 12,13. Node 5 has the following incident edges: 5,13 - 5,20 - 5,16. Node 2 has the following incident edges: 2,1 - 2,3 - 2,15. Node 9 has the following incident edges: 9,13 - 9,17 - 9,8. Therefore, the solution is Path: [6, 12, 9, 8], Length: 3"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

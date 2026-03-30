@@ -1,0 +1,55 @@
+{
+  "max_clique": {
+    "description": "Given the graph (both as an incident list and visual representation), find the maximal clique.",
+    "parameters": {
+      "type": "graph",
+      "description": "Find the largest complete subgraph where all nodes are connected to each other"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in graph analysis, capable of working with both textual and visual representations of graphs. You will be provided with both an adjacency list and a visual representation of a graph. In the visual representation, nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Provide direct answers without intermediate steps. Always format your output as: 'Clique: [comma-separated nodes], Size: <number>'",
+        "user_message": "Please, find the clique of maximum size in the graph, that is the largest subset of nodes that are pairwise adjacent (every node in the subset is connected to every other node in the subset). The size of the clique is the number of nodes in the subset. You may use both the incident list and visual representation to solve this task. Before submitting your final answer, verify that: 1) Every pair of nodes in your clique is connected by an edge in the graph, and 2) No larger subset of nodes forms a complete subgraph. Format your answer as 'Clique: [comma-separated nodes], Size: <number>'"
+      },
+      "cot": {
+        "system_message": "You are an expert in graph analysis, capable of working with both textual and visual representations of graphs. You will be provided with both an adjacency list and a visual representation of a graph. In the visual representation, nodes are represented as yellow circles with black borders each containing a unique integer label, nodes are ONLY connected if there is a visible black straight line drawn between them, the absence of a line means there is NO connection between those nodes. Show your step-by-step reasoning process. Always format your output as: 'Clique: [comma-separated nodes], Size: <number>'",
+        "user_message": "Please, find the clique of maximum size in the graph, that is the largest subset of nodes that are pairwise adjacent (every node in the subset is connected to every other node in the subset). The size of the clique is the number of nodes in the subset. To solve this task, reason step by step using both the incident list and visual representation by: 1) Identifying densely connected regions in the visual graph, 2) Cross-verifying connections using the adjacency list, 3) Systematically checking that all pairs of nodes in potential cliques are connected, and 4) Ensuring no larger clique exists. Before submitting your final answer, verify that: 1) Every pair of nodes in your clique is connected by an edge in both representations, and 2) No larger subset of nodes forms a complete subgraph. Format your final answer as 'Clique: [comma-separated nodes], Size: <number>'"
+      }
+    },
+    "prompts": {
+      "zero_shot": {
+        "standard": {},
+        "cot": {}
+      },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/clique-1.lst",
+              "image_data": "./src/examples/clique-1.png",
+              "task_solution": "Clique: [1,2,3,4], Size: 4"
+            },
+            {
+              "graph_data": "./src/examples/clique-2.lst",
+              "image_data": "./src/examples/clique-2.png",
+              "task_solution": "Clique: [5,6,8,9,10], Size: 5"
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "graph_data": "./src/examples/clique-1.lst",
+              "image_data": "./src/examples/clique-1.png",
+              "task_solution": "Using both the adjacency list and visual representation, I'll find the maximum clique. The visual representation helps identify a densely connected region involving nodes 1, 2, 3, and 4. From the adjacency list, I can confirm that: Node 1 is connected to 2, 3, 4, 6, and 7; Node 2 is connected to 1, 3, 4, 5, and 7; Node 3 is connected to 1, 2, 4, 5, and 6; Node 4 is connected to 1, 2, 3, 5, and 7. This confirms that nodes 1, 2, 3, and 4 are all connected to each other, forming a 4-node clique. I can visually verify these connections as well. I've checked for larger cliques by trying to add each of the remaining nodes (5, 6, and 7), but none are connected to all four existing clique nodes. Therefore, the maximum clique is Clique: [1,2,3,4], Size: 4."
+            },
+            {
+              "graph_data": "./src/examples/clique-2.lst",
+              "image_data": "./src/examples/clique-2.png",
+              "task_solution": "I'll use both the adjacency list and visual representation to find the maximum clique. In the visual representation, I notice a dense subgraph involving nodes 5, 6, 8, 9, and 10. Checking the adjacency list: Node 5 is connected to 2, 4, 6, 8, 9, and 10; Node 6 is connected to 4, 5, 7, 8, 9, and 10; Node 8 is connected to 5, 6, 9, and 10; Node 9 is connected to 5, 6, 8, and 10; Node 10 is connected to 5, 6, 8, and 9. This confirms that nodes 5, 6, 8, 9, and 10 form a complete subgraph where every node is connected to every other node. The visual representation allows me to verify these connections. I've checked that no 6-node clique exists by attempting to add each remaining node, but none connect to all five existing clique nodes. Therefore, the maximum clique is Clique: [5,6,8,9,10], Size: 5."
+            }
+          ]
+        }
+      }
+    }
+  }
+}

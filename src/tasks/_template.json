@@ -1,0 +1,48 @@
+{
+  "TASK_NAME": {
+    "description": "TASK DESCRIPTION",
+    "parameters": {
+      "type": "node_pair or single_node",
+      "description": "Start and end nodes for the path OR node"
+    },
+    "messages": {
+      "standard": {
+        "system_message": "You are an expert in Graph Analysis through visualization. Always format your output as: FORMAT",
+        "user_message": " PROMPT FOR THE TASK. PARAMETERS IN THE FORM {params_start_node}, {params_end_node}, Format your answer as 'Length: <number>"
+      },
+      "cot": {
+        "system_message": "You are an expert in Graph Analysis through visualization. Always format your output as: 'Path: [comma-separated nodes], Length: <number>'",
+        "user_message": "Please find the shortest path between node {params_start_node} and node {params_end_node} in the graph. To solve this, reason step by step, then format your final answer as 'Path: [comma-separated nodes], Length: <number>'"
+      }
+    },
+    "prompts": {
+      "zero_shot": { "standard": {}, "cot": {} },
+      "few_shots": {
+        "standard": {
+          "examples": [
+            {
+              "image_data": "./path/to/examples",
+              "task_solution": "TASK SOLUTION"
+            },
+            {
+              "image_data": "./path/to/examples",
+              "task_solution": "TASK SOLUTION."
+            }
+          ]
+        },
+        "cot": {
+          "examples": [
+            {
+              "image_data": "./path/to/examples",
+              "task_solution": "TASK SOLUTION"
+            },
+            {
+              "image_data": "./path/to/examples",
+              "task_solution": "TASK SOLUTION"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

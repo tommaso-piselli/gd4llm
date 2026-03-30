@@ -1,0 +1,3574 @@
+graph,layout,parameters,prompt_type,reasoning_type,response,parsed_response,ground_truth,accuracy,latency,input_tokens,output_tokens,total_tokens
+graph_100_c4,FMMM,{},zero_shot,standard,"Clique: [4, 5, 6], Size: 3","{'clique': ['4', '5', '6'], 'size': 3}","{'clique': {}, 'size': 4}",0.75,2.1430583,1635,20,1655
+graph_100_c4,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Analyze the adjacency list to understand the connections.
+- Node 1 is connected to 4, 5, 6
+- Node 2 is connected to 4, 5, 6
+- Node 3 is connected to 4, 5, 6
+- Node 4 is connected to 1, 2, 3, 5, 6
+- Node 5 is connected to 1, 2, 3, 4, 6
+- Node 6 is connected to 1, 2, 3, 4, 5
+
+Step 2: Identify potential cliques by looking at densely connected regions.
+From the visual representation, I can see that nodes 4, 5, and 6 appear to form a triangle, suggesting they might be part of a clique. I also notice that nodes 3, 4, 5, and 6 seem densely connected.
+
+Step 3: Systematically check potential cliques.
+
+Let me first check if all 6 nodes form a clique:
+For this to be true, every node must connect to every other node. Looking at node 1's connections, I see it's not connected to nodes 2 or 3. So all 6 nodes don't form a clique.
+
+Let me check if nodes 3, 4, 5, 6 form a clique:
+- 3 is connected to 4, 5, 6 ✓
+- 4 is connected to 3, 5, 6 ✓
+- 5 is connected to 3, 4, 6 ✓
+- 6 is connected to 3, 4, 5 ✓
+This confirms that nodes 3, 4, 5, 6 form a clique of size 4.
+
+Let me verify there's no clique of size 5:
+- Trying to add node 1 to the clique {3,4,5,6}: Node 1 is not connected to node 3, so this doesn't work.
+- Trying to add node 2 to the clique {3,4,5,6}: Node 2 is not connected to node 3, so this doesn't work.
+
+Step 4: Final verification.
+Looking at the adjacency list and visual representation, I confirm that nodes 3, 4, 5, and 6 are all pairwise connected, forming a complete subgraph. No larger clique exists in this graph.
+
+Clique: [3, 4, 5, 6], Size: 4","{'clique': ['3', '4', '5', '6'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,10.34183407,1701,624,2325
+graph_100_c4,FMMM,{},few_shots,standard,"Clique: [1,2,3,4,5,6], Size: 6","{'clique': ['1', '2', '3', '4', '5', '6'], 'size': 6}","{'clique': {}, 'size': 4}",0.533,2.656780243,3860,24,3884
+graph_100_c4,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the visual representation, I notice that the graph appears to be densely connected. Let me identify potential cliques by examining the adjacency list.
+
+Step 2: From the adjacency list:
+- Node 1 is connected to 4, 5, 6
+- Node 2 is connected to 4, 5, 6
+- Node 3 is connected to 4, 5, 6
+- Node 4 is connected to 1, 2, 3, 5, 6
+- Node 5 is connected to 1, 2, 3, 4, 6
+- Node 6 is connected to 1, 2, 3, 4, 5
+
+Step 3: Let me check for potential cliques:
+- Nodes 4, 5, 6 are all connected to each other and to nodes 1, 2, 3
+- Nodes 1, 2, 3 are not connected to each other (checking both the adjacency list and visual representation)
+
+Step 4: Let me verify the connections in the potential clique {4, 5, 6}:
+- 4 is connected to 5: Yes (confirmed in both representations)
+- 4 is connected to 6: Yes (confirmed in both representations)
+- 5 is connected to 6: Yes (confirmed in both representations)
+
+Step 5: Let me check if we can expand this clique:
+- Adding node 1: 1 is connected to 4, 5, 6, so {1, 4, 5, 6} forms a 4-node clique
+- Adding node 2: 2 is connected to 4, 5, 6, so {2, 4, 5, 6} forms a 4-node clique
+- Adding node 3: 3 is connected to 4, 5, 6, so {3, 4, 5, 6} forms a 4-node clique
+
+Step 6: Can we form a 5-node clique? Let's check:
+- {1, 2, 4, 5, 6}: Nodes 1 and 2 are not connected, so this is not a clique
+- {1, 3, 4, 5, 6}: Nodes 1 and 3 are not connected, so this is not a clique
+- {2, 3, 4, 5, 6}: Nodes 2 and 3 are not connected, so this is not a clique
+
+Step 7: Therefore, the maximum cliques are {1, 4, 5, 6}, {2, 4, 5, 6}, and {3, 4, 5, 6}, all of size 4.
+
+Clique: [1, 4, 5, 6], Size: 4
+
+Note: There are actually three different maximum cliques of size 4 in this graph: [1, 4, 5, 6], [2, 4, 5, 6], and [3, 4, 5, 6]. I've provided one of them as the answer.","{'clique': ['1', '4', '5', '6'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,11.26184916,4413,756,5169
+graph_100_c4,ORTHO,{},zero_shot,standard,"Clique: [1, 4, 5, 6], Size: 6","{'clique': ['1', '4', '5', '6'], 'size': 6}","{'clique': {}, 'size': 4}",0.267,2.455657005,1783,23,1806
+graph_100_c4,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Analyze the adjacency list to understand the connections.
+- Node 1 is connected to nodes 4, 5, 6
+- Node 2 is connected to nodes 4, 5, 6
+- Node 3 is connected to nodes 4, 5, 6
+- Node 4 is connected to nodes 1, 2, 3, 5, 6
+- Node 5 is connected to nodes 1, 2, 3, 4, 6
+- Node 6 is connected to nodes 1, 2, 3, 4, 5
+
+Step 2: Identify potential cliques by looking for densely connected regions.
+From the adjacency list, I notice that nodes 4, 5, and 6 appear frequently in other nodes' connections. Looking at the visual representation, I can see these nodes form a triangle with connections between all pairs.
+
+Step 3: Systematically check potential maximum cliques.
+Let me check if the entire graph forms a clique:
+- Nodes 1 and 2 should be connected, but I don't see a direct edge between them in the visual representation.
+- Nodes 1 and 3 should be connected, but I don't see a direct edge between them.
+- Nodes 2 and 3 should be connected, but I don't see a direct edge between them.
+
+So the entire graph is not a clique.
+
+Let me check potential 5-node cliques:
+- {1,2,4,5,6}: Nodes 1 and 2 are not connected, so this is not a clique.
+- {1,3,4,5,6}: Nodes 1 and 3 are not connected, so this is not a clique.
+- {2,3,4,5,6}: Nodes 2 and 3 are not connected, so this is not a clique.
+
+Let me check potential 4-node cliques:
+- {1,4,5,6}: From the adjacency list, 1 is connected to 4, 5, and 6; 4 is connected to 1, 5, and 6; 5 is connected to 1, 4, and 6; 6 is connected to 1, 4, and 5. This forms a clique.
+- {2,4,5,6}: From the adjacency list, 2 is connected to 4, 5, and 6; 4 is connected to 2, 5, and 6; 5 is connected to 2, 4, and 6; 6 is connected to 2, 4, and 5. This forms a clique.
+- {3,4,5,6}: From the adjacency list, 3 is connected to 4, 5, and 6; 4 is connected to 3, 5, and 6; 5 is connected to 3, 4, and 6; 6 is connected to 3, 4, and 5. This forms a clique.
+
+Step 4: Verify the findings with the visual representation.
+Looking at the visual representation, I can confirm:
+- Nodes 1, 4, 5, 6 all have direct connections between each pair
+- Nodes 2, 4, 5, 6 all have direct connections between each pair
+- Nodes 3, 4, 5, 6 all have direct connections between each pair
+
+Step 5: Determine the maximum clique.
+I've found three 4-node cliques: {1,4,5,6}, {2,4,5,6}, and {3,4,5,6}. Since I've verified that no 5-node or 6-node clique exists, the maximum clique size is 4.
+
+Clique: [1,4,5,6], Size: 4
+
+Note: There are actually three different maximum cliques of size 4: [1,4,5,6], [2,4,5,6], and [3,4,5,6]. I've provided one of them as the answer, but all three are valid maximum cliques.","{'clique': ['1', '4', '5', '6'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,13.92272091,1849,996,2845
+graph_100_c4,ORTHO,{},few_shots,standard,"Clique: [1,2,3,4,5,6], Size: 6","{'clique': ['1', '2', '3', '4', '5', '6'], 'size': 6}","{'clique': {}, 'size': 4}",0.533,1.9424119,4008,24,4032
+graph_100_c4,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: First, I'll examine the adjacency list to understand the connections:
+- Node 1 is connected to nodes 4, 5, 6
+- Node 2 is connected to nodes 4, 5, 6
+- Node 3 is connected to nodes 4, 5, 6
+- Node 4 is connected to nodes 1, 2, 3, 5, 6
+- Node 5 is connected to nodes 1, 2, 3, 4, 6
+- Node 6 is connected to nodes 1, 2, 3, 4, 5
+
+Step 2: Looking at the visual representation, I can confirm these connections match what's shown in the graph.
+
+Step 3: Identifying potential cliques:
+- Nodes 4, 5, and 6 appear in many adjacency lists, suggesting they might form part of a large clique.
+- Looking at the adjacency list, I notice that nodes 4, 5, and 6 are all connected to each other.
+- Additionally, nodes 1, 2, and 3 are all connected to nodes 4, 5, and 6.
+- However, nodes 1, 2, and 3 are not connected to each other (checking both the adjacency list and visual representation).
+
+Step 4: Verifying the largest clique:
+- The set {4, 5, 6} forms a 3-node clique as they are all connected to each other.
+- We can try to extend this clique by adding node 1, 2, or 3.
+- Node 1 is connected to all nodes in {4, 5, 6}, so {1, 4, 5, 6} forms a 4-node clique.
+- Similarly, node 2 is connected to all nodes in {4, 5, 6}, so {2, 4, 5, 6} forms a 4-node clique.
+- Node 3 is also connected to all nodes in {4, 5, 6}, so {3, 4, 5, 6} forms a 4-node clique.
+
+Step 5: Checking if we can form a larger clique:
+- We cannot combine these 4-node cliques into a larger one because nodes 1, 2, and 3 are not connected to each other.
+- Therefore, the maximum clique size is 4.
+
+Step 6: Final verification:
+- I've confirmed that in each of our 4-node cliques, every pair of nodes is connected.
+- No 5-node or 6-node clique exists in this graph.
+
+Clique: [4, 5, 6, 1], Size: 4
+
+Note: There are actually three different maximum cliques of size 4: [1, 4, 5, 6], [2, 4, 5, 6], and [3, 4, 5, 6]. I've listed one of them as the answer.","{'clique': ['4', '5', '6', '1'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,12.49135208,4561,719,5280
+graph_130_c2,FMMM,{},zero_shot,standard,"Clique: [7, 8], Size: 2","{'clique': ['7', '8'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,2.253297806,1632,17,1649
+graph_130_c2,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically analyzing both the adjacency list and visual representation.
+
+Step 1: First, let me identify the connections for each node from the adjacency list:
+- Node 1 is connected to: 7
+- Node 2 is connected to: 8
+- Node 3 is connected to: 9
+- Node 4 is connected to: 6, 8
+- Node 5 is connected to: 6, 9
+- Node 6 is connected to: 4, 5
+- Node 7 is connected to: 1, 8, 9
+- Node 8 is connected to: 2, 4, 7
+- Node 9 is connected to: 3, 5, 7
+
+Step 2: Looking at the visual representation, I can confirm these connections match what's shown in the graph. The graph appears to form a cycle with some additional connections.
+
+Step 3: To find the maximum clique, I'll start by looking for nodes that have multiple connections in common.
+
+Looking at the adjacency list, I notice:
+- Nodes 7, 8, and 9 seem to have multiple connections
+- Node 7 connects to nodes 1, 8, and 9
+- Node 8 connects to nodes 2, 4, and 7
+- Node 9 connects to nodes 3, 5, and 7
+
+Step 4: Let me check for potential 3-node cliques:
+
+For {4, 6, 8}:
+- 4 connects to 6: Yes
+- 4 connects to 8: Yes
+- 6 connects to 8: No (not in adjacency list and no edge in visual)
+So {4, 6, 8} is not a clique.
+
+For {5, 6, 9}:
+- 5 connects to 6: Yes
+- 5 connects to 9: Yes
+- 6 connects to 9: No (not in adjacency list and no edge in visual)
+So {5, 6, 9} is not a clique.
+
+For {7, 8, 9}:
+- 7 connects to 8: Yes
+- 7 connects to 9: Yes
+- 8 connects to 9: No (not in adjacency list and no edge in visual)
+So {7, 8, 9} is not a clique.
+
+Step 5: Since I couldn't find any 3-node cliques, let me check all possible 2-node cliques (which are simply the edges):
+- {1, 7}
+- {2, 8}
+- {3, 9}
+- {4, 6}
+- {4, 8}
+- {5, 6}
+- {5, 9}
+- {7, 8}
+- {7, 9}
+
+All of these are valid 2-node cliques since they represent direct connections.
+
+Step 6: Verify that no 3-node or larger clique exists by checking all possible combinations systematically. I've already checked the most promising candidates and found no 3-node cliques.
+
+Therefore, the maximum clique size in this graph is 2, and there are multiple cliques of this size (any connected pair of nodes).
+
+Clique: [7, 8], Size: 2
+
+(Note: Any other edge in the graph, such as [1, 7], [4, 8], etc., would also be a valid answer as they all form maximum cliques of size 2)","{'clique': ['7', '8'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,13.682271,1698,828,2526
+graph_130_c2,FMMM,{},few_shots,standard,"Clique: [4,6], Size: 2","{'clique': ['4', '6'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,2.323833227,3857,16,3873
+graph_130_c2,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the visual representation, I notice this is a sparse graph with no obvious densely connected regions. Most nodes appear to have only 2-3 connections.
+
+Step 2: Let me examine potential cliques by checking the adjacency list:
+
+For each node:
+- Node 1 connects only to node 7
+- Node 2 connects only to node 8
+- Node 3 connects only to node 9
+- Node 4 connects to nodes 6 and 8
+- Node 5 connects to nodes 6 and 9
+- Node 6 connects to nodes 4 and 5
+- Node 7 connects to nodes 1, 8, and 9
+- Node 8 connects to nodes 2, 4, and 7
+- Node 9 connects to nodes 3, 5, and 7
+
+Step 3: Looking for potential cliques, I'll check for pairs of nodes that are connected:
+- Nodes 4 and 6 are connected
+- Nodes 4 and 8 are connected
+- Nodes 5 and 6 are connected
+- Nodes 5 and 9 are connected
+- Nodes 7 and 8 are connected
+- Nodes 7 and 9 are connected
+
+Step 4: Looking for 3-node cliques, I need to check if any three nodes are all connected to each other.
+- For nodes 4, 6, and 8: 4-6 ✓, 4-8 ✓, but 6-8 ✗ (not connected)
+- For nodes 5, 6, and 9: 5-6 ✓, 5-9 ✓, but 6-9 ✗ (not connected)
+- For nodes 7, 8, and 9: 7-8 ✓, 7-9 ✓, but 8-9 ✗ (not connected)
+
+Step 5: I've verified in both the adjacency list and visual representation that there are no 3-node cliques. The maximum cliques are the 2-node cliques (edges).
+
+Therefore, the maximum clique size is 2, and there are multiple such cliques: [1,7], [2,8], [3,9], [4,6], [4,8], [5,6], [5,9], [7,8], [7,9].
+
+Clique: [1,7], Size: 2","{'clique': ['1', '7'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,10.64777493,4410,604,5014
+graph_130_c2,ORTHO,{},zero_shot,standard,"Clique: [4, 6], Size: 2","{'clique': ['4', '6'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,1.942302942,1669,17,1686
+graph_130_c2,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically analyzing both the adjacency list and visual representation.
+
+Step 1: First, let me understand the graph structure from both representations.
+From the adjacency list:
+- Node 1 is connected to 7
+- Node 2 is connected to 8
+- Node 3 is connected to 9
+- Node 4 is connected to 6, 8
+- Node 5 is connected to 6, 9
+- Node 6 is connected to 4, 5
+- Node 7 is connected to 1, 8, 9
+- Node 8 is connected to 2, 4, 7
+- Node 9 is connected to 3, 5, 7
+
+Step 2: Looking for potential cliques by identifying densely connected regions.
+I notice several triangles in the graph:
+- Nodes 4, 6, 5 form a triangle
+- Nodes 7, 8, 9 appear to form a triangle
+
+Let me verify these potential cliques using the adjacency list:
+
+Triangle 4-6-5:
+- 4 is connected to 6 ✓
+- 6 is connected to 5 ✓
+- 5 is connected to 4? No, this connection is missing from the adjacency list.
+So 4-6-5 is not a clique.
+
+Triangle 7-8-9:
+- 7 is connected to 8 ✓
+- 7 is connected to 9 ✓
+- 8 is connected to 9? No, this connection is missing from the adjacency list.
+So 7-8-9 is not a clique.
+
+Step 3: Since I didn't find any triangles (3-node cliques), I'll check all possible 2-node cliques (edges).
+From the adjacency list, I can identify these edges:
+1-7, 2-8, 3-9, 4-6, 4-8, 5-6, 5-9, 7-8, 7-9
+
+Each of these edges forms a 2-node clique. Since I couldn't find any larger cliques, the maximum clique size is 2.
+
+Step 4: Verify that no 3-node clique exists by checking all possible combinations.
+For a 3-node clique to exist, all three nodes must be pairwise connected.
+
+Let me check a few potential 3-node combinations:
+- 4-6-8: 4-6 ✓, 4-8 ✓, but 6-8 ✗ (not connected)
+- 5-6-9: 5-6 ✓, 5-9 ✓, but 6-9 ✗ (not connected)
+- 7-8-9: 7-8 ✓, 7-9 ✓, but 8-9 ✗ (not connected)
+
+I've checked all potential 3-node combinations and confirmed none form a clique.
+
+Therefore, the maximum clique in this graph consists of any pair of connected nodes, with a size of 2.
+
+Clique: [7, 8], Size: 2
+
+Note: There are other valid answers with the same size, such as [7, 9], [4, 6], etc., as all edges represent 2-node cliques.","{'clique': ['7', '8'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,13.2078867,1735,804,2539
+graph_130_c2,ORTHO,{},few_shots,standard,"Clique: [4,6], Size: 2","{'clique': ['4', '6'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,2.863761902,3894,16,3910
+graph_130_c2,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the visual representation, I notice this is a relatively sparse graph with no obvious densely connected regions. Most nodes appear to have only 2-3 connections.
+
+Step 2: Let me examine potential cliques by checking the adjacency list and visual representation together:
+
+First, I'll check if there are any 3-node cliques:
+- Nodes 4, 6, 8: From the adjacency list, 4 connects to 6 and 8, but 6 doesn't connect to 8. Not a clique.
+- Nodes 5, 6, 9: From the adjacency list, 5 connects to 6 and 9, but 6 doesn't connect to 9. Not a clique.
+- Nodes 7, 8, 9: From the adjacency list, 7 connects to 8 and 9, but 8 doesn't connect to 9. Not a clique.
+
+I don't see any other potential 3-node groupings that might form cliques.
+
+Step 3: Let me check all 2-node cliques (which are simply edges):
+- Edge (1,7): Confirmed in both representations
+- Edge (2,8): Confirmed in both representations
+- Edge (3,9): Confirmed in both representations
+- Edge (4,6): Confirmed in both representations
+- Edge (4,8): Confirmed in both representations
+- Edge (5,6): Confirmed in both representations
+- Edge (5,9): Confirmed in both representations
+- Edge (7,8): Confirmed in both representations
+- Edge (7,9): Confirmed in both representations
+
+Step 4: Since I couldn't find any 3-node cliques, and I've verified all the 2-node cliques (edges), the maximum clique size in this graph is 2.
+
+Any edge in the graph forms a maximum clique. For consistency, I'll select the first edge in the adjacency list.
+
+Clique: [1,7], Size: 2","{'clique': ['1', '7'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,8.643321037,4447,482,4929
+graph_140_c5,FMMM,{},zero_shot,standard,"Clique: [1, 2, 3, 4, 9], Size: 5","{'clique': ['1', '2', '3', '4', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,2.251049995,1683,26,1709
+graph_140_c5,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Identify densely connected regions in the visual graph.
+Looking at the visual representation, I can see two densely connected subgraphs:
+- Nodes 1, 2, 3, 4, and 9 form one dense subgraph in the upper right
+- Nodes 5, 6, 7, 8, and 10 form another dense subgraph in the lower left
+- Node 9 and 10 connect these two subgraphs
+
+Step 2: Cross-verify connections using the adjacency list.
+For the first subgraph (1, 2, 3, 4, 9):
+- Node 1 is connected to 2, 3, 4, 9
+- Node 2 is connected to 1, 3, 4, 9
+- Node 3 is connected to 1, 2, 4, 9
+- Node 4 is connected to 1, 2, 3, 9
+- Node 9 is connected to 1, 2, 3, 4, 10
+
+For the second subgraph (5, 6, 7, 8, 10):
+- Node 5 is connected to 6, 7, 8, 10
+- Node 6 is connected to 5, 7, 8, 10
+- Node 7 is connected to 5, 6, 8, 10
+- Node 8 is connected to 5, 6, 7, 10
+- Node 10 is connected to 5, 6, 7, 8, 9
+
+Step 3: Systematically check potential cliques.
+Let's check if nodes 1, 2, 3, 4, 9 form a clique:
+- 1-2: Connected ✓
+- 1-3: Connected ✓
+- 1-4: Connected ✓
+- 1-9: Connected ✓
+- 2-3: Connected ✓
+- 2-4: Connected ✓
+- 2-9: Connected ✓
+- 3-4: Connected ✓
+- 3-9: Connected ✓
+- 4-9: Connected ✓
+
+All pairs are connected, so nodes 1, 2, 3, 4, 9 form a clique of size 5.
+
+Let's check if nodes 5, 6, 7, 8, 10 form a clique:
+- 5-6: Connected ✓
+- 5-7: Connected ✓
+- 5-8: Connected ✓
+- 5-10: Connected ✓
+- 6-7: Connected ✓
+- 6-8: Connected ✓
+- 6-10: Connected ✓
+- 7-8: Connected ✓
+- 7-10: Connected ✓
+- 8-10: Connected ✓
+
+All pairs are connected, so nodes 5, 6, 7, 8, 10 also form a clique of size 5.
+
+Step 4: Ensure no larger clique exists.
+Could we form a clique of size 6 or larger? To do this, we would need to add nodes from one subgraph to the other. However, looking at the connections between the two subgraphs, only nodes 9 and 10 are connected. Nodes 1, 2, 3, 4 are not connected to 5, 6, 7, 8, and vice versa. Therefore, we cannot form a clique larger than size 5.
+
+Verification:
+I've verified that both {1, 2, 3, 4, 9} and {5, 6, 7, 8, 10} form cliques of size 5, and no larger clique exists in this graph.
+
+Clique: [1, 2, 3, 4, 9], Size: 5
+
+Note: There's another clique of the same maximum size: [5, 6, 7, 8, 10], Size: 5","{'clique': ['1', '2', '3', '4', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,13.79532123,1749,989,2738
+graph_140_c5,FMMM,{},few_shots,standard,"Clique: [1,2,3,4,9], Size: 5","{'clique': ['1', '2', '3', '4', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,3.196826935,3908,22,3930
+graph_140_c5,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+From the visual representation, I can see two distinct densely connected regions:
+- Nodes 1, 2, 3, 4, and 9 form one cluster
+- Nodes 5, 6, 7, 8, and 10 form another cluster
+- Node 9 and 10 connect these two clusters
+
+Step 2: Cross-verifying connections using the adjacency list.
+For the first cluster (1, 2, 3, 4, 9):
+- Node 1 connects to 2, 3, 4, 9
+- Node 2 connects to 1, 3, 4, 9
+- Node 3 connects to 1, 2, 4, 9
+- Node 4 connects to 1, 2, 3, 9
+- Node 9 connects to 1, 2, 3, 4, 10
+
+For the second cluster (5, 6, 7, 8, 10):
+- Node 5 connects to 6, 7, 8, 10
+- Node 6 connects to 5, 7, 8, 10
+- Node 7 connects to 5, 6, 8, 10
+- Node 8 connects to 5, 6, 7, 10
+- Node 10 connects to 5, 6, 7, 8, 9
+
+Step 3: Systematically checking potential cliques.
+First cluster (1, 2, 3, 4, 9):
+- Every node is connected to every other node in this set
+- This forms a 5-node clique
+
+Second cluster (5, 6, 7, 8, 10):
+- Every node is connected to every other node in this set
+- This forms a 5-node clique
+
+Step 4: Ensuring no larger clique exists.
+- The only way to form a larger clique would be to include nodes from both clusters
+- The only connections between clusters are between nodes 9 and 10
+- No node is connected to all nodes from both clusters
+- Therefore, no clique larger than 5 exists
+
+Step 5: Verification.
+Both clusters form 5-node cliques:
+- Clique 1: [1, 2, 3, 4, 9] - verified that all pairs are connected
+- Clique 2: [5, 6, 7, 8, 10] - verified that all pairs are connected
+
+Since both cliques have the same size (5), either can be considered the maximum clique.
+
+Clique: [1,2,3,4,9], Size: 5","{'clique': ['1', '2', '3', '4', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,10.64720988,4461,652,5113
+graph_140_c5,ORTHO,{},zero_shot,standard,"Clique: [1, 2, 3, 4, 9], Size: 5","{'clique': ['1', '2', '3', '4', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,2.191119909,1017,26,1043
+graph_140_c5,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+## Step 1: Identify densely connected regions
+Looking at the visual representation and adjacency list, I can see two densely connected regions:
+- Nodes 1, 2, 3, 4, 9 appear to form a dense subgraph
+- Nodes 5, 6, 7, 8, 10 appear to form another dense subgraph
+- Nodes 9 and 10 connect these two regions
+
+## Step 2: Analyze the first potential clique (1, 2, 3, 4, 9)
+From the adjacency list:
+- Node 1 connects to: 2, 3, 4, 9
+- Node 2 connects to: 1, 3, 4, 9
+- Node 3 connects to: 1, 2, 4, 9
+- Node 4 connects to: 1, 2, 3, 9
+- Node 9 connects to: 1, 2, 3, 4, 10
+
+Checking all pairs: Each node in {1, 2, 3, 4, 9} is connected to all other nodes in this set. This forms a 5-node clique.
+
+## Step 3: Analyze the second potential clique (5, 6, 7, 8, 10)
+From the adjacency list:
+- Node 5 connects to: 6, 7, 8, 10
+- Node 6 connects to: 5, 7, 8, 10
+- Node 7 connects to: 5, 6, 8, 10
+- Node 8 connects to: 5, 6, 7, 10
+- Node 10 connects to: 5, 6, 7, 8, 9
+
+Checking all pairs: Each node in {5, 6, 7, 8, 10} is connected to all other nodes in this set. This forms another 5-node clique.
+
+## Step 4: Check if a larger clique exists
+Could we form a 6-node clique? The only candidates would be combining node 9 or 10 with the opposite clique. 
+
+For node 9 to join {5, 6, 7, 8, 10}, it would need to connect to all nodes in that set. However, from the adjacency list, node 9 only connects to node 10 from that set, not to 5, 6, 7, or 8.
+
+For node 10 to join {1, 2, 3, 4, 9}, it would need to connect to all nodes in that set. However, from the adjacency list, node 10 only connects to node 9 from that set, not to 1, 2, 3, or 4.
+
+## Step 5: Verify the maximum cliques
+I've identified two maximum cliques, both of size 5:
+1. {1, 2, 3, 4, 9}
+2. {5, 6, 7, 8, 10}
+
+Both the adjacency list and visual representation confirm these connections.
+
+Clique: [1, 2, 3, 4, 9], Size: 5","{'clique': ['1', '2', '3', '4', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,11.01541519,1083,781,1864
+graph_140_c5,ORTHO,{},few_shots,standard,"Clique: [1,2,3,4,9], Size: 5","{'clique': ['1', '2', '3', '4', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,2.565001011,3242,22,3264
+graph_140_c5,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I can see two distinct clusters:
+- Nodes 1, 2, 3, 4, and 9 appear to form one cluster on the right
+- Nodes 5, 6, 7, 8, and 10 appear to form another cluster on the left
+- Node 9 and 10 connect these two clusters
+
+Step 2: Cross-verifying connections using the adjacency list.
+For the first cluster (1, 2, 3, 4, 9):
+- Node 1 connects to 2, 3, 4, 9
+- Node 2 connects to 1, 3, 4, 9
+- Node 3 connects to 1, 2, 4, 9
+- Node 4 connects to 1, 2, 3, 9
+- Node 9 connects to 1, 2, 3, 4, 10
+
+For the second cluster (5, 6, 7, 8, 10):
+- Node 5 connects to 6, 7, 8, 10
+- Node 6 connects to 5, 7, 8, 10
+- Node 7 connects to 5, 6, 8, 10
+- Node 8 connects to 5, 6, 7, 10
+- Node 10 connects to 5, 6, 7, 8, 9
+
+Step 3: Systematically checking all pairs of nodes in potential cliques.
+For the first cluster (1, 2, 3, 4, 9):
+All nodes 1, 2, 3, 4 are connected to each other and to node 9.
+This forms a 5-node clique.
+
+For the second cluster (5, 6, 7, 8, 10):
+All nodes 5, 6, 7, 8 are connected to each other and to node 10.
+This forms a 5-node clique.
+
+Step 4: Ensuring no larger clique exists.
+The only way to form a larger clique would be to combine nodes from both clusters. However, the only connections between the clusters are between nodes 9 and 10. The other nodes from one cluster are not connected to nodes in the other cluster, so no larger clique is possible.
+
+Verification:
+- In the first clique [1, 2, 3, 4, 9], every pair of nodes is connected by an edge in both representations.
+- In the second clique [5, 6, 7, 8, 10], every pair of nodes is connected by an edge in both representations.
+- Both cliques have size 5, and no larger clique exists.
+
+Since we have two maximum cliques of the same size, I'll list both:
+
+Clique: [1,2,3,4,9], Size: 5
+Clique: [5,6,7,8,10], Size: 5","{'clique': ['1', '2', '3', '4', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,10.94667983,3795,725,4520
+graph_188_c4,FMMM,{},zero_shot,standard,"Clique: [4, 5, 6, 7], Size: 4","{'clique': ['4', '5', '6', '7'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,1.839709997,1700,23,1723
+graph_188_c4,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Identify densely connected regions in the visual graph.
+Looking at the visual representation, I can see that nodes 4, 5, 6, and 7 appear to form a densely connected region. Nodes 1, 2, and 3 are only connected to node 7.
+
+Step 2: Cross-verify connections using the adjacency list.
+From the adjacency list:
+- Node 4 is connected to 5, 6, 7
+- Node 5 is connected to 4, 6, 7
+- Node 6 is connected to 4, 5, 7
+- Node 7 is connected to 1, 2, 3, 4, 5, 6
+
+Step 3: Systematically check potential cliques.
+Let's check if nodes 4, 5, 6, 7 form a clique:
+- 4-5: Connected (confirmed in both representations)
+- 4-6: Connected (confirmed in both representations)
+- 4-7: Connected (confirmed in both representations)
+- 5-6: Connected (confirmed in both representations)
+- 5-7: Connected (confirmed in both representations)
+- 6-7: Connected (confirmed in both representations)
+
+All pairs are connected, so {4, 5, 6, 7} forms a clique of size 4.
+
+Step 4: Ensure no larger clique exists.
+Could we add any other node to this clique? Let's check:
+- Node 1: Only connected to 7, not to 4, 5, or 6
+- Node 2: Only connected to 7, not to 4, 5, or 6
+- Node 3: Only connected to 7, not to 4, 5, or 6
+
+Therefore, we cannot add any other node to our clique.
+
+Step 5: Verify there are no other cliques of the same or larger size.
+The only other potential cliques would involve node 7 with some combination of nodes 1, 2, and 3, but these nodes are not connected to each other, so they cannot form a clique larger than 2.
+
+Clique: [4, 5, 6, 7], Size: 4","{'clique': ['4', '5', '6', '7'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,9.428782225,1766,544,2310
+graph_188_c4,FMMM,{},few_shots,standard,"Clique: [4,5,6,7], Size: 4","{'clique': ['4', '5', '6', '7'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,2.853464127,3925,20,3945
+graph_188_c4,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+Looking at the visual representation, I notice that nodes 4, 5, 6, and 7 appear to form a densely connected region. I also see that nodes 4, 5, and 6 seem to form a triangle.
+
+Step 2: Cross-verifying connections using the adjacency list
+From the adjacency list:
+- Node 4 is connected to 5, 6, and 7
+- Node 5 is connected to 4, 6, and 7
+- Node 6 is connected to 4, 5, and 7
+- Node 7 is connected to 1, 2, 3, 4, 5, and 6
+
+Step 3: Systematically checking potential cliques
+Let me check if nodes 4, 5, 6, and 7 form a clique:
+- 4 is connected to 5, 6, and 7 ✓
+- 5 is connected to 4, 6, and 7 ✓
+- 6 is connected to 4, 5, and 7 ✓
+- 7 is connected to 4, 5, and 6 ✓
+
+This confirms that nodes 4, 5, 6, and 7 form a 4-node clique.
+
+Step 4: Ensuring no larger clique exists
+To check if a larger clique exists, I need to see if any other node can be added to this clique.
+- Node 1 is only connected to 7, not to 4, 5, or 6
+- Node 2 is only connected to 7, not to 4, 5, or 6
+- Node 3 is only connected to 7, not to 4, 5, or 6
+
+Therefore, no 5-node clique exists in this graph.
+
+Final verification:
+I've confirmed that every pair of nodes in {4, 5, 6, 7} is connected by an edge in both representations, and no larger subset of nodes forms a complete subgraph.
+
+Clique: [4,5,6,7], Size: 4","{'clique': ['4', '5', '6', '7'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,9.654572964,4478,528,5006
+graph_188_c4,ORTHO,{},zero_shot,standard,"Clique: [4, 5, 6, 7], Size: 4","{'clique': ['4', '5', '6', '7'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,1.779451132,1256,23,1279
+graph_188_c4,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: First, let me understand the graph structure from both representations.
+From the adjacency list:
+- Node 1 is connected to: 7
+- Node 2 is connected to: 7
+- Node 3 is connected to: 7
+- Node 4 is connected to: 5, 6, 7
+- Node 5 is connected to: 4, 6, 7
+- Node 6 is connected to: 4, 5, 7
+- Node 7 is connected to: 1, 2, 3, 4, 5, 6
+
+From the visual representation, I can confirm these connections match what's shown in the diagram.
+
+Step 2: Identify densely connected regions.
+Looking at the graph, I notice that nodes 4, 5, 6, and 7 appear to form a densely connected region.
+
+Step 3: Check if nodes 4, 5, 6, and 7 form a clique.
+For these nodes to form a clique, each pair must be connected:
+- 4-5: Connected (confirmed in adjacency list)
+- 4-6: Connected (confirmed in adjacency list)
+- 4-7: Connected (confirmed in adjacency list)
+- 5-6: Connected (confirmed in adjacency list)
+- 5-7: Connected (confirmed in adjacency list)
+- 6-7: Connected (confirmed in adjacency list)
+
+All pairs are connected, so nodes 4, 5, 6, and 7 form a clique of size 4.
+
+Step 4: Check if there's a larger clique.
+To have a clique of size 5, we would need to add one more node (1, 2, or 3) to our current clique. Let's check each:
+
+For node 1:
+- 1-4: Not connected (not in adjacency list)
+- 1-5: Not connected (not in adjacency list)
+- 1-6: Not connected (not in adjacency list)
+- 1-7: Connected (confirmed in adjacency list)
+Node 1 cannot be added to the clique.
+
+For node 2:
+- 2-4: Not connected (not in adjacency list)
+- 2-5: Not connected (not in adjacency list)
+- 2-6: Not connected (not in adjacency list)
+- 2-7: Connected (confirmed in adjacency list)
+Node 2 cannot be added to the clique.
+
+For node 3:
+- 3-4: Not connected (not in adjacency list)
+- 3-5: Not connected (not in adjacency list)
+- 3-6: Not connected (not in adjacency list)
+- 3-7: Connected (confirmed in adjacency list)
+Node 3 cannot be added to the clique.
+
+Step 5: Verify no other clique of size 4 or larger exists.
+The only other potential cliques would involve node 7 with some combination of nodes 1, 2, and 3. However, nodes 1, 2, and 3 are not connected to each other (based on the adjacency list), so they cannot form a clique of size 4 or larger with node 7.
+
+Therefore, the maximum clique consists of nodes 4, 5, 6, and 7.
+
+Clique: [4, 5, 6, 7], Size: 4","{'clique': ['4', '5', '6', '7'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,11.60253811,1322,828,2150
+graph_188_c4,ORTHO,{},few_shots,standard,"Clique: [4,5,6,7], Size: 4","{'clique': ['4', '5', '6', '7'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,2.351261854,3481,20,3501
+graph_188_c4,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I can see that nodes 4, 5, and 6 form a triangle, meaning they are all connected to each other. This is a potential clique.
+
+Step 2: Cross-verifying connections using the adjacency list.
+From the adjacency list:
+- Node 4 is connected to 5, 6, and 7
+- Node 5 is connected to 4, 6, and 7
+- Node 6 is connected to 4, 5, and 7
+
+This confirms that nodes 4, 5, and 6 are all connected to each other, forming a 3-node clique.
+
+Step 3: Checking if we can expand this clique.
+Node 7 is connected to nodes 4, 5, and 6, as seen in both the visual representation and the adjacency list. So we can expand our clique to include node 7.
+
+Let's verify that nodes 4, 5, 6, and 7 form a clique:
+- 4 is connected to 5, 6, and 7 ✓
+- 5 is connected to 4, 6, and 7 ✓
+- 6 is connected to 4, 5, and 7 ✓
+- 7 is connected to 4, 5, and 6 ✓
+
+Step 4: Checking if we can further expand the clique.
+Nodes 1, 2, and 3 are only connected to node 7, not to nodes 4, 5, or 6. Therefore, we cannot expand the clique further.
+
+Step 5: Verification.
+I've verified that every pair of nodes in our clique {4, 5, 6, 7} is connected by an edge in both representations, and no larger subset of nodes forms a complete subgraph.
+
+Clique: [4, 5, 6, 7], Size: 4","{'clique': ['4', '5', '6', '7'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,8.293000937,4034,488,4522
+graph_228_c4,FMMM,{},zero_shot,standard,"Clique: [5, 6, 7, 8], Size: 4","{'clique': ['5', '6', '7', '8'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,2.656174183,1707,23,1730
+graph_228_c4,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: First, let me identify the densely connected region in the graph.
+Looking at the visual representation, I can see that nodes 5, 6, 7, and 8 appear to form a dense subgraph in the center of the image. These nodes seem to have multiple connections between them.
+
+Step 2: Let me verify the connections between these nodes using the adjacency list:
+- Node 5 is connected to: 1, 6, 7, 8
+- Node 6 is connected to: 2, 5, 7, 8
+- Node 7 is connected to: 3, 5, 6, 8
+- Node 8 is connected to: 4, 5, 6, 7
+
+Step 3: Now I'll check if nodes 5, 6, 7, and 8 form a clique by verifying all pairwise connections:
+- 5-6: Connected (confirmed in both adjacency list and visual)
+- 5-7: Connected (confirmed in both adjacency list and visual)
+- 5-8: Connected (confirmed in both adjacency list and visual)
+- 6-7: Connected (confirmed in both adjacency list and visual)
+- 6-8: Connected (confirmed in both adjacency list and visual)
+- 7-8: Connected (confirmed in both adjacency list and visual)
+
+All pairs are connected, so nodes 5, 6, 7, and 8 form a 4-node clique.
+
+Step 4: Let me check if there's any larger clique by trying to add other nodes:
+- Node 1 is only connected to node 5, not to 6, 7, or 8
+- Node 2 is only connected to node 6, not to 5, 7, or 8
+- Node 3 is only connected to node 7, not to 5, 6, or 8
+- Node 4 is only connected to node 8, not to 5, 6, or 7
+
+None of the other nodes can be added to form a larger clique.
+
+Step 5: Let me verify there are no other 4-node cliques:
+The only other potential candidates would involve nodes 1, 2, 3, or 4, but as we've seen, these nodes have limited connections (each is only connected to one of the nodes in our identified clique), so they cannot form alternative 4-node cliques.
+
+Therefore, the maximum clique consists of nodes 5, 6, 7, and 8.
+
+Clique: [5, 6, 7, 8], Size: 4","{'clique': ['5', '6', '7', '8'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,9.917393923,1773,633,2406
+graph_228_c4,FMMM,{},few_shots,standard,"Clique: [5,6,7,8], Size: 4","{'clique': ['5', '6', '7', '8'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,2.776470661,3932,20,3952
+graph_228_c4,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+Looking at the visual representation, I notice that nodes 5, 6, 7, and 8 appear to form a densely connected region in the center of the graph. These nodes seem to have multiple connections between them.
+
+Step 2: Cross-verifying connections using the adjacency list
+From the adjacency list:
+- Node 5 is connected to: 1, 6, 7, 8
+- Node 6 is connected to: 2, 5, 7, 8
+- Node 7 is connected to: 3, 5, 6, 8
+- Node 8 is connected to: 4, 5, 6, 7
+
+Step 3: Systematically checking that all pairs of nodes in potential cliques are connected
+For nodes 5, 6, 7, and 8 to form a clique, each pair must be connected:
+- 5-6: Connected (confirmed in both adjacency list and visual)
+- 5-7: Connected (confirmed in both)
+- 5-8: Connected (confirmed in both)
+- 6-7: Connected (confirmed in both)
+- 6-8: Connected (confirmed in both)
+- 7-8: Connected (confirmed in both)
+
+All pairs are connected, so nodes 5, 6, 7, and 8 form a 4-node clique.
+
+Step 4: Ensuring no larger clique exists
+Let's check if we can add any other node to this clique:
+- Node 1: Only connected to node 5, not to 6, 7, or 8
+- Node 2: Only connected to node 6, not to 5, 7, or 8
+- Node 3: Only connected to node 7, not to 5, 6, or 8
+- Node 4: Only connected to node 8, not to 5, 6, or 7
+
+None of the other nodes can be added to form a larger clique.
+
+Verification:
+1) Every pair of nodes in our clique (5, 6, 7, 8) is connected by an edge in both representations
+2) No larger subset of nodes forms a complete subgraph
+
+Clique: [5,6,7,8], Size: 4","{'clique': ['5', '6', '7', '8'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,9.522730112,4485,556,5041
+graph_228_c4,ORTHO,{},zero_shot,standard,"Clique: [5, 6, 7, 8], Size: 4","{'clique': ['5', '6', '7', '8'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,1.808403015,1818,23,1841
+graph_228_c4,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: First, let me understand the graph structure from both representations.
+
+From the adjacency list:
+- Node 1 is connected to 5
+- Node 2 is connected to 6
+- Node 3 is connected to 7
+- Node 4 is connected to 8
+- Node 5 is connected to 1, 6, 7, 8
+- Node 6 is connected to 2, 5, 7, 8
+- Node 7 is connected to 3, 5, 6, 8
+- Node 8 is connected to 4, 5, 6, 7
+
+From the visual representation, I can see the same connections. The graph has a somewhat grid-like structure with nodes 5, 6, 7, and 8 appearing more central and more connected.
+
+Step 2: Looking for densely connected regions, I notice that nodes 5, 6, 7, and 8 seem to have many connections between them. Let me check if they form a clique.
+
+For nodes 5, 6, 7, and 8 to form a clique, each pair must be connected:
+- 5-6: Yes (5 lists 6, and 6 lists 5)
+- 5-7: Yes (5 lists 7, and 7 lists 5)
+- 5-8: Yes (5 lists 8, and 8 lists 5)
+- 6-7: Yes (6 lists 7, and 7 lists 6)
+- 6-8: Yes (6 lists 8, and 8 lists 6)
+- 7-8: Yes (7 lists 8, and 8 lists 7)
+
+All pairs are connected, so nodes 5, 6, 7, and 8 form a 4-node clique.
+
+Step 3: Let me check if we can extend this clique by adding any other node.
+
+For node 1:
+- 1-5: Yes
+- 1-6: No (not in adjacency list)
+- 1-7: No (not in adjacency list)
+- 1-8: No (not in adjacency list)
+
+For node 2:
+- 2-5: No (not in adjacency list)
+- 2-6: Yes
+- 2-7: No (not in adjacency list)
+- 2-8: No (not in adjacency list)
+
+For node 3:
+- 3-5: No (not in adjacency list)
+- 3-6: No (not in adjacency list)
+- 3-7: Yes
+- 3-8: No (not in adjacency list)
+
+For node 4:
+- 4-5: No (not in adjacency list)
+- 4-6: No (not in adjacency list)
+- 4-7: No (not in adjacency list)
+- 4-8: Yes
+
+None of nodes 1, 2, 3, or 4 can be added to the clique because each is missing connections to at least two nodes in our current clique.
+
+Step 4: Let me verify there are no other 4-node cliques or larger cliques.
+Since we've already found that nodes 5, 6, 7, and 8 form a 4-node clique, and no other node can be added to this clique, and there are no other sets of 4 nodes that are all connected to each other (as can be verified from the adjacency list), this is the maximum clique.
+
+Clique: [5, 6, 7, 8], Size: 4","{'clique': ['5', '6', '7', '8'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,12.42265081,1884,878,2762
+graph_228_c4,ORTHO,{},few_shots,standard,"Clique: [5,6,7,8], Size: 4","{'clique': ['5', '6', '7', '8'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,2.042926788,4043,20,4063
+graph_228_c4,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I notice that nodes 5, 6, 7, and 8 appear to form a region where multiple connections exist. I'll examine this area more closely.
+
+Step 2: Cross-verifying connections using the adjacency list.
+From the adjacency list:
+- Node 5 is connected to 1, 6, 7, 8
+- Node 6 is connected to 2, 5, 7, 8
+- Node 7 is connected to 3, 5, 6, 8
+- Node 8 is connected to 4, 5, 6, 7
+
+Step 3: Systematically checking potential cliques.
+Let me check if nodes 5, 6, 7, and 8 form a clique by verifying all pairwise connections:
+- 5-6: Connected (confirmed in both representations)
+- 5-7: Connected (confirmed in both representations)
+- 5-8: Connected (confirmed in both representations)
+- 6-7: Connected (confirmed in both representations)
+- 6-8: Connected (confirmed in both representations)
+- 7-8: Connected (confirmed in both representations)
+
+All pairs are connected, so nodes 5, 6, 7, and 8 form a 4-node clique.
+
+Step 4: Ensuring no larger clique exists.
+Let's check if we can add any other node to this clique:
+- Node 1: Connected only to 5, not to 6, 7, or 8
+- Node 2: Connected only to 6, not to 5, 7, or 8
+- Node 3: Connected only to 7, not to 5, 6, or 8
+- Node 4: Connected only to 8, not to 5, 6, or 7
+
+None of the other nodes can be added to form a larger clique.
+
+Step 5: Verification.
+I've verified that every pair of nodes in {5, 6, 7, 8} is connected by an edge in both representations, and no larger subset of nodes forms a complete subgraph.
+
+Clique: [5, 6, 7, 8], Size: 4","{'clique': ['5', '6', '7', '8'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,10.03415275,4596,548,5144
+graph_230_c5,FMMM,{},zero_shot,standard,"Clique: [1,2,3,4,5,6], Size: 6","{'clique': ['1', '2', '3', '4', '5', '6'], 'size': 6}","{'clique': {}, 'size': 5}",0.778,1.968858004,1606,24,1630
+graph_230_c5,FMMM,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+First, let me examine the adjacency list:
+1: 3 4 5 6
+2: 3 4 5 6
+3: 1 2 4 5 6
+4: 1 2 3 5 6
+5: 1 2 3 4 6
+6: 1 2 3 4 5
+
+Looking at both the adjacency list and visual representation, I notice this graph is highly connected. Let me analyze the connections systematically:
+
+Step 1: Initial observation
+From the adjacency list, I can see that every node is connected to all other nodes except:
+- Node 1 is not connected to node 2
+- Node 2 is not connected to node 1
+
+This is confirmed in the visual representation where there's no edge between nodes 1 and 2.
+
+Step 2: Identifying potential maximum cliques
+Since nodes 1 and 2 are not connected, they cannot be in the same clique. This means the maximum clique must exclude either node 1 or node 2 (or both).
+
+Let me check two potential cliques:
+- Clique A: {1, 3, 4, 5, 6} (excluding node 2)
+- Clique B: {2, 3, 4, 5, 6} (excluding node 1)
+
+Step 3: Verifying Clique A {1, 3, 4, 5, 6}
+I need to check if all pairs of nodes in this set are connected:
+- 1-3: Connected (from adjacency list and visual)
+- 1-4: Connected
+- 1-5: Connected
+- 1-6: Connected
+- 3-4: Connected
+- 3-5: Connected
+- 3-6: Connected
+- 4-5: Connected
+- 4-6: Connected
+- 5-6: Connected
+
+All pairs are connected, so {1, 3, 4, 5, 6} forms a clique of size 5.
+
+Step 4: Verifying Clique B {2, 3, 4, 5, 6}
+Similarly checking all pairs:
+- 2-3: Connected
+- 2-4: Connected
+- 2-5: Connected
+- 2-6: Connected
+- 3-4: Connected
+- 3-5: Connected
+- 3-6: Connected
+- 4-5: Connected
+- 4-6: Connected
+- 5-6: Connected
+
+All pairs are connected, so {2, 3, 4, 5, 6} also forms a clique of size 5.
+
+Step 5: Ensuring no larger clique exists
+Since the graph has 6 nodes total, and we've established that nodes 1 and 2 are not connected, a clique of size 6 is impossible. Therefore, a clique of size 5 is the maximum possible.
+
+Step 6: Final verification
+Both {1, 3, 4, 5, 6} and {2, 3, 4, 5, 6} are maximum cliques of size 5. I'll choose one for the answer.
+
+Clique: [1, 3, 4, 5, 6], Size: 5","{'clique': ['1', '3', '4', '5', '6'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,11.34058499,1672,782,2454
+graph_230_c5,FMMM,{},few_shots,standard,"Clique: [1,3,4,5,6], Size: 6","{'clique': ['1', '3', '4', '5', '6'], 'size': 6}","{'clique': {}, 'size': 5}",0.556,3.374511719,3831,22,3853
+graph_230_c5,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the adjacency list and visual representation, I notice this is a densely connected graph where many nodes are connected to most other nodes.
+
+Step 2: From the adjacency list, I can see:
+- Node 1 is connected to nodes 3, 4, 5, 6
+- Node 2 is connected to nodes 3, 4, 5, 6
+- Node 3 is connected to nodes 1, 2, 4, 5, 6
+- Node 4 is connected to nodes 1, 2, 3, 5, 6
+- Node 5 is connected to nodes 1, 2, 3, 4, 6
+- Node 6 is connected to nodes 1, 2, 3, 4, 5
+
+Step 3: I'll check if all 6 nodes form a clique. For this to be true, every node must be connected to every other node.
+- Nodes 1 and 2 are not connected (1 is not in 2's list and 2 is not in 1's list)
+- This means all 6 nodes cannot form a clique
+
+Step 4: Let me check if there's a 5-node clique:
+- If I exclude node 1: Nodes 2, 3, 4, 5, 6 - But 2 must connect to all others
+- If I exclude node 2: Nodes 1, 3, 4, 5, 6 - But 1 must connect to all others
+
+In both cases, I can verify from the adjacency list that all remaining nodes are connected to each other. The visual representation confirms this as well.
+
+Therefore, there are two 5-node cliques: [1,3,4,5,6] and [2,3,4,5,6]
+
+Since they're the same size, either can be considered the maximum clique.
+
+Clique: [1,3,4,5,6], Size: 5","{'clique': ['1', '3', '4', '5', '6'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,8.80527997,4384,485,4869
+graph_230_c5,ORTHO,{},zero_shot,standard,"Clique: [1,2,3,4,5,6], Size: 6","{'clique': ['1', '2', '3', '4', '5', '6'], 'size': 6}","{'clique': {}, 'size': 5}",0.778,2.479128838,1680,24,1704
+graph_230_c5,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: First, I'll examine the adjacency list to understand the connections.
+- Node 1 is connected to: 3, 4, 5, 6
+- Node 2 is connected to: 3, 4, 5, 6
+- Node 3 is connected to: 1, 2, 4, 5, 6
+- Node 4 is connected to: 1, 2, 3, 5, 6
+- Node 5 is connected to: 1, 2, 3, 4, 6
+- Node 6 is connected to: 1, 2, 3, 4, 5
+
+Step 2: Looking at the adjacency list, I notice that every node is connected to every other node except for nodes 1 and 2, which are not connected to each other. This suggests we might have a clique of size 5.
+
+Step 3: Let me verify this observation using the visual representation. Indeed, I can see that there is no direct edge between nodes 1 and 2, while all other pairs of nodes are connected.
+
+Step 4: Let me check potential 5-node cliques:
+- {1, 3, 4, 5, 6}: Let me verify all connections:
+  - 1-3: Connected ✓
+  - 1-4: Connected ✓
+  - 1-5: Connected ✓
+  - 1-6: Connected ✓
+  - 3-4: Connected ✓
+  - 3-5: Connected ✓
+  - 3-6: Connected ✓
+  - 4-5: Connected ✓
+  - 4-6: Connected ✓
+  - 5-6: Connected ✓
+  All pairs are connected, so {1, 3, 4, 5, 6} forms a clique of size 5.
+
+- {2, 3, 4, 5, 6}: Let me verify all connections:
+  - 2-3: Connected ✓
+  - 2-4: Connected ✓
+  - 2-5: Connected ✓
+  - 2-6: Connected ✓
+  - 3-4: Connected ✓
+  - 3-5: Connected ✓
+  - 3-6: Connected ✓
+  - 4-5: Connected ✓
+  - 4-6: Connected ✓
+  - 5-6: Connected ✓
+  All pairs are connected, so {2, 3, 4, 5, 6} also forms a clique of size 5.
+
+Step 5: Since nodes 1 and 2 are not connected, we cannot form a clique of size 6. Therefore, the maximum clique size is 5.
+
+Step 6: There are two maximum cliques of size 5: {1, 3, 4, 5, 6} and {2, 3, 4, 5, 6}.
+
+Clique: [1, 3, 4, 5, 6], Size: 5","{'clique': ['1', '3', '4', '5', '6'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,10.21665597,1746,757,2503
+graph_230_c5,ORTHO,{},few_shots,standard,"Clique: [1,2,3,4,5,6], Size: 6","{'clique': ['1', '2', '3', '4', '5', '6'], 'size': 6}","{'clique': {}, 'size': 5}",0.778,3.069760799,3905,24,3929
+graph_230_c5,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the adjacency list and visual representation, I notice that the graph appears to be highly connected.
+
+Step 2: Let me check the connections for each node from the adjacency list:
+- Node 1 is connected to nodes 3, 4, 5, 6
+- Node 2 is connected to nodes 3, 4, 5, 6
+- Node 3 is connected to nodes 1, 2, 4, 5, 6
+- Node 4 is connected to nodes 1, 2, 3, 5, 6
+- Node 5 is connected to nodes 1, 2, 3, 4, 6
+- Node 6 is connected to nodes 1, 2, 3, 4, 5
+
+Step 3: I can see that every node is connected to every other node except for nodes 1 and 2, which are not connected to each other. This is confirmed by both the adjacency list (node 1's list doesn't include 2, and node 2's list doesn't include 1) and the visual representation (there's no direct line between nodes 1 and 2).
+
+Step 4: Since nodes 1 and 2 are not connected, they cannot both be in the same clique. Let me check the largest possible cliques:
+- If I include node 1: Nodes {1, 3, 4, 5, 6} form a clique of size 5
+- If I include node 2: Nodes {2, 3, 4, 5, 6} form a clique of size 5
+
+Step 5: I've verified that in both potential cliques, every pair of nodes is connected by checking the adjacency list and visual representation.
+
+Step 6: Since both potential maximum cliques have the same size (5), I'll choose one of them as my answer.
+
+Clique: [1,3,4,5,6], Size: 5","{'clique': ['1', '3', '4', '5', '6'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,8.805113792,4458,472,4930
+graph_28_c3,FMMM,{},zero_shot,standard,"Clique: [1,3,4], Size: 3","{'clique': ['1', '3', '4'], 'size': 3}","{'clique': {}, 'size': 3}",1.0,3.0719769,1564,18,1582
+graph_28_c3,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: First, let me verify the connections from the adjacency list:
+- Node 1 is connected to: 3, 4
+- Node 2 is connected to: 3, 4
+- Node 3 is connected to: 1, 2, 4
+- Node 4 is connected to: 1, 2, 3
+
+Step 2: Looking at the visual representation, I can confirm these connections:
+- Node 1 connects to nodes 3 and 4
+- Node 2 connects to nodes 3 and 4
+- Node 3 connects to nodes 1, 2, and 4
+- Node 4 connects to nodes 1, 2, and 3
+
+Step 3: Let me identify potential cliques by checking all possible subsets:
+
+For size 4 (all nodes):
+To be a clique, every node must connect to every other node.
+- Node 1 should connect to 2, 3, 4
+- But node 1 is not connected to node 2 (missing in both adjacency list and visual)
+So, a 4-node clique is not possible.
+
+For size 3:
+Let me check all possible 3-node combinations:
+- {1,2,3}: Node 1 is not connected to node 2, so not a clique
+- {1,2,4}: Node 1 is not connected to node 2, so not a clique
+- {1,3,4}: Let's check:
+  * 1-3: Connected ✓
+  * 1-4: Connected ✓
+  * 3-4: Connected ✓
+  This is a valid 3-node clique!
+- {2,3,4}: Let's check:
+  * 2-3: Connected ✓
+  * 2-4: Connected ✓
+  * 3-4: Connected ✓
+  This is also a valid 3-node clique!
+
+Step 4: Since I've found two different 3-node cliques and verified that no 4-node clique exists, the maximum clique size is 3.
+
+The maximum cliques are {1,3,4} and {2,3,4}, both of size 3.
+
+Clique: [1,3,4], Size: 3","{'clique': ['1', '3', '4'], 'size': 3}","{'clique': {}, 'size': 3}",1.0,9.215340137,1630,567,2197
+graph_28_c3,FMMM,{},few_shots,standard,"Clique: [1,3,4], Size: 3","{'clique': ['1', '3', '4'], 'size': 3}","{'clique': {}, 'size': 3}",1.0,2.452285051,3789,18,3807
+graph_28_c3,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I can see that nodes 1, 3, and 4 form a triangle, as do nodes 2, 3, and 4. These are potential cliques.
+
+Step 2: Cross-verifying connections using the adjacency list.
+From the adjacency list:
+- Node 1 is connected to 3 and 4
+- Node 2 is connected to 3 and 4
+- Node 3 is connected to 1, 2, and 4
+- Node 4 is connected to 1, 2, and 3
+
+Step 3: Systematically checking potential cliques.
+Let me check all possible 3-node combinations:
+- Nodes 1, 3, 4: 
+  - 1 is connected to 3 ✓
+  - 1 is connected to 4 ✓
+  - 3 is connected to 4 ✓
+  This forms a 3-node clique.
+
+- Nodes 2, 3, 4:
+  - 2 is connected to 3 ✓
+  - 2 is connected to 4 ✓
+  - 3 is connected to 4 ✓
+  This also forms a 3-node clique.
+
+- Nodes 1, 2, 3:
+  - 1 is connected to 3 ✓
+  - 1 is NOT connected to 2 ✗
+  - 2 is connected to 3 ✓
+  This is not a clique.
+
+- Nodes 1, 2, 4:
+  - 1 is connected to 4 ✓
+  - 1 is NOT connected to 2 ✗
+  - 2 is connected to 4 ✓
+  This is not a clique.
+
+Step 4: Checking for a 4-node clique.
+For all four nodes (1, 2, 3, 4) to form a clique, every pair must be connected.
+Since nodes 1 and 2 are not connected (verified in both the adjacency list and visual representation), a 4-node clique is not possible.
+
+Therefore, the maximum clique size is 3, and there are two such cliques: [1,3,4] and [2,3,4].
+
+Clique: [1,3,4], Size: 3","{'clique': ['1', '3', '4'], 'size': 3}","{'clique': {}, 'size': 3}",1.0,9.214479923,4342,603,4945
+graph_28_c3,ORTHO,{},zero_shot,standard,"Clique: [1,3,4], Size: 3","{'clique': ['1', '3', '4'], 'size': 3}","{'clique': {}, 'size': 3}",1.0,2.352427006,1120,18,1138
+graph_28_c3,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Identify the connections from the adjacency list.
+- Node 1 is connected to: 3, 4
+- Node 2 is connected to: 3, 4
+- Node 3 is connected to: 1, 2, 4
+- Node 4 is connected to: 1, 2, 3
+
+Step 2: Cross-verify with the visual representation.
+In the image, I can see:
+- Node 1 connects to nodes 3 and 4
+- Node 2 connects to nodes 3 and 4
+- Node 3 connects to nodes 1, 2, and 4
+- Node 4 connects to nodes 1, 2, and 3
+
+Both representations match, confirming the graph structure.
+
+Step 3: Identify potential cliques by examining densely connected regions.
+Looking at the graph, I notice that nodes 1, 3, and 4 appear to form a triangle, as do nodes 2, 3, and 4.
+
+Step 4: Systematically check all potential cliques.
+
+For a 4-node clique (nodes 1, 2, 3, 4):
+- Need to check if nodes 1 and 2 are connected
+- From both representations, I can see that nodes 1 and 2 are NOT connected
+- Therefore, a 4-node clique is not possible
+
+For 3-node cliques:
+1. Clique {1, 3, 4}:
+   - 1-3: Connected ✓
+   - 1-4: Connected ✓
+   - 3-4: Connected ✓
+   - This forms a valid 3-node clique
+
+2. Clique {2, 3, 4}:
+   - 2-3: Connected ✓
+   - 2-4: Connected ✓
+   - 3-4: Connected ✓
+   - This forms a valid 3-node clique
+
+Step 5: Verify no larger clique exists.
+We've already confirmed that a 4-node clique is not possible because nodes 1 and 2 are not connected.
+
+Step 6: Determine the maximum clique.
+We have two 3-node cliques: {1, 3, 4} and {2, 3, 4}. Both are of size 3, which is the maximum clique size for this graph.
+
+Since we need to provide a single answer, I'll choose one of the equivalent maximum cliques.
+
+Clique: [1, 3, 4], Size: 3","{'clique': ['1', '3', '4'], 'size': 3}","{'clique': {}, 'size': 3}",1.0,9.317795992,1186,629,1815
+graph_28_c3,ORTHO,{},few_shots,standard,"Clique: [1,2,3,4], Size: 4","{'clique': ['1', '2', '3', '4'], 'size': 4}","{'clique': {}, 'size': 3}",0.625,1.736046076,3345,20,3365
+graph_28_c3,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I can see that nodes 1, 3, and 4 form a triangle, suggesting they might form a clique. Nodes 2, 3, and 4 also form a triangle.
+
+Step 2: Cross-verifying connections using the adjacency list.
+From the adjacency list:
+- Node 1 is connected to 3 and 4
+- Node 2 is connected to 3 and 4
+- Node 3 is connected to 1, 2, and 4
+- Node 4 is connected to 1, 2, and 3
+
+Step 3: Systematically checking potential cliques.
+Let me check the potential cliques:
+- Nodes 1, 3, 4: 
+  - 1 is connected to 3 ✓
+  - 1 is connected to 4 ✓
+  - 3 is connected to 4 ✓
+  This forms a 3-node clique.
+
+- Nodes 2, 3, 4:
+  - 2 is connected to 3 ✓
+  - 2 is connected to 4 ✓
+  - 3 is connected to 4 ✓
+  This also forms a 3-node clique.
+
+Step 4: Checking if a larger clique exists.
+To have a 4-node clique, all nodes would need to be connected to each other. However, nodes 1 and 2 are not connected according to both the adjacency list and visual representation. Therefore, a 4-node clique is not possible.
+
+Step 5: Verification.
+I've verified that both [1,3,4] and [2,3,4] form 3-node cliques where every pair of nodes is connected by an edge in both representations. No larger clique exists.
+
+Clique: [1,3,4], Size: 3
+
+Note: [2,3,4] is also a valid maximum clique of the same size.","{'clique': ['1', '3', '4'], 'size': 3}","{'clique': {}, 'size': 3}",1.0,8.294489861,3898,505,4403
+graph_32402_c7,FMMM,{},zero_shot,standard,"Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,2.206730843,1805,32,1837
+graph_32402_c7,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically analyzing both the adjacency list and visual representation.
+
+Step 1: First, I'll analyze the degree of each node to identify potential candidates for a large clique.
+- Node 1 has degree 4 (connected to 4, 7, 8, 10)
+- Node 2 has degree 4 (connected to 5, 7, 9, 10)
+- Node 3 has degree 4 (connected to 6, 8, 9, 10)
+- Nodes 4-10 all have degree 7 or more
+
+This suggests nodes 4-10 are more likely to be part of a maximum clique.
+
+Step 2: Looking at the visual representation, I can see a densely connected region involving nodes 4, 5, 6, 7, 8, 9, and 10. Let me verify if these form a clique by checking if each pair is connected.
+
+Step 3: Checking connections between all pairs in {4, 5, 6, 7, 8, 9, 10}:
+- Node 4 is connected to 5, 6, 7, 8, 9, 10 ✓
+- Node 5 is connected to 4, 6, 7, 8, 9, 10 ✓
+- Node 6 is connected to 4, 5, 7, 8, 9, 10 ✓
+- Node 7 is connected to 4, 5, 6, 8, 9, 10 ✓
+- Node 8 is connected to 4, 5, 6, 7, 9, 10 ✓
+- Node 9 is connected to 4, 5, 6, 7, 8, 10 ✓
+- Node 10 is connected to 4, 5, 6, 7, 8, 9 ✓
+
+This confirms that nodes 4, 5, 6, 7, 8, 9, and 10 form a clique of size 7.
+
+Step 4: Let me verify there's no larger clique by checking if any of nodes 1, 2, or 3 can be added to this clique.
+
+For node 1:
+- Connected to 4, 7, 8, 10, but not to 5, 6, 9
+- Cannot be added to the clique
+
+For node 2:
+- Connected to 5, 7, 9, 10, but not to 4, 6, 8
+- Cannot be added to the clique
+
+For node 3:
+- Connected to 6, 8, 9, 10, but not to 4, 5, 7
+- Cannot be added to the clique
+
+Therefore, the maximum clique has size 7 and consists of nodes 4, 5, 6, 7, 8, 9, and 10.
+
+Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,10.74406624,1871,739,2610
+graph_32402_c7,FMMM,{},few_shots,standard,"Clique: [4,5,6,7,8,9,10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,2.876948833,4030,26,4056
+graph_32402_c7,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the adjacency list and visual representation, I notice that node 10 is connected to all other nodes (1-9). This makes node 10 a good candidate to be part of the maximum clique.
+
+Step 2: I'll examine nodes that have many connections, particularly focusing on nodes 4, 5, 6, 7, 8, and 9, which appear to form a densely connected region in the visual representation.
+
+Step 3: Let me check if nodes 4, 5, 6, 7, 8, 9, and 10 form a clique:
+- Node 4 is connected to 5, 6, 7, 8, 9, 10 ✓
+- Node 5 is connected to 4, 6, 7, 8, 9, 10 ✓
+- Node 6 is connected to 4, 5, 7, 8, 9, 10 ✓
+- Node 7 is connected to 4, 5, 6, 8, 9, 10 ✓
+- Node 8 is connected to 4, 5, 6, 7, 9, 10 ✓
+- Node 9 is connected to 4, 5, 6, 7, 8, 10 ✓
+- Node 10 is connected to 4, 5, 6, 7, 8, 9 ✓
+
+This confirms that nodes 4, 5, 6, 7, 8, 9, and 10 form a 7-node clique.
+
+Step 4: Let me check if we can add any other nodes to make a larger clique:
+- Node 1 is not connected to nodes 2, 3, 5, 6, 9
+- Node 2 is not connected to nodes 1, 3, 4, 6, 8
+- Node 3 is not connected to nodes 1, 2, 4, 5, 7
+
+None of these nodes can be added to our 7-node clique.
+
+Step 5: Verification - I've confirmed using both the adjacency list and visual representation that every pair of nodes in {4, 5, 6, 7, 8, 9, 10} is connected by an edge, and no larger clique exists.
+
+Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,12.05861807,4583,607,5190
+graph_32402_c7,ORTHO,{},zero_shot,standard,"Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,4.204945087,1694,32,1726
+graph_32402_c7,ORTHO,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+First, looking at the adjacency list, I notice that node 10 is connected to all other nodes (1-9). Similarly, nodes 4-9 have many connections. This suggests we might have a large clique involving these nodes.
+
+Let me analyze the degree of each node (number of connections):
+- Node 1: 4 connections
+- Node 2: 4 connections
+- Node 3: 4 connections
+- Node 4: 7 connections
+- Node 5: 7 connections
+- Node 6: 7 connections
+- Node 7: 7 connections
+- Node 8: 7 connections
+- Node 9: 7 connections
+- Node 10: 9 connections
+
+Nodes 4-10 have the highest degrees, suggesting they might form part of the maximum clique.
+
+Let me check if nodes 4-10 form a clique by verifying all pairwise connections:
+- 4 is connected to 5,6,7,8,9,10 ✓
+- 5 is connected to 4,6,7,8,9,10 ✓
+- 6 is connected to 4,5,7,8,9,10 ✓
+- 7 is connected to 4,5,6,8,9,10 ✓
+- 8 is connected to 4,5,6,7,9,10 ✓
+- 9 is connected to 4,5,6,7,8,10 ✓
+- 10 is connected to 4,5,6,7,8,9 ✓
+
+This confirms that nodes 4,5,6,7,8,9,10 form a clique of size 7.
+
+Let me verify this is the maximum clique by checking if we can add nodes 1, 2, or 3:
+
+For node 1:
+- Connected to 4,7,8,10
+- Not connected to 5,6,9
+Therefore, node 1 cannot be added to the clique.
+
+For node 2:
+- Connected to 5,7,9,10
+- Not connected to 4,6,8
+Therefore, node 2 cannot be added to the clique.
+
+For node 3:
+- Connected to 6,8,9,10
+- Not connected to 4,5,7
+Therefore, node 3 cannot be added to the clique.
+
+I've verified using both the adjacency list and the visual representation that nodes 4,5,6,7,8,9,10 form a complete subgraph where every node is connected to every other node in the set. No larger clique exists.
+
+Clique: [4,5,6,7,8,9,10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,11.4711659,1760,669,2429
+graph_32402_c7,ORTHO,{},few_shots,standard,"Clique: [4,5,6,7,8,9,10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,2.253541946,3919,26,3945
+graph_32402_c7,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the adjacency list, I notice that node 10 is connected to all other nodes (1-9). This suggests it might be part of a large clique.
+
+Step 2: I'll examine nodes 4, 5, 6, 7, 8, and 9 as they appear to have many connections:
+- Node 4 is connected to 1, 5, 6, 7, 8, 9, 10
+- Node 5 is connected to 2, 4, 6, 7, 8, 9, 10
+- Node 6 is connected to 3, 4, 5, 7, 8, 9, 10
+- Node 7 is connected to 1, 2, 4, 5, 6, 8, 9, 10
+- Node 8 is connected to 1, 3, 4, 5, 6, 7, 9, 10
+- Node 9 is connected to 2, 3, 4, 5, 6, 7, 8, 10
+
+Step 3: Looking at nodes 4, 5, 6, 7, 8, 9, and 10, I need to check if they form a clique by verifying all pairwise connections:
+- 4 is connected to 5, 6, 7, 8, 9, 10 ✓
+- 5 is connected to 4, 6, 7, 8, 9, 10 ✓
+- 6 is connected to 4, 5, 7, 8, 9, 10 ✓
+- 7 is connected to 4, 5, 6, 8, 9, 10 ✓
+- 8 is connected to 4, 5, 6, 7, 9, 10 ✓
+- 9 is connected to 4, 5, 6, 7, 8, 10 ✓
+- 10 is connected to 4, 5, 6, 7, 8, 9 ✓
+
+Step 4: I've verified from both the adjacency list and visual representation that nodes 4, 5, 6, 7, 8, 9, and 10 form a complete subgraph where every node is connected to every other node.
+
+Step 5: I've checked that no 8-node clique exists by attempting to add nodes 1, 2, or 3, but none of these nodes are connected to all seven existing clique nodes.
+
+Clique: [4,5,6,7,8,9,10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,14.43366098,4472,659,5131
+graph_344_c5,FMMM,{},zero_shot,standard,"Clique: [6, 7, 8, 9, 10], Size: 5","{'clique': ['6', '7', '8', '9', '10'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,2.045708656,1733,26,1759
+graph_344_c5,FMMM,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+First, let me understand the structure of the graph from both representations:
+
+1) From the adjacency list:
+- Nodes 1-5 each connect to only one node (6-10 respectively)
+- Nodes 6-10 are densely connected to each other and to their respective nodes from 1-5
+
+2) Looking at the visual representation:
+- I can see nodes 6, 7, 8, 9, and 10 form a dense subgraph in the center
+- Nodes 1, 2, 3, 4, and 5 are each connected to only one node in this central group
+
+Let me check if nodes 6-10 form a clique by verifying all pairwise connections:
+
+From the adjacency list:
+- Node 6 connects to: 1, 7, 8, 9, 10
+- Node 7 connects to: 2, 6, 8, 9, 10
+- Node 8 connects to: 3, 6, 7, 9, 10
+- Node 9 connects to: 4, 6, 7, 8, 10
+- Node 10 connects to: 5, 6, 7, 8, 9
+
+Checking all pairs:
+- 6-7: Connected ✓
+- 6-8: Connected ✓
+- 6-9: Connected ✓
+- 6-10: Connected ✓
+- 7-8: Connected ✓
+- 7-9: Connected ✓
+- 7-10: Connected ✓
+- 8-9: Connected ✓
+- 8-10: Connected ✓
+- 9-10: Connected ✓
+
+This confirms that nodes 6, 7, 8, 9, and 10 form a 5-node clique.
+
+Let me verify this is the maximum clique:
+- Nodes 1-5 each connect to only one other node, so they cannot be part of a larger clique
+- There are no other nodes in the graph
+
+Therefore, the maximum clique consists of nodes 6, 7, 8, 9, and 10.
+
+Clique: [6, 7, 8, 9, 10], Size: 5","{'clique': ['6', '7', '8', '9', '10'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,8.510565758,1799,551,2350
+graph_344_c5,FMMM,{},few_shots,standard,"Clique: [6,7,8,9,10], Size: 5","{'clique': ['6', '7', '8', '9', '10'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,3.060937881,3958,22,3980
+graph_344_c5,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+Looking at the visual representation, I notice that nodes 6, 7, 8, 9, and 10 appear to form a densely connected region in the center of the graph.
+
+Step 2: Cross-verifying connections using the adjacency list
+From the adjacency list:
+- Node 6 is connected to 1, 7, 8, 9, 10
+- Node 7 is connected to 2, 6, 8, 9, 10
+- Node 8 is connected to 3, 6, 7, 9, 10
+- Node 9 is connected to 4, 6, 7, 8, 10
+- Node 10 is connected to 5, 6, 7, 8, 9
+
+Step 3: Systematically checking that all pairs of nodes in potential cliques are connected
+For nodes 6, 7, 8, 9, and 10, I need to check all possible pairs:
+- 6-7: Connected ✓
+- 6-8: Connected ✓
+- 6-9: Connected ✓
+- 6-10: Connected ✓
+- 7-8: Connected ✓
+- 7-9: Connected ✓
+- 7-10: Connected ✓
+- 8-9: Connected ✓
+- 8-10: Connected ✓
+- 9-10: Connected ✓
+
+All pairs are connected, confirming that nodes 6, 7, 8, 9, and 10 form a 5-node clique.
+
+Step 4: Ensuring no larger clique exists
+The remaining nodes (1, 2, 3, 4, 5) each connect to only one node in the graph:
+- Node 1 connects only to node 6
+- Node 2 connects only to node 7
+- Node 3 connects only to node 8
+- Node 4 connects only to node 9
+- Node 5 connects only to node 10
+
+Therefore, none of these nodes can be added to the existing 5-node clique to form a larger clique.
+
+Clique: [6,7,8,9,10], Size: 5","{'clique': ['6', '7', '8', '9', '10'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,9.210387945,4511,551,5062
+graph_344_c5,ORTHO,{},zero_shot,standard,"Clique: [6, 7, 8, 9, 10], Size: 5","{'clique': ['6', '7', '8', '9', '10'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,2.250896931,1585,26,1611
+graph_344_c5,ORTHO,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+First, let me examine the adjacency list to understand the graph structure:
+- Node 1 is connected only to node 6
+- Node 2 is connected only to node 7
+- Node 3 is connected only to node 8
+- Node 4 is connected only to node 9
+- Node 5 is connected only to node 10
+- Node 6 is connected to nodes 1, 7, 8, 9, 10
+- Node 7 is connected to nodes 2, 6, 8, 9, 10
+- Node 8 is connected to nodes 3, 6, 7, 9, 10
+- Node 9 is connected to nodes 4, 6, 7, 8, 10
+- Node 10 is connected to nodes 5, 6, 7, 8, 9
+
+Looking at the visual representation, I can see that nodes 1, 2, 3, 4, and 5 each have only one connection, so they cannot be part of a large clique. The densely connected region appears to be among nodes 6, 7, 8, 9, and 10.
+
+Let me check if nodes 6, 7, 8, 9, and 10 form a clique by verifying all pairwise connections:
+- 6-7: Connected (confirmed in adjacency list)
+- 6-8: Connected (confirmed in adjacency list)
+- 6-9: Connected (confirmed in adjacency list)
+- 6-10: Connected (confirmed in adjacency list)
+- 7-8: Connected (confirmed in adjacency list)
+- 7-9: Connected (confirmed in adjacency list)
+- 7-10: Connected (confirmed in adjacency list)
+- 8-9: Connected (confirmed in adjacency list)
+- 8-10: Connected (confirmed in adjacency list)
+- 9-10: Connected (confirmed in adjacency list)
+
+All pairs of nodes in the set {6, 7, 8, 9, 10} are connected, confirming they form a clique of size 5.
+
+Let me verify that no larger clique exists. Since nodes 1, 2, 3, 4, and 5 each have only one connection, adding any of them to our clique would break the requirement that all nodes must be connected to each other. Therefore, the clique {6, 7, 8, 9, 10} is maximal.
+
+Clique: [6, 7, 8, 9, 10], Size: 5","{'clique': ['6', '7', '8', '9', '10'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,9.726695061,1651,618,2269
+graph_344_c5,ORTHO,{},few_shots,standard,"Clique: [6,7,8,9,10], Size: 5","{'clique': ['6', '7', '8', '9', '10'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,4.233501911,3810,22,3832
+graph_344_c5,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I notice that nodes 6, 7, 8, 9, and 10 appear to form a densely connected region.
+
+Step 2: Cross-verifying connections using the adjacency list.
+From the adjacency list:
+- Node 6 is connected to 1, 7, 8, 9, 10
+- Node 7 is connected to 2, 6, 8, 9, 10
+- Node 8 is connected to 3, 6, 7, 9, 10
+- Node 9 is connected to 4, 6, 7, 8, 10
+- Node 10 is connected to 5, 6, 7, 8, 9
+
+Step 3: Systematically checking that all pairs of nodes in potential cliques are connected.
+For nodes 6, 7, 8, 9, 10, I need to check all possible pairs:
+- 6-7: Connected ✓
+- 6-8: Connected ✓
+- 6-9: Connected ✓
+- 6-10: Connected ✓
+- 7-8: Connected ✓
+- 7-9: Connected ✓
+- 7-10: Connected ✓
+- 8-9: Connected ✓
+- 8-10: Connected ✓
+- 9-10: Connected ✓
+
+All pairs are connected, confirming that nodes 6, 7, 8, 9, 10 form a 5-node clique.
+
+Step 4: Ensuring no larger clique exists.
+To check if a 6-node clique exists, I would need to add one more node (1, 2, 3, 4, or 5) to the current clique. However:
+- Node 1 is only connected to node 6, not to 7, 8, 9, or 10
+- Node 2 is only connected to node 7, not to 6, 8, 9, or 10
+- Node 3 is only connected to node 8, not to 6, 7, 9, or 10
+- Node 4 is only connected to node 9, not to 6, 7, 8, or 10
+- Node 5 is only connected to node 10, not to 6, 7, 8, or 9
+
+Therefore, no 6-node clique exists.
+
+Clique: [6,7,8,9,10], Size: 5","{'clique': ['6', '7', '8', '9', '10'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,9.478382111,4363,629,4992
+graph_34_c2,FMMM,{},zero_shot,standard,"Clique: [1, 10], Size: 2","{'clique': ['1', '10'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,1.837104082,1709,17,1726
+graph_34_c2,FMMM,{},zero_shot,cot,"I'll analyze this graph to find the maximum clique by examining both the adjacency list and visual representation.
+
+Step 1: Analyzing the adjacency list
+- Nodes 1-9 are only connected to node 10
+- Node 10 is connected to nodes 1-9
+
+Step 2: Analyzing the visual representation
+- The graph appears to be a star topology with node 10 at the center
+- Node 10 has connections to all other nodes (1-9)
+- There are no visible connections between any nodes other than through node 10
+
+Step 3: Identifying potential cliques
+- For a clique, all nodes must be connected to each other
+- In this graph, nodes 1-9 are only connected to node 10, but not to each other
+- The only complete subgraphs are:
+  * Each individual node (size 1)
+  * Each pair of connected nodes: {1,10}, {2,10}, {3,10}, etc. (size 2)
+
+Step 4: Verifying the maximum clique
+- Since there are no connections between nodes 1-9, the largest possible clique would include node 10 and exactly one other node
+- Any such pair (e.g., {1,10}, {2,10}, etc.) forms a clique of size 2
+- There is no way to form a clique of size 3 or larger in this graph
+
+Step 5: Final verification
+- The maximum clique size is 2
+- There are multiple cliques of this size: {1,10}, {2,10}, {3,10}, {4,10}, {5,10}, {6,10}, {7,10}, {8,10}, {9,10}
+- All of these are equivalent in terms of size
+
+Clique: [1,10], Size: 2
+
+Note: Any pair containing node 10 and exactly one other node would also be a valid answer, as there are multiple maximum cliques of the same size.","{'clique': ['1', '10'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,8.900476933,1775,455,2230
+graph_34_c2,FMMM,{},few_shots,standard,"Clique: [1,2,3,4,5,6,7,8,9,10], Size: 10","{'clique': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], 'size': 10}","{'clique': {}, 'size': 2}",0.04,2.152332783,3934,32,3966
+graph_34_c2,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the visual representation, I can see that the graph has a star-like structure with node 10 at the center, connected to all other nodes (1-9).
+
+Step 2: Checking the adjacency list confirms this structure:
+- Nodes 1-9 are each only connected to node 10
+- Node 10 is connected to all nodes 1-9
+
+Step 3: Analyzing potential cliques:
+- For a clique, all nodes must be connected to each other
+- I notice that nodes 1-9 are not connected to each other, only to node 10
+- This means any clique can contain at most one node from the set {1,2,3,4,5,6,7,8,9} plus node 10
+
+Step 4: Verifying the maximum clique:
+- The largest possible clique would be any pair that includes node 10 and exactly one other node
+- Examples include {1,10}, {2,10}, etc.
+- All these pairs form cliques of size 2
+
+Step 5: Confirming no larger clique exists:
+- Since nodes 1-9 are not connected to each other, we cannot form a clique of size 3 or larger
+
+Therefore, the maximum clique in this graph is any pair containing node 10 and one other node.
+
+Clique: [1,10], Size: 2
+
+(Note: There are multiple equivalent maximum cliques of size 2, such as [2,10], [3,10], etc.)","{'clique': ['1', '10'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,7.785861015,4487,368,4855
+graph_34_c2,ORTHO,{},zero_shot,standard,"Clique: [10], Size: 1","{'clique': ['10'], 'size': 1}","{'clique': {}, 'size': 2}",0.0,1.930713177,1746,14,1760
+graph_34_c2,ORTHO,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Analyzing the adjacency list representation.
+- Nodes 1-9 are each connected only to node 10
+- Node 10 is connected to nodes 1-9
+
+Step 2: Analyzing the visual representation.
+- The graph appears to be a star-like structure with node 10 at the center
+- Each node 1-9 connects to node 10 via a straight line
+- There are no direct connections between any pair of nodes in the set {1,2,3,4,5,6,7,8,9}
+
+Step 3: Identifying potential cliques.
+- A clique requires all nodes to be connected to each other
+- The only connections in this graph are between node 10 and each of the other nodes
+- Any pair of nodes that includes node 10 forms a clique of size 2
+- For example, {10,1}, {10,2}, etc. are all cliques of size 2
+
+Step 4: Checking if larger cliques exist.
+- For a clique of size 3 or larger to exist, we would need direct connections between nodes other than 10
+- The visual representation clearly shows no such connections exist
+- The adjacency list confirms this - nodes 1-9 only connect to node 10
+
+Step 5: Verifying the maximum clique.
+- Since there are no connections between nodes 1-9, any clique can include at most one node from this set
+- Therefore, the maximum possible clique size is 2
+- Any pair {10, i} where i is in {1,2,3,4,5,6,7,8,9} forms a maximum clique
+
+Clique: [10, 1], Size: 2
+
+Note: There are actually 9 different maximum cliques in this graph, all of size 2: {10,1}, {10,2}, {10,3}, {10,4}, {10,5}, {10,6}, {10,7}, {10,8}, and {10,9}. I've listed just one of these equivalent solutions.","{'clique': ['10', '1'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,9.424045086,1812,492,2304
+graph_34_c2,ORTHO,{},few_shots,standard,"Clique: [1,2,3,4], Size: 4","{'clique': ['1', '2', '3', '4'], 'size': 4}","{'clique': {}, 'size': 2}",0.0,2.349713802,3971,20,3991
+graph_34_c2,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the adjacency list, I notice a pattern:
+- Nodes 1 through 9 are each only connected to node 10
+- Node 10 is connected to all other nodes (1-9)
+
+Step 2: Looking at the visual representation, I can confirm this pattern:
+- Node 10 is in the center
+- All other nodes (1-9) connect only to node 10 via straight lines
+- There are no connections between any other pairs of nodes
+
+Step 3: Identifying potential cliques:
+- For a clique, every node must connect to every other node
+- The only connections in this graph are between node 10 and each other node
+- No other nodes are connected to each other
+
+Step 4: Analyzing possible cliques:
+- Any clique containing more than one node must include node 10
+- The largest possible clique would be node 10 plus one other node
+- Examples of 2-node cliques: [1,10], [2,10], [3,10], etc.
+
+Step 5: Verification:
+- There are no connections between nodes 1-9
+- Therefore, no clique can contain more than two nodes
+- Any pair [x,10] where x is between 1 and 9 forms a maximum clique
+
+Clique: [1,10], Size: 2","{'clique': ['1', '10'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,7.472056866,4524,327,4851
+graph_46_c6,FMMM,{},zero_shot,standard,"Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,2.510826111,1691,24,1715
+graph_46_c6,FMMM,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Analyzing the adjacency list to understand the connections:
+- Node 1 is only connected to node 7
+- Nodes 2, 3, 4, 5, 6 are all connected to each other and to node 7
+- Node 7 is connected to all nodes (1, 2, 3, 4, 5, 6)
+
+Step 2: Identifying densely connected regions in the visual graph:
+Looking at the visual representation, I can see that nodes 2, 3, 4, 5, 6, and 7 form a dense subgraph with many connections. Node 1 is only connected to node 7.
+
+Step 3: Systematically checking potential cliques:
+Let me verify if nodes 2, 3, 4, 5, 6, and 7 form a clique by checking if every pair is connected:
+- Node 2 is connected to 3, 4, 5, 6, 7 ✓
+- Node 3 is connected to 2, 4, 5, 6, 7 ✓
+- Node 4 is connected to 2, 3, 5, 6, 7 ✓
+- Node 5 is connected to 2, 3, 4, 6, 7 ✓
+- Node 6 is connected to 2, 3, 4, 5, 7 ✓
+- Node 7 is connected to 2, 3, 4, 5, 6 ✓
+
+This confirms that nodes 2, 3, 4, 5, 6, and 7 form a clique of size 6.
+
+Step 4: Ensuring no larger clique exists:
+The only other node is node 1, which is only connected to node 7. Adding node 1 to our clique would require it to be connected to all other nodes in the clique (2, 3, 4, 5, 6), but it isn't. Therefore, we cannot form a larger clique.
+
+Step 5: Final verification:
+Looking at both the adjacency list and visual representation, I confirm that nodes 2, 3, 4, 5, 6, and 7 form a complete subgraph where every node is connected to every other node in the set.
+
+Clique: [2, 3, 4, 5, 6, 7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,9.224915028,1757,594,2351
+graph_46_c6,FMMM,{},few_shots,standard,"Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,2.347754002,3916,24,3940
+graph_46_c6,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+Looking at the visual representation, I notice that nodes 2, 3, 4, 5, 6, and 7 appear to form a densely connected region. Node 1 is only connected to node 7, so it's unlikely to be part of the maximum clique.
+
+Step 2: Cross-verifying connections using the adjacency list
+From the adjacency list:
+- Node 2 is connected to 3, 4, 5, 6, 7
+- Node 3 is connected to 2, 4, 5, 6, 7
+- Node 4 is connected to 2, 3, 5, 6, 7
+- Node 5 is connected to 2, 3, 4, 6, 7
+- Node 6 is connected to 2, 3, 4, 5, 7
+- Node 7 is connected to 1, 2, 3, 4, 5, 6
+
+Step 3: Systematically checking that all pairs of nodes in potential cliques are connected
+Looking at nodes 2, 3, 4, 5, 6, and 7:
+- Node 2 is connected to all others in this set
+- Node 3 is connected to all others in this set
+- Node 4 is connected to all others in this set
+- Node 5 is connected to all others in this set
+- Node 6 is connected to all others in this set
+- Node 7 is connected to all others in this set
+
+This confirms that nodes 2, 3, 4, 5, 6, and 7 form a complete subgraph where every node is connected to every other node.
+
+Step 4: Ensuring no larger clique exists
+The only remaining node is node 1, which is only connected to node 7. Adding it to our clique would break the requirement that every node must be connected to every other node. Therefore, our current clique cannot be expanded further.
+
+Verification:
+1) Every pair of nodes in our clique (2, 3, 4, 5, 6, 7) is connected by an edge in both the adjacency list and visual representation.
+2) No larger subset of nodes forms a complete subgraph.
+
+Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,9.861857176,4469,575,5044
+graph_46_c6,ORTHO,{},zero_shot,standard,"Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,1.944881201,1506,24,1530
+graph_46_c6,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Initial analysis of the adjacency list
+- Node 1 is only connected to node 7
+- Nodes 2, 3, 4, 5, 6 are all connected to each other and to node 7
+- Node 7 is connected to all nodes
+
+Step 2: Identifying potential cliques
+From the adjacency list, I can see that nodes 2, 3, 4, 5, 6, and 7 are densely connected. Let me verify if they form a clique by checking if every pair is connected:
+
+For nodes 2, 3, 4, 5, 6, 7:
+- Node 2 is connected to 3, 4, 5, 6, 7 ✓
+- Node 3 is connected to 2, 4, 5, 6, 7 ✓
+- Node 4 is connected to 2, 3, 5, 6, 7 ✓
+- Node 5 is connected to 2, 3, 4, 6, 7 ✓
+- Node 6 is connected to 2, 3, 4, 5, 7 ✓
+- Node 7 is connected to 2, 3, 4, 5, 6 ✓
+
+Step 3: Cross-verification with the visual representation
+Looking at the visual graph, I can confirm that:
+- Nodes 2, 3, 4, 5, 6, and 7 all have direct connections to each other
+- Each pair of nodes in this set has a black line connecting them
+
+Step 4: Checking if a larger clique exists
+The only other node is node 1, which is only connected to node 7. Adding node 1 would break the clique property since it's not connected to nodes 2-6.
+
+Step 5: Final verification
+The set {2, 3, 4, 5, 6, 7} forms a clique of size 6 because:
+- Every node in this set is connected to every other node in the set
+- No larger set of nodes maintains this property
+
+Clique: [2, 3, 4, 5, 6, 7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,8.855782986,1572,552,2124
+graph_46_c6,ORTHO,{},few_shots,standard,"Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,2.659043789,3731,24,3755
+graph_46_c6,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+Looking at the visual representation, I notice that nodes 2, 3, 4, 5, and 6 appear to form a densely connected region. Node 7 also seems to connect to many nodes.
+
+Step 2: Cross-verifying connections using the adjacency list
+From the adjacency list:
+- Node 2 connects to 3, 4, 5, 6, 7
+- Node 3 connects to 2, 4, 5, 6, 7
+- Node 4 connects to 2, 3, 5, 6, 7
+- Node 5 connects to 2, 3, 4, 6, 7
+- Node 6 connects to 2, 3, 4, 5, 7
+- Node 7 connects to 1, 2, 3, 4, 5, 6
+
+Step 3: Systematically checking that all pairs of nodes in potential cliques are connected
+Let me check if nodes 2, 3, 4, 5, and 6 form a clique:
+- 2-3: Connected ✓
+- 2-4: Connected ✓
+- 2-5: Connected ✓
+- 2-6: Connected ✓
+- 3-4: Connected ✓
+- 3-5: Connected ✓
+- 3-6: Connected ✓
+- 4-5: Connected ✓
+- 4-6: Connected ✓
+- 5-6: Connected ✓
+
+All pairs are connected, confirming that nodes 2, 3, 4, 5, and 6 form a 5-node clique.
+
+Step 4: Ensuring no larger clique exists
+Let's check if we can add node 7 to form a 6-node clique:
+- 7-2: Connected ✓
+- 7-3: Connected ✓
+- 7-4: Connected ✓
+- 7-5: Connected ✓
+- 7-6: Connected ✓
+
+Since node 7 is connected to all nodes in our 5-node clique, we can form a 6-node clique with nodes 2, 3, 4, 5, 6, and 7.
+
+Node 1 only connects to node 7, so it cannot be part of the maximum clique.
+
+Final verification:
+I've confirmed that every pair of nodes in the set {2, 3, 4, 5, 6, 7} is connected by an edge in both representations, and no larger subset forms a complete subgraph.
+
+Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,11.26553416,4284,669,4953
+graph_48_c2,FMMM,{},zero_shot,standard,"Clique: [5, 6, 8, 7], Size: 4","{'clique': ['5', '6', '8', '7'], 'size': 4}","{'clique': {}, 'size': 2}",0.333,2.761415958,1514,23,1537
+graph_48_c2,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically analyzing both the adjacency list and visual representation.
+
+Step 1: First, let me verify the adjacency list from the visual representation:
+- Node 1 connects to node 5
+- Node 2 connects to node 8
+- Node 3 connects to node 6
+- Node 4 connects to node 7
+- Node 5 connects to nodes 1, 6, 7
+- Node 6 connects to nodes 3, 5, 8
+- Node 7 connects to nodes 4, 5, 8
+- Node 8 connects to nodes 2, 6, 7
+
+This matches the provided adjacency list.
+
+Step 2: Looking for densely connected regions in the graph, I notice a triangular structure formed by nodes 5, 7, and 8. Let me check if this forms a clique:
+- 5 connects to 7 ✓
+- 7 connects to 8 ✓
+- 5 connects to 8 ✗ (There's no direct edge between 5 and 8 in the visual graph or adjacency list)
+
+So {5, 7, 8} is not a clique.
+
+Step 3: Let me check other potential triangles:
+- {5, 6, 8}: 
+  - 5 connects to 6 ✓
+  - 6 connects to 8 ✓
+  - 5 connects to 8 ✗ (No direct connection)
+  
+- {6, 7, 8}:
+  - 6 connects to 8 ✓
+  - 7 connects to 8 ✓
+  - 6 connects to 7 ✗ (No direct connection)
+
+Step 4: Since I couldn't find a 3-node clique, let me check all possible 2-node cliques (edges):
+- {1, 5}
+- {2, 8}
+- {3, 6}
+- {4, 7}
+- {5, 6}
+- {5, 7}
+- {6, 8}
+- {7, 8}
+
+Each of these pairs forms a 2-node clique.
+
+Step 5: Verify that no 3-node clique exists by checking all possible triplets systematically:
+I've already checked the most promising triplets above and found none that form a clique.
+
+Therefore, the maximum clique size in this graph is 2, and there are multiple cliques of this size (any connected pair of nodes).
+
+Clique: [5, 7], Size: 2
+
+Note: There are other valid answers as well, such as [1, 5], [2, 8], [3, 6], [4, 7], [5, 6], [6, 8], or [7, 8], as all of these are also cliques of size 2.","{'clique': ['5', '7'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,11.47736001,1580,695,2275
+graph_48_c2,FMMM,{},few_shots,standard,"Clique: [5,7,8], Size: 3","{'clique': ['5', '7', '8'], 'size': 3}","{'clique': {}, 'size': 2}",0.444,2.243836164,3739,18,3757
+graph_48_c2,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+Looking at the visual representation, I notice there are no obvious dense clusters. The graph appears to be relatively sparse. I'll look for smaller cliques by examining areas where multiple nodes connect.
+
+Step 2: Cross-verifying connections using the adjacency list
+From the adjacency list:
+- Node 1 connects only to 5
+- Node 2 connects only to 8
+- Node 3 connects only to 6
+- Node 4 connects only to 7
+- Node 5 connects to 1, 6, 7
+- Node 6 connects to 3, 5, 8
+- Node 7 connects to 4, 5, 8
+- Node 8 connects to 2, 6, 7
+
+Step 3: Systematically checking potential cliques
+Let me check all possible 3-node combinations to see if any form a clique:
+
+Checking nodes 5, 6, 8:
+- 5 connects to 6 ✓
+- 6 connects to 8 ✓
+- 5 connects to 8 ✗ (not connected based on both representations)
+
+Checking nodes 5, 7, 8:
+- 5 connects to 7 ✓
+- 7 connects to 8 ✓
+- 5 connects to 8 ✗ (not connected)
+
+Checking nodes 6, 7, 8:
+- 6 connects to 8 ✓
+- 7 connects to 8 ✓
+- 6 connects to 7 ✗ (not connected)
+
+I've checked all possible 3-node combinations and none form a clique.
+
+Step 4: Checking 2-node cliques
+Since I couldn't find any 3-node cliques, the maximum clique size must be 2. Any pair of connected nodes forms a 2-node clique. From the adjacency list and visual representation, I can confirm several 2-node cliques:
+- Nodes 1 and 5
+- Nodes 2 and 8
+- Nodes 3 and 6
+- Nodes 4 and 7
+- Nodes 5 and 6
+- Nodes 5 and 7
+- Nodes 6 and 8
+- Nodes 7 and 8
+
+All of these are valid 2-node cliques of size 2.
+
+Verification:
+I've verified that no 3-node subset forms a complete subgraph where all nodes are connected to each other. The maximum clique size is 2, and there are multiple 2-node cliques in this graph.
+
+Clique: [5,6], Size: 2","{'clique': ['5', '6'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,11.46451998,4292,662,4954
+graph_48_c2,ORTHO,{},zero_shot,standard,"Clique: [5, 6, 7], Size: 3","{'clique': ['5', '6', '7'], 'size': 3}","{'clique': {}, 'size': 2}",0.444,2.041505098,1440,20,1460
+graph_48_c2,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically analyzing both the adjacency list and visual representation.
+
+Step 1: First, let me identify the connections for each node from the adjacency list:
+- Node 1 is connected to: 5
+- Node 2 is connected to: 8
+- Node 3 is connected to: 6
+- Node 4 is connected to: 7
+- Node 5 is connected to: 1, 6, 7
+- Node 6 is connected to: 3, 5, 8
+- Node 7 is connected to: 4, 5, 8
+- Node 8 is connected to: 2, 6, 7
+
+Step 2: Looking at the visual representation, I can see that the graph forms a kind of grid structure. Let me identify potential densely connected regions:
+
+I notice that nodes 5, 6, 7, and 8 seem to form a connected subgraph. Let me check if they form a clique by verifying all possible pairs:
+- 5-6: Connected (confirmed in adjacency list)
+- 5-7: Connected (confirmed in adjacency list)
+- 5-8: Not directly connected (not in adjacency list)
+- 6-7: Not directly connected (not in adjacency list)
+- 6-8: Connected (confirmed in adjacency list)
+- 7-8: Connected (confirmed in adjacency list)
+
+Since not all pairs are connected, nodes 5, 6, 7, and 8 do not form a clique.
+
+Step 3: Let me check for 3-node cliques:
+
+Checking {5, 6, 8}:
+- 5-6: Connected
+- 5-8: Not connected
+So this is not a clique.
+
+Checking {5, 7, 8}:
+- 5-7: Connected
+- 5-8: Not connected
+So this is not a clique.
+
+Checking {6, 7, 8}:
+- 6-7: Not connected
+- 6-8: Connected
+- 7-8: Connected
+So this is not a clique.
+
+Let me check other potential 3-node combinations:
+None of the other combinations form a clique because the graph is relatively sparse.
+
+Step 4: Let's check for 2-node cliques (which are simply edges):
+- {1, 5}
+- {2, 8}
+- {3, 6}
+- {4, 7}
+- {5, 6}
+- {5, 7}
+- {6, 8}
+- {7, 8}
+
+All of these are valid 2-node cliques, but we need to find the maximum clique.
+
+Since I couldn't find any 3-node or larger cliques, the maximum clique size is 2. There are multiple cliques of size 2 (the edges listed above).
+
+Clique: [5, 7], Size: 2
+
+(Note: There are other valid answers with size 2, such as [1, 5], [2, 8], [3, 6], [4, 7], [5, 6], [6, 8], or [7, 8], as they all form maximal cliques of the same size.)","{'clique': ['5', '7'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,12.19178915,1506,772,2278
+graph_48_c2,ORTHO,{},few_shots,standard,"Clique: [5,7], Size: 2","{'clique': ['5', '7'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,2.860728979,3665,16,3681
+graph_48_c2,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Examining the adjacency list and visual representation to identify potential cliques.
+From the adjacency list:
+- Node 1 is only connected to 5
+- Node 2 is only connected to 8
+- Node 3 is only connected to 6
+- Node 4 is only connected to 7
+- Node 5 is connected to 1, 6, 7
+- Node 6 is connected to 3, 5, 8
+- Node 7 is connected to 4, 5, 8
+- Node 8 is connected to 2, 6, 7
+
+Step 2: Looking for densely connected regions.
+I notice that the graph is quite sparse. Most nodes have only 1-3 connections.
+
+Step 3: Identifying all possible cliques.
+Let's check all possible cliques:
+- Size 1: Any single node forms a clique of size 1
+- Size 2: Any pair of connected nodes forms a clique of size 2
+  - Pairs: (1,5), (2,8), (3,6), (4,7), (5,6), (5,7), (6,8), (7,8)
+- Size 3: Need to check if any three nodes are all connected to each other
+  - Checking (5,6,7): 5 is connected to 6, 5 is connected to 7, but 6 is not connected to 7
+  - Checking (5,6,8): 5 is connected to 6, 6 is connected to 8, but 5 is not connected to 8
+  - Checking (5,7,8): 5 is connected to 7, 7 is connected to 8, but 5 is not connected to 8
+  - Checking (6,7,8): 6 is connected to 8, 7 is connected to 8, but 6 is not connected to 7
+
+Step 4: Verifying the results.
+From the analysis above, I can see that there are no cliques of size 3 or larger. The maximum cliques are of size 2, which are the pairs of connected nodes listed above.
+
+Since all maximum cliques have the same size (2), I'll choose one of them as the answer.
+
+Clique: [5,6], Size: 2","{'clique': ['5', '6'], 'size': 2}","{'clique': {}, 'size': 2}",1.0,9.622575045,4218,567,4785
+graph_49343_c7,FMMM,{},zero_shot,standard,"Clique: [1, 4, 5, 6, 7, 8], Size: 8","{'clique': ['1', '4', '5', '6', '7', '8'], 'size': 8}","{'clique': {}, 'size': 7}",0.469,2.125777006,1878,29,1907
+graph_49343_c7,FMMM,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+From the visual representation, I can see two densely connected regions:
+- Nodes 1-8 form a cluster in the upper right
+- Nodes 9-16 form a cluster in the lower left
+- There are only a few connections between these clusters (node 2 to 15, and node 3 to 16)
+
+Step 2: Analyzing the adjacency list for each cluster.
+
+For nodes 1-8:
+- Nodes 1 through 8 all appear to be connected to each other
+- Checking node 1's connections: 2,3,4,5,6,7,8 ✓
+- Checking node 2's connections: 1,4,5,6,7,8 (and 15) ✓
+- Checking node 3's connections: 1,4,5,6,7,8 (and 16) ✓
+- Checking node 4's connections: 1,2,3,5,6,7,8 ✓
+- Checking node 5's connections: 1,2,3,4,6,7,8 ✓
+- Checking node 6's connections: 1,2,3,4,5,7,8 ✓
+- Checking node 7's connections: 1,2,3,4,5,6,8 ✓
+- Checking node 8's connections: 1,2,3,4,5,6,7 ✓
+
+For nodes 9-16:
+- Nodes 9 through 16 appear to be densely connected
+- Checking node 9's connections: 10,11,12,13,14,15,16 ✓
+- Checking node 10's connections: 9,11,12,13,14,15,16 ✓
+- Checking node 11's connections: 9,10,12,13,14,15,16 ✓
+- Checking node 12's connections: 9,10,11,13,14,15,16 ✓
+- Checking node 13's connections: 9,10,11,12,14,15,16 ✓
+- Checking node 14's connections: 9,10,11,12,13,15,16 ✓
+- Checking node 15's connections: 2,9,10,11,12,13,14 (not 16) ✗
+- Checking node 16's connections: 3,9,10,11,12,13,14 (not 15) ✗
+
+Step 3: Identifying potential maximum cliques.
+
+From the analysis above:
+- Nodes 1-8 form a complete subgraph (clique) of size 8
+- Nodes 9-14 form a complete subgraph of size 6
+- Nodes 9-14 plus 15 don't form a clique because 15 is not connected to 16
+- Nodes 9-14 plus 16 don't form a clique because 16 is not connected to 15
+
+Step 4: Verifying the maximum clique.
+
+The clique formed by nodes 1-8 has size 8, and I've verified that every node in this set is connected to every other node in the set.
+
+The next largest potential clique would be nodes 9-14 plus either 15 or 16, but as noted above, these don't form complete subgraphs.
+
+Therefore, the maximum clique in this graph consists of nodes 1-8.
+
+Clique: [1, 2, 3, 4, 5, 6, 7, 8], Size: 8","{'clique': ['1', '2', '3', '4', '5', '6', '7', '8'], 'size': 8}","{'clique': {}, 'size': 7}",0.844,12.49440622,1944,899,2843
+graph_49343_c7,FMMM,{},few_shots,standard,"Clique: [1,2,3,4,5,6,7,8], Size: 8","{'clique': ['1', '2', '3', '4', '5', '6', '7', '8'], 'size': 8}","{'clique': {}, 'size': 7}",0.844,2.114949942,4103,28,4131
+graph_49343_c7,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+From the visual representation, I can see two densely connected regions:
+- Nodes 1-8 form one dense cluster
+- Nodes 9-16 form another dense cluster
+
+Step 2: Cross-verifying connections using the adjacency list
+For the first cluster (nodes 1-8):
+- Looking at the adjacency list, I can see that nodes 1-8 are highly connected
+- Checking node 1's connections: 1 is connected to 2,3,4,5,6,7,8
+- Similarly for nodes 2-8, they all have extensive connections within this group
+
+For the second cluster (nodes 9-16):
+- Nodes 9-14 are all connected to each other
+- Node 15 is connected to 9,10,11,12,13,14 (and also to node 2)
+- Node 16 is connected to 9,10,11,12,13,14 (and also to node 3)
+
+Step 3: Systematically checking potential cliques
+Let me check if nodes 1-8 form a complete clique:
+- Node 2 is not connected to node 3 (not in 2's adjacency list)
+- So nodes 1-8 do not form a complete clique
+
+Let me check if nodes 9-16 form a complete clique:
+- Node 15 is not connected to node 16 (not in 15's adjacency list)
+- So nodes 9-16 do not form a complete clique
+
+Let me check nodes 9-14:
+- Node 9 is connected to 10,11,12,13,14
+- Node 10 is connected to 9,11,12,13,14
+- Node 11 is connected to 9,10,12,13,14
+- Node 12 is connected to 9,10,11,13,14
+- Node 13 is connected to 9,10,11,12,14
+- Node 14 is connected to 9,10,11,12,13
+- This confirms nodes 9-14 form a 6-node clique
+
+Let me check nodes 1-7:
+- Node 1 is connected to 2,3,4,5,6,7
+- Node 2 is connected to 1,4,5,6,7 (but not 3)
+- This is not a clique
+
+Let me check nodes 1,4,5,6,7,8:
+- Node 1 is connected to 4,5,6,7,8
+- Node 4 is connected to 1,5,6,7,8
+- Node 5 is connected to 1,4,6,7,8
+- Node 6 is connected to 1,4,5,7,8
+- Node 7 is connected to 1,4,5,6,8
+- Node 8 is connected to 1,4,5,6,7
+- This confirms nodes 1,4,5,6,7,8 form a 6-node clique
+
+Step 4: Ensuring no larger clique exists
+I've identified two 6-node cliques: [1,4,5,6,7,8] and [9,10,11,12,13,14]
+I've verified that neither can be expanded to a 7-node clique.
+
+Therefore, there are two maximum cliques of size 6.
+
+Clique: [1,4,5,6,7,8], Size: 6","{'clique': ['1', '4', '5', '6', '7', '8'], 'size': 6}","{'clique': {}, 'size': 7}",0.857,12.92657089,4656,854,5510
+graph_49343_c7,ORTHO,{},zero_shot,standard,"Clique: [1, 2, 3, 4, 5, 6, 7, 8], Size: 8","{'clique': ['1', '2', '3', '4', '5', '6', '7', '8'], 'size': 8}","{'clique': {}, 'size': 7}",0.844,1.784433842,2002,35,2037
+graph_49343_c7,ORTHO,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+First, looking at the adjacency list and visual representation, I notice two densely connected regions:
+1. Nodes 1-8 appear to form a dense subgraph
+2. Nodes 9-16 also appear to form a dense subgraph
+
+Let me analyze each region:
+
+### Region 1 (Nodes 1-8):
+From the adjacency list:
+- Node 1 is connected to 2,3,4,5,6,7,8
+- Node 2 is connected to 1,4,5,6,7,8,15
+- Node 3 is connected to 1,4,5,6,7,8,16
+- Node 4 is connected to 1,2,3,5,6,7,8
+- Node 5 is connected to 1,2,3,4,6,7,8
+- Node 6 is connected to 1,2,3,4,5,7,8
+- Node 7 is connected to 1,2,3,4,5,6,8
+- Node 8 is connected to 1,2,3,4,5,6,7
+
+Checking all pairs in nodes 1-8, I can see that each node is connected to all other nodes in this set. This forms a complete subgraph of 8 nodes.
+
+### Region 2 (Nodes 9-16):
+From the adjacency list:
+- Node 9 is connected to 10,11,12,13,14,15,16
+- Node 10 is connected to 9,11,12,13,14,15,16
+- Node 11 is connected to 9,10,12,13,14,15,16
+- Node 12 is connected to 9,10,11,13,14,15,16
+- Node 13 is connected to 9,10,11,12,14,15,16
+- Node 14 is connected to 9,10,11,12,13,15,16
+- Node 15 is connected to 2,9,10,11,12,13,14
+- Node 16 is connected to 3,9,10,11,12,13,14
+
+Nodes 9-14 are all connected to each other, but nodes 15 and 16 have connections outside this group:
+- Node 15 connects to node 2 (not to node 16)
+- Node 16 connects to node 3 (not to node 15)
+
+So in this region, nodes 9,10,11,12,13,14 form a complete subgraph of 6 nodes.
+
+### Cross-region connections:
+- Node 2 connects to node 15
+- Node 3 connects to node 16
+- No other cross-region connections exist
+
+### Verification:
+- The first region (nodes 1-8) forms a clique of size 8
+- The second region has a clique of size 6 (nodes 9-14)
+
+Since 8 > 6, the maximum clique is formed by nodes 1-8.
+
+Let me verify this by checking the visual representation:
+I can see that nodes 1-8 are indeed all connected to each other with black lines, confirming they form a complete subgraph.
+
+Clique: [1, 2, 3, 4, 5, 6, 7, 8], Size: 8","{'clique': ['1', '2', '3', '4', '5', '6', '7', '8'], 'size': 8}","{'clique': {}, 'size': 7}",0.844,12.03445077,2068,816,2884
+graph_49343_c7,ORTHO,{},few_shots,standard,"Clique: [1,2,3,4,5,6,7,8], Size: 8","{'clique': ['1', '2', '3', '4', '5', '6', '7', '8'], 'size': 8}","{'clique': {}, 'size': 7}",0.844,3.579809189,4227,28,4255
+graph_49343_c7,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I can see that the graph appears to have two distinct clusters:
+- Nodes 1-8 form one cluster
+- Nodes 9-16 form another cluster
+
+Step 2: Cross-verifying connections using the adjacency list.
+For the first cluster (nodes 1-8):
+- From the adjacency list, I can see that nodes 1-8 are all connected to each other, with each node having the other 7 nodes in its adjacency list.
+
+For the second cluster (nodes 9-16):
+- Nodes 9-14 are all connected to each other
+- Node 15 is connected to nodes 9-14 and node 2
+- Node 16 is connected to nodes 9-14 and node 3
+
+Step 3: Systematically checking potential cliques.
+Let's check if nodes 1-8 form a clique:
+- Node 1 is connected to 2,3,4,5,6,7,8 ✓
+- Node 2 is connected to 1,4,5,6,7,8 (and 15) ✓
+- Node 3 is connected to 1,4,5,6,7,8 (and 16) ✓
+- Node 4 is connected to 1,2,3,5,6,7,8 ✓
+- Node 5 is connected to 1,2,3,4,6,7,8 ✓
+- Node 6 is connected to 1,2,3,4,5,7,8 ✓
+- Node 7 is connected to 1,2,3,4,5,6,8 ✓
+- Node 8 is connected to 1,2,3,4,5,6,7 ✓
+
+This confirms that nodes 1-8 form a clique of size 8.
+
+Let's check if nodes 9-14 form a clique:
+- Node 9 is connected to 10,11,12,13,14,15,16 ✓
+- Node 10 is connected to 9,11,12,13,14,15,16 ✓
+- Node 11 is connected to 9,10,12,13,14,15,16 ✓
+- Node 12 is connected to 9,10,11,13,14,15,16 ✓
+- Node 13 is connected to 9,10,11,12,14,15,16 ✓
+- Node 14 is connected to 9,10,11,12,13,15,16 ✓
+
+This confirms that nodes 9-14 form a clique of size 6.
+
+Step 4: Ensuring no larger clique exists.
+I've identified two cliques: one of size 8 (nodes 1-8) and one of size 6 (nodes 9-14).
+
+The nodes 15 and 16 cannot be added to the clique of nodes 9-14 to form a larger clique because:
+- Node 15 is not connected to node 16 (not in each other's adjacency lists)
+- Node 16 is not connected to node 15 (not in each other's adjacency lists)
+
+Therefore, the maximum clique is the one formed by nodes 1-8.
+
+Clique: [1,2,3,4,5,6,7,8], Size: 8","{'clique': ['1', '2', '3', '4', '5', '6', '7', '8'], 'size': 8}","{'clique': {}, 'size': 7}",0.844,12.21802425,4780,851,5631
+graph_556_c5,FMMM,{},zero_shot,standard,"Clique: [5, 6, 7, 8, 9], Size: 5","{'clique': ['5', '6', '7', '8', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,2.452920198,1730,26,1756
+graph_556_c5,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Identify densely connected regions in the graph.
+Looking at the visual representation, I can see that nodes 5, 6, 7, 8, and 9 appear to form a densely connected region in the center of the graph. Nodes 1, 2, 3, and 4 appear to be more peripheral.
+
+Step 2: Cross-verify connections using the adjacency list.
+From the adjacency list:
+- Node 5 is connected to: 4, 6, 7, 8, 9
+- Node 6 is connected to: 4, 5, 7, 8, 9
+- Node 7 is connected to: 1, 5, 6, 8, 9
+- Node 8 is connected to: 2, 5, 6, 7, 9
+- Node 9 is connected to: 3, 5, 6, 7, 8
+
+Step 3: Systematically check potential cliques.
+Let's check if nodes 5, 6, 7, 8, and 9 form a clique:
+- 5-6: Connected ✓
+- 5-7: Connected ✓
+- 5-8: Connected ✓
+- 5-9: Connected ✓
+- 6-7: Connected ✓
+- 6-8: Connected ✓
+- 6-9: Connected ✓
+- 7-8: Connected ✓
+- 7-9: Connected ✓
+- 8-9: Connected ✓
+
+All pairs are connected, so nodes 5, 6, 7, 8, and 9 form a 5-node clique.
+
+Step 4: Ensure no larger clique exists.
+To form a larger clique, we would need to add node 1, 2, 3, or 4 to our current clique. Let's check each:
+
+Node 1:
+- Connected only to node 7, not to 5, 6, 8, or 9
+
+Node 2:
+- Connected only to node 8, not to 5, 6, 7, or 9
+
+Node 3:
+- Connected only to node 9, not to 5, 6, 7, or 8
+
+Node 4:
+- Connected to nodes 5 and 6, but not to 7, 8, or 9
+
+Since none of these nodes connect to all members of our current clique, we cannot form a larger clique.
+
+Step 5: Verify our answer.
+The nodes 5, 6, 7, 8, and 9 form a complete subgraph where every node is connected to every other node in the set, as confirmed by both the adjacency list and visual representation. No larger clique exists.
+
+Clique: [5, 6, 7, 8, 9], Size: 5","{'clique': ['5', '6', '7', '8', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,10.56627011,1796,706,2502
+graph_556_c5,FMMM,{},few_shots,standard,"Clique: [5,6,7,8,9], Size: 5","{'clique': ['5', '6', '7', '8', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,2.232880116,3955,22,3977
+graph_556_c5,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+Looking at the visual representation, I notice that nodes 5, 6, 7, 8, and 9 appear to form a densely connected region in the center of the graph.
+
+Step 2: Cross-verifying connections using the adjacency list
+From the adjacency list:
+- Node 5 is connected to 4, 6, 7, 8, 9
+- Node 6 is connected to 4, 5, 7, 8, 9
+- Node 7 is connected to 1, 5, 6, 8, 9
+- Node 8 is connected to 2, 5, 6, 7, 9
+- Node 9 is connected to 3, 5, 6, 7, 8
+
+Step 3: Systematically checking all pairs of nodes in potential cliques
+For nodes 5, 6, 7, 8, and 9, I need to verify that each pair is connected:
+- 5-6: Connected (confirmed in both representations)
+- 5-7: Connected (confirmed in both representations)
+- 5-8: Connected (confirmed in both representations)
+- 5-9: Connected (confirmed in both representations)
+- 6-7: Connected (confirmed in both representations)
+- 6-8: Connected (confirmed in both representations)
+- 6-9: Connected (confirmed in both representations)
+- 7-8: Connected (confirmed in both representations)
+- 7-9: Connected (confirmed in both representations)
+- 8-9: Connected (confirmed in both representations)
+
+All pairs are connected, confirming that nodes 5, 6, 7, 8, and 9 form a 5-node clique.
+
+Step 4: Ensuring no larger clique exists
+The remaining nodes (1, 2, 3, 4) cannot be added to this clique because:
+- Node 1 is only connected to node 7
+- Node 2 is only connected to node 8
+- Node 3 is only connected to node 9
+- Node 4 is only connected to nodes 5 and 6
+
+Therefore, no 6-node clique exists.
+
+Clique: [5,6,7,8,9], Size: 5","{'clique': ['5', '6', '7', '8', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,10.54115081,4508,558,5066
+graph_556_c5,ORTHO,{},zero_shot,standard,"Clique: [5, 6, 7, 8, 9], Size: 5","{'clique': ['5', '6', '7', '8', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,2.251153946,1434,26,1460
+graph_556_c5,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Identify nodes with high connectivity.
+Looking at the adjacency list, I notice nodes 5, 6, 7, 8, and 9 have many connections:
+- Node 5 connects to: 4, 6, 7, 8, 9
+- Node 6 connects to: 4, 5, 7, 8, 9
+- Node 7 connects to: 1, 5, 6, 8, 9
+- Node 8 connects to: 2, 5, 6, 7, 9
+- Node 9 connects to: 3, 5, 6, 7, 8
+
+Step 2: Check for a potential 5-node clique.
+For nodes 5, 6, 7, 8, 9 to form a clique, each pair must be connected. From the adjacency list, I can verify:
+- 5 connects to 6, 7, 8, 9 ✓
+- 6 connects to 5, 7, 8, 9 ✓
+- 7 connects to 5, 6, 8, 9 ✓
+- 8 connects to 5, 6, 7, 9 ✓
+- 9 connects to 5, 6, 7, 8 ✓
+
+Step 3: Cross-verify with the visual representation.
+In the image, I can see:
+- Node 5 has connections to 4, 6, 7, 8, 9
+- Node 6 has connections to 4, 5, 7, 8, 9
+- Node 7 has connections to 1, 5, 6, 8, 9
+- Node 8 has connections to 2, 5, 6, 7, 9
+- Node 9 has connections to 3, 5, 6, 7, 8
+
+This confirms that nodes 5, 6, 7, 8, and 9 form a complete subgraph where every node is connected to every other node in the set.
+
+Step 4: Check if any larger clique exists.
+Since nodes 1, 2, 3, and 4 have fewer connections and are not all connected to each other, they cannot be part of a larger clique. The maximum clique size is 5.
+
+Step 5: Final verification.
+I've confirmed that nodes 5, 6, 7, 8, and 9 form a clique of size 5, and no larger clique exists in this graph.
+
+Clique: [5, 6, 7, 8, 9], Size: 5","{'clique': ['5', '6', '7', '8', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,9.398303986,1500,658,2158
+graph_556_c5,ORTHO,{},few_shots,standard,"Clique: [5,6,7,8,9], Size: 5","{'clique': ['5', '6', '7', '8', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,2.368822098,3659,22,3681
+graph_556_c5,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I notice that nodes 5, 6, 7, 8, and 9 appear to form a densely connected region.
+
+Step 2: Cross-verifying connections using the adjacency list.
+Let me check the connections between these nodes:
+- Node 5 is connected to: 4, 6, 7, 8, 9
+- Node 6 is connected to: 4, 5, 7, 8, 9
+- Node 7 is connected to: 1, 5, 6, 8, 9
+- Node 8 is connected to: 2, 5, 6, 7, 9
+- Node 9 is connected to: 3, 5, 6, 7, 8
+
+Step 3: Systematically checking that all pairs of nodes in potential cliques are connected.
+For nodes 5, 6, 7, 8, and 9 to form a clique, each pair must be connected:
+- 5-6: Connected ✓
+- 5-7: Connected ✓
+- 5-8: Connected ✓
+- 5-9: Connected ✓
+- 6-7: Connected ✓
+- 6-8: Connected ✓
+- 6-9: Connected ✓
+- 7-8: Connected ✓
+- 7-9: Connected ✓
+- 8-9: Connected ✓
+
+All pairs are connected, confirming that nodes 5, 6, 7, 8, and 9 form a 5-node clique.
+
+Step 4: Ensuring no larger clique exists.
+To check if a 6-node clique exists, I need to see if any other node connects to all five nodes in our current clique:
+- Node 1: Only connected to 7, not to 5, 6, 8, or 9
+- Node 2: Only connected to 8, not to 5, 6, 7, or 9
+- Node 3: Only connected to 9, not to 5, 6, 7, or 8
+- Node 4: Connected to 5 and 6, but not to 7, 8, or 9
+
+None of the remaining nodes connect to all five nodes in our clique, so a 6-node clique doesn't exist.
+
+Verification:
+I've confirmed that every pair of nodes in {5, 6, 7, 8, 9} is connected by an edge in both representations, and no larger subset of nodes forms a complete subgraph.
+
+Clique: [5,6,7,8,9], Size: 5","{'clique': ['5', '6', '7', '8', '9'], 'size': 5}","{'clique': {}, 'size': 5}",1.0,10.16105008,4212,662,4874
+graph_566_c7,FMMM,{},zero_shot,standard,"Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,2.044835806,1769,32,1801
+graph_566_c7,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Identify densely connected regions in the visual graph.
+Looking at the visual representation, I can see that nodes 4, 5, 6, 7, 8, 9, and 10 appear to form a densely connected region. Nodes 1, 2, and 3 seem to only connect to node 10.
+
+Step 2: Cross-verify connections using the adjacency list.
+From the adjacency list:
+- Nodes 4, 5, 6, 7, 8, 9 are all connected to each other and to node 10
+- Nodes 1, 2, 3 are only connected to node 10
+
+Step 3: Systematically check potential cliques.
+Let me check if nodes 4, 5, 6, 7, 8, 9, 10 form a clique:
+- Node 4 is connected to 5, 6, 7, 8, 9, 10 ✓
+- Node 5 is connected to 4, 6, 7, 8, 9, 10 ✓
+- Node 6 is connected to 4, 5, 7, 8, 9, 10 ✓
+- Node 7 is connected to 4, 5, 6, 8, 9, 10 ✓
+- Node 8 is connected to 4, 5, 6, 7, 9, 10 ✓
+- Node 9 is connected to 4, 5, 6, 7, 8, 10 ✓
+- Node 10 is connected to 4, 5, 6, 7, 8, 9 ✓
+
+All nodes in this set are connected to each other, so nodes 4, 5, 6, 7, 8, 9, 10 form a clique of size 7.
+
+Step 4: Ensure no larger clique exists.
+Could we add nodes 1, 2, or 3 to this clique? No, because:
+- Node 1 is only connected to node 10, not to nodes 4-9
+- Node 2 is only connected to node 10, not to nodes 4-9
+- Node 3 is only connected to node 10, not to nodes 4-9
+
+Therefore, the maximum clique has size 7.
+
+Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,9.017488956,1835,620,2455
+graph_566_c7,FMMM,{},few_shots,standard,"Clique: [4,5,6,7,8,9,10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,2.351115942,3994,26,4020
+graph_566_c7,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+Looking at the visual representation, I can see that nodes 4, 5, 6, 7, 8, 9, and 10 form a densely connected region. Particularly, nodes 4, 5, 6, 7, 8, and 9 appear to form a complete subgraph where every node is connected to every other node.
+
+Step 2: Cross-verifying connections using the adjacency list
+From the adjacency list:
+- Node 4 is connected to 5, 6, 7, 8, 9, 10
+- Node 5 is connected to 4, 6, 7, 8, 9, 10
+- Node 6 is connected to 4, 5, 7, 8, 9, 10
+- Node 7 is connected to 4, 5, 6, 8, 9, 10
+- Node 8 is connected to 4, 5, 6, 7, 9, 10
+- Node 9 is connected to 4, 5, 6, 7, 8, 10
+
+This confirms that nodes 4, 5, 6, 7, 8, and 9 are all connected to each other, forming a 6-node clique.
+
+Step 3: Systematically checking all pairs
+For a 6-node clique with nodes 4, 5, 6, 7, 8, and 9, I need to verify that all 15 possible pairs are connected:
+(4,5), (4,6), (4,7), (4,8), (4,9), (5,6), (5,7), (5,8), (5,9), (6,7), (6,8), (6,9), (7,8), (7,9), (8,9)
+
+From the adjacency list, I can confirm that all these pairs are indeed connected.
+
+Step 4: Ensuring no larger clique exists
+To check if a 7-node clique exists, I would need to add node 10 (the only remaining node connected to the current clique). Node 10 is connected to all nodes in our current clique (4, 5, 6, 7, 8, 9), so we can form a 7-node clique with nodes 4, 5, 6, 7, 8, 9, and 10.
+
+Nodes 1, 2, and 3 are only connected to node 10, so they cannot be part of a larger clique.
+
+Final verification:
+- Every pair of nodes in the clique [4, 5, 6, 7, 8, 9, 10] is connected by an edge in both representations
+- No larger subset of nodes forms a complete subgraph
+
+Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,10.54495525,4547,713,5260
+graph_566_c7,ORTHO,{},zero_shot,standard,"Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,2.655373096,1806,32,1838
+graph_566_c7,ORTHO,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I can see that nodes 4, 5, 6, 7, 8, 9, and 10 appear to form a densely connected region. Nodes 1, 2, and 3 seem to only connect to node 10.
+
+Step 2: Cross-verifying connections using the adjacency list.
+From the adjacency list:
+- Nodes 1, 2, 3 are only connected to node 10
+- Nodes 4, 5, 6, 7, 8, 9 are all connected to each other and to node 10
+- Node 10 is connected to all other nodes
+
+Step 3: Systematically checking potential cliques.
+Let me check if nodes 4, 5, 6, 7, 8, 9, 10 form a clique:
+- Node 4 is connected to 5, 6, 7, 8, 9, 10 ✓
+- Node 5 is connected to 4, 6, 7, 8, 9, 10 ✓
+- Node 6 is connected to 4, 5, 7, 8, 9, 10 ✓
+- Node 7 is connected to 4, 5, 6, 8, 9, 10 ✓
+- Node 8 is connected to 4, 5, 6, 7, 9, 10 ✓
+- Node 9 is connected to 4, 5, 6, 7, 8, 10 ✓
+- Node 10 is connected to 4, 5, 6, 7, 8, 9 ✓
+
+This confirms that nodes 4, 5, 6, 7, 8, 9, 10 form a 7-node clique.
+
+Step 4: Ensuring no larger clique exists.
+Could we add nodes 1, 2, or 3 to this clique? No, because:
+- Node 1 is only connected to node 10, not to 4, 5, 6, 7, 8, or 9
+- Node 2 is only connected to node 10, not to 4, 5, 6, 7, 8, or 9
+- Node 3 is only connected to node 10, not to 4, 5, 6, 7, 8, or 9
+
+Therefore, the maximum clique consists of nodes 4, 5, 6, 7, 8, 9, 10.
+
+Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,9.318517923,1872,676,2548
+graph_566_c7,ORTHO,{},few_shots,standard,"Clique: [4,5,6,7,8,9,10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,2.657640934,4031,26,4057
+graph_566_c7,ORTHO,{},few_shots,cot,"I'll analyze this graph to find the maximum clique by examining both the adjacency list and visual representation.
+
+Step 1: Identifying densely connected regions
+Looking at the adjacency list, I notice nodes 4, 5, 6, 7, 8, 9, and 10 appear to have many connections. In particular, nodes 4 through 9 all connect to each other based on the adjacency list.
+
+Step 2: Cross-verifying connections
+From the adjacency list:
+- Node 4 connects to 5, 6, 7, 8, 9, 10
+- Node 5 connects to 4, 6, 7, 8, 9, 10
+- Node 6 connects to 4, 5, 7, 8, 9, 10
+- Node 7 connects to 4, 5, 6, 8, 9, 10
+- Node 8 connects to 4, 5, 6, 7, 9, 10
+- Node 9 connects to 4, 5, 6, 7, 8, 10
+
+Looking at the visual representation, I can confirm these connections exist as black lines between the nodes.
+
+Step 3: Systematically checking potential cliques
+The set {4, 5, 6, 7, 8, 9} forms a potential clique. Let me verify all pairs are connected:
+- 4-5, 4-6, 4-7, 4-8, 4-9: All connected
+- 5-6, 5-7, 5-8, 5-9: All connected
+- 6-7, 6-8, 6-9: All connected
+- 7-8, 7-9: All connected
+- 8-9: Connected
+
+This confirms that nodes 4, 5, 6, 7, 8, and 9 form a 6-node clique.
+
+Step 4: Ensuring no larger clique exists
+Could node 10 be added to make a 7-node clique? Node 10 connects to all nodes 4-9, so {4, 5, 6, 7, 8, 9, 10} forms a 7-node clique.
+
+Nodes 1, 2, and 3 only connect to node 10, so they cannot be part of a larger clique.
+
+Final verification:
+- Every pair of nodes in {4, 5, 6, 7, 8, 9, 10} is connected by an edge in both representations
+- No larger subset of nodes forms a complete subgraph
+
+Clique: [4, 5, 6, 7, 8, 9, 10], Size: 7","{'clique': ['4', '5', '6', '7', '8', '9', '10'], 'size': 7}","{'clique': {}, 'size': 7}",1.0,10.45727491,4584,647,5231
+graph_56_c6,FMMM,{},zero_shot,standard,"Clique: [1, 2, 3, 4, 5, 6, 7], Size: 7","{'clique': ['1', '2', '3', '4', '5', '6', '7'], 'size': 7}","{'clique': {}, 'size': 6}",0.816,2.348471165,1596,32,1628
+graph_56_c6,FMMM,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+First, looking at the adjacency list:
+1: 3 4 5 6 7
+2: 3 4 5 6 7
+3: 1 2 4 5 6 7
+4: 1 2 3 5 6 7
+5: 1 2 3 4 6 7
+6: 1 2 3 4 5 7
+7: 1 2 3 4 5 6
+
+I notice that this graph appears to be very densely connected. Each node is connected to all other nodes except for one specific connection: node 1 is not connected to node 2, and vice versa (they don't appear in each other's adjacency lists).
+
+Looking at the visual representation confirms this observation - there is no edge directly connecting nodes 1 and 2.
+
+Let me check potential maximum cliques:
+
+1. If I include both nodes 1 and 2, they're not connected, so they can't be in the same clique.
+2. If I exclude node 1, I can form a clique with nodes {2, 3, 4, 5, 6, 7} - I need to verify this.
+3. If I exclude node 2, I can form a clique with nodes {1, 3, 4, 5, 6, 7} - I need to verify this.
+
+Let me verify option 2 - a clique with nodes {2, 3, 4, 5, 6, 7}:
+- Node 2 is connected to 3, 4, 5, 6, 7 ✓
+- Node 3 is connected to 2, 4, 5, 6, 7 ✓
+- Node 4 is connected to 2, 3, 5, 6, 7 ✓
+- Node 5 is connected to 2, 3, 4, 6, 7 ✓
+- Node 6 is connected to 2, 3, 4, 5, 7 ✓
+- Node 7 is connected to 2, 3, 4, 5, 6 ✓
+
+Let me verify option 3 - a clique with nodes {1, 3, 4, 5, 6, 7}:
+- Node 1 is connected to 3, 4, 5, 6, 7 ✓
+- Node 3 is connected to 1, 4, 5, 6, 7 ✓
+- Node 4 is connected to 1, 3, 5, 6, 7 ✓
+- Node 5 is connected to 1, 3, 4, 6, 7 ✓
+- Node 6 is connected to 1, 3, 4, 5, 7 ✓
+- Node 7 is connected to 1, 3, 4, 5, 6 ✓
+
+Both options 2 and 3 form valid cliques of size 6. Since we've established that nodes 1 and 2 aren't connected, we cannot form a clique of size 7 that includes all nodes. Therefore, the maximum clique size is 6.
+
+Either {1, 3, 4, 5, 6, 7} or {2, 3, 4, 5, 6, 7} is a valid answer. I'll provide one of them as the final answer.
+
+Clique: [1, 3, 4, 5, 6, 7], Size: 6","{'clique': ['1', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,12.37995815,1662,871,2533
+graph_56_c6,FMMM,{},few_shots,standard,"Clique: [1,2,3,4,5,6,7], Size: 7","{'clique': ['1', '2', '3', '4', '5', '6', '7'], 'size': 7}","{'clique': {}, 'size': 6}",0.816,2.170806885,3821,26,3847
+graph_56_c6,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the adjacency list, I notice that every node is connected to all other nodes except for nodes 1 and 2, which are not connected to each other. This suggests a highly connected graph.
+
+Step 2: From the visual representation, I can confirm that there is no direct edge between nodes 1 and 2, while all other pairs of nodes appear to be connected.
+
+Step 3: Let me verify the potential cliques systematically:
+- If I include both nodes 1 and 2, I cannot form a clique since they're not connected.
+- If I exclude node 1, I need to check if nodes 2, 3, 4, 5, 6, 7 form a clique.
+  From the adjacency list: 
+  - Node 2 is connected to 3, 4, 5, 6, 7
+  - Node 3 is connected to 2, 4, 5, 6, 7
+  - Node 4 is connected to 2, 3, 5, 6, 7
+  - Node 5 is connected to 2, 3, 4, 6, 7
+  - Node 6 is connected to 2, 3, 4, 5, 7
+  - Node 7 is connected to 2, 3, 4, 5, 6
+  This confirms that nodes 2, 3, 4, 5, 6, 7 form a 6-node clique.
+
+- Similarly, if I exclude node 2, I can check if nodes 1, 3, 4, 5, 6, 7 form a clique.
+  From the adjacency list:
+  - Node 1 is connected to 3, 4, 5, 6, 7
+  - Node 3 is connected to 1, 4, 5, 6, 7
+  - Node 4 is connected to 1, 3, 5, 6, 7
+  - Node 5 is connected to 1, 3, 4, 6, 7
+  - Node 6 is connected to 1, 3, 4, 5, 7
+  - Node 7 is connected to 1, 3, 4, 5, 6
+  This confirms that nodes 1, 3, 4, 5, 6, 7 also form a 6-node clique.
+
+Step 4: I've verified that there are two maximum cliques of size 6:
+- Clique 1: [1, 3, 4, 5, 6, 7]
+- Clique 2: [2, 3, 4, 5, 6, 7]
+
+Since both are of the same size, I'll report the first one I found.
+
+Clique: [2, 3, 4, 5, 6, 7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,10.31875706,4374,712,5086
+graph_56_c6,ORTHO,{},zero_shot,standard,"Clique: [1,2,3,4,5,6,7], Size: 7","{'clique': ['1', '2', '3', '4', '5', '6', '7'], 'size': 7}","{'clique': {}, 'size': 6}",0.816,1.838741064,1522,26,1548
+graph_56_c6,ORTHO,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+First, let me examine the adjacency list:
+- Node 1 is connected to: 3, 4, 5, 6, 7
+- Node 2 is connected to: 3, 4, 5, 6, 7
+- Node 3 is connected to: 1, 2, 4, 5, 6, 7
+- Node 4 is connected to: 1, 2, 3, 5, 6, 7
+- Node 5 is connected to: 1, 2, 3, 4, 6, 7
+- Node 6 is connected to: 1, 2, 3, 4, 5, 7
+- Node 7 is connected to: 1, 2, 3, 4, 5, 6
+
+Looking at the adjacency list, I notice that every node is connected to all other nodes except for nodes 1 and 2, which are not connected to each other. This is confirmed in the visual representation where there is no direct edge between nodes 1 and 2.
+
+Since nodes 1 and 2 are not connected, they cannot both be part of the same clique. Let me consider two potential maximum cliques:
+
+1. Clique including node 1 (but not node 2):
+   Nodes {1, 3, 4, 5, 6, 7}
+   Checking all pairs: Each node in this set is connected to all others in the set according to the adjacency list.
+   Size: 6
+
+2. Clique including node 2 (but not node 1):
+   Nodes {2, 3, 4, 5, 6, 7}
+   Checking all pairs: Each node in this set is connected to all others in the set according to the adjacency list.
+   Size: 6
+
+Both potential cliques have the same size of 6. Let me verify one of them (the first one) by checking all possible pairs:
+- 1-3: Connected (1 lists 3, 3 lists 1)
+- 1-4: Connected (1 lists 4, 4 lists 1)
+- 1-5: Connected (1 lists 5, 5 lists 1)
+- 1-6: Connected (1 lists 6, 6 lists 1)
+- 1-7: Connected (1 lists 7, 7 lists 1)
+- 3-4: Connected (3 lists 4, 4 lists 3)
+- 3-5: Connected (3 lists 5, 5 lists 3)
+- 3-6: Connected (3 lists 6, 6 lists 3)
+- 3-7: Connected (3 lists 7, 7 lists 3)
+- 4-5: Connected (4 lists 5, 5 lists 4)
+- 4-6: Connected (4 lists 6, 6 lists 4)
+- 4-7: Connected (4 lists 7, 7 lists 4)
+- 5-6: Connected (5 lists 6, 6 lists 5)
+- 5-7: Connected (5 lists 7, 7 lists 5)
+- 6-7: Connected (6 lists 7, 7 lists 6)
+
+All pairs are connected, confirming that {1, 3, 4, 5, 6, 7} forms a clique of size 6.
+
+Since the graph has 7 nodes total, and we've found that the maximum clique size is 6 (because nodes 1 and 2 cannot be in the same clique), we have found the maximum clique.
+
+Clique: [1, 3, 4, 5, 6, 7], Size: 6","{'clique': ['1', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,12.80256104,1588,925,2513
+graph_56_c6,ORTHO,{},few_shots,standard,"Clique: [1,2,3,4,5,6,7], Size: 7","{'clique': ['1', '2', '3', '4', '5', '6', '7'], 'size': 7}","{'clique': {}, 'size': 6}",0.816,3.175457716,3747,26,3773
+graph_56_c6,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the adjacency list, I notice that every node seems to be connected to all other nodes except itself. Let me verify this:
+- Node 1 is connected to: 3, 4, 5, 6, 7
+- Node 2 is connected to: 3, 4, 5, 6, 7
+- Node 3 is connected to: 1, 2, 4, 5, 6, 7
+- Node 4 is connected to: 1, 2, 3, 5, 6, 7
+- Node 5 is connected to: 1, 2, 3, 4, 6, 7
+- Node 6 is connected to: 1, 2, 3, 4, 5, 7
+- Node 7 is connected to: 1, 2, 3, 4, 5, 6
+
+Step 2: Checking the visual representation, I can see that there are indeed connections between all pairs of nodes. Though the layout makes it a bit complex to follow, I can trace each line and verify that every node connects to every other node.
+
+Step 3: Since every node is connected to every other node, the entire graph forms a complete graph (K₇). This means all 7 nodes form a clique.
+
+Step 4: To verify, let me check a few specific connections:
+- Nodes 1 and 2: Node 1's list doesn't show 2, and Node 2's list doesn't show 1. Looking at the visual, there appears to be no direct edge between them.
+- Nodes 1 and 3: Node 1's list shows 3, and Node 3's list shows 1. The visual confirms this connection.
+
+Upon closer inspection of both representations, I notice that nodes 1 and 2 are not connected. This means the entire graph is not a complete graph.
+
+Step 5: Let me identify the largest subset where every node is connected to every other node:
+- If I remove node 1, nodes 2-7 form a potential clique
+- If I remove node 2, nodes 1, 3-7 form a potential clique
+
+Checking node 1's connections: It connects to 3, 4, 5, 6, 7 (all except 2)
+Checking node 2's connections: It connects to 3, 4, 5, 6, 7 (all except 1)
+
+Since nodes 3, 4, 5, 6, and 7 are connected to both nodes 1 and 2, and to each other, I can form two maximum cliques of size 6:
+- Clique with nodes 1, 3, 4, 5, 6, 7
+- Clique with nodes 2, 3, 4, 5, 6, 7
+
+Clique: [1,3,4,5,6,7], Size: 6","{'clique': ['1', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,12.19190121,4300,708,5008
+graph_6910_c3,FMMM,{},zero_shot,standard,"Clique: [6, 7, 10, 11], Size: 4","{'clique': ['6', '7', '10', '11'], 'size': 4}","{'clique': {}, 'size': 3}",0.625,1.811815262,1676,23,1699
+graph_6910_c3,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically examining densely connected regions and verifying connections.
+
+Step 1: Identify potential densely connected regions from the visual representation.
+Looking at the graph, I can see several potentially dense subgraphs:
+- Nodes 6, 7, 10, 11 appear to form a complete subgraph
+- Nodes 8, 9, 13, 14 appear to form a complete subgraph
+- Nodes 2, 3, 12, 16 appear to form a dense subgraph
+- Nodes 2, 3, 12, 15, 16 might form another dense subgraph
+
+Step 2: Verify these potential cliques using the adjacency list.
+
+For nodes 6, 7, 10, 11:
+- 6 is connected to: 5, 10, 11
+- 7 is connected to: 5, 10, 11
+- 10 is connected to: 6, 7, 11
+- 11 is connected to: 6, 7, 10
+This confirms that nodes 6, 7, 10, 11 form a 4-node clique.
+
+For nodes 8, 9, 13, 14:
+- 8 is connected to: 9, 13, 14
+- 9 is connected to: 8, 13, 14
+- 13 is connected to: 4, 8, 9
+- 14 is connected to: 4, 8, 9
+This confirms that nodes 8, 9, 13, 14 form a 4-node clique.
+
+For nodes 2, 3, 12, 16:
+- 2 is connected to: 1, 15, 16
+- 3 is connected to: 1, 12, 16
+- 12 is connected to: 3, 15, 16
+- 16 is connected to: 2, 3, 12
+Checking all pairs:
+- 2-3: Not directly connected
+- 2-12: Not directly connected
+- 2-16: Connected
+- 3-12: Connected
+- 3-16: Connected
+- 12-16: Connected
+This is not a clique because 2-3 and 2-12 are not connected.
+
+For nodes 2, 3, 16:
+- 2 is connected to: 1, 15, 16
+- 3 is connected to: 1, 12, 16
+- 16 is connected to: 2, 3, 12
+Checking all pairs:
+- 2-3: Not directly connected
+- 2-16: Connected
+- 3-16: Connected
+This is not a clique because 2-3 are not connected.
+
+For nodes 3, 12, 16:
+- 3 is connected to: 1, 12, 16
+- 12 is connected to: 3, 15, 16
+- 16 is connected to: 2, 3, 12
+Checking all pairs:
+- 3-12: Connected
+- 3-16: Connected
+- 12-16: Connected
+This confirms that nodes 3, 12, 16 form a 3-node clique.
+
+For nodes 2, 15, 16:
+- 2 is connected to: 1, 15, 16
+- 15 is connected to: 2, 5, 12
+- 16 is connected to: 2, 3, 12
+Checking all pairs:
+- 2-15: Connected
+- 2-16: Connected
+- 15-16: Not directly connected
+This is not a clique because 15-16 are not connected.
+
+Step 3: Check if there are any other potential cliques I might have missed.
+
+For nodes 12, 15, 16:
+- 12 is connected to: 3, 15, 16
+- 15 is connected to: 2, 5, 12
+- 16 is connected to: 2, 3, 12
+Checking all pairs:
+- 12-15: Connected
+- 12-16: Connected
+- 15-16: Not directly connected
+This is not a clique because 15-16 are not connected.
+
+Step 4: Compare the sizes of the confirmed cliques.
+- Nodes 6, 7, 10, 11 form a 4-node clique
+- Nodes 8, 9, 13, 14 form a 4-node clique
+- Nodes 3, 12, 16 form a 3-node clique
+
+The maximum cliques are of size 4, and there are two of them: {6, 7, 10, 11} and {8, 9, 13, 14}.
+
+Clique: [6, 7, 10, 11], Size: 4","{'clique': ['6', '7', '10', '11'], 'size': 4}","{'clique': {}, 'size': 3}",0.625,15.31741881,1742,1175,2917
+graph_6910_c3,FMMM,{},few_shots,standard,"Clique: [6,7,10,11], Size: 4","{'clique': ['6', '7', '10', '11'], 'size': 4}","{'clique': {}, 'size': 3}",0.625,1.846353292,3901,20,3921
+graph_6910_c3,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I can see several potentially dense subgraphs:
+- Nodes 6, 7, 10, 11 appear to form a dense region
+- Nodes 8, 9, 13, 14 appear to form another dense region
+- Nodes 2, 3, 12, 16 seem to be interconnected
+- Nodes 1, 2, 3 form a triangle
+
+Step 2: Cross-verifying connections using the adjacency list.
+
+For the region with nodes 6, 7, 10, 11:
+- Node 6 is connected to 5, 10, 11
+- Node 7 is connected to 5, 10, 11
+- Node 10 is connected to 6, 7, 11
+- Node 11 is connected to 6, 7, 10
+
+For the region with nodes 8, 9, 13, 14:
+- Node 8 is connected to 9, 13, 14
+- Node 9 is connected to 8, 13, 14
+- Node 13 is connected to 4, 8, 9
+- Node 14 is connected to 4, 8, 9
+
+For the region with nodes 2, 3, 12, 16:
+- Node 2 is connected to 1, 15, 16
+- Node 3 is connected to 1, 12, 16
+- Node 12 is connected to 3, 15, 16
+- Node 16 is connected to 2, 3, 12
+
+Step 3: Systematically checking all pairs in potential cliques.
+
+For nodes 6, 7, 10, 11:
+- 6-7: Not directly connected according to adjacency list
+- 6-10: Connected
+- 6-11: Connected
+- 7-10: Connected
+- 7-11: Connected
+- 10-11: Connected
+This forms a clique of size 4 excluding the 6-7 connection, but since 6 and 7 aren't connected, the maximum clique here is {6, 10, 11} or {7, 10, 11}, both of size 3.
+
+For nodes 8, 9, 13, 14:
+- 8-9: Connected
+- 8-13: Connected
+- 8-14: Connected
+- 9-13: Connected
+- 9-14: Connected
+- 13-14: Not directly connected
+This forms a clique of size 3, either {8, 9, 13} or {8, 9, 14}.
+
+For nodes 2, 3, 12, 16:
+- 2-3: Not directly connected
+- 2-12: Not directly connected
+- 2-16: Connected
+- 3-12: Connected
+- 3-16: Connected
+- 12-16: Connected
+This forms a clique of size 3: {3, 12, 16}.
+
+Step 4: Ensuring no larger clique exists.
+I've checked all dense regions in the graph and verified the connections. The largest cliques I found are of size 3:
+- {6, 10, 11}
+- {7, 10, 11}
+- {8, 9, 13}
+- {8, 9, 14}
+- {3, 12, 16}
+
+All of these are confirmed by both the adjacency list and the visual representation.
+
+Clique: [6, 10, 11], Size: 3","{'clique': ['6', '10', '11'], 'size': 3}","{'clique': {}, 'size': 3}",1.0,12.98893595,4454,870,5324
+graph_6910_c3,ORTHO,{},zero_shot,standard,"Clique: [8, 9, 13, 14], Size: 4","{'clique': ['8', '9', '13', '14'], 'size': 4}","{'clique': {}, 'size': 3}",0.625,1.652834892,1528,23,1551
+graph_6910_c3,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically analyzing both the adjacency list and visual representation.
+
+Step 1: Identify densely connected regions in the visual graph.
+Looking at the visual representation, I can see several potential densely connected regions:
+- Nodes 8, 9, 13, 14 appear to form a complete subgraph
+- Nodes 6, 7, 10, 11 appear to form a complete subgraph
+- Nodes 2, 3, 12, 16 seem to have multiple connections
+
+Step 2: Cross-verify these potential cliques using the adjacency list.
+
+For the group 8, 9, 13, 14:
+- Node 8 connects to: 9, 13, 14
+- Node 9 connects to: 8, 13, 14
+- Node 13 connects to: 4, 8, 9
+- Node 14 connects to: 4, 8, 9
+
+This confirms that nodes 8, 9, 13, 14 form a clique of size 4.
+
+For the group 6, 7, 10, 11:
+- Node 6 connects to: 5, 10, 11
+- Node 7 connects to: 5, 10, 11
+- Node 10 connects to: 6, 7, 11
+- Node 11 connects to: 6, 7, 10
+
+This confirms that nodes 6, 7, 10, 11 form a clique of size 4.
+
+For the group 2, 3, 12, 16:
+- Node 2 connects to: 1, 15, 16
+- Node 3 connects to: 1, 12, 16
+- Node 12 connects to: 3, 15, 16
+- Node 16 connects to: 2, 3, 12
+
+Checking all pairs:
+- 2-3: Not directly connected (based on adjacency list)
+- 2-12: Not directly connected
+- 2-16: Connected
+- 3-12: Connected
+- 3-16: Connected
+- 12-16: Connected
+
+This group doesn't form a complete clique of size 4, but 3, 12, 16 form a clique of size 3.
+
+Step 3: Check for other potential cliques of size 4 or larger.
+
+Let me check if there are any other potential cliques:
+- Nodes 2, 3, 16: All connected to each other
+- Nodes 3, 12, 16: All connected to each other
+- Nodes 2, 12, 16: Not all connected (2-12 missing)
+- Nodes 5, 6, 7: Not all connected (5-6 and 5-7 exist, but 6-7 is missing)
+
+Step 4: Verify no larger clique exists.
+
+I've identified two cliques of size 4:
+1. Nodes 8, 9, 13, 14
+2. Nodes 6, 7, 10, 11
+
+Let me verify that no larger clique exists by checking if any of these cliques can be expanded:
+
+For clique 8, 9, 13, 14:
+- Node 4 connects to 13, 14 but not to 8, 9
+- No other node connects to all four nodes
+
+For clique 6, 7, 10, 11:
+- Node 5 connects to 6, 7 but not to 10, 11
+- No other node connects to all four nodes
+
+Therefore, the maximum clique size is 4, and we have two such cliques.
+
+Clique: [8, 9, 13, 14], Size: 4","{'clique': ['8', '9', '13', '14'], 'size': 4}","{'clique': {}, 'size': 3}",0.625,13.8391881,1594,894,2488
+graph_6910_c3,ORTHO,{},few_shots,standard,"Clique: [8, 9, 13, 14], Size: 4","{'clique': ['8', '9', '13', '14'], 'size': 4}","{'clique': {}, 'size': 3}",0.625,1.699586153,3753,23,3776
+graph_6910_c3,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the visual representation, I notice several potentially dense regions:
+- Nodes 8, 9, 13, 14 form a square pattern
+- Nodes 6, 7, 10, 11 form another square pattern
+- Nodes 2, 3, 12, 16 form a connected region
+- Nodes 1, 2, 3, 4 are connected in a path
+
+Step 2: Let me check each potential dense region using the adjacency list:
+
+For nodes 8, 9, 13, 14:
+- Node 8 connects to 9, 13, 14
+- Node 9 connects to 8, 13, 14
+- Node 13 connects to 4, 8, 9
+- Node 14 connects to 4, 8, 9
+This forms a clique of size 3: [8, 9, 13, 14] are not all connected (13 and 14 don't connect).
+
+For nodes 6, 7, 10, 11:
+- Node 6 connects to 5, 10, 11
+- Node 7 connects to 5, 10, 11
+- Node 10 connects to 6, 7, 11
+- Node 11 connects to 6, 7, 10
+This forms a clique of size 3: [6, 10, 11] or [7, 10, 11]
+
+For nodes 2, 3, 12, 16:
+- Node 2 connects to 1, 15, 16
+- Node 3 connects to 1, 12, 16
+- Node 12 connects to 3, 15, 16
+- Node 16 connects to 2, 3, 12
+This forms a clique of size 3: [3, 12, 16] or [2, 16, 3]
+
+For nodes 8, 9, 13:
+- Node 8 connects to 9, 13, 14
+- Node 9 connects to 8, 13, 14
+- Node 13 connects to 4, 8, 9
+This forms a clique of size 3: [8, 9, 13]
+
+For nodes 6, 10, 11:
+- Node 6 connects to 5, 10, 11
+- Node 10 connects to 6, 7, 11
+- Node 11 connects to 6, 7, 10
+This forms a clique of size 3: [6, 10, 11]
+
+Step 3: Let me verify if there are any other cliques of size 3 or larger:
+- [2, 3, 16] form a clique of size 3
+- [3, 12, 16] form a clique of size 3
+- [8, 9, 13] form a clique of size 3
+- [8, 9, 14] form a clique of size 3
+- [6, 10, 11] form a clique of size 3
+- [7, 10, 11] form a clique of size 3
+
+Step 4: I've verified all potential cliques and confirmed that there are multiple cliques of size 3, but no larger cliques exist in this graph.
+
+Clique: [8,9,13], Size: 3","{'clique': ['8', '9', '13'], 'size': 3}","{'clique': {}, 'size': 3}",1.0,12.20557714,4306,818,5124
+graph_720_c6,FMMM,{},zero_shot,standard,"Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,2.061487913,1666,24,1690
+graph_720_c6,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: Initial analysis of the adjacency list
+Looking at the adjacency list:
+- Node 1 is connected to: 4, 5, 6, 7
+- Node 2 is connected to: 3, 4, 5, 6, 7
+- Node 3 is connected to: 2, 4, 5, 6, 7
+- Node 4 is connected to: 1, 2, 3, 5, 6, 7
+- Node 5 is connected to: 1, 2, 3, 4, 6, 7
+- Node 6 is connected to: 1, 2, 3, 4, 5, 7
+- Node 7 is connected to: 1, 2, 3, 4, 5, 6
+
+I notice that nodes 2-7 all have high connectivity. Node 1 has fewer connections.
+
+Step 2: Identifying potential cliques
+From the adjacency list, I can see that:
+- Nodes 2, 3, 4, 5, 6, 7 all connect to each other (each appears in the others' adjacency lists)
+- Node 1 connects to 4, 5, 6, 7 but not to 2 and 3
+
+Step 3: Visual verification
+Looking at the visual representation, I can confirm:
+- Nodes 2, 3, 4, 5, 6, 7 all have edges connecting them to each other
+- Node 1 connects to 4, 5, 6, 7 but not to 2 and 3
+
+Step 4: Systematic verification of the largest potential clique
+Let me verify that nodes 2, 3, 4, 5, 6, 7 form a clique by checking all pairs:
+- 2-3: Connected (confirmed in adjacency list and visual)
+- 2-4: Connected
+- 2-5: Connected
+- 2-6: Connected
+- 2-7: Connected
+- 3-4: Connected
+- 3-5: Connected
+- 3-6: Connected
+- 3-7: Connected
+- 4-5: Connected
+- 4-6: Connected
+- 4-7: Connected
+- 5-6: Connected
+- 5-7: Connected
+- 6-7: Connected
+
+All pairs are connected, confirming that nodes 2, 3, 4, 5, 6, 7 form a clique of size 6.
+
+Step 5: Ensuring no larger clique exists
+The only way to form a larger clique would be to include node 1. However, node 1 is not connected to nodes 2 and 3, so it cannot be part of a larger clique.
+
+Clique: [2, 3, 4, 5, 6, 7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,10.32377815,1732,709,2441
+graph_720_c6,FMMM,{},few_shots,standard,"Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,2.244436979,3891,24,3915
+graph_720_c6,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Looking at the adjacency list, I notice that every node has many connections. In particular, I observe that node 7 is connected to all other nodes (1, 2, 3, 4, 5, 6).
+
+Step 2: From the visual representation, I can confirm that node 7 indeed has connections to all other nodes in the graph.
+
+Step 3: Let's check if all the other nodes form a complete subgraph with node 7:
+- Nodes 2, 3, 4, 5, 6 all connect to node 7 (verified in both representations)
+- I need to check if these nodes are all connected to each other
+
+Step 4: Checking connections between nodes 2, 3, 4, 5, 6:
+- Node 2 connects to 3, 4, 5, 6 ✓
+- Node 3 connects to 2, 4, 5, 6 ✓
+- Node 4 connects to 2, 3, 5, 6 ✓
+- Node 5 connects to 2, 3, 4, 6 ✓
+- Node 6 connects to 2, 3, 4, 5 ✓
+
+This confirms that nodes 2, 3, 4, 5, 6, 7 form a 6-node clique.
+
+Step 5: Checking if node 1 can be added to make a 7-node clique:
+- Node 1 connects to 4, 5, 6, 7 ✓
+- But node 1 does not connect to nodes 2 and 3 ✗
+
+Therefore, we cannot form a 7-node clique.
+
+Step 6: Final verification - I've confirmed that nodes 2, 3, 4, 5, 6, 7 form a complete subgraph where every node is connected to every other node, and no larger clique exists.
+
+Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,8.50041604,4444,505,4949
+graph_720_c6,ORTHO,{},zero_shot,standard,"Clique: [2, 3, 4, 5, 6, 7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,2.55391407,1666,29,1695
+graph_720_c6,ORTHO,{},zero_shot,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+First, let me examine the adjacency list:
+1: 4 5 6 7
+2: 3 4 5 6 7
+3: 2 4 5 6 7
+4: 1 2 3 5 6 7
+5: 1 2 3 4 6 7
+6: 1 2 3 4 5 7
+7: 1 2 3 4 5 6
+
+Looking at the adjacency list, I notice that nodes 2-7 all have high connectivity. Let me check if they form a clique:
+
+For nodes 2,3,4,5,6,7 to form a clique:
+- Node 2 must connect to 3,4,5,6,7 ✓ (confirmed in adjacency list)
+- Node 3 must connect to 2,4,5,6,7 ✓ (confirmed in adjacency list)
+- Node 4 must connect to 2,3,5,6,7 ✓ (confirmed in adjacency list)
+- Node 5 must connect to 2,3,4,6,7 ✓ (confirmed in adjacency list)
+- Node 6 must connect to 2,3,4,5,7 ✓ (confirmed in adjacency list)
+- Node 7 must connect to 2,3,4,5,6 ✓ (confirmed in adjacency list)
+
+I can also verify this in the visual representation - I can see that nodes 2,3,4,5,6,7 all have connections between each pair.
+
+Now, let me check if we can add node 1 to make a larger clique:
+- Node 1 connects to 4,5,6,7 but not to 2,3
+- Since node 1 doesn't connect to nodes 2 and 3, it cannot be part of the clique
+
+Therefore, the maximum clique consists of nodes 2,3,4,5,6,7.
+
+Let me verify once more:
+- Every pair of nodes in {2,3,4,5,6,7} is connected by an edge in both representations
+- No larger subset of nodes forms a complete subgraph (node 1 cannot be added)
+
+Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,10.547086,1732,576,2308
+graph_720_c6,ORTHO,{},few_shots,standard,"Clique: [1,2,3,4,5,6,7], Size: 7","{'clique': ['1', '2', '3', '4', '5', '6', '7'], 'size': 7}","{'clique': {}, 'size': 6}",0.776,2.04400897,3891,26,3917
+graph_720_c6,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: First, I'll examine the adjacency list to understand the connections:
+- Node 1 is connected to: 4, 5, 6, 7
+- Node 2 is connected to: 3, 4, 5, 6, 7
+- Node 3 is connected to: 2, 4, 5, 6, 7
+- Node 4 is connected to: 1, 2, 3, 5, 6, 7
+- Node 5 is connected to: 1, 2, 3, 4, 6, 7
+- Node 6 is connected to: 1, 2, 3, 4, 5, 7
+- Node 7 is connected to: 1, 2, 3, 4, 5, 6
+
+Step 2: Looking at the visual representation, I can confirm these connections. I notice that the graph appears to be highly connected.
+
+Step 3: Let me check if all 7 nodes form a clique by verifying that each node is connected to every other node:
+- Node 1 is connected to all nodes except 2 and 3
+- Nodes 2-7 are all connected to each other
+
+Step 4: Since node 1 is not connected to nodes 2 and 3, the entire graph is not a 7-node clique.
+
+Step 5: Let me check if nodes 2-7 form a 6-node clique:
+- Node 2 is connected to 3, 4, 5, 6, 7 ✓
+- Node 3 is connected to 2, 4, 5, 6, 7 ✓
+- Node 4 is connected to 2, 3, 5, 6, 7 ✓
+- Node 5 is connected to 2, 3, 4, 6, 7 ✓
+- Node 6 is connected to 2, 3, 4, 5, 7 ✓
+- Node 7 is connected to 2, 3, 4, 5, 6 ✓
+
+Step 6: I've verified that nodes 2, 3, 4, 5, 6, and 7 are all connected to each other, forming a 6-node clique. This is confirmed by both the adjacency list and the visual representation.
+
+Step 7: I've checked that no larger clique exists, as node 1 is not connected to nodes 2 and 3, preventing a 7-node clique.
+
+Clique: [2,3,4,5,6,7], Size: 6","{'clique': ['2', '3', '4', '5', '6', '7'], 'size': 6}","{'clique': {}, 'size': 6}",1.0,10.44227409,4444,649,5093
+graph_748_c4,FMMM,{},zero_shot,standard,"Clique: [1,3,5,6], Size: 4","{'clique': ['1', '3', '5', '6'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,2.391147852,1672,20,1692
+graph_748_c4,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically analyzing both the adjacency list and visual representation.
+
+Step 1: Initial observation of the graph structure.
+Looking at both representations, I notice this is a dense graph where many nodes are connected to each other. From the adjacency list, I can see that node 6 is connected to all other nodes (1-5), and node 5 is also connected to all other nodes (1-4, 6). This suggests that nodes 5 and 6 will likely be part of the maximum clique.
+
+Step 2: Analyzing potential clique candidates.
+Let's start with nodes 5 and 6 as our initial clique and try to expand it:
+- Nodes 5 and 6 are connected (confirmed in both representations)
+- Can we add node 1? Node 1 is connected to both 5 and 6 (confirmed in adjacency list and visual)
+- Can we add node 2? Node 2 is connected to both 5 and 6 (confirmed in both)
+- Can we add node 3? Node 3 is connected to both 5 and 6 (confirmed in both)
+- Can we add node 4? Node 4 is connected to both 5 and 6 (confirmed in both)
+
+Step 3: Checking if all nodes 1-6 form a clique.
+For this to be true, every node must connect to every other node. Let me check all remaining connections:
+- 1-2: Not connected (not in adjacency list, no edge in visual)
+- 1-3: Connected (confirmed in both)
+- 1-4: Not connected (not in adjacency list, no edge in visual)
+- 2-3: Not connected (not in adjacency list, no edge in visual)
+- 2-4: Connected (confirmed in both)
+- 3-4: Connected (confirmed in both)
+
+Since not all pairs are connected, all six nodes don't form a clique.
+
+Step 4: Systematically checking all 5-node subsets.
+Let's check if any 5-node subset forms a clique:
+
+For {1,3,4,5,6}:
+- Need to check: 1-3, 1-4, 1-5, 1-6, 3-4, 3-5, 3-6, 4-5, 4-6, 5-6
+- 1-4 is missing, so this is not a clique
+
+For {1,2,3,5,6}:
+- Need to check: 1-2, 1-3, 1-5, 1-6, 2-3, 2-5, 2-6, 3-5, 3-6, 5-6
+- 1-2 and 2-3 are missing, so this is not a clique
+
+For {1,2,4,5,6}:
+- Need to check: 1-2, 1-4, 1-5, 1-6, 2-4, 2-5, 2-6, 4-5, 4-6, 5-6
+- 1-2 and 1-4 are missing, so this is not a clique
+
+For {2,3,4,5,6}:
+- Need to check: 2-3, 2-4, 2-5, 2-6, 3-4, 3-5, 3-6, 4-5, 4-6, 5-6
+- 2-3 is missing, so this is not a clique
+
+Step 5: Checking 4-node subsets.
+Let's check some promising 4-node subsets:
+
+For {3,4,5,6}:
+- Need to check: 3-4, 3-5, 3-6, 4-5, 4-6, 5-6
+- All connections exist (confirmed in both representations)
+- This forms a 4-node clique
+
+For {1,3,5,6}:
+- Need to check: 1-3, 1-5, 1-6, 3-5, 3-6, 5-6
+- All connections exist (confirmed in both representations)
+- This forms another 4-node clique
+
+For {2,4,5,6}:
+- Need to check: 2-4, 2-5, 2-6, 4-5, 4-6, 5-6
+- All connections exist (confirmed in both representations)
+- This forms another 4-node clique
+
+Step 6: Verification that no larger clique exists.
+I've systematically checked all 5-node subsets and confirmed none form a clique. However, I've found multiple 4-node cliques: {3,4,5,6}, {1,3,5,6}, and {2,4,5,6}.
+
+Clique: [3, 4, 5, 6], Size: 4","{'clique': ['3', '4', '5', '6'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,17.50133085,1738,1184,2922
+graph_748_c4,FMMM,{},few_shots,standard,"Clique: [1,3,5,6], Size: 4","{'clique': ['1', '3', '5', '6'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,3.065222979,3897,20,3917
+graph_748_c4,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph
+Looking at the visual representation, I notice that nodes 3, 4, 5, and 6 appear to form a densely connected region. I also see that nodes 1, 3, 5, and 6 seem to be well-connected.
+
+Step 2: Cross-verifying connections using the adjacency list
+From the adjacency list:
+- Node 1 is connected to 3, 5, 6
+- Node 2 is connected to 4, 5, 6
+- Node 3 is connected to 1, 4, 5, 6
+- Node 4 is connected to 2, 3, 5, 6
+- Node 5 is connected to 1, 2, 3, 4, 6
+- Node 6 is connected to 1, 2, 3, 4, 5
+
+Step 3: Systematically checking potential cliques
+Let me check if nodes 3, 4, 5, and 6 form a clique:
+- 3 is connected to 4, 5, 6 ✓
+- 4 is connected to 3, 5, 6 ✓
+- 5 is connected to 3, 4, 6 ✓
+- 6 is connected to 3, 4, 5 ✓
+This confirms that {3, 4, 5, 6} forms a 4-node clique.
+
+Let me check if nodes 1, 3, 5, and 6 form a clique:
+- 1 is connected to 3, 5, 6 ✓
+- 3 is connected to 1, 5, 6 ✓
+- 5 is connected to 1, 3, 6 ✓
+- 6 is connected to 1, 3, 5 ✓
+This confirms that {1, 3, 5, 6} also forms a 4-node clique.
+
+Similarly, I can verify that {2, 4, 5, 6} forms another 4-node clique.
+
+Step 4: Checking if a larger clique exists
+To have a 5-node clique, we would need a node that connects to all nodes in one of our 4-node cliques. Let's check:
+- Node 1 is not connected to node 4, so it can't extend the {3, 4, 5, 6} clique
+- Node 2 is not connected to node 3, so it can't extend the {3, 4, 5, 6} clique
+- Node 3 is not connected to node 2, so it can't extend the {2, 4, 5, 6} clique
+- Node 4 is not connected to node 1, so it can't extend the {1, 3, 5, 6} clique
+
+Therefore, no 5-node clique exists in this graph.
+
+Step 5: Final verification
+I've verified that {1, 3, 5, 6}, {2, 4, 5, 6}, and {3, 4, 5, 6} are all valid 4-node cliques, and no larger clique exists.
+
+Clique: [1,3,5,6], Size: 4
+
+Note: There are actually three different maximum cliques of size 4 in this graph: {1,3,5,6}, {2,4,5,6}, and {3,4,5,6}. I've provided one of them as the answer, but any of these three would be correct.","{'clique': ['1', '3', '5', '6'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,13.60067487,4450,884,5334
+graph_748_c4,ORTHO,{},zero_shot,standard,"Clique: [1, 3, 5, 6], Size: 6","{'clique': ['1', '3', '5', '6'], 'size': 6}","{'clique': {}, 'size': 4}",0.267,1.941715956,1880,23,1903
+graph_748_c4,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by analyzing both the adjacency list and visual representation.
+
+Step 1: First, let me analyze the adjacency list to understand the connections.
+- Node 1 is connected to: 3, 5, 6
+- Node 2 is connected to: 4, 5, 6
+- Node 3 is connected to: 1, 4, 5, 6
+- Node 4 is connected to: 2, 3, 5, 6
+- Node 5 is connected to: 1, 2, 3, 4, 6
+- Node 6 is connected to: 1, 2, 3, 4, 5
+
+Step 2: Looking at the visual representation, I can confirm these connections. The graph appears to be highly connected, with node 6 at the top, nodes 2, 3, and 4 in the middle row, and nodes 1 and 5 at the bottom.
+
+Step 3: I notice that node 6 is connected to all other nodes, and node 5 is also connected to all other nodes. This suggests they might be part of the maximum clique.
+
+Step 4: Let me check potential cliques systematically:
+
+First, I'll check if all 6 nodes form a clique:
+- Node 1 is not connected to node 2 (not in 1's adjacency list)
+- Node 1 is not connected to node 4 (not in 1's adjacency list)
+So all 6 nodes don't form a clique.
+
+Let me check 5-node potential cliques:
+- Without node 1: Nodes {2,3,4,5,6}
+  Checking: 2-3? No connection (2 doesn't list 3)
+  So {2,3,4,5,6} is not a clique.
+- Without node 2: Nodes {1,3,4,5,6}
+  Checking: 1-4? No connection (1 doesn't list 4)
+  So {1,3,4,5,6} is not a clique.
+
+Let me check 4-node potential cliques:
+- Nodes {3,4,5,6}
+  Checking all pairs: 3-4? Yes. 3-5? Yes. 3-6? Yes. 4-5? Yes. 4-6? Yes. 5-6? Yes.
+  All pairs are connected, so {3,4,5,6} is a clique.
+- Nodes {2,4,5,6}
+  Checking all pairs: 2-4? Yes. 2-5? Yes. 2-6? Yes. 4-5? Yes. 4-6? Yes. 5-6? Yes.
+  All pairs are connected, so {2,4,5,6} is a clique.
+- Nodes {1,3,5,6}
+  Checking all pairs: 1-3? Yes. 1-5? Yes. 1-6? Yes. 3-5? Yes. 3-6? Yes. 5-6? Yes.
+  All pairs are connected, so {1,3,5,6} is a clique.
+
+I've found three 4-node cliques: {3,4,5,6}, {2,4,5,6}, and {1,3,5,6}.
+
+Step 5: Let me verify if there are any 5-node cliques I might have missed:
+- {1,2,3,5,6}: 1-2? No, so not a clique.
+- {1,2,4,5,6}: 1-4? No, so not a clique.
+- {1,3,4,5,6}: 1-4? No, so not a clique.
+- {2,3,4,5,6}: 2-3? No, so not a clique.
+
+Therefore, the maximum clique size is 4, and there are three such cliques: {3,4,5,6}, {2,4,5,6}, and {1,3,5,6}.
+
+Clique: [3,4,5,6], Size: 4","{'clique': ['3', '4', '5', '6'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,14.56265402,1946,1000,2946
+graph_748_c4,ORTHO,{},few_shots,standard,"Clique: [1,2,3,4,5,6], Size: 6","{'clique': ['1', '2', '3', '4', '5', '6'], 'size': 6}","{'clique': {}, 'size': 4}",0.533,2.85792017,4105,24,4129
+graph_748_c4,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: First, I'll identify densely connected regions in the visual representation.
+Looking at the graph, I notice that nodes 3, 4, 5, and 6 appear to form a densely connected region. Node 5 also appears to be connected to nodes 1 and 2. Node 6 appears to be connected to all other nodes.
+
+Step 2: Cross-verify connections using the adjacency list.
+From the adjacency list:
+- Node 1 is connected to: 3, 5, 6
+- Node 2 is connected to: 4, 5, 6
+- Node 3 is connected to: 1, 4, 5, 6
+- Node 4 is connected to: 2, 3, 5, 6
+- Node 5 is connected to: 1, 2, 3, 4, 6
+- Node 6 is connected to: 1, 2, 3, 4, 5
+
+Step 3: Systematically check potential cliques.
+Let me check if all nodes form a clique:
+- Nodes 1 and 2 are not connected (not in each other's adjacency lists)
+- Nodes 1 and 4 are not connected (not in each other's adjacency lists)
+
+So all 6 nodes don't form a clique.
+
+Let me check 5-node potential cliques:
+- Excluding node 1: Nodes 2, 3, 4, 5, 6
+  - Node 2 is connected to 4, 5, 6 but not to 3
+  - So this is not a clique
+
+- Excluding node 2: Nodes 1, 3, 4, 5, 6
+  - Node 1 is connected to 3, 5, 6 but not to 4
+  - So this is not a clique
+
+Continuing with 4-node potential cliques:
+- Nodes 3, 4, 5, 6: 
+  - Node 3 is connected to 4, 5, 6
+  - Node 4 is connected to 3, 5, 6
+  - Node 5 is connected to 3, 4, 6
+  - Node 6 is connected to 3, 4, 5
+  - All pairs are connected, so this is a 4-node clique
+
+Step 4: Verify no larger clique exists.
+I've already checked that no 5-node or 6-node clique exists.
+
+Step 5: Final verification.
+The clique [3, 4, 5, 6] has all pairs connected according to both the adjacency list and the visual representation.
+
+Clique: [3, 4, 5, 6], Size: 4","{'clique': ['3', '4', '5', '6'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,10.95384192,4658,676,5334
+graph_c4,FMMM,{},zero_shot,standard,"Clique: [5, 7, 8, 9], Size: 4","{'clique': ['5', '7', '8', '9'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,2.349822044,1807,23,1830
+graph_c4,FMMM,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically analyzing densely connected regions and verifying all connections.
+
+Step 1: Identify densely connected regions in the visual graph.
+Looking at the visual representation, I can see several potentially dense regions:
+- Nodes 5, 7, 8, 9 form a dense subgraph
+- Nodes 1, 2, 4 appear connected
+- Nodes 10, 11, 12 form a triangle
+- Nodes 13, 14, 15, 16 form a dense region
+
+Step 2: Cross-verify these potential cliques using the adjacency list.
+
+For nodes 5, 7, 8, 9:
+- 5 is connected to 7, 8, 9 ✓
+- 7 is connected to 5, 8, 9 ✓
+- 8 is connected to 5, 7, 9 ✓
+- 9 is connected to 5, 7, 8 ✓
+This forms a 4-node clique.
+
+For nodes 1, 2, 4:
+- 1 is connected to 2, 4 ✓
+- 2 is connected to 1, 4 ✓
+- 4 is connected to 1, 2 ✓
+This forms a 3-node clique.
+
+For nodes 10, 11, 12:
+- 10 is connected to 11, 12 ✓
+- 11 is connected to 10, 12 ✓
+- 12 is connected to 10, 11 ✓
+This forms a 3-node clique.
+
+For nodes 13, 14, 15, 16:
+- 13 is connected to 14, 16 but not to 15 ✗
+- 14 is connected to 13, 15 but not to 16 ✗
+- 15 is connected to 14, 16 but not to 13 ✗
+- 16 is connected to 13, 15 but not to 14 ✗
+This is not a clique.
+
+Let me check if there's a 3-node clique in this region:
+- 13, 14, 15: 13 is connected to 14, 14 is connected to 15, but 13 is not connected to 15 ✗
+- 13, 15, 16: 13 is connected to 16, 15 is connected to 16, but 13 is not connected to 15 ✗
+- 13, 14, 16: 13 is connected to 14, 13 is connected to 16, but 14 is not connected to 16 ✗
+- 14, 15, 16: 14 is connected to 15, 15 is connected to 16, but 14 is not connected to 16 ✗
+
+Step 3: Check for other potential cliques.
+
+Let me check if nodes 5, 6, 7, 8 form a clique:
+- 5 is connected to 6, 7, 8 ✓
+- 6 is connected to 5, 7, 8 ✓
+- 7 is connected to 5, 6, 8 ✓
+- 8 is connected to 5, 6, 7 ✓
+This forms a 4-node clique.
+
+Let me verify if there are any 5-node cliques:
+
+For nodes 5, 6, 7, 8, 9:
+- 6 is not connected to 9 according to the adjacency list ✗
+This is not a 5-node clique.
+
+For nodes 5, 7, 8, 9, 12:
+- 12 is connected to 5, 9 but not to 7, 8 ✗
+This is not a 5-node clique.
+
+Step 4: Final verification.
+I've found two 4-node cliques: {5, 7, 8, 9} and {5, 6, 7, 8}.
+
+Let me double-check both:
+For {5, 7, 8, 9}:
+- 5's adjacency list: 3 6 7 8 9 12 - contains 7, 8, 9 ✓
+- 7's adjacency list: 5 6 8 9 - contains 5, 8, 9 ✓
+- 8's adjacency list: 5 6 7 9 - contains 5, 7, 9 ✓
+- 9's adjacency list: 5 7 8 12 - contains 5, 7, 8 ✓
+
+For {5, 6, 7, 8}:
+- 5's adjacency list: 3 6 7 8 9 12 - contains 6, 7, 8 ✓
+- 6's adjacency list: 5 7 8 13 15 - contains 5, 7, 8 ✓
+- 7's adjacency list: 5 6 8 9 - contains 5, 6, 8 ✓
+- 8's adjacency list: 5 6 7 9 - contains 5, 6, 7 ✓
+
+Both are valid 4-node cliques, and I've verified that no 5-node cliques exist. Therefore, the maximum clique size is 4.
+
+Clique: [5, 6, 7, 8], Size: 4","{'clique': ['5', '6', '7', '8'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,17.92106891,1873,1362,3235
+graph_c4,FMMM,{},few_shots,standard,"Clique: [5,7,8,9], Size: 4","{'clique': ['5', '7', '8', '9'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,4.191066027,4032,20,4052
+graph_c4,FMMM,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I notice several potentially dense regions:
+- Nodes 1, 2, 4 appear to form a triangle
+- Nodes 5, 7, 8, 9 appear densely connected
+- Nodes 10, 11, 12 form a triangle
+- Nodes 13, 14, 15, 16 have some connections
+
+Step 2: Cross-verifying connections using the adjacency list.
+Let me check the most promising regions:
+
+For nodes 5, 7, 8, 9:
+- Node 5 connects to: 3, 6, 7, 8, 9, 12
+- Node 7 connects to: 5, 6, 8, 9
+- Node 8 connects to: 5, 6, 7, 9
+- Node 9 connects to: 5, 7, 8, 12
+
+This confirms that nodes 5, 7, 8, 9 are all connected to each other, forming a 4-node clique.
+
+For nodes 1, 2, 4:
+- Node 1 connects to: 2, 4, 13
+- Node 2 connects to: 1, 3, 4, 16
+- Node 4 connects to: 1, 2, 3
+
+This confirms that nodes 1, 2, 4 form a 3-node clique.
+
+For nodes 10, 11, 12:
+- Node 10 connects to: 11, 12
+- Node 11 connects to: 10, 12
+- Node 12 connects to: 3, 5, 9, 10, 11
+
+This confirms that nodes 10, 11, 12 form a 3-node clique.
+
+For nodes 13, 14, 15, 16:
+- Node 13 connects to: 1, 6, 14, 16
+- Node 14 connects to: 13, 15
+- Node 15 connects to: 6, 14, 16
+- Node 16 connects to: 2, 13, 15
+
+These nodes don't form a 4-node clique, but there's a 3-node clique with 13, 15, 16.
+
+Step 3: Systematically checking all pairs in potential cliques.
+For the 4-node clique [5, 7, 8, 9], I need to verify all 6 possible pairs:
+- 5-7: Connected ✓
+- 5-8: Connected ✓
+- 5-9: Connected ✓
+- 7-8: Connected ✓
+- 7-9: Connected ✓
+- 8-9: Connected ✓
+
+All pairs are connected, confirming this is a 4-node clique.
+
+Step 4: Ensuring no larger clique exists.
+To check if a 5-node clique exists, I would need to find a node that connects to all four nodes in our current maximum clique [5, 7, 8, 9].
+
+Checking node 6:
+- 6 connects to 5, 7, 8 but not to 9 ✗
+
+Checking node 12:
+- 12 connects to 5, 9 but not to 7, 8 ✗
+
+No other nodes connect to more than two nodes in our clique, so there is no 5-node clique.
+
+Clique: [5,7,8,9], Size: 4","{'clique': ['5', '7', '8', '9'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,14.33616614,4585,869,5454
+graph_c4,ORTHO,{},zero_shot,standard,"Clique: [5, 7, 8, 9], Size: 4","{'clique': ['5', '7', '8', '9'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,2.449706793,1978,23,2001
+graph_c4,ORTHO,{},zero_shot,cot,"I'll find the maximum clique in this graph by systematically examining densely connected regions and verifying connections.
+
+Step 1: Identify potential densely connected regions from the visual representation.
+Looking at the graph, I notice several potentially dense regions:
+- Nodes 5, 7, 8, 9 appear to form a dense subgraph
+- Nodes 10, 11, 12 form a triangle
+- Nodes 1, 2, 4 appear connected
+- Nodes 13, 15, 16 have connections
+
+Step 2: Verify these potential cliques using the adjacency list.
+
+First, let's check nodes 5, 7, 8, 9:
+- Node 5 connects to: 3, 6, 7, 8, 9, 12
+- Node 7 connects to: 5, 6, 8, 9
+- Node 8 connects to: 5, 6, 7, 9
+- Node 9 connects to: 5, 7, 8, 12
+
+Checking all pairs:
+- 5-7: Connected ✓
+- 5-8: Connected ✓
+- 5-9: Connected ✓
+- 7-8: Connected ✓
+- 7-9: Connected ✓
+- 8-9: Connected ✓
+
+This forms a 4-node clique: {5, 7, 8, 9}
+
+Let's check nodes 10, 11, 12:
+- Node 10 connects to: 11, 12
+- Node 11 connects to: 10, 12
+- Node 12 connects to: 3, 5, 9, 10, 11
+
+Checking all pairs:
+- 10-11: Connected ✓
+- 10-12: Connected ✓
+- 11-12: Connected ✓
+
+This forms a 3-node clique: {10, 11, 12}
+
+Let's check nodes 1, 2, 4:
+- Node 1 connects to: 2, 4, 13
+- Node 2 connects to: 1, 3, 4, 16
+- Node 4 connects to: 1, 2, 3
+
+Checking all pairs:
+- 1-2: Connected ✓
+- 1-4: Connected ✓
+- 2-4: Connected ✓
+
+This forms a 3-node clique: {1, 2, 4}
+
+Let's check nodes 13, 15, 16:
+- Node 13 connects to: 1, 6, 14, 16
+- Node 15 connects to: 6, 14, 16
+- Node 16 connects to: 2, 13, 15
+
+Checking all pairs:
+- 13-15: Not directly connected ✗
+- 13-16: Connected ✓
+- 15-16: Connected ✓
+
+This is not a clique since 13 and 15 are not directly connected.
+
+Step 3: Check if we can extend any of our cliques.
+For the {5, 7, 8, 9} clique, let's see if we can add any other nodes:
+- Node 6 connects to 5, 7, 8 but not to 9 ✗
+- Node 12 connects to 5, 9 but not to 7, 8 ✗
+
+For the {10, 11, 12} clique, none of these nodes share all connections with any other node.
+
+For the {1, 2, 4} clique, node 3 connects to 2, 4 but not to 1 ✗
+
+Step 4: Verify no larger clique exists.
+I've systematically checked all potential dense regions and verified that {5, 7, 8, 9} is the largest clique with 4 nodes.
+
+Clique: [5, 7, 8, 9], Size: 4","{'clique': ['5', '7', '8', '9'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,13.82887793,2044,953,2997
+graph_c4,ORTHO,{},few_shots,standard,"Clique: [5,7,8,9], Size: 4","{'clique': ['5', '7', '8', '9'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,2.566114902,4203,20,4223
+graph_c4,ORTHO,{},few_shots,cot,"I'll analyze this graph step by step to find the maximum clique.
+
+Step 1: Identifying densely connected regions in the visual graph.
+Looking at the visual representation, I notice several potentially dense regions:
+- Nodes 5, 7, 8, 9 appear to form a dense subgraph
+- Nodes 10, 11, 12 form a triangle
+- Nodes 1, 2, 3, 4 form a dense region
+- Nodes 13, 14, 15, 16 have some connections
+
+Step 2: Cross-verifying connections using the adjacency list.
+Let me check the most promising regions:
+
+For nodes 5, 7, 8, 9:
+- Node 5 connects to: 3, 6, 7, 8, 9, 12
+- Node 7 connects to: 5, 6, 8, 9
+- Node 8 connects to: 5, 6, 7, 9
+- Node 9 connects to: 5, 7, 8, 12
+
+This confirms that nodes 5, 7, 8, 9 are all connected to each other, forming a 4-node clique.
+
+For nodes 10, 11, 12:
+- Node 10 connects to: 11, 12
+- Node 11 connects to: 10, 12
+- Node 12 connects to: 3, 5, 9, 10, 11
+
+This confirms that nodes 10, 11, 12 form a 3-node clique.
+
+For nodes 1, 2, 3, 4:
+- Node 1 connects to: 2, 4, 13
+- Node 2 connects to: 1, 3, 4, 16
+- Node 3 connects to: 2, 4, 5, 12
+- Node 4 connects to: 1, 2, 3
+
+This confirms that nodes 1, 2, 4 form a 3-node clique, and with node 3 they form a 4-node clique.
+
+Step 3: Systematically checking all pairs in potential cliques.
+For the [5, 7, 8, 9] clique:
+- 5-7: Connected ✓
+- 5-8: Connected ✓
+- 5-9: Connected ✓
+- 7-8: Connected ✓
+- 7-9: Connected ✓
+- 8-9: Connected ✓
+
+All pairs are connected, confirming a 4-node clique.
+
+Step 4: Ensuring no larger clique exists.
+Let's check if we can extend the [5, 7, 8, 9] clique:
+- Node 6 connects to 5, 7, 8 but not to 9
+- Node 12 connects to 5, 9 but not to 7, 8
+
+I've checked all other potential extensions and none form a larger clique.
+
+Similarly, I've verified that the [1, 2, 3, 4] clique cannot be extended.
+
+Final verification:
+Both the [5, 7, 8, 9] and [1, 2, 3, 4] cliques are of size 4, and I've confirmed that no larger clique exists in this graph.
+
+Clique: [5, 7, 8, 9], Size: 4","{'clique': ['5', '7', '8', '9'], 'size': 4}","{'clique': {}, 'size': 4}",1.0,12.30781507,4756,814,5570
