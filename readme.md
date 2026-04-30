@@ -2,6 +2,11 @@
 
 This project runs experiments to evaluate Large Language Models (LLMs) on graph analysis tasks. It supports both visual and textual graph analysis with different prompting strategies and reasoning approaches.
 
+### Award
+This project obtained the [TVCG Replicability Stamp]((https://www.replicabilitystamp.org/#https-github-com-tommaso-piselli-gd4llm)).
+
+ [![](https://www.replicabilitystamp.org/logo/Reproducibility-small.png)](http://www.replicabilitystamp.org#https-github-com-tommaso-piselli-gd4llm)
+
 ## Features
 
 - Visual analysis using graph layouts
@@ -101,3 +106,22 @@ To remove the api key from your shell:
 unset OPENAI_API_KEY
 sed -i '/^export OPENAI_API_KEY=/d' ~/.bashrc
 ```
+
+## Citation
+
+If you want to cite the paper:
+```
+@article{didimo2026gd4llm,
+  title={GD4LLM: How Layout Quality and Prompting Influence LLM Understanding of Graph Drawings},
+  author={Didimo, Walter and Montecchiani, Fabrizio and Piselli, Tommaso},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  year={2026},
+  publisher={IEEE}
+}
+```
+
+## License
+
+This project is licensed under the MIT License.
+
+Note: This is an anonymized version of the code for double-blind review purposes. Author information and complete license details will be provided upon publication.
